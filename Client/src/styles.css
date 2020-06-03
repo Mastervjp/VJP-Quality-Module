@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button {  
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.25s;
+  }
+  
+  button:hover {
+    box-shadow: 0px 5px 8px skyblue;
+    transform: translateY(-2px);
+    transition: 0.25s;
+  }
+
+/* .modal {
+  display: block !important;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+  margin-top: 15%;
+} */

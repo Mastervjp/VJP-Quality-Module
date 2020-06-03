@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+}
+th {
+    font-size: large;
+    color: black;
+  }
+
+
+  tr.mat-header-row {
+    background: #408cfd !important;
+    
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center !important;
+  border: 1px solid #CCC !important;
+  padding: 0 !important;
+ 
+}
+ul{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.nav-item.active .nav-link {
+  color: white;
+}

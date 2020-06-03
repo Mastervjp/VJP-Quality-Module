@@ -1,0 +1,183 @@
+<div class="container">
+
+    <div id="componentID">
+
+        <table style="width:100%">
+            <tr>
+                <th class="text-center" colspan="1" rowspan="5" style="font-size: 25px;">V<br>J<br>P</th>
+                <th colspan="5" style="text-align: center;">QUALITY PLAN</th>
+                <td>Drawing code</td>
+                <th>{{drgObject.id}}</th>
+
+            </tr>
+
+            <tr>
+                <td>Casting Drawing No/Rev</td>
+                <th>{{drgObject.partNum}}</th>
+                <th>{{drgObject.revNo}}</th>
+                <td>Operation No.</td>
+                <th>{{psObject.opnNo}}</th>
+                <td>Quality Plan No</td>
+                <th>{{qpaObject.qpNo}}</th>
+
+            </tr>
+
+            <tr>
+                <td>Machining Drawing No/Rev</td>
+                <th>{{drgObject.partNum1}}</th>
+                <th>{{drgObject.revNo1}}</th>
+                <td>Operation Description</td>
+                <th>{{psObject.description}}</th>
+                <td>Process Plan No</td>
+                <th>{{qpaObject.pfNo}}</th>
+
+            </tr>
+            <tr>
+                <td>Part Name</td>
+                <th colspan="2">{{drgObject.partName}}</th>
+                <td>Work Center</td>
+                <th>{{psObject.workCenter}}</th>
+                <td>Route Card Number</td>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td>Material Grade</td>
+                <th colspan="2">{{drgObject.materialGrade}}</th>
+                <td>Material Weight</td>
+                <th>{{drgObject.materialWeight}}</th>
+
+                <td></td>
+                <th></th>
+
+            </tr>
+        </table><br>
+
+
+
+        <div class=" printMe container my-4 ">
+
+            <div id="componentID" class="printMe">
+                <table class="tg" align="center" style="width: 100%;">
+                    <colgroup>
+                        <col style="width: 49px">
+                        <col style="width: 86px">
+                        <col style="width: 185px">
+                        <col style="width: 79px">
+                        <col style="width: 76px">
+                        <col style="width: 81px">
+                        <col style="width: 73px">
+                        <col style="width: 130px">
+                        <col style="width: 117px">
+                        <col style="width: 89px">
+                        <col style="width: 72px">
+                        <col style="width: 69px">
+                        <col style="width: 72px">
+                        <col style="width: 71px">
+                    </colgroup>
+                    <THEAD>
+                        <tr>
+                            <th class="tg-nrix" rowspan="2"><b>S.NO</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Description</b> </th>
+                            <th class="tg-nrix" rowspan="2"><b>Specified <br>Dimention</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Tolarance<br>max/min</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Balloon No</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Grid</b></th>
+                            <th class="tg-nrix" colspan="2"><b>Instrument</b></th>
+                            <th class="tg-cly1" rowspan="2"><b>Remarks</b></th>
+                            <th class="tg-nrix" colspan="4"><b>Observed</b></th>
+                        </tr>
+                        <tr>
+                            <td class="tg-y0n7"><b>Photo</b></td>
+                            <td class="tg-t31z"><b>Due Date</b></td>
+                            <td class="tg-y0n7"><b>1</b></td>
+                            <td class="tg-y0n7"><b>2</b></td>
+                            <td class="tg-y0n7"><b>3</b></td>
+                            <td class="tg-y0n7"><b>4</b></td>
+                        </tr>
+                    </THEAD>
+
+
+                    <ng-container *ngFor="let element of dataSource; let rIndex = index;">
+                        <tr>
+                            <td class="tg-cly1" style="text-align: center;"> {{rIndex+1}} </td>
+
+                            <td class="tg-cly1"> {{element.description}} </td>
+                            <td class="tg-cly1"> {{element.specification}} </td>
+                            <td class="tg-cly1"> {{element.tolFrom}} / {{element.tolTo}}</td>
+                            <td class="tg-cly1">{{element.baloonNo}} </td>
+                            <td class="tg-cly1"> {{element.toloreanceGrade}} </td>
+                            <td class="tg-cly1"> <img src="http://localhost:80/testpath/instrument/{{element.Instrument.insImage}}" style="width: 100px;height: 30px;"> </td>
+                            <td class="tg-cly1"> {{element.Instrument.dueDate | date: 'dd-MM-yyyy'}} </td>
+                            <td class="tg-cly1"> {{element.remarks}} </td>
+                            <td class="tg-cly1"></td>
+                            <td class="tg-cly1"></td>
+                            <td class="tg-cly1"></td>
+                            <td class="tg-cly1"></td>
+                        </tr>
+
+                    </ng-container>
+
+                </table>
+
+
+
+                <table class="tg mt-4" style=" width: 100%">
+                    <colgroup>
+                        <col style="width: 167px">
+                        <col style="width: 95px">
+                        <col style="width: 80px">
+                        <col style="width: 83px">
+                        <col style="width: 101px">
+                        <col style="width: 81px">
+                        <col style="width: 73px">
+                        <col style="width: 21px">
+                        <col style="width: 117px">
+                        <col style="width: 59px">
+                        <col style="width: 93px">
+                        <col style="width: 92px">
+                        <col style="width: 89px">
+                        <col style="width: 89px">
+                    </colgroup>
+                    <tr>
+                        <th class="tg-uzvj" colspan="4">AC - ACCEPTED , RW - REWORK , RJ- REJECTION</th>
+                        <th class="tg-9wq8" colspan="4">Grey Shade -------&gt; Special Character</th>
+                        <th class="tg-uzvj" colspan="2">Component Status</th>
+                        <th class="tg-9wq8">1</th>
+                        <th class="tg-9wq8">2</th>
+                        <th class="tg-9wq8">3</th>
+                        <th class="tg-9wq8">4</th>
+                    </tr>
+                    <tr>
+                        <td class="tg-9wq8"><span style="font-weight:bold">M/C Name</span></td>
+                        <td class="tg-lboi" colspan="7"></td>
+                        <td class="tg-9wq8" colspan="2"><span style="font-weight:bold">Inspected By</span></td>
+                        <td class="tg-lboi"></td>
+                        <td class="tg-lboi"></td>
+                        <td class="tg-lboi"></td>
+                        <td class="tg-lboi"></td>
+                    </tr>
+                    <tr>
+                        <td class="tg-c3ow"><span style="font-weight:bold">Technician Name</span></td>
+                        <td class="tg-0pky" colspan="2"></td>
+                        <td class="tg-0pky" colspan="2"></td>
+                        <td class="tg-0pky" colspan="3"></td>
+                        <td class="tg-c3ow" colspan="2"><span style="font-weight:bold">Date / Time</span></td>
+                        <td class="tg-0pky"></td>
+                        <td class="tg-0pky"></td>
+                        <td class="tg-0pky"></td>
+                        <td class="tg-0pky"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-12 text-center p-4">
+                <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print
+                </button>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

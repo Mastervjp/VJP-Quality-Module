@@ -1,0 +1,224 @@
+<mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+        <span class="title dialog-title">{{dialogTitle}}</span>
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<div mat-dialog-content>
+
+    <form class="p-4" [formGroup]="contactForm">
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>OPN No</mat-label>
+                <input name="opnNo" formControlName="opnNo" matInput required>
+                <mat-error>OPN No is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>OPN Name</mat-label>
+                <mat-select formControlName="opnName">
+                    <mat-option *ngFor="let op of Oplist" [value]="op.name">
+                        {{op.name}}
+                    </mat-option>
+                   
+                </mat-select>
+            </mat-form-field>
+
+
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input name="description" formControlName="description" matInput required>
+                <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+
+        
+
+
+        <div class="row">
+            
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Workcenter</mat-label>
+                    <mat-select formControlName="workCenter">
+                        <mat-option *ngFor="let work of workData" [value]="work.name">
+                            {{work.name}}
+                        </mat-option>
+                       
+                    </mat-select>
+                </mat-form-field>
+           
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Specification</mat-label>
+                <input name="specification" formControlName="specification" matInput required>
+                <mat-error>Specification is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Toloreance Grade</mat-label>
+                <input name="toloreanceGrade" formControlName="toloreanceGrade" matInput>
+                <mat-error>Toloreance Grade is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tol From</mat-label>
+                    <input name="tolFrom" formControlName="tolFrom" matInput >
+                    <mat-error>Tol From is required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Tol To</mat-label>
+                    <input name="tolTo" formControlName="tolTo" matInput >
+                    <mat-error>TolTo is required!</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Instrument</mat-label>
+                <mat-select formControlName="instrument">
+                    <mat-option *ngFor="let ins of instrumentList" [value]="ins.name">
+                        {{ins.name}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Measuring Frequency</mat-label>
+                <mat-select formControlName="measuringFrequency">
+                    <mat-option *ngFor="let ins of measuringList" [value]="ins.name">
+
+                        <ng-container *ngIf="ins.name == '100'; else newDeb" >
+                           100 % 
+                        </ng-container>
+                        <ng-template #newDeb>
+                            1/{{ins.name}}
+                        </ng-template>
+
+                        
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+
+        </div>
+
+        
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Grid</mat-label>
+                <input name="grid" formControlName="grid" matInput >
+                <mat-error>Grid is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <mat-checkbox class="example-margin" value="true" formControlName="firstPartInspection">First Part
+                    Inspection</mat-checkbox>
+
+            </div>
+            <div class="col-md-6">
+                <mat-checkbox class="example-margin" value="true" formControlName="periodicInspection">Periodic Inspection</mat-checkbox>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-6">
+               
+               <mat-checkbox class="example-margin" value="true" formControlName="ctq">CTQ</mat-checkbox>
+
+            </div>
+
+            <div class="col-md-6">
+               
+                <mat-checkbox class="example-margin" value="true" formControlName="pdi">FIR</mat-checkbox>
+ 
+             </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+               
+               <mat-checkbox class="example-margin" value="true" formControlName="cfir">C-FIR</mat-checkbox>
+
+            </div>
+
+        </div>
+
+
+
+    </form>
+
+</div>
+
+<div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Delete">
+        Cancel
+    </button>
+
+    <button *ngIf="action !== 'edit'" color="accent" mat-raised-button class="save-button" (click)="addOperation()"
+        [disabled]="contactForm.invalid" aria-label="SAVE">
+        Add
+    </button>
+
+    <button *ngIf="action === 'edit'" color="accent" mat-raised-button class="save-button"
+        (click)="testbala(editId)" [disabled]="contactForm.invalid" aria-label="SAVE">
+        Save
+    </button>
+
+</div>

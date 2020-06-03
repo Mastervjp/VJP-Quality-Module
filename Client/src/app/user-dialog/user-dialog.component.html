@@ -1,0 +1,81 @@
+<mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+        <span class="title dialog-title">{{dialogTitle}}</span>
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<div mat-dialog-content>
+
+    <form class="p-4" [formGroup]="contactForm">
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input name="name" formControlName="name" matInput required>
+                <mat-error>Name is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input name="email" formControlName="email" matInput autocomplete="off" required>
+                <mat-error>Email is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>password</mat-label>
+                <input name="password" type="password" formControlName="password" autocomplete="off" matInput required>
+                <mat-error>password is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+
+       
+
+
+        <div class="row">
+           
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role">
+                        <mat-option [value]="'NA'">
+                            Admin
+                        </mat-option>
+                        <mat-option [value]="'NU'">
+                            User
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+           
+        </div>
+
+     </form>
+
+</div>
+
+<div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Delete">
+        Cancel
+    </button>
+
+    <button *ngIf="action !== 'edit'" color="accent" mat-raised-button class="save-button" (click)="addUser()"
+        [disabled]="contactForm.invalid" aria-label="SAVE">
+        Add
+    </button>
+
+    <button *ngIf="action === 'edit'" color="accent" mat-raised-button class="save-button"
+        (click)="updateUser(editId)" [disabled]="contactForm.invalid" aria-label="SAVE">
+        Save
+    </button>
+
+</div>

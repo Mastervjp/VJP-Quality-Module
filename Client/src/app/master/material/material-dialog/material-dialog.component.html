@@ -1,0 +1,56 @@
+<mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+        <span class="title dialog-title">{{dialogTitle}}</span>
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<div mat-dialog-content>
+
+    <form class="p-4" [formGroup]="contactForm">
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Material Standards</mat-label>
+                <input name="materialSpec" formControlName="materialSpec" matInput autocomplete="off" required>
+                <mat-error>Material Standards is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Material Grade</mat-label>
+                <input name="materialGrade" formControlName="materialGrade" matInput autocomplete="off" required>
+                <mat-error>Material Grade is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+       
+
+
+    </form>
+
+</div>
+
+<div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Delete">
+        Cancel
+    </button>
+
+    <button *ngIf="action !== 'edit'" color="accent" mat-raised-button class="save-button" (click)="addDrawing()"
+        [disabled]="contactForm.invalid" aria-label="SAVE">
+        Add
+    </button>
+
+    <button *ngIf="action === 'edit'" color="accent" mat-raised-button class="save-button"
+        (click)="updateDrawing(editId)" [disabled]="contactForm.invalid" aria-label="SAVE">
+        Save
+    </button>
+
+</div>

@@ -1,0 +1,46 @@
+.lgout{
+    float: right;
+    background-color: #fdfdfd;
+    border-color: #efefef;
+    color: red;
+}
+.example-full-width {
+  width: 100%;
+}table {
+  width: 100%;
+}
+
+/* .mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,th {
+  width: 20%;
+} */
+.successsnackbarclass{
+  background-color: green !important;
+  color: white;
+  }
+  .errorsnackbarclass{
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #a72f2f !important;
+  }
+
+  .lgout{
+    float: right;
+    background-color: #fdfdfd;
+    border-color: #efefef;
+    color: red;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center;
+  border: 1px solid #CCC;
+  padding: 0 !important;
+ 
+}
+th {
+  font-size: large;
+  color: black;
+}

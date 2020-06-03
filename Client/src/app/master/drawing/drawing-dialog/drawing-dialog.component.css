@@ -1,0 +1,15 @@
+.mybghead{
+    background-color: #5676ff;
+}
+.example-full-width {
+    width: 100%;
+  }
+  .blue-snackbar {
+    background-color: green !important;
+    color: white;
+  }
+  
+  .errorsnackbarclass {
+    color: rgba(255, 255, 255, 0.7);
+    background-color: #a72f2f !important;
+  }

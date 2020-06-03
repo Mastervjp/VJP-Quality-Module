@@ -1,0 +1,89 @@
+<mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+        <span class="title dialog-title">{{dialogTitle}}</span>
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<div mat-dialog-content>
+
+    <form class="p-4" [formGroup]="contactForm">
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Process No</mat-label>
+                <input name="opnNo" formControlName="opnNo" matInput required>
+                <mat-error>OPN No is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Process Name</mat-label>
+                <mat-select formControlName="opnName">
+                    <mat-option *ngFor="let op of Oplist" [value]="op.name">
+                        {{op.name}}
+                    </mat-option>
+                   
+                </mat-select>
+            </mat-form-field>
+
+
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input name="description" formControlName="description" matInput required>
+                <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+
+        
+
+
+        <div class="row">
+            
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Workcenter</mat-label>
+                    <mat-select formControlName="workCenter">
+                        <mat-option *ngFor="let work of workData" [value]="work.name">
+                            {{work.name}}
+                        </mat-option>
+                       
+                    </mat-select>
+                </mat-form-field>
+           
+
+
+        </div>
+
+
+    </form>
+
+</div>
+
+<div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Delete">
+        Cancel
+    </button>
+
+    <button *ngIf="action !== 'edit'" color="accent" mat-raised-button class="save-button" (click)="addOperation()"
+        [disabled]="contactForm.invalid" aria-label="SAVE">
+        Add
+    </button>
+
+    <button *ngIf="action === 'edit'" color="accent" mat-raised-button class="save-button"
+        (click)="updateOperation(editId)" [disabled]="contactForm.invalid" aria-label="SAVE">
+        Save
+    </button>
+
+</div>

@@ -1,0 +1,149 @@
+<div id="test" class="container">
+
+
+   
+    <div>
+        <mat-card>
+          
+          <div class="row">
+            <div class="col-6">
+              Drawing No :{{drgObject.drgCode}}
+            </div>
+            <div class="col-6">
+                Kind :
+              </div>
+              <!-- | date: 'dd/MM/yyyy' -->
+            
+          </div>
+  
+          <div class="row">
+            <div class="col-6">
+              OPN Name & Description :{{psObject.opnName}} & {{psObject.description}}
+            </div>
+            <div class="col-6">   
+                Component Name :{{drgObject.partName}} 
+              </div>
+          </div>
+  
+          
+        
+          <div class="row">
+
+            <div class="col-6">
+                Quality Plan No :{{qpaObject.qpNo}}
+              </div>
+            
+            <div class="col-6">
+              Process Flow No :{{qpaObject.pfNo}}
+            </div>
+          </div>
+  
+        
+        
+        </mat-card>
+    
+    </div>
+  
+
+
+    <div class="p-1">
+        <div class="mat-elevation-z8">
+
+
+
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef style="width:20px; margin-right: 25px;"> S.No </th>
+                    <td mat-cell *matCellDef="let element; let rIndex = index;" style="width:20px; margin-right: 25px;">
+                        {{rIndex+1}} </td>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="opnNo">
+                    <th mat-header-cell *matHeaderCellDef> OPN No </th>
+                    <td mat-cell *matCellDef="let element"> {{element.opnNo}} </td>
+                </ng-container> -->
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Desc </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="specification">
+                    <th mat-header-cell *matHeaderCellDef> Specs </th>
+                    <td mat-cell *matCellDef="let element"> {{element.specification}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="toloreanceGrade">
+                    <th mat-header-cell *matHeaderCellDef> Tol_Grade </th>
+                    <td mat-cell *matCellDef="let element"> {{element.toloreanceGrade}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="tolFrom">
+                    <th mat-header-cell *matHeaderCellDef> Tol_From </th>
+                    <td mat-cell *matCellDef="let element"> {{element.tolFrom}} </td>
+                </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="tolTo">
+                    <th mat-header-cell *matHeaderCellDef> Tol_To </th>
+                    <td mat-cell *matCellDef="let element"> {{element.tolTo}} </td>
+                </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="instrument">
+                    <th mat-header-cell *matHeaderCellDef> Instrument </th>
+                    <td mat-cell *matCellDef="let element"> {{element.instrument}} </td>
+                </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="measuringFrequency">
+                    <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
+                    <td mat-cell *matCellDef="let element"> {{element.measuringFrequency}} </td>
+                </ng-container>
+                <!-- Symbol Column  remarks-->
+
+                <ng-container matColumnDef="remarks">
+                    <th mat-header-cell *matHeaderCellDef> Remarks </th>
+                    <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="x1">
+                    <th mat-header-cell *matHeaderCellDef> 1 </th>
+                    <td mat-cell *matCellDef="let element">  </td>
+                </ng-container>
+                <ng-container matColumnDef="x2">
+                    <th mat-header-cell *matHeaderCellDef> 2 </th>
+                    <td mat-cell *matCellDef="let element">  </td>
+                </ng-container>
+                <ng-container matColumnDef="x3">
+                    <th mat-header-cell *matHeaderCellDef> 3 </th>
+                    <td mat-cell *matCellDef="let element">  </td>
+                </ng-container>
+                <ng-container matColumnDef="x4">
+                    <th mat-header-cell *matHeaderCellDef> 4 </th>
+                    <td mat-cell *matCellDef="let element">  </td>
+                </ng-container>
+                <ng-container matColumnDef="x5">
+                    <th mat-header-cell *matHeaderCellDef> 5 </th>
+                    <td mat-cell *matCellDef="let element">  </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+    </div>
+
+   
+        <div class="col-md-12 text-center p-4"> 
+            <button id="singlebutton" name="singlebutton" (click)= "printPage()" class="btn btn-primary"> Print </button> 
+        </div>
+
+
+
+</div>

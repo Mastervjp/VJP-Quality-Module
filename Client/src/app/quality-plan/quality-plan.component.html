@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+
+            <a class="navbar-item" [routerLink]="['/qualityplan']">
+                <img src="assets/vjp.png">
+              </a>
+
+            
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="btn  lgout" (click)="Logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="p-5">
+
+
+        <div class="row">
+          <h4>  <label id="example-radio-group-label">Select your type : </label></h4> 
+        </div>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="type">
+            <mat-radio-button *ngFor="let op of dataset" [value]="op.name">{{op.name}}</mat-radio-button>
+        </mat-radio-group>
+        <div>
+            <button mat-raised-button (click)="checkplan()">Go</button>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+  }
+  
+  .lgout{
+    float: right;
+    background-color: #fdfdfd;
+    border-color: #efefef;
+    color: red;
+}
+
+  /* td, th {
+    width: 25%;
+  } */

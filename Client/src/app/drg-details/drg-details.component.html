@@ -1,0 +1,588 @@
+<!-- <div class="container">
+    <div class="border border-dark m-3" style="height: 730px;">
+
+        <div class="row row-bordered">
+            <div class="col-md-6" style="border-right: 1px solid black;">
+                <h6>PAGUPU</h6>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    QUALITY PLAN No : {{qpaObject.qpNo}}
+                </div>
+                <div>
+                    Drg Code : {{drgObject.drgCode}}
+                </div>
+            </div>
+        </div>
+        <div class="row row-bordered">
+            <div class="col-md-6" style="border-right: 1px solid black;">
+                <div>
+                    Drawing No : {{drgObject.id}}
+                </div>
+                <div>
+                    Kind :
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div>
+                   Process Plan No : {{qpaObject.pfNo}}
+                </div>
+                <div>
+                    Rev. Date : {{drgObject.revDate | date: 'dd/MM/yyyy'}}
+                </div>
+
+            </div>
+        </div>
+        <div class="row  row-bordered">
+            <div class="col-md-6" style="border-right: 1px solid black;">
+                Rev No  : {{drgObject.revNo}}
+
+            </div>
+            <div class="col-md-6">
+                Operation No & Name :  {{psObject.opnNo}} &  {{psObject.opnName}}
+            </div>
+        </div>
+
+        <div class="row  row-bordered">
+            <div class="col-md-6" style="border-right: 1px solid black;">
+                Component Name : {{drgObject.partName}}
+
+            </div>
+            <div class="col-md-6">
+                Opn. Description : {{psObject.description}}
+            </div>
+        </div>
+
+        <div class="row  row-bordered">
+            <div class="col-md-6" style="border-right: 1px solid black;">
+                Company Name : {{drgObject.customerName}}
+
+            </div>
+            <div class="col-md-6">
+                End Customer : {{drgObject.endCustomer}}
+            </div>
+        </div>
+
+        <div class="row m-1" style="height: 200px;">
+            <div class="col-md-3 border border-dark"></div>
+            <div class="col-md-3 border border-dark"></div>
+            <div class="col-md-3 border border-dark"></div>
+            <div class="col-md-3 border border-dark"></div>
+
+        </div>
+
+        <div class="row  row-bordered">
+            <div>
+                <h6>Instr to Q.A</h6>
+            </div>
+        </div>
+        <div class="row  row-bordered">
+            <div class="col-md-4" style="border-right: 1px solid black;">
+                Week No:
+            </div>
+            <div class="col-md-4" style="border-right: 1px solid black;">
+                M/c Name:
+            </div>
+            <div class="col-md-4" style="border-right: 1px solid black;">
+                Batch Qty :
+            </div>
+        </div>
+        <div class="row  row-bordered">
+            <div class="col-md-8" style="border-right: 1px solid black;">
+                Technician Name:
+            </div>
+            <div class="col-md-4" style="border-right: 1px solid black;">
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-8" style="border-right: 1px solid black;">
+
+                <table class="table" style="width: 100%">
+                    <tbody >
+                        <tr>
+                            <td>Date</td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Shift</td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Qty.Prod</td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Qty.Acc</td>
+                            <td></td>
+                            <td></td>
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Matl.Rej</td>
+                            <td></td>
+                            <td></td>
+
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-md-4">
+                <div class="row row-bordered">
+                    Total Quantity
+                </div>
+                <div class="row row-bordered">
+                    <div class="col-md-6" style="border-right: 1px solid black;">
+                        Produced 
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+                <div class="row row-bordered">
+                    <div class="col-md-6" style="border-right: 1px solid black;">
+                        Accepted 
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+                <div class="row row-bordered">
+                    <div class="col-md-6" style="border-right: 1px solid black;">
+                        Matl .Rej 
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+                <div class="row row-bordered">
+                    <div class="col-md-6" style="border-right: 1px solid black;">
+                        M/c.Rej 
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div class="col-md-12 text-center p-4"> 
+        <button id="singlebutton" name="singlebutton" (click)= "printPage()" class="btn btn-primary"> Print </button> 
+    </div>
+    
+</div> -->
+
+<!-- <div class="container">
+
+    <div>
+
+        <table style="width:100%">
+            <tr>
+              
+              <th colspan="2" class="rightBorder">PaGuPu1</th>
+              <th class="rightBorder">QUALITY PLAN</th>
+              <th >Drg. Code No.</th>
+            </tr>
+            <tr>
+              <th class="rightBorder">Drawing No:</th>
+            <th>Kind:</th>
+              <th colspan="2">Quality Plan No.:</th>
+            </tr>
+            <tr>
+                <th colspan="2">Rev. No. & Date:</th>
+                <th colspan="2">Opn. No. & Operation:</th>
+              </tr>
+              <tr>
+                <th colspan="2">Component Name:</th>
+                <th colspan="2">Opn. Description:</th>
+              </tr>
+              <tr>
+                <th colspan="2">Company Name on Org:</th>
+                <th colspan="2">End Customer:</th>
+          </table>
+          <table style="width: 100%; height: 200px;margin-top: 3px; ">
+              <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+              </tr>
+          </table>
+          <table style="width:100%; margin-top:3px; ">
+              <tr>
+                  <th colspan="12" style="padding-bottom: 60px;"><u>Special Instructions:</u></th>
+              </tr>
+              <tr>
+                  <th colspan="12">
+                     <u>Instrn. to Q.A</u>
+                  </th>
+              </tr>
+              <tr>
+                    <th colspan="1" class="rightBorder">Week No.: <input type="text" id="WeekNo" name="WeekNo"></th> 
+                    <th colspan="3" class="rightBorder">M/c. Id & Name :</th>
+                    <th colspan="3" class="rightBorder">Horizontal Machining centre</th>
+                    <th colspan="5" class="rightBorder">Batch Qty:<input type="text" id="qtn" name="qtn"></th>
+                    
+              </tr>
+              <tr>
+                  <th >Technician Name:</th>
+                  <td colspan="3"></td>
+                  <td colspan="3"></td>
+                  <td colspan="3"></td>
+        
+            </tr>
+            <tr>
+                  <td>Date</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <th colspan="1" style="text-align:center;">TOTAL QUANTITY<th>
+                  
+            </tr>
+            <tr>
+                <td>Shift</td>  
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bottomBorder">Produced:</td>
+                <td></td>
+            </tr>
+            <tr>
+                  <td>Qty.Prod</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bottomBorder">Accepted</td>
+                  <td></td>
+            </tr>
+            <tr>
+                  <td>Qty.Acc.</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bottomBorder">Matl.Reg.:</td>
+                  <td></td>
+            </tr>
+            <tr>
+                  <td>Matl. Reg</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bottomBorder">M/c. Reg:</td>
+                  <td></td>
+            </tr>
+            <tr>
+                  <td>M/c.Reg.</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td ></td>
+                  <td></td>
+            </tr>
+            <tr>
+                  
+            </tr>
+            <tr>
+                  
+            </tr>
+        
+          </table> 
+    </div>
+
+  
+    
+</div> -->
+
+
+
+
+<div  class="container">
+
+    <div id="componentID">
+
+
+
+        <table style="width:100%">
+            <tr>
+                <th class="text-center"  colspan="1" rowspan="5" style="font-size:25px;">V<br>J<br>P</th>
+                <th colspan="5" style="text-align: center;">QUALITY PLAN</th>
+                <td>Drawing code</td>
+                <th>{{drgObject.id}}</th>
+
+            </tr>
+
+            <tr>
+                <td>Casting Drawing No/Rev</td>
+                <th>{{drgObject.partNum}}</th>
+                <th>{{drgObject.revNo}}</th>
+                <td>Operation No.</td>
+                <th>{{psObject.opnNo}}</th>
+                <td>Quality Plan No</td>
+                <th>{{qpaObject.qpNo}}</th>
+
+            </tr>
+
+            <tr>
+                <td>Machining Drawing No/Rev</td>
+                <th>{{drgObject.partNum1}}</th>
+                <th>{{drgObject.revNo1}}</th>
+                <td>Operation Description</td>
+                <th>{{psObject.description}}</th>
+                <td>Process Plan No</td>
+                <th>{{qpaObject.pfNo}}</th>
+
+            </tr>
+            <tr>
+                <td>Part Name</td>
+                <th colspan="2">{{drgObject.partName}}</th>
+                <td>Work Center</td>
+                <th>{{psObject.workCenter}}</th>
+                <td>Route Card Number</td>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td>Material Grade</td>
+                <th colspan="3">{{drgObject.materialGrade}}</th>
+                <td>Material Weight</td>
+                <th  colspan="3">{{drgObject.materialWeight}}</th>
+
+               
+            </tr>
+        </table><br>
+  
+      <table style="width: 100%; height: 200px;margin-top: 3px; ">
+          <tr>
+              <th class="bg" ><p class="bg-text"></p></th>
+              <th class="bg"><p class="bg-text"></p></th>
+              <th class="bg" ><p class="bg-text"></p></th>
+              <th class="bg" ><p class="bg-text"></p></th>
+              <th class="bg"><p class="bg-text"></p></th>
+          </tr>
+      </table>
+      <table style="width:100%; margin-top:3px; ">
+          <tr>
+              <th colspan="12" style="padding-bottom: 60px;"><u>Special Instructions:</u></th>
+          </tr>
+          <tr>
+              <th colspan="12">
+                 <u>Instrn. to Q.A</u>
+              </th>
+          </tr>
+          <tr>
+            <th colspan="1" class="rightBorder">Week No.: <input type="text" id="WeekNo" name="WeekNo" style="width: 20%;"></th> 
+            <th colspan="3" class="rightBorder" style="text-align: left;">M/c. Id & Name :</th>
+            <th colspan="6 " class="rightBorder">Horizontal Machining centre</th>
+            <th colspan="2" >Batch Qty:<input type="text" id="qtn" name="qtn"></th>
+                
+          </tr>
+          <tr>
+              <th >Technician Name:</th>
+              <td colspan="3"></td>
+              <td colspan="3"></td>
+              <td colspan="3"></td>
+              <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td style="width: 15%;">Date</td>
+          <td style="width:7%;"></td>
+          <td style="width:7%;"></td>
+          <td style="width:7%;"></td>
+          <td style="width:7%;"></td>
+          <td style="width:7%;" ></td>
+          <td style="width:7%;"></td>
+          <td style="width:7%;"></td>
+          <td style="width:7%;"></td>
+          <td style="width:7%;"></td>
+          <th  colspan="1" style="text-align:center; width: 14%;">TOTAL QUANTITY</th> 
+          <th rowspan="2" style="text-align: center;">Q.A Cleared by</th>           
+        </tr>
+        <tr>
+            <td>Shift</td>  
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Produced:</td>
+           
+            
+        </tr>
+        <tr>
+              <td>Qty.Prod</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Accepted:</td>
+              <td class="bottomBorder"></td>
+        </tr>
+        <tr>
+              <td>Qty.Acc.</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Matl.Reg:</td>
+              <td class="bottomBorder"></td>
+        </tr>
+        <tr>
+              <td>Matl. Reg</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>M/c. Reg: </td>
+              <td class="bottomBorder"></td>
+            
+        </tr>
+        <tr>
+              <td>M/c.Reg.</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="leftBorder"></td>
+              
+        </tr>
+        <tr>
+              
+        </tr>
+        <tr>
+              
+        </tr>
+  
+      </table><br>
+
+    </div>
+    <div class="col-md-12 text-center p-4">
+        <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
+      </div>
+
+</div>
+
+

@@ -1,0 +1,57 @@
+<!-- <mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+        <span class="title dialog-title">{{dialogTitle}}</span>
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar> -->
+
+
+
+<!-- 
+<div mat-dialog-content>
+
+    <form class="p-4" [formGroup]="contactForm">
+
+        <div class="row">
+            <mat-form-field class="example-full-width" >
+                <mat-label>Copy From process flow number</mat-label>
+                <input name="pfnumber" formControlName="pfnumber" matInput >
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" >
+                <mat-label>Copy From Quality plan number</mat-label>
+                <input name="qpnumber" formControlName="qpnumber" matInput >
+            </mat-form-field>
+        </div>
+
+
+    </form>
+
+</div> -->
+
+<!-- <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Cancel">
+        Cancel
+    </button>
+
+    <button color="accent" mat-raised-button class="save-button" (click)="addDrawing()"
+         aria-label="Add">
+        Add
+    </button>
+
+
+
+</div> -->
+
+
+<h1 matDialogTitle>Confirm</h1>
+<div mat-dialog-content>Are you sure you want to Create Alternative Process?</div>
+<div mat-dialog-actions class="pt-24">
+    <button mat-raised-button class=" mr-16" (click)="addDrawing()">Create</button>
+    <button mat-raised-button  (click)="matDialogRef.close()">Close</button>
+</div>

@@ -1,0 +1,266 @@
+<app-navbar3>
+  <h3 style="margin-left: 8%;margin-top: -2%;"> Quality&nbsp;Plan&nbsp;Abstract</h3>
+</app-navbar3>
+
+<div style=" min-height: calc(100vh - 110px);">
+  <div  style="width: 95%;margin-left: 2.5%;padding-top: 1%;">
+   
+  <!-- <div class="row">
+  
+    <div class="col-md-6">
+      <a *ngIf="isSuper" class="btn btn-info" [routerLink]="['/adduser']">
+        User management
+      </a>
+
+    </div>
+  </div> -->
+
+
+
+
+  <div class="p-5">
+
+   
+
+    <div>
+      <mat-card style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);"> 
+        
+        <table style="width:100%;    border: 1px solid black;
+        border-collapse: collapse;">
+          <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+             <th style="    border: 1px solid black;
+             border-collapse: collapse;word-spacing: 15px;"> <b> VJP ALUMINIUM FOUNDRY </b> </th>
+            <th colspan="4" style="text-align: center;" style="    border: 1px solid black;
+          border-collapse: collapse;  text-align: center;">QUALITY PLAN</th>
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Drawing code</td>
+            <th style="    border: 1px solid black;
+           border-collapse: collapse;">{{drgObject.id}}</th>
+
+          </tr>
+
+
+          <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partNum}}</th>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revNo}}</th>
+
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revDate | date: 'dd/MM/yyyy'}}</th>
+            <td  style="    border: 1px solid black;
+          border-collapse: collapse;">Part Name</td>
+            <th colspan="2" style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partName}}</th>
+           
+          </tr>
+
+          <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Machining Drawing No/Rev/Date</td>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partNum1}}</th>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revNo1}}</th>
+                     <th  colspan="1" style="    border: 1px solid black;
+                     border-collapse: collapse;">{{drgObject.revDate1 | date: 'dd/MM/yyyy'}}</th>
+                       <td  colspan="3" style="    border: 1px solid black;
+                       border-collapse: collapse;"></td>
+          </tr>
+        </table>
+
+        <!-- <table style="width:100%;    border: 1px solid black;
+        border-collapse: collapse;">
+          <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+            <th style="    border: 1px solid black;
+          border-collapse: collapse;"> <b> VJP ALUMINIUM FOUNDRY </b> </th>
+            <th colspan="4" style="text-align: center;" style="    border: 1px solid black;
+          border-collapse: collapse;  text-align: center;">QUALITY PLAN</th>
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Drawing code</td>
+            <th style="    border: 1px solid black;
+           border-collapse: collapse;">{{drgObject.id}}</th>
+
+          </tr>
+
+
+          <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Casting Drawing No/Rev</td>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partNum}}</th>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revNo}}</th>
+
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Operation No.</td>
+            <td  style="    border: 1px solid black;
+          border-collapse: collapse;"><b>-</b></td>
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Quality Plan No</td>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;"><b>-</b></th>
+          </tr>
+
+          <tr style="    border: 1px solid black;
+        border-collapse: collapse;">
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Machining Drawing No/Rev</td>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.partNum1}}</th>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.revNo1}}</th>
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Operation Description</td>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;"><b> -</b></th>
+            <td style="    border: 1px solid black;
+          border-collapse: collapse;">Process Plan No</td>
+            <th  style="    border: 1px solid black;
+          border-collapse: collapse;"><b>-</b></th>
+
+          </tr>
+          <tr style="    border: 1px solid black;
+border-collapse: collapse;">
+            <td style="    border: 1px solid black;
+  border-collapse: collapse;">Part Name</td>
+            <th  colspan="2" style="    border: 1px solid black;
+  border-collapse: collapse;">{{drgObject.partName}}</th>
+            <td  style="    border: 1px solid black;
+  border-collapse: collapse;">Work Center</td>
+            <th   style="    border: 1px solid black;
+  border-collapse: collapse;"><b>-</b></th>
+            <td style="    border: 1px solid black;
+  border-collapse: collapse;">Route Card Number</td>
+            <th style="    border: 1px solid black;
+  border-collapse: collapse;"></th>
+          </tr>
+
+
+          <tr style="    border: 1px solid black;
+border-collapse: collapse;">
+            <td style="    border: 1px solid black;
+  border-collapse: collapse;">Material Grade</td>
+            <th colspan="2" style="    border: 1px solid black;
+  border-collapse: collapse;"></th>
+            <td style="    border: 1px solid black;
+      border-collapse: collapse;">Customer</td>
+            <th style="    border: 1px solid black;
+          border-collapse: collapse;">{{drgObject.customerName}}</th>
+            <th style="    border: 1px solid black;
+          border-collapse: collapse;"></th>
+            <th style="    border: 1px solid black;
+          border-collapse: collapse;"></th>
+
+          </tr>
+        </table> -->
+        <!-- <div class="row">
+          <div style="font-size: larger;" class="col-6">
+           <b> Drawing Code :{{drgObject.id}} </b> 
+          </div>
+          <div class="col-6">
+            Rev No :{{drgObject.revNo}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            Rev Date :{{drgObject.revDate | date: 'dd/MM/yyyy'}}
+          </div>
+          <div class="col-6">
+            End Customer :{{drgObject.endCustomer}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            Component Name :{{drgObject.partName}}
+          </div>
+          <div class="col-6">
+            Company Name :{{drgObject.customerName}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            Customer's Rep :{{drgObject.csr}}
+          </div>
+        </div> -->
+
+
+      </mat-card>
+    </div>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> S.No </th>
+          <td mat-cell *matCellDef="let drg ; let rIndex = index;"> {{rIndex+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="qpNo">
+          <th mat-header-cell *matHeaderCellDef> Quality Plan No</th>
+          <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
+            {{drg.qpNo}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="kind">
+          <th mat-header-cell *matHeaderCellDef> Kind </th>
+          <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
+            {{drg.kind}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pfNo">
+          <th mat-header-cell *matHeaderCellDef> Process Flow No </th>
+          <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
+            {{drg.pfNo}} </td>
+        </ng-container>
+
+
+
+
+        <tr  style="background: #408cfd   ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div class="nc" *ngIf="dataSource.length === 0">No records found</div>
+      <div *ngIf="dataSource.data.length === 0" style="text-align: center;">
+        No Records Found!
+      </div>
+    </div>
+
+
+
+
+
+    <div *ngIf="isET" class="col text-center p-4">
+      <button mat-raised-button [routerLink]="['/processplan']">Create Process Plan</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="col text-center">
+        <button *ngIf="isET"  mat-raised-button (click)="createAltProcess()" >Alternative Process</button>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="col text-center">
+        <button *ngIf="isET" mat-raised-button (click)="createKind()">Additional Kind</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+
+<app-footer></app-footer>

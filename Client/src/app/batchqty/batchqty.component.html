@@ -1,0 +1,104 @@
+
+<app-navbar3>
+    <h4>Batch Quantity</h4>
+</app-navbar3>
+<div style=" min-height: calc(100vh - 110px);">
+    <div style="width: 95%;margin-left: 3%;padding-top: 5%;">
+
+  
+  
+  
+    <div class="p-5">
+
+
+        <mat-card>
+        <form name="batchForm" [formGroup]="batchForm">
+    
+            <div class="row">
+        
+                <div class="col-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Route Card</mat-label>
+                      
+                        <mat-select (selectionChange)="changeCard($event)" formControlName="card"  >
+                            <mat-option *ngFor="let op of cardList" [value]="op"  >
+                                {{op.cardNo}}
+                            </mat-option>
+        
+                        </mat-select>
+                   
+                   
+                    </mat-form-field>
+            
+                </div>
+
+
+                <div class="col-4">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Batch Qty</mat-label>
+                      
+                        <input matInput type="number" formControlName="qty" autocomplete="off" readonly >
+
+                        <!-- <mat-select formControlName="qty"  >
+                            <mat-option *ngFor="let op of cardList" [value]="op"  >
+                                {{op.cardNo}}
+                            </mat-option>
+        
+                        </mat-select> -->
+                   
+                   
+                    </mat-form-field>
+            
+                </div>
+
+            
+                <div class="col-4">
+        
+                    <mat-form-field class="example-full-width" appearance="outline"  >
+                        <mat-label>Machine List</mat-label>
+                        <mat-select formControlName="machine"  >
+                            <mat-option *ngFor="let op of machinelist" [value]="op.name"  >
+                                {{op.name}}
+                            </mat-option>
+        
+                        </mat-select>
+                    </mat-form-field>
+            
+                </div>
+        
+            </div>
+           
+        
+            <div class="col text-center">
+                <button mat-raised-button (click)="getInspection()" [disabled]="batchForm.invalid">Proceed</button>
+            </div>
+        </form>
+        </mat-card>
+
+    </div>
+   
+  
+  
+    </div>
+  
+</div>
+<app-footer></app-footer>
+   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

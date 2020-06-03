@@ -1,0 +1,26 @@
+footer {
+  height: 40px;
+
+  width: 100%;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+
+  background: rgb(26, 26, 57, 1);
+
+  color: white;
+  ;
+
+
+}
+
+h6 {
+  float: right;
+  padding-right: 10px;
+  padding-top: 10px;
+  font-family: 'Comic Neue', cursive;
+
+
+}

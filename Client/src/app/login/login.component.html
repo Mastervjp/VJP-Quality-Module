@@ -1,0 +1,67 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="login100-more" style="background-image: url('assets/login.jpg');"></div>
+
+        <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+            <form class="login100-form validate-form" name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="login()" >
+                <div style="vertical-align: middle;background-repeat: no-repeat;margin-left: 25%;">
+                    <img src="assets/vjp.png" alt="Avatar" style="width:100%;">
+                </div>
+                <span class="login100-form-title p-b-59" style="text-align: center; margin-top: 15%;">
+                    Login
+                 </span>
+
+                <div style="font-size: larger;" class="wrap-input100 validate-input">
+                    <mat-form-field  style="width: 90%;" >
+                        <mat-label style="font-size: larger;">Email</mat-label>
+                        <input matInput formControlName="email" autocomplete>
+                       
+                        <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                            Email is required
+                        </mat-error>
+                        <mat-error
+                        *ngIf="!loginForm.get('email').hasError('required') &&
+                                loginForm.get('email').hasError('pattern')">
+                        Please enter a valid email address
+                    </mat-error>
+                        <!-- <mat-error *ngIf="loginForm.get('email').hasError('pattern')">
+                            Please enter a valid Login ID
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <div style="font-size: larger;" class="wrap-input100 validate-input">
+                   
+            <mat-form-field style="width: 90%;">
+                <mat-label style="font-size: larger;">Password</mat-label>
+                <input matInput type="password" formControlName="password" autocomplete="password">
+               
+                <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                    Password is required.
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('password').hasError('minLength')">
+                    Password must have minimum of 6 chatacters.
+                </mat-error>
+            </mat-form-field>
+                </div>
+
+               
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                            login
+                        </button>
+                    </div>
+
+                  
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+

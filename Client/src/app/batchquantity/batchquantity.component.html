@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Batch Quantity</h1>
+<form name="batchForm" [formGroup]="batchForm">
+<div mat-dialog-content>
+        <mat-form-field>
+            <input matInput type="number" formControlName="qty" >
+          </mat-form-field>
+   
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">cancel</button>
+  <button mat-button (click) = "closebatch()" >Submit</button>
+</div>
+</form>

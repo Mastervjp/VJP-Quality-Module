@@ -1,0 +1,121 @@
+<mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+        <span class="title dialog-title">{{dialogTitle}}</span>
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<div mat-dialog-content>
+
+    <form class="p-4" [formGroup]="contactForm">
+
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Drawing Code</mat-label>
+                    <input name="DrgId" formControlName="DrgId" matInput required>
+                    <mat-error>Drawing Code is required!</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="col-md-6">
+                <button  color="accent" mat-raised-button class="save-button"
+                    (click)="searchDrg()" [disabled]="contactForm.invalid" aria-label="SAVE">
+                    Search
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+
+
+
+    <div>
+
+        <table style="width: 100%;" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                              [checked]="selection.hasValue() && isAllSelected()"
+                              [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? selection.toggle(row) : null"
+                              [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+              </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> S.No </th>
+              <td mat-cell *matCellDef="let element; let rIndex = index;"> {{rIndex+1}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="opnNo">
+                <th mat-header-cell *matHeaderCellDef> Process No </th>
+                <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(element)" *matCellDef="let element">
+                  {{element.opnNo}} </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="opnName">
+                <th mat-header-cell *matHeaderCellDef> Process Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.opnName}} </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="workCenter">
+                <th mat-header-cell *matHeaderCellDef> Work Center </th>
+                <td mat-cell *matCellDef="let element"> {{element.workCenter}} </td>
+              </ng-container>
+    
+            
+
+
+
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="selection.toggle(row)">
+            </tr>
+          </table>
+    
+          
+    
+    </div>
+
+</div>
+
+
+
+
+
+<div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Delete">
+        Cancel
+    </button>
+
+      <button  color="accent" mat-raised-button class="save-button"
+        (click)="copycode()" >
+        Save
+    </button>
+
+</div>

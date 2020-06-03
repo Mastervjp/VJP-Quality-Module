@@ -1,0 +1,62 @@
+module.exports = function (sequelize, DataTypes) {
+    let PlanAbstract = sequelize.define('PlanAbstract', {
+
+        id: {
+            type: DataTypes.INTEGER(11).UNSIGNED,
+            field: 'id',
+            autoIncrement: true,
+            primaryKey: true,
+            allowNull: false
+        },
+        drgId: {
+            type: DataTypes.INTEGER(11).UNSIGNED,
+            field: 'drg_id',
+            allowNull: false
+        },
+        opnId: {
+            type: DataTypes.INTEGER(11),
+            field: 'op_no',
+        },
+        
+        qpNo: {
+            type: DataTypes.STRING(250),
+            field: 'qp_no'
+        },
+        pfNo: {
+            type: DataTypes.STRING(250),
+            field: 'pf_no'
+        },
+        
+        createdBy: {
+            type: DataTypes.STRING(50),
+            field: 'created_by'
+        },
+        updatedBy: {
+            type: DataTypes.STRING(50),
+            field: 'updated_by'
+        },
+        deletedBy: {
+            type: DataTypes.STRING(50),
+            field: 'deleted_by'
+        },
+        deleteStatus:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'delete_status',
+            defaultValue: false
+        },
+
+
+    },
+        {
+            timestamps: true,
+            tableName: 'planabstract'
+        })
+
+        PlanAbstract.associate = function (models) {
+        PlanAbstract.belongsTo(models.Drawing, { foreignKey: 'drgId' })
+
+    }
+
+    return PlanAbstract
+}

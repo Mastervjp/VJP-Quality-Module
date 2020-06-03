@@ -1,0 +1,141 @@
+<!-- <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <div class="container-fluid px-0">
+    <div class="row w-100">
+      <div class="col-2">
+        <img  style="width: 100px; height: 40px;" src="assets/vjp.png">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+          aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
+          (click)="isShown = !isShown">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      </div>
+
+      <div class="col-10">
+
+          <div class="collapse justify-content-end navbar-collapse" [ngClass]="{ 'show': isShown }"
+            id="navbarTogglerDemo03">
+            <ul class="navbar-nav mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/machine']" (click)="isShown = false">Machining</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/workcenter']" (click)="isShown = false">Workcenter</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/operation']" (click)="isShown = false">Operation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/instrument']" (click)="isShown = false">Instument</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/measure']" (click)="isShown = false">Measuring Frequncy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/drawing']" (click)="isShown = false">Drawing Type</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/material']" (click)="isShown = false">Material</a>
+              </li>
+  
+              <li class="nav-item">
+                <a class="nav-link" (click)="Logout()">Logout</a>
+              </li>
+            </ul>
+          </div>
+
+        
+          
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" style="display:flex; flex-direction: row; align-items: center;" >
+    <ng-content></ng-content>
+  </a>
+
+  <!-- <div class="navbar-nav page-title">
+    <ng-content>
+     
+    </ng-content>
+  </div> -->
+
+  <ul class="navbar-nav ml-auto">
+    <!-- <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/machine']" (click)="isShown = false"
+        style="color: aliceblue;">Machines / Workcenter</a>
+    </li>
+  
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/operation']" (click)="isShown = false"
+        style="color: aliceblue;">Process Type</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/instrument']" (click)="isShown = false"
+        style="color: aliceblue;">Instrument</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/measure']" (click)="isShown = false"
+        style="color: aliceblue;">Measuring Frequency</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/drawing']" (click)="isShown = false" style="color: aliceblue;">Drawing
+        Type</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/material']" (click)="isShown = false"
+        style="color: aliceblue;">Material</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/castingtol']" (click)="isShown = false"
+        style="color: aliceblue;">Casting Tolerance</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/machinetol']" (click)="isShown = false"
+        style="color: aliceblue;">Machine Tolerance</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/heattreat']" (click)="isShown = false"
+        style="color: aliceblue;">Heat Treatment</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/master/specialpro']" (click)="isShown = false"
+        style="color: aliceblue;">Special Process</a>
+    </li>
+ -->
+
+    <li>
+      <img src="assets/e.jpeg" data-toggle="modal" data-target="#logoutModal" class="avatar">
+    </li>
+    <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 15%;">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Log Out <i class="fa fa-lock"></i></h4>
+            <a type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">×</span></a>
+
+          </div>
+          <div class="modal-body">
+            <p><i class="fa fa-question-circle"></i> Are you sure you want to log-off? <br /></p>
+            <div class="actionsBtns">
+              <form action="/logout" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <input type="submit" class="btn btn-default btn-primary" data-dismiss="modal" (click)="Logout()"
+                  value="Logout" />&nbsp;
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ul>
+</nav>
