@@ -50,7 +50,7 @@
                 <th style="width: 10%;">DRAWING CODE</th>
                 <th style="width: 10%;">{{headerSource.id}}</th>
                 <th style="width: 10%;">PURCHASE ORDER QTY</th>
-                <th style="width: 10%;"> {{ routeObj.qty}}</th>
+                <th style="width: 10%;"> {{mObject.orderQty}}</th>
                 <th style="width: 10%;">START DATE</th>
                 <th style="width: 10%;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
                 <th style="width: 10%;">AS CAST WEIGHT</th>
@@ -85,7 +85,7 @@
                 </th>
                 <th>{{headerSource.materialSpec}}</th>
                 <th>BATCH QTY</th>
-                <th>{{mObject.orderQty}}</th>
+                <th>{{ routeObj.qty}}</th>
                 <th>Remaining Qty</th>
                 <th>{{mObject.remainingQty}}</th>
             </tr>
