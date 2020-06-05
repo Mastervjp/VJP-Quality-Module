@@ -34,69 +34,69 @@ export class OperationService {
 
 
   getoperation(drgid): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getAltprocess(drgid): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/altprocess/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/altprocess/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getkindprocess(drgid): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/kindprocess/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/kindprocess/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getWorkcenter(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/data/workcenter',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/data/workcenter',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getDrawingtype(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/data/drawingtype',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/data/drawingtype',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getmaterial(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/data/material',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/data/material',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getMachine(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/data/machine',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/data/machine',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
 
   getRoute(drgid): Observable<any> {
-    return this.http.get('http://localhost:3000/api/inspection/routecard/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/inspection/routecard/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
 
   getOplist(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/operation/data/oplist',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/operation/data/oplist',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   addOperation(datas): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/operation/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>('http://192.168.1.222:3000/api/operation/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   updateOperation(id, datas): Observable<any> {
-    return this.http.put<any>('http://localhost:3000/api/operation/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.put<any>('http://192.168.1.222:3000/api/operation/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   updatePfStatus(id): Observable<any> {
-    return this.http.put<any>('http://localhost:3000/api/operation/pfstatus/' + id, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.put<any>('http://192.168.1.222:3000/api/operation/pfstatus/' + id, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   deleteOperation(id): Observable<any> {
-    return this.http.delete('http://localhost:3000/api/operation/' + id, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.delete('http://192.168.1.222:3000/api/operation/' + id, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 

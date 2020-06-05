@@ -112,6 +112,12 @@ export class MarketViewComponent implements OnInit {
   }
 
   viewQty(drg) {
+
+    localStorage.setItem("drgId", drg.drgId);
+    localStorage.setItem("mpId", drg.id);
+
+    localStorage.setItem("mObject", JSON.stringify(drg));
+
     this.dialogRef = this._matDialog.open(MarketQtyComponent, {
       width: '600px',
       panelClass: 'contact-form-dialog',

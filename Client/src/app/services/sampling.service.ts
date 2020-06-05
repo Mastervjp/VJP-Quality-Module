@@ -29,17 +29,17 @@ export class SamplingService {
 
 
   getSampling(drgcode): Observable<any> {
-    return this.http.get('http://localhost:3000/api/sample/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get('http://192.168.1.222:3000/api/sample/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData));
   }
 
   addSampling(datas): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/sample/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>('http://192.168.1.222:3000/api/sample/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData));
   }
 
   updateSampling(datas,id): Observable<any> {
-    return this.http.post<any>('http://localhost:3000/api/samole/'+id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>('http://192.168.1.222:3000/api/samole/'+id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData));
   }
 }
