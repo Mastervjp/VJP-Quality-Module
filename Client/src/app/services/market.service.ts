@@ -33,35 +33,35 @@ export class MarketService {
 
 
   getRoutedata(): Observable<any> {
-    return this.http.get('http://192.168.1.222:3000/api/market/',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/market/',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
 
   getAbstract(mpId): Observable<any> {
-    return this.http.get('http://192.168.1.222:3000/api/market/card/'+mpId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/market/card/'+mpId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
 
   getCarddata(drgid): Observable<any> {
-    return this.http.get('http://192.168.1.222:3000/api/market/view/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/market/view/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getCardHeader(mpId): Observable<any> {
-    return this.http.get('http://192.168.1.222:3000/api/market/header/'+mpId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/market/header/'+mpId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   
   addRoute(datas): Observable<any> {
-    return this.http.post<any>('http://192.168.1.222:3000/api/market/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>(this.API_URL+'/api/market/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   addCard(datas): Observable<any> {
-    return this.http.post<any>('http://192.168.1.222:3000/api/market/card', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>(this.API_URL+'/api/market/card', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 

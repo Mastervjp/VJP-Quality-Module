@@ -37,22 +37,22 @@ export class QualityService {
 
   getquality(drgcode): Observable<any> {
 
-    return this.http.get('http://192.168.1.222:3000/api/quality/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/quality/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   addQuality(datas): Observable<any> {
-    return this.http.post<any>('http://192.168.1.222:3000/api/quality/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>(this.API_URL+'/api/quality/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   updateQuality(id, datas): Observable<any> {
-    return this.http.put<any>('http://192.168.1.222:3000/api/quality/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.put<any>(this.API_URL+'/api/quality/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   deleteQuality(id): Observable<any> {
-    return this.http.delete('http://192.168.1.222:3000/api/quality/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.delete(this.API_URL+'/api/quality/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 

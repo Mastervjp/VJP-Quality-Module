@@ -39,12 +39,12 @@ export class AdminService {
   }
 
   addUser(datas): Observable<any> {
-    return this.http.post<any>('http://192.168.1.222/api/admin/signup', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>(this.API_URL+'/api/admin/signup', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   updateUser(id, datas): Observable<any> {
-      return this.http.put<any>('http://192.168.1.222/api/admin/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      return this.http.put<any>(this.API_URL+'/api/admin/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
@@ -53,7 +53,7 @@ export class AdminService {
 
 
   deleteUser(id): Observable<any> {
-    return this.http.delete('http://192.168.1.222/api/admin/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.delete(this.API_URL+'/api/admin/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 

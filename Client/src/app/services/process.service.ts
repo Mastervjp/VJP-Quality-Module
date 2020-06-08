@@ -36,47 +36,47 @@ export class ProcessService {
 
   getprocess(drgcode, opno): Observable<any> {
 
-    return this.http.get('http://192.168.1.222:3000/api/process/' + drgcode + '/' + opno,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/process/' + drgcode + '/' + opno,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getaltproQp(drgcode, opno): Observable<any> {
 
-    return this.http.get('http://192.168.1.222:3000/api/process/altprocess/' + drgcode + '/' + opno,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/process/altprocess/' + drgcode + '/' + opno,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   addProcess(datas): Observable<any> {
-    return this.http.post<any>('http://192.168.1.222:3000/api/process/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>(this.API_URL+'/api/process/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   updateProcess(id, datas): Observable<any> {
-    return this.http.put<any>('http://192.168.1.222:3000/api/process/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.put<any>(this.API_URL+'/api/process/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   deleteProcess(id): Observable<any> {
-    return this.http.delete('http://192.168.1.222:3000/api/process/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.delete(this.API_URL+'/api/process/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getInstrument(){ 
 
-    return this.http.get('http://192.168.1.222:3000/api/operation/data/instrument' ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/operation/data/instrument' ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getMeasuring(){ 
 
-    return this.http.get('http://192.168.1.222:3000/api/operation/data/measuring',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/operation/data/measuring',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
 
   confirmQuality(drgcode): Observable<any> {
 
-    return this.http.put('http://192.168.1.222:3000/api/process/func/plan/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.put(this.API_URL+'/api/process/func/plan/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 

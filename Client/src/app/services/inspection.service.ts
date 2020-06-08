@@ -34,7 +34,7 @@ export class InspectionService {
 
 
   getfpi(drgcode,opnId): Observable<any> {
-    return this.http.get('http://192.168.1.222:3000/api/inspection/fpi/' + drgcode+'/'+opnId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL+'/api/inspection/fpi/' + drgcode+'/'+opnId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 

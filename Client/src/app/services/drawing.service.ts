@@ -38,29 +38,29 @@ export class DrawingService {
   }
 
   addDrawing(datas): Observable<any> {
-    return this.http.post<any>('http://192.168.1.222:3000/api/drawing/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>(this.API_URL+'/api/drawing/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
 
   copyDrawing(datas): Observable<any> {
-    return this.http.post<any>('http://192.168.1.222:3000/api/operation/copy', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.post<any>(this.API_URL+'/api/operation/copy', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
   updateDrawing(id, datas): Observable<any> {
-    return this.http.put<any>('http://192.168.1.222:3000/api/drawing/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.put<any>(this.API_URL+'/api/drawing/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   // getoperation(): Observable<any> {
-  //   return this.http.get('http://192.168.1.222:3000/api/operation/').pipe(
+  //   return this.http.get(this.API_URL+'/api/operation/').pipe(
   //     map(this.extractData1));
   // }
 
 
 
   deleteDrg(id): Observable<any> {
-    return this.http.delete('http://192.168.1.222:3000/api/drawing/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.delete(this.API_URL+'/api/drawing/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
