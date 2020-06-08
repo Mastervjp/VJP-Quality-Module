@@ -1,4 +1,220 @@
-<app-navbar6>
+<!-- <app-navbar6>
+    <h4>Market&nbsp;Card</h4>
+    
+    
+  </app-navbar6>
+  
+  <div style=" min-height: calc(100vh - 110px);">
+    <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
+
+   
+
+
+    <div id="componentID">
+
+        <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+            <tr>
+                <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 5px;font-size: 200%;text-align: center;" rowspan="4"><b>VJP</b>
+                </td>
+                <td style="width: 50%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 5px;font-size: 200%;"
+                    rowspan="4"><B>ROUTE CARD</B></td>
+                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;">Doc.No.
+                </td>
+                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;"></td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">Rev.No</td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"></td>
+
+            </tr>
+ 
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">Page No.</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;"></td>
+
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">ROUTE CARD NO&DATE</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">{{routeObj.cardNo}} & {{routeObj.createdAt | date: 'dd/MM/yyyy'}}</td>
+
+            </tr>
+        </table>
+
+        <table style="font-size: 12px; width: 100%;">
+
+            <tr>
+                <th style="width: 10%;">DRAWING CODE</th>
+                <th style="width: 10%;">{{headerSource.id}}</th>
+                <th style="width: 10%;">PURCHASE ORDER QTY</th>
+                <th style="width: 10%;"> {{ routeObj.qty}}</th>
+                <th style="width: 10%;">START DATE</th>
+                <th style="width: 10%;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                <th style="width: 10%;">AS CAST WEIGHT</th>
+                <th style="width: 10%;">{{ headerSource.castWeight}}</th>
+            </tr>
+            <tr>
+                <th>REV NUMBER</th>
+                <th>{{headerSource.revNo}}</th>
+                <th>PURCHASE ORDER NUMBER /
+                <br> REVISON NO / 
+                <br>LINE ITEM NO</th>
+                <th>{{ mObject.poNo}}</th>
+                <th>{{ mObject.poNo}}</th>
+                <th>{{ mObject.poNo}}</th>
+                <th>COMMITTED DATE</th>
+                <th></th>
+                <th>SHOT WEIGHT</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>DRAWING NUMBER</th>
+                <th>{{headerSource.partNum}}</th>
+                <th>PURCHASE ORDER DATE</th>
+                <th>{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                <th>MATERIAL ISSUED FROM STORE IN KG</th>
+                <th>{{headerSource.castWeight}}</th>
+                <th>FINSHED WEIGHT</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>PART NAME </th>
+                <th>{{headerSource.partName}}</th>
+                <th>MATERIAL SPECIFICATION
+                </th>
+                <th>{{headerSource.materialSpec}}</th>
+                <th>BATCH QTY</th>
+                <th>{{mObject.orderQty}}</th>
+                <th>Remaining Qty</th>
+                <th>{{mObject.remainingQty}}</th>
+            </tr>
+
+
+        </table>
+        <table style="width:100%;font-size: 70%;text-align: center;">
+            <tr>
+                <th style="width: 1%;">OPNo</th>
+                <th style="width: -16%;">PROCESS FLOW SEQUENCE</th>
+                <th>Work Center</th>
+                <th>START DATE</th>
+                <th>PRODUCED QTY</th>
+                <th>ACCEPTED QTY</th>
+                <th>REWORK QTY</th>
+                <th>REJECTION QTY</th>
+                <th>END DATE</th>
+                <th>OPERATOR SIGN</th>
+                <th>SUPERVISOR SIGN</th>
+                <th>QUALITY SIGN</th>
+                <th>REMARKS</th>
+            </tr>
+
+            <tr *ngFor="let element of dataSource; let rIndex = index;">
+                <th>{{element.opnNo}}</th>
+                <th>{{element.opnName}}</th>
+                <th> {{element.workCenter}}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+
+            </tr>
+            
+
+
+
+        </table>
+        <table style=" border: 1px solid black;font-size: 70%;border-collapse: collapse;width: 100%;">
+            <tr>
+                <td style="  border: 1px solid black; border-collapse: collapse; padding: 5px;text-align:left;height: 50px;"
+                    colspan="7">NOTE:</td>
+            </tr>
+            <tr>
+
+                <td
+                    style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">
+                </td>
+                <td
+                    style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">
+                </td>
+
+                <td style="width: 600px;  border: 1px solid black;  border-collapse: collapse; padding: 5px; text-align: center;"
+                    colspan="2">OPERATION ADDED</td>
+                <td
+                    style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">
+                </td>
+                <td
+                    style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">
+                </td>
+
+                <td style="width: 200px; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 5px;"
+                    rowspan="2"></td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">Rev.No
+                </td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">DATE
+                </td>
+                <td style="width: 200px;  border: 1px solid black;  border-collapse: collapse; padding: 5px; text-align: center;"
+                    colspan="2">DESCRIPTION</td>
+
+                <td
+                    style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: center;">
+                    PREPARED</td>
+                <td
+                    style="width: 100px;  border: 1px solid black; border-collapse: collapse; padding: 5px; text-align: center;">
+                    APPROVED</td>
+
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;height: 40PX;"></td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;height: 40PX;"></td>
+
+                <td style=" width: 50px; border: 1px solid black; border-collapse: collapse; padding: 5px;" colspan="1">
+                </td>
+                <td style=" width: 50px; border: 1px solid black;border-collapse: collapse; padding: 5px;" colspan="1">
+                </td>
+                <td style=" width: 50px; border: 1px solid black; border-collapse: collapse; padding: 5px;" colspan="2">
+                </td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;height: 40PX;"></td>
+
+
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;text-align: center;">STORE
+                </td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;text-align: center;">
+                    MARKETTING</td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">PRODUCT
+                    HEAD
+                </td>
+                <td style="border: 1px solid black;text-align: center;">QUALITY HEAD</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;text-align: center;"
+                    colspan="2">
+                    MACHIENESHOP HEAD</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;text-align: center;">GM/MD
+                </td>
+            </tr>
+        </table>
+
+    </div><br>
+
+
+
+    <div class="text-center p-2">
+        <button mat-raised-button (click)="printPage()" style="background-color: blue;color: white;">Print</button><br>
+
+    </div>
+</div>
+  </div>
+  <app-footer></app-footer> -->
+
+  <app-navbar6>
     <h4>Market&nbsp;Card</h4>
     
     
@@ -50,11 +266,11 @@
                 <th style="width: 10%;">DRAWING CODE</th>
                 <th style="width: 10%;">{{headerSource.id}}</th>
                 <th style="width: 10%;">PURCHASE ORDER QTY</th>
-                <th style="width: 10%;"> {{mObject.orderQty}}</th>
+                <th style="width: 10%;" colspan="4"> {{mObject.orderQty}}</th>
                 <th style="width: 10%;">START DATE</th>
                 <th style="width: 10%;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
                 <th style="width: 10%;">AS CAST WEIGHT</th>
-                <th style="width: 10%;">{{ headerSource.castWeight}}</th>
+                <th style="width: 10%;" colspan="0.5">{{ headerSource.castWeight}}</th>
             </tr>
             <tr>
                 <th>REV NUMBER</th>
@@ -62,32 +278,34 @@
                 <th>PURCHASE ORDER NUMBER /
                 <br> REVISON NO / 
                 <br>LINE ITEM NO</th>
-                <th>{{ mObject.poNo}}</th>
+                <th colspan="2">{{ mObject.poNo}}</th>
+                <th colspan="1.5"></th>
+                <th colspan="1"></th>
                 <th>COMMITTED DATE</th>
                 <th></th>
                 <th>SHOT WEIGHT</th>
-                <th></th>
+                <th colspan="0.5"></th>
             </tr>
             <tr>
                 <th>DRAWING NUMBER</th>
                 <th>{{headerSource.partNum}}</th>
                 <th>PURCHASE ORDER DATE</th>
-                <th>{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
-                <th>MATERIAL ISSUED FROM STORE IN KG</th>
+                <th colspan="3">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                <th colspan="2">MATERIAL ISSUED FROM STORE IN KG</th>
                 <th>{{headerSource.castWeight}}</th>
                 <th>FINSHED WEIGHT</th>
-                <th></th>
+                <th colspan="0.5"></th>
             </tr>
             <tr>
                 <th>PART NAME </th>
                 <th>{{headerSource.partName}}</th>
                 <th>MATERIAL SPECIFICATION
                 </th>
-                <th>{{headerSource.materialSpec}}</th>
-                <th>BATCH QTY</th>
+                <th colspan="3">{{headerSource.materialSpec}}</th>
+                <th colspan="2">BATCH QTY</th>
                 <th>{{ routeObj.qty}}</th>
                 <th>Remaining Qty</th>
-                <th>{{mObject.remainingQty}}</th>
+                <th colspan="0.5">{{mObject.remainingQty}}</th>
             </tr>
 
 

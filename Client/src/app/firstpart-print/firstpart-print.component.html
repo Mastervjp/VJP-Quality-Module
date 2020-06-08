@@ -4,7 +4,7 @@
 
         <table style="width:100%">
             <tr>
-                <th class="text-center" colspan="1" rowspan="5" style="font-size: 25px;">V<br>J<br>P</th>
+                <th class="text-center" colspan="1" rowspan="5" style="font-size: 25px;"><img  src="assets/vjp.png" height="50"></th>
                 <th colspan="5" style="text-align: center;">QUALITY PLAN</th>
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
@@ -107,7 +107,7 @@
                             <td class="tg-cly1"> {{element.tolFrom}} / {{element.tolTo}}</td>
                             <td class="tg-cly1">{{element.baloonNo}} </td>
                             <td class="tg-cly1"> {{element.toloreanceGrade}} </td>
-                            <td class="tg-cly1"> <img src="http://192.168.1.222:80/vjp/instrument/{{element.Instrument.insImage}}" style="width: 100px;height: 30px;"> </td>
+                            <td class="tg-cly1"> <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}" style="width: 100px;height: 30px;"> </td>
                             <td class="tg-cly1"> {{element.Instrument.dueDate | date: 'dd-MM-yyyy'}} </td>
                             <td class="tg-cly1"> {{element.remarks}} </td>
                             <td class="tg-cly1"></td>

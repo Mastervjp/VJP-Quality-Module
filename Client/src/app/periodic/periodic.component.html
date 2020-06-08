@@ -4,9 +4,9 @@
   <div id="componentID">
 
 
-    <table class="invoice" style="width:100%">
+    <table class="invoice" style="width:100%;">
       <tr>
-        <th colspan="1" rowspan="5" style="font-size: 25px;text-align: center;">V<br>J<br>P</th>
+        <th colspan="1" rowspan="5" style="font-size: 25px;text-align: center;"><img  src="assets/vjp.png" height="50"></th>
         <th colspan="5" style="text-align: center;">QUALITY PLAN</th>
         <td>Drawing code</td>
         <th>{{drgObject.id}}</th>
@@ -62,14 +62,14 @@
 
     <ng-container *ngFor="let item of value_expression ; let i=index;">
       <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: center;">
-        <ng-container style="width: 100%;" *ngIf="item.name == '100' ">
-          PI of 100 %
+        <ng-container style="width: 100%; background-color: black;" *ngIf="item.name == '100' ">
+          Frequency 100 %
         </ng-container>
 
         
 
       </table>
-      <br>
+      
 
       <ng-container *ngIf='isHundred(item.name) ; else newDeb1'>
 
@@ -121,17 +121,18 @@
 
     <ng-container *ngFor="let item of value_expression ; let i=index;">
 
-      <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive" style="text-align: center;">
+      <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive" style="text-align: left;">
         <ng-container style="width: 100%;" *ngIf="item.name != '100' ">
-          <b>PI of 1/</b> {{item.name}}
+          <b>Frequency 1/</b> {{item.name}}
         </ng-container>
 
         
 
       </table>
-      <br>
+      
 
       <ng-container *ngIf='isNumber(item.name) && item.name != 100  ; else newDeb1'>
+        
 
         <div style="width:100%">
           <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]">

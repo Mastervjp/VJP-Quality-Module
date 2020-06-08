@@ -127,6 +127,18 @@
            
   
   </tr> 
+  <tr style="    border: 1px solid black;
+  border-collapse: collapse;">
+      <td style="    border: 1px solid black;
+    border-collapse: collapse;">Casting Tolerance</td>
+      <th  style="    border: 1px solid black;
+    border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
+    
+           <td style="    border: 1px solid black;
+         border-collapse: collapse;">Machining Tolerance</td>
+           <th  style="    border: 1px solid black;
+         border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
+         </tr>
  
   </table>
         
@@ -191,7 +203,7 @@
           <!-- Name Column -->
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef> Desc </th>
-            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.description | uppercase}} </td>
           </ng-container>
 
           <ng-container matColumnDef="baloonNo">
@@ -202,7 +214,7 @@
           <!-- Weight Column -->
           <ng-container matColumnDef="specification">
             <th mat-header-cell *matHeaderCellDef> Specs </th>
-            <td mat-cell *matCellDef="let element"> {{element.specification}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.specification | uppercase}} </td>
           </ng-container>
 
           <!-- Symbol Column -->
@@ -224,7 +236,7 @@
           <!-- Symbol Column -->
           <ng-container matColumnDef="instrument">
             <th mat-header-cell *matHeaderCellDef> Instrument </th>
-            <td mat-cell *matCellDef="let element"> {{element.instrument}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.instrument | uppercase}} </td>
           </ng-container>
           <!-- Symbol Column -->
           <ng-container matColumnDef="measuringFrequency">
