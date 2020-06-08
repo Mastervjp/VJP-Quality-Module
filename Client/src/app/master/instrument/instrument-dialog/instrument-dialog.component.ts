@@ -57,7 +57,10 @@ export class InstrumentDialogComponent {
     formData.append('fileKey', this.uploadfile, this.uploadfile.name);
     formData.append('name', step1.name);
     formData.append('insId', step1.insId);
-    formData.append('dueDate', step1.dueDate);
+    formData.append('dueDate', step1.dueDate);  
+
+    formData.append('insSpecs', step1.insSpecs);
+
     
 
     this._drawingservice.addInstrument(formData).subscribe((res: any) => {
@@ -90,12 +93,15 @@ export class InstrumentDialogComponent {
 
     let step1 = this.contactForm.getRawValue();
 
+debugger;
 
     const formData = new FormData();
     formData.append('fileKey', this.uploadfile, this.uploadfile.name);
     formData.append('name', step1.name);
     formData.append('insId', step1.insId);
     formData.append('dueDate', step1.dueDate);
+    formData.append('insSpecs', step1.insSpecs);
+
 
     this._drawingservice.updateInstrument(editId, formData).subscribe((res: any) => {
       if (res.success) {
@@ -144,6 +150,7 @@ export class InstrumentDialogComponent {
   contactForm = this._formBuilder.group({
     insId: ['', Validators.required],
     name: ['', Validators.required],
+    insSpecs: ['', Validators.required],
     dueDate: ['', Validators.required],
     uploadImage: [null, Validators.required],
   });

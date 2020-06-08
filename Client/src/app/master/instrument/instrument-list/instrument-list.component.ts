@@ -32,7 +32,7 @@ export class InstrumentListComponent implements OnInit {
     this.getMachine();
 
 
-      this.displayedColumns = ['id','insId', 'name', 'dueDate' , 'edit','delete'];
+      this.displayedColumns = ['id','insId', 'name', 'insSpecs','dueDate' , 'edit','delete'];
 
     
   }

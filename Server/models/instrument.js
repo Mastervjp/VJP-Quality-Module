@@ -27,6 +27,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
 
+        insSpecs:{
+            type:DataTypes.STRING(250),
+            field:'ins_specs',
+            allowNull: false
+        },
+
         dueDate:{
             type:DataTypes.DATE,
             field:'due_date',
