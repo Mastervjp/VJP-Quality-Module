@@ -108,29 +108,44 @@ router.put('/:id', (req, res) => {
         fs.mkdirSync(checkpath);
     }
 
-    var uploadImage = req.files.fileKey;
 
-    var imageName = uploadImage.name;
-    var ext = path.extname(imageName)
-    var newfilename = uniqid('_') + ext;                 // change 
-    var filepath = __dirname + "/../../../uploads/instrument/" + newfilename;
+    if(req.files){
+        var uploadImage = req.files.fileKey;
 
-    return fileuploads(uploadImage, filepath).then(function (fileuploadsResult) {
+        var imageName = uploadImage.name;
+        var ext = path.extname(imageName)
+        var newfilename = uniqid('_') + ext;                 // change 
+        var filepath = __dirname + "/../../../uploads/instrument/" + newfilename;
+    
+        return fileuploads(uploadImage, filepath).then(function (fileuploadsResult) {
+    
+            req.body.insImage = newfilename;
+    
+    
+            Instrument.update(req.body, { where: { id: req.params.id } }).then(result => {
+                sendSuccess(res, "Data updated");
+            }).catch(function (err) {
+                sendError(res, err);
+            });
+    
+    
+        }).catch(function (err) {
+            sendError(res, 'error occurred in file upload');
+            console.log('File upload error == >:', err);
+        })
 
-        req.body.insImage = newfilename;
-
+    }
+    else{
 
         Instrument.update(req.body, { where: { id: req.params.id } }).then(result => {
             sendSuccess(res, "Data updated");
         }).catch(function (err) {
             sendError(res, err);
         });
+    }
 
 
-    }).catch(function (err) {
-        sendError(res, 'error occurred in file upload');
-        console.log('File upload error == >:', err);
-    })
+
 
 
 
