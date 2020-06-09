@@ -76,10 +76,10 @@ export class ProcessComponent implements OnInit {
     this.submitshow;
 
     if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'description','baloonNo', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency','edit', 'delete'];
+      this.displayedColumns = ['id', 'description','baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency','edit', 'delete'];
     }
     else {
-      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', ];
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', ];
     }
 
     if (localStorage.getItem('logRole') == "UT") {

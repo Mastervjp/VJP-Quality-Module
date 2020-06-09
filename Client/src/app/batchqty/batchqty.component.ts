@@ -55,6 +55,7 @@ export class BatchqtyComponent implements OnInit {
   }
 
   changeCard(event) {
+    localStorage.setItem('routeObj', JSON.stringify(event.value) );
         let qty1 = event.value.qty;
 
     this.batchForm.patchValue({

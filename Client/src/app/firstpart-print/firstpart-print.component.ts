@@ -13,6 +13,8 @@ export class FirstpartPrintComponent implements OnInit {
   psObject: any;
   dataSource: any;
   machine:any;
+  routeObj :any;
+  mObject: any;
 
   constructor(private _inspectionservice: InspectionService, private router: Router) { }
 
@@ -25,6 +27,9 @@ export class FirstpartPrintComponent implements OnInit {
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
+    this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
+    this.mObject = JSON.parse(localStorage.getItem('mObject'));
+
 
     this.getfpi(myItem1, opnId);
 

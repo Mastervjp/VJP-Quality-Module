@@ -4,8 +4,8 @@
 
         <table style="width:100%">
             <tr>
-                <th class="text-center" colspan="1" rowspan="6" style="font-size: 25px;"><img  src="assets/vjp.png" height="50"></th>
-                <th colspan="5" style="text-align: center;">QUALITY PLAN</th>
+                <th class="text-center" colspan="1" rowspan="6" style="font-size: 25px;">V<br>J<br>P</th>
+                <th colspan="5" style="text-align: center;">QUALITY PLAN - Frist Part Inspection</th>
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
 
@@ -38,7 +38,7 @@
                 <td>Work Center</td>
                 <th>{{psObject.workCenter}}</th>
                 <td>Route Card Number</td>
-                <th></th>
+                <th>{{routeObj.cardNo}}</th>
             </tr>
 
             <tr>
@@ -47,17 +47,21 @@
                 <td>Material Weight</td>
                 <th>{{drgObject.materialWeight}}</th>
 
-                <td></td>
+                <td>Purchase Order Number</td>
                 <th></th>
 
             </tr>
             <tr>
-                <td>Casting Tolerance</td>
-                <th colspan="3">{{drgObject.castingToleranceStandard}}</th>
+                <td>Date</td>
+                <th colspan="2"></th>
+                <td>Batch Quantity</td>
+                <th>{{routeObj.qty}}</th>
 
-                <td>Machining Tolerance</td>
-                <th colspan="3">{{drgObject. machiningToleranceStandard}}</th>
+                <td></td>
+                <th></th>
+
             </tr>
+        
         </table><br>
 
 
@@ -85,14 +89,17 @@
                     <THEAD>
                         <tr>
                             <th class="tg-nrix" rowspan="2"><b>S.NO</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Balloon No</b></th>
                             <th class="tg-nrix" rowspan="2"><b>Description</b> </th>
                             <th class="tg-nrix" rowspan="2"><b>Specified <br>Dimention</b></th>
-                            <th class="tg-nrix" rowspan="2"><b>Tolarance<br>max/min</b></th>
-                            <th class="tg-nrix" rowspan="2"><b>Balloon No</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Tolarance<br>min</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Tolarance<br>max</b></th>
+                          
                             <th class="tg-nrix" rowspan="2"><b>Grid</b></th>
                             <th class="tg-nrix" colspan="2"><b>Instrument</b></th>
-                            <th class="tg-cly1" rowspan="2"><b>Remarks</b></th>
+                            
                             <th class="tg-nrix" colspan="4"><b>Observed</b></th>
+                            <th class="tg-cly1" rowspan="2"><b>Remarks</b></th>
                         </tr>
                         <tr>
                             <td class="tg-y0n7"><b>Photo</b></td>
@@ -108,13 +115,14 @@
                     <ng-container *ngFor="let element of dataSource; let rIndex = index;">
                         <tr>
                             <td class="tg-cly1" style="text-align: center;"> {{rIndex+1}} </td>
-
+                            <td class="tg-cly1">{{element.baloonNo}} </td>
                             <td class="tg-cly1"> {{element.description}} </td>
                             <td class="tg-cly1"> {{element.specification}} </td>
-                            <td class="tg-cly1"> {{element.tolFrom}} / {{element.tolTo}}</td>
-                            <td class="tg-cly1">{{element.baloonNo}} </td>
+                            <td class="tg-cly1"> {{element.tolFrom}} </td>
+                            <td class="tg-cly1"> {{element.tolTo}}</td>
+                          
                             <td class="tg-cly1"> {{element.toloreanceGrade}} </td>
-                            <td class="tg-cly1"> <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}" style="width: 100px;height: 30px;"> </td>
+                            <td class="tg-cly1"> <img src="http://192.168.1.222:80/vjp/instrument/{{element.Instrument.insImage}}" style="width: 100px;height: 30px;"> </td>
                             <td class="tg-cly1"> {{element.Instrument.dueDate | date: 'dd-MM-yyyy'}} </td>
                             <td class="tg-cly1"> {{element.remarks}} </td>
                             <td class="tg-cly1"></td>
@@ -156,7 +164,7 @@
                         <th class="tg-9wq8">4</th>
                     </tr>
                     <tr>
-                        <td class="tg-9wq8"><span style="font-weight:bold">M/C Name</span></td>
+                        <td class="tg-9wq8"><span style="font-weight:bold">Machine Name</span></td>
                         <td class="tg-lboi" colspan="7"></td>
                         <td class="tg-9wq8" colspan="2"><span style="font-weight:bold">Inspected By</span></td>
                         <td class="tg-lboi"></td>
@@ -165,7 +173,7 @@
                         <td class="tg-lboi"></td>
                     </tr>
                     <tr>
-                        <td class="tg-c3ow"><span style="font-weight:bold">Technician Name</span></td>
+                        <td class="tg-c3ow"><span style="font-weight:bold">HOD Quality</span></td>
                         <td class="tg-0pky" colspan="2"></td>
                         <td class="tg-0pky" colspan="2"></td>
                         <td class="tg-0pky" colspan="3"></td>
