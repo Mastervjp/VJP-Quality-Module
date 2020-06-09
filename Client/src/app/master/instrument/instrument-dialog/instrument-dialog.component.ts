@@ -38,7 +38,10 @@ export class InstrumentDialogComponent {
       this.contactForm.patchValue({
         name: _data.data.name,
         insId: _data.data.insId,
-        dueDate: _data.data.dueDate
+        dueDate: _data.data.dueDate,
+
+        insSpecs: _data.data.insSpecs,
+        uploadImage:   _data.data.insImage,
 
       });
     }
@@ -96,7 +99,10 @@ export class InstrumentDialogComponent {
 debugger;
 
     const formData = new FormData();
-    formData.append('fileKey', this.uploadfile, this.uploadfile.name);
+
+    if(this.uploadfile){
+      formData.append('fileKey', this.uploadfile, this.uploadfile.name);
+    }
     formData.append('name', step1.name);
     formData.append('insId', step1.insId);
     formData.append('dueDate', step1.dueDate);
@@ -152,7 +158,7 @@ debugger;
     name: ['', Validators.required],
     insSpecs: ['', Validators.required],
     dueDate: ['', Validators.required],
-    uploadImage: [null, Validators.required],
+    uploadImage: ['', Validators.required],
   });
 
 
