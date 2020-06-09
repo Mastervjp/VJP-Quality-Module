@@ -4,7 +4,8 @@
 
         <table style="width:100%">
             <tr>
-                <th class="text-center" colspan="1" rowspan="6" style="font-size: 25px;">V<br>J<br>P</th>
+                <th class="text-center" colspan="1" rowspan="6" style="font-size:25px;"><img src="assets/vjp.png"
+                        height="50"></th>
                 <th colspan="5" style="text-align: center;">QUALITY PLAN - Frist Part Inspection</th>
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
@@ -52,7 +53,7 @@
 
             </tr>
             <tr>
-                <td>Date</td>
+                <td>Setting Date</td>
                 <th colspan="2"></th>
                 <td>Batch Quantity</td>
                 <th>{{routeObj.qty}}</th>
@@ -61,7 +62,7 @@
                 <th></th>
 
             </tr>
-        
+
         </table><br>
 
 
@@ -94,10 +95,10 @@
                             <th class="tg-nrix" rowspan="2"><b>Specified <br>Dimention</b></th>
                             <th class="tg-nrix" rowspan="2"><b>Tolarance<br>min</b></th>
                             <th class="tg-nrix" rowspan="2"><b>Tolarance<br>max</b></th>
-                          
+
                             <th class="tg-nrix" rowspan="2"><b>Grid</b></th>
                             <th class="tg-nrix" colspan="2"><b>Instrument</b></th>
-                            
+
                             <th class="tg-nrix" colspan="4"><b>Observed</b></th>
                             <th class="tg-cly1" rowspan="2"><b>Remarks</b></th>
                         </tr>
@@ -120,9 +121,11 @@
                             <td class="tg-cly1"> {{element.specification}} </td>
                             <td class="tg-cly1"> {{element.tolFrom}} </td>
                             <td class="tg-cly1"> {{element.tolTo}}</td>
-                          
+
                             <td class="tg-cly1"> {{element.toloreanceGrade}} </td>
-                            <td class="tg-cly1"> <img src="http://192.168.1.222:80/vjp/instrument/{{element.Instrument.insImage}}" style="width: 100px;height: 30px;"> </td>
+                            <td class="tg-cly1"> <img
+                                    src="http://192.168.1.222:80/vjp/instrument/{{element.Instrument.insImage}}"
+                                    style="width: 100px;height: 30px;"> </td>
                             <td class="tg-cly1"> {{element.Instrument.dueDate | date: 'dd-MM-yyyy'}} </td>
                             <td class="tg-cly1"> {{element.remarks}} </td>
                             <td class="tg-cly1"></td>
@@ -164,7 +167,7 @@
                         <th class="tg-9wq8">4</th>
                     </tr>
                     <tr>
-                        <td class="tg-9wq8"><span style="font-weight:bold">Machine Name</span></td>
+                        <td class="tg-9wq8"><span style="font-weight:bold">Machine Number</span></td>
                         <td class="tg-lboi" colspan="7"></td>
                         <td class="tg-9wq8" colspan="2"><span style="font-weight:bold">Inspected By</span></td>
                         <td class="tg-lboi"></td>
