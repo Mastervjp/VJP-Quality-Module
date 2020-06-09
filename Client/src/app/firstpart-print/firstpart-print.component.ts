@@ -12,9 +12,10 @@ export class FirstpartPrintComponent implements OnInit {
   qpaObject: any;
   psObject: any;
   dataSource: any;
-  machine:any;
-  routeObj :any;
+  machine: any;
+  routeObj: any;
   mObject: any;
+  marketData: any;
 
   constructor(private _inspectionservice: InspectionService, private router: Router) { }
 
@@ -23,15 +24,16 @@ export class FirstpartPrintComponent implements OnInit {
     let myItem1 = localStorage.getItem('DrgCode');
     let opnId = localStorage.getItem('opnNo')
     this.machine = localStorage.getItem('machine')
-    
+
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
     this.mObject = JSON.parse(localStorage.getItem('mObject'));
 
-
     this.getfpi(myItem1, opnId);
+    this.getmarket(this.routeObj)
+
 
   }
 
@@ -131,6 +133,15 @@ td{
           }
         }
         this.dataSource = re_data;
+      }
+    });
+  }
+
+  getmarket(routeObj1) {
+    let id = routeObj1.mpId;
+    this._inspectionservice.getmarket(id).subscribe((res: any) => {
+      if (res.success) {
+        this.marketData = res.data;
       }
     });
   }
