@@ -69,6 +69,18 @@ router.get('/header/:drgId', (req, res) => {
 })
 
 
+router.get('/rqty/:mpId', (req, res) => {
+    return new Promise((resolve, reject) => {
+
+        MarketPurchase.findOne({ where: { id: req.params.mpId}}).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            console.log(err)
+            sendError(res, err);
+        });
+    })
+})
+
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
 

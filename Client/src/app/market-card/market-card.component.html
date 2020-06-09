@@ -58,9 +58,13 @@
                 <th>PURCHASE ORDER NUMBER /
                 <br> REVISON NO / 
                 <br>LINE ITEM NO</th>
+<<<<<<< HEAD
                 <th>{{ mObject.poNo}}</th>
                 <th>{{ mObject.poNo}}</th>
                 <th>{{ mObject.poNo}}</th>
+=======
+                <th>{{ MpheaderSource.poNo}}</th>
+>>>>>>> a8452bc4b323be3cc5725c63dd11d6aeec562723
                 <th>COMMITTED DATE</th>
                 <th></th>
                 <th>SHOT WEIGHT</th>
@@ -70,7 +74,7 @@
                 <th>DRAWING NUMBER</th>
                 <th>{{headerSource.partNum}}</th>
                 <th>PURCHASE ORDER DATE</th>
-                <th>{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                <th>{{MpheaderSource.poDate | date: 'dd/MM/yyyy'}}</th>
                 <th>MATERIAL ISSUED FROM STORE IN KG</th>
                 <th>{{headerSource.castWeight}}</th>
                 <th>FINSHED WEIGHT</th>
@@ -85,7 +89,7 @@
                 <th>BATCH QTY</th>
                 <th>{{mObject.orderQty}}</th>
                 <th>Remaining Qty</th>
-                <th>{{mObject.remainingQty}}</th>
+                <th>{{MpheaderSource.remainingQty}}</th>
             </tr>
 
 
@@ -94,7 +98,7 @@
             <tr>
                 <th style="width: 1%;">OPNo</th>
                 <th style="width: -16%;">PROCESS FLOW SEQUENCE</th>
-                <th>Work Center</th>
+                <th>WORK CENTER</th>
                 <th>START DATE</th>
                 <th>PRODUCED QTY</th>
                 <th>ACCEPTED QTY</th>

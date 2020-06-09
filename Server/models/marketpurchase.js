@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER(20),
             field: 'remaining_qty'
         },
+        poDate:{
+            type:DataTypes.DATEONLY,
+            field:'po_date'
+        },
        
         drgId:{
             type: DataTypes.INTEGER(11).UNSIGNED,

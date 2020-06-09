@@ -14,6 +14,9 @@ export class MarketCardComponent implements OnInit {
 
   headerSource: any;
 
+  MpheaderSource: any;
+
+
   mObject : any;
 
   constructor(private _marketservice: MarketService, private router: Router, ) { }
@@ -22,6 +25,8 @@ export class MarketCardComponent implements OnInit {
     this.getoperation();
 
     this.getData();
+
+    this.getRemainingQty();
 
     this.routeObj = JSON.parse(localStorage.getItem("routeObj"));
 
@@ -96,6 +101,20 @@ export class MarketCardComponent implements OnInit {
         let mydata = res.data;
         this.headerSource = mydata
         ;
+      }
+    });
+  }
+
+
+  getRemainingQty(){
+
+    let mpId = localStorage.getItem('mpId');
+
+    this._marketservice.getRemainingQty(mpId).subscribe((res: any) => {
+      if (res.success) {
+        this.MpheaderSource = res.data;
+
+        debugger;
       }
     });
   }

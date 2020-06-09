@@ -54,6 +54,11 @@ export class MarketService {
       map(this.extractData1));
   }
 
+
+  getRemainingQty(mpId): Observable<any> {
+    return this.http.get(this.API_URL+'/api/market/rqty/'+mpId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
   
   addRoute(datas): Observable<any> {
     return this.http.post<any>(this.API_URL+'/api/market/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(

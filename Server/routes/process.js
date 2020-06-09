@@ -74,31 +74,49 @@ router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
 
         req.body.createdBy = 1;
-        // Process.create(req.body).then(function (result) {
-        //     sendSuccess1(res, result);
-        // }).catch(function (err) {
-        //     sendError(res, err);
-        // });
-        console.log('eeeeeeeeeee pasasssssssssssssssssssssssssssssssssssssssssssssss',req.body)
-
         PlanAbstract.findOne({where:{drgId : req.body.drgId}}).then(function (resp) {
-        
-            console.log('test pasasssssssssssssssssssssssssssssssssssssssssssssss',resp)
             if(resp.qpNo){
 
-                console.log('sssssssssssss',req.body)
                 Process.create(req.body).then(function (result) {
                     sendSuccess(res, result);
                 }).catch(function (err) {
                     sendError(res, err);
                 });
-
-               
-               
             }
             else{
 
-                let pp = 'QP 000'+req.body.drgId+'_A';
+                let pp = '';
+
+                let code = req.body.drgId
+
+
+
+                var n = code.toString().length
+
+                    if (n == 1) {
+                        pp = "QP 000000" + code + "-10AA"
+                    }
+                    else if (n == 2) {
+                        pp = "QP 00000" + code + "-10AA"
+                    }
+                    else if (n == 3) {
+                        pp = "QP 0000" + code + "-10AA"
+                    }
+                    else if (n == 4) {
+                        pp = "QP 000" + code + "-10AA"
+                    }
+                    else if (n == 5) {
+                        pp = "QP 00" + code + "-10AA"
+                    }
+                    else if (n == 6) {
+                        pp = "QP 0" + code + "-10AA"
+                    }
+                    else {
+                        pp = "QP " + code + "-10AA"
+                    }
+
+
+                    
                 var mydata ={
                     
                     "qpNo" :pp
@@ -134,7 +152,6 @@ router.put('/func/plan/:id', function (req, res) {
 
             if (dResult.qpStatus) {
                 PlanAbstract.findOne({ where: { drgId: dResult.id } }).then(planRes => {
-                    console.log('ppppppppppp', planRes);
 
                     var newpfno = "";
                     var pf = planRes.qpNo

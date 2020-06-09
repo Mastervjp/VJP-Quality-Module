@@ -155,7 +155,7 @@ export class MarketViewComponent implements OnInit {
     drgId: ['', Validators.required],
     orderQty: ['', Validators.required],
     poNo: ['', Validators.required],
-    // poQty: ['', Validators.required],
+    poDate: ['', Validators.required],
 
 
   });

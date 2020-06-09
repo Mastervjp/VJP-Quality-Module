@@ -55,7 +55,7 @@ export class BatchqtyComponent implements OnInit {
   }
 
   changeCard(event) {
-    let qty1 = event.value.qty;
+        let qty1 = event.value.qty;
 
     this.batchForm.patchValue({
       qty: qty1,
