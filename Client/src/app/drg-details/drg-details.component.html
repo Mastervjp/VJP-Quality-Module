@@ -395,7 +395,7 @@
 
 
 
-<div  class="container">
+<div class="container">
 
     <div id="componentID">
 
@@ -403,7 +403,8 @@
 
         <table style="width:100%">
             <tr>
-                <th class="text-center"  colspan="1" rowspan="5" style="font-size:25px;"><img  src="assets/vjp.png" height="50"></th>
+                <th class="text-center" colspan="1" rowspan="6" style="font-size:25px;"><img src="assets/vjp.png"
+                        height="50"></th>
                 <th colspan="5" style="text-align: center;">QUALITY PLAN</th>
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
@@ -444,145 +445,161 @@
                 <td>Material Grade</td>
                 <th colspan="3">{{drgObject.materialGrade}}</th>
                 <td>Material Weight</td>
-                <th  colspan="3">{{drgObject.materialWeight}}</th>
+                <th colspan="3">{{drgObject.materialWeight}}</th>
 
-               
+
+            </tr>
+            <tr>
+                <td>Casting Tolerance</td>
+                <th colspan="3">{{drgObject.castingToleranceStandard}}</th>
+
+                <td>Machining Tolerance</td>
+                <th colspan="3">{{drgObject. machiningToleranceStandard}}</th>
             </tr>
         </table><br>
-  
-      <table style="width: 100%; height: 200px;margin-top: 3px; ">
-          <tr>
-              <th class="bg" ><p class="bg-text"></p></th>
-              <th class="bg"><p class="bg-text"></p></th>
-              <th class="bg" ><p class="bg-text"></p></th>
-              <th class="bg" ><p class="bg-text"></p></th>
-              <th class="bg"><p class="bg-text"></p></th>
-          </tr>
-      </table>
-      <table style="width:100%; margin-top:3px; ">
-          <tr>
-              <th colspan="12" style="padding-bottom: 60px;"><u>Special Instructions:</u></th>
-          </tr>
-          <tr>
-              <th colspan="12">
-                 <u>Instrn. to Q.A</u>
-              </th>
-          </tr>
-          <tr>
-            <th colspan="1" class="rightBorder">Week No.: <input type="text" id="WeekNo" name="WeekNo" style="width: 20%;"></th> 
-            <th colspan="3" class="rightBorder" style="text-align: left;">M/c. Id & Name :</th>
-            <th colspan="6 " class="rightBorder">Horizontal Machining centre</th>
-            <th colspan="2" >Batch Qty:<input type="text" id="qtn" name="qtn"></th>
-                
-          </tr>
-          <tr>
-              <th >Technician Name:</th>
-              <td colspan="3"></td>
-              <td colspan="3"></td>
-              <td colspan="3"></td>
-              <td colspan="2"></td>
-        </tr>
-        <tr>
-          <td style="width: 15%;">Date</td>
-          <td style="width:7%;"></td>
-          <td style="width:7%;"></td>
-          <td style="width:7%;"></td>
-          <td style="width:7%;"></td>
-          <td style="width:7%;" ></td>
-          <td style="width:7%;"></td>
-          <td style="width:7%;"></td>
-          <td style="width:7%;"></td>
-          <td style="width:7%;"></td>
-          <th  colspan="1" style="text-align:center; width: 14%;">TOTAL QUANTITY</th> 
-          <th rowspan="2" style="text-align: center;">Q.A Cleared by</th>           
-        </tr>
-        <tr>
-            <td>Shift</td>  
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Produced:</td>
-           
-            
-        </tr>
-        <tr>
-              <td>Qty.Prod</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>Accepted:</td>
-              <td class="bottomBorder"></td>
-        </tr>
-        <tr>
-              <td>Qty.Acc.</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>Matl.Reg:</td>
-              <td class="bottomBorder"></td>
-        </tr>
-        <tr>
-              <td>Matl. Reg</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>M/c. Reg: </td>
-              <td class="bottomBorder"></td>
-            
-        </tr>
-        <tr>
-              <td>M/c.Reg.</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="leftBorder"></td>
-              
-        </tr>
-        <tr>
-              
-        </tr>
-        <tr>
-              
-        </tr>
-  
-      </table><br>
+
+        <table style="width: 100%; height: 200px;margin-top: 3px; ">
+            <tr>
+                <th class="bg">
+                    <p class="bg-text"></p>
+                </th>
+                <th class="bg">
+                    <p class="bg-text"></p>
+                </th>
+                <th class="bg">
+                    <p class="bg-text"></p>
+                </th>
+                <th class="bg">
+                    <p class="bg-text"></p>
+                </th>
+                <th class="bg">
+                    <p class="bg-text"></p>
+                </th>
+            </tr>
+        </table>
+        <table style="width:100%; margin-top:3px; ">
+            <tr>
+                <th colspan="12" style="padding-bottom: 60px;"><u>Special Instructions:</u></th>
+            </tr>
+            <tr>
+                <th colspan="12">
+                    <u>Instrn. to Q.A</u>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="1" class="rightBorder">Week No.: <input type="text" id="WeekNo" name="WeekNo"
+                        style="width: 20%;"></th>
+                <th colspan="3" class="rightBorder" style="text-align: left;">M/c. Id & Name :</th>
+                <th colspan="6 " class="rightBorder">Horizontal Machining centre</th>
+                <th colspan="2">Batch Qty:<input type="text" id="qtn" name="qtn"></th>
+
+            </tr>
+            <tr>
+                <th>Technician Name:</th>
+                <td colspan="3"></td>
+                <td colspan="3"></td>
+                <td colspan="3"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td style="width: 15%;">Date</td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <td style="width:7%;"></td>
+                <th colspan="1" style="text-align:center; width: 14%;">TOTAL QUANTITY</th>
+                <th rowspan="2" style="text-align: center;">Q.A Cleared by</th>
+            </tr>
+            <tr>
+                <td>Shift</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Produced:</td>
+
+
+            </tr>
+            <tr>
+                <td>Qty.Prod</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Accepted:</td>
+                <td class="bottomBorder"></td>
+            </tr>
+            <tr>
+                <td>Qty.Acc.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Matl.Reg:</td>
+                <td class="bottomBorder"></td>
+            </tr>
+            <tr>
+                <td>Matl. Reg</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>M/c. Reg: </td>
+                <td class="bottomBorder"></td>
+
+            </tr>
+            <tr>
+                <td>M/c.Reg.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="leftBorder"></td>
+
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+
+            </tr>
+
+        </table><br>
 
     </div>
     <div class="col-md-12 text-center p-4">
         <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
-      </div>
+    </div>
 
 </div>
-
-
