@@ -56,10 +56,12 @@ export class MarketCardComponent implements OnInit {
         border: 1px solid BLACK;
         text-align: left;
         height: 100%;
+        font-size: 10px;
     }
     
     table {
         border-collapse: collapse;
+        font-size: 10px;
     }
     
     th,
@@ -69,6 +71,29 @@ export class MarketCardComponent implements OnInit {
     table {
       width: 100%;
   }
+
+  @page {
+    margin: 2cm;
+  }
+  
+  /* target the first page only */
+  @page :first {
+    margin-top: 6cm;
+  }
+  
+  /* target left (even-numbered) pages only */
+  @page :left {
+    margin-right: 4cm;
+  }
+  
+  /* target right (odd-numbered) pages only */
+  @page :right {
+    margin-left: 4cm;
+  }
+
+  table { page-break-inside:auto }
+   tr    { page-break-inside:avoid; page-break-after:auto }
+
     
     </style>`
     );
