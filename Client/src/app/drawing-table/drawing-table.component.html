@@ -11,7 +11,7 @@
   <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
 
  
-  <button mat-raised-button (click)="sampling()" color="primary">sampling</button>
+  <button *ngIf="islog && isET" mat-raised-button (click)="sampling()" color="primary">sampling</button>
     
      
     
