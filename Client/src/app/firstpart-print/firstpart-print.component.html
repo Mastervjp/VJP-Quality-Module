@@ -4,8 +4,8 @@
 
         <table style="width:100%">
             <tr>
-                <th class="text-center" colspan="1" rowspan="6" style="font-size:25px;"><img src="assets/vjp.png"
-                        height="50"></th>
+                <th class="text-center" colspan="1" rowspan="7" style="font-size:25px;"><img src="assets/vjp2.png"
+                        height="60"></th>
 
                 <th colspan="5" style="text-align: center;">QUALITY PLAN - Frist Part Inspection</th>
 
@@ -56,13 +56,21 @@
 
             </tr>
             <tr>
-                <td>Setting Date</td>
-                <th colspan="2"></th>
+                <td>Casting Tolerance</td>
+                <th colspan="3">{{drgObject.castingToleranceStandard}}</th>
+        
+                <td>Machining Tolerance</td>
+                <th colspan="3">{{drgObject. machiningToleranceStandard}}</th>
+            </tr>
+            <tr>
                 <td>Batch Quantity</td>
                 <th>{{routeObj.qty}}</th>
 
-                <td></td>
-                <th></th>
+                <td>Setting Date</td>
+                <th colspan="2"></th>
+               
+                <td colspan="2"></td>
+                
 
             </tr>
 
@@ -99,7 +107,7 @@
                             <th class="tg-nrix" rowspan="2"><b>Tolarance<br>min</b></th>
                             <th class="tg-nrix" rowspan="2"><b>Tolarance<br>max</b></th>
 
-                            <th class="tg-nrix" rowspan="2"><b>Grid</b></th>
+                            
                             <th class="tg-nrix" colspan="2"><b>Instrument</b></th>
 
                             <th class="tg-nrix" colspan="4"><b>Observed</b></th>
@@ -125,7 +133,7 @@
                             <td class="tg-cly1"> {{element.tolFrom}} </td>
                             <td class="tg-cly1"> {{element.tolTo}}</td>
 
-                            <td class="tg-cly1"> {{element.toloreanceGrade}} </td>
+                            
                             <td class="tg-cly1"> <img
                                     src="http://192.168.1.222:80/vjp/instrument/{{element.Instrument.insImage}}"
                                     style="width: 100px;height: 30px;"> </td>

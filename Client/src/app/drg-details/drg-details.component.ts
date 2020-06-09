@@ -10,6 +10,7 @@ export class DrgDetailsComponent implements OnInit {
   drgObject:any;
   qpaObject:any;
   psObject:any;
+  routeObj :any;
   
   constructor() { }
 
@@ -18,6 +19,7 @@ export class DrgDetailsComponent implements OnInit {
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
+    this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
 
   }
 
