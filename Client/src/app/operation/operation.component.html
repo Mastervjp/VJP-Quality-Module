@@ -98,16 +98,17 @@
             </tr>
             <tr style="    border: 1px solid black;
             border-collapse: collapse;">
-                <td style="    border: 1px solid black;
+                <td colspan="1" style="    border: 1px solid black;
               border-collapse: collapse;">Casting Tolerance</td>
-                <th  style="    border: 1px solid black;
+                <th  colspan="2" style="    border: 1px solid black;
               border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
               
-                     <td style="    border: 1px solid black;
+                     <td  colspan="2" style="    border: 1px solid black;
                    border-collapse: collapse;">Machining Tolerance</td>
-                     <th  style="    border: 1px solid black;
+                     <th colspan="2"  style="    border: 1px solid black;
                    border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
                    </tr>
+                   
 
           </table>
           <!-- <table style="width:100%;    border: 1px solid black;
@@ -244,7 +245,7 @@
         <table mat-table [dataSource]="dataSource">
 
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> S.No </th>
+            <th mat-header-cell *matHeaderCellDef>&nbsp; S.No </th>
             <td mat-cell *matCellDef="let element; let rIndex = index;"> {{rIndex+1}} </td>
           </ng-container>
 

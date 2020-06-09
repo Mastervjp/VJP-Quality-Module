@@ -26,9 +26,9 @@ th.mat-header-cell, td.mat-cell {
  
 }
 th {
-  font-size: large;
+  font-size: medium;
   color: black;
-  text-align: center;
+  padding-left: 5px;
 }
 
 

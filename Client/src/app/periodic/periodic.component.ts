@@ -46,6 +46,8 @@ export class PeriodicComponent implements OnInit {
   qpaObject: any;
   psObject: any;
   machine: any;
+  routeObj :any;
+  
 
 
   objectKeys = Object.keys;
@@ -71,6 +73,8 @@ export class PeriodicComponent implements OnInit {
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
+    this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
+
 
     // this.test();
 
