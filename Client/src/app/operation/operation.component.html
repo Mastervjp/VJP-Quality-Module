@@ -63,7 +63,7 @@
               <td style="    border: 1px solid black;
           border-collapse: collapse;">Part Name</td>
               <th  colspan="2" style="    border: 1px solid black;
-          border-collapse: collapse;">{{drgObject.partName}}</th>
+          border-collapse: collapse;">{{drgObject.partName | uppercase}}</th>
 
             </tr>
 
@@ -96,6 +96,18 @@
 
 
             </tr>
+            <tr style="    border: 1px solid black;
+            border-collapse: collapse;">
+                <td style="    border: 1px solid black;
+              border-collapse: collapse;">Casting Tolerance</td>
+                <th  style="    border: 1px solid black;
+              border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
+              
+                     <td style="    border: 1px solid black;
+                   border-collapse: collapse;">Machining Tolerance</td>
+                     <th  style="    border: 1px solid black;
+                   border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
+                   </tr>
 
           </table>
           <!-- <table style="width:100%;    border: 1px solid black;
@@ -244,17 +256,17 @@
 
           <ng-container matColumnDef="opnName">
             <th mat-header-cell *matHeaderCellDef> Process Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.opnName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.opnName | uppercase}} </td>
           </ng-container>
 
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef> Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.description | uppercase}} </td>
           </ng-container>
 
           <ng-container matColumnDef="workCenter">
             <th mat-header-cell *matHeaderCellDef> Work Center </th>
-            <td mat-cell *matCellDef="let element"> {{element.workCenter}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.workCenter | uppercase}} </td>
           </ng-container>
 
 

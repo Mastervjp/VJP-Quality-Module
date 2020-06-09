@@ -55,7 +55,7 @@
             <td  style="    border: 1px solid black;
           border-collapse: collapse;">Part Name</td>
             <th colspan="2" style="    border: 1px solid black;
-          border-collapse: collapse;">{{drgObject.partName}}</th>
+          border-collapse: collapse;">{{drgObject.partName | uppercase}}</th>
            
           </tr>
 
@@ -72,6 +72,18 @@
                        <td  colspan="3" style="    border: 1px solid black;
                        border-collapse: collapse;"></td>
           </tr>
+          <tr style="    border: 1px solid black;
+          border-collapse: collapse;">
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;">Casting Tolerance</td>
+              <th  style="    border: 1px solid black;
+            border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
+            
+                   <td style="    border: 1px solid black;
+                 border-collapse: collapse;">Machining Tolerance</td>
+                   <th  style="    border: 1px solid black;
+                 border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
+                 </tr>
         </table>
 
         <!-- <table style="width:100%;    border: 1px solid black;
@@ -207,20 +219,20 @@ border-collapse: collapse;">
         <ng-container matColumnDef="qpNo">
           <th mat-header-cell *matHeaderCellDef> Quality Plan No</th>
           <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
-            {{drg.qpNo}}
+            {{drg.qpNo | uppercase}}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="kind">
           <th mat-header-cell *matHeaderCellDef> Kind </th>
           <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
-            {{drg.kind}} </td>
+            {{drg.kind | uppercase}} </td>
         </ng-container>
 
         <ng-container matColumnDef="pfNo">
           <th mat-header-cell *matHeaderCellDef> Process Flow No </th>
           <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
-            {{drg.pfNo}} </td>
+            {{drg.pfNo | uppercase}} </td>
         </ng-container>
 
 
