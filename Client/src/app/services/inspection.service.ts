@@ -38,4 +38,9 @@ export class InspectionService {
       map(this.extractData1));
   }
 
+  getmarket(id): Observable<any> {
+    return this.http.get(this.API_URL+'/api/inspection/marketdata/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
+
 }

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { MarketCard,Instrument, Operation, Process } = require('./../models')
+const { MarketCard,Instrument, MarketPurchase,Operation, Process } = require('./../models')
 
 
 function sendError(res, err) {
@@ -70,6 +70,16 @@ router.get('/fpi/:drgCode/:opnId', (req, res) => {
 router.get('/routecard/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
         MarketCard.findAll({ where: { drgId: req.params.drgId}}).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+router.get('/marketdata/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        MarketPurchase.findOne({ where: { id: req.params.id}}).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
