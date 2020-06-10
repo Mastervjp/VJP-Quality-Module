@@ -263,7 +263,7 @@
                 <th style="width: 10%;">DRAWING CODE</th>
                 <th style="width: 10%;">{{headerSource.id}}</th>
                 <th style="width: 10%;">PURCHASE ORDER QTY</th>
-                <th style="width: 10%;"> {{ routeObj.qty}}</th>
+                <th style="width: 10%;"> {{mObject.orderQty}}</th>
                 <th style="width: 10%;">START DATE</th>
                 <th style="width: 10%;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
                 <th style="width: 10%;">AS CAST WEIGHT</th>
@@ -273,12 +273,12 @@
                 <th>REV NUMBER</th>
                 <th>{{headerSource.revNo}}</th>
                 <th>PURCHASE ORDER NUMBER /
-                <br> REVISON NO / 
+                 REVISON NO / 
                 <br>LINE ITEM NO</th>
-                <th>{{ mObject.poNo}}</th>
+                <th>{{ mObject.poNo}} / {{ mObject.PoRevNo}} / {{ mObject.LineItem}}</th>
                 <th>COMMITTED DATE</th>
-                <th></th>
-                <th>SHOT WEIGHT</th>
+                <th>{{ mObject.CommittedDate}}</th>
+                <th>RUNNER WEIGHT</th>
                 <th>{{headerSource.withRunerWeight}}</th>
             </tr>
             <tr>
@@ -298,8 +298,8 @@
                 </th>
                 <th>{{headerSource.materialSpec}}</th>
                 <th>BATCH QTY</th>
-                <th>{{mObject.orderQty}}</th>
-                <th>Remaining Qty</th>
+                <th>{{routeObj.qty}}</th>
+                <th>REMAINING QTY</th>
                 <th>{{mObject.remainingQty}}</th>
             </tr>
 
