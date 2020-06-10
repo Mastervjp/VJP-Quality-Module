@@ -115,10 +115,12 @@ td{
     text-align: center;
 } </style>`);
 
-    WindowPrt.document.close();
-    WindowPrt.focus();
-    WindowPrt.print();
-    WindowPrt.close();
+setTimeout(function() {
+  WindowPrt.document.close();
+  WindowPrt.focus();
+  WindowPrt.print();
+  WindowPrt.close();
+}, 1500);
   }
 
   getfpi(drgcode, opnId) {
