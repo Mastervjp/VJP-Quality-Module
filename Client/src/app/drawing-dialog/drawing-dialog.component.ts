@@ -129,7 +129,6 @@ export class DrawingDialogComponent {
   getHeatTreatment() {
 
     this._drawing.getHeatTreatment().subscribe((res: any) => {
-      debugger;
       if (res.success) {
         this.heatdata = res.data;
       }
@@ -191,8 +190,6 @@ export class DrawingDialogComponent {
   addDrawing() {
 
     let step1 = this.contactForm.getRawValue();
-
-    console.log(this.contactForm.value);
 
     this._drawing.addDrawing(step1).subscribe((res: any) => {
       if (res.success) {

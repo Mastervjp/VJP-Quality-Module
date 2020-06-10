@@ -40,7 +40,6 @@ export class Navbar4Component implements OnInit {
       if (result) {
         localStorage.setItem('batch_qty', result);
         this.taphide = 1;
-        console.log('The dialog was closed', localStorage.getItem('batch_qty'));
       }
     });
   }

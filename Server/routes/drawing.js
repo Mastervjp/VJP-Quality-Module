@@ -41,7 +41,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 
-    console.log('data is ===>',req.body);
     req.body.createdBy = 1;
     
     return new Promise((resolve, reject) => {
@@ -56,7 +55,6 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
 
-    console.log('updata  =>',req.body);
     req.body.updatedBy = 1;
     return new Promise((resolve, reject) => {
         Drawing.update(req.body, { where: { id: req.params.id} }).then(result => {

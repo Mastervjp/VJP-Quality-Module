@@ -43,7 +43,6 @@ export class OperationComponent implements OnInit {
 
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
-    debugger;
 
     if (this.drgObject.pfStatus) {
       this.submitshow = false;
@@ -200,7 +199,6 @@ export class OperationComponent implements OnInit {
 
 
     let drgId = localStorage.getItem('DrgCode');
-    debugger
     this._operationservice.updatePfStatus(drgId).subscribe((res: any) => {
       if (res.success) {
 

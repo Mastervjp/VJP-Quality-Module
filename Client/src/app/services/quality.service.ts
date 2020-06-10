@@ -22,7 +22,6 @@ export class QualityService {
   }
 
   private extractData1(res: any) {
-    debugger;
     let body = res;
     return body || {};
   }

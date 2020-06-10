@@ -98,7 +98,6 @@ export class DrawingTableComponent implements OnInit {
         this.isUT = false;
       }
       this.isUT
-      debugger
 
   }
 
@@ -142,7 +141,6 @@ export class DrawingTableComponent implements OnInit {
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
 
-        console.log('test')
         this._drawingservice.deleteDrg(id).subscribe((res: any) => {
           if (res.success) {
             this.getdata();

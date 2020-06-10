@@ -87,7 +87,6 @@ export class HeatTreatmentComponent implements OnInit {
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
 
-        console.log('test')
         this._service.deleteData(id).subscribe((res: any) => {
           if (res.success) {
             this.getData();

@@ -129,7 +129,6 @@ setTimeout(function() {
         let samp = res.data
         let re_data = [];
         for (var i in samp) {
-          // console.log('heee...',samp[i])
           if (samp[i].firstPartInspection) {
             re_data[i] = samp[i]
           }

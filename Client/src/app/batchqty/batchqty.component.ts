@@ -44,8 +44,6 @@ export class BatchqtyComponent implements OnInit {
 
   getRoute() {
     let id = localStorage.getItem('DrgCode');
-    debugger;
-
     this._opservice.getRoute(id).subscribe((res: any) => {
 
       if (res.success) {
@@ -72,9 +70,6 @@ export class BatchqtyComponent implements OnInit {
     localStorage.setItem('machine', step1.machine);
 
     this.router.navigate(['/inspection']);
-    debugger;
-
-
   }
 
 }

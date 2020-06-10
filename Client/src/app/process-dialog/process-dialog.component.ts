@@ -66,7 +66,6 @@ export class ProcessDialogComponent {
 
   addProcess() {
 
-    debugger;
 
     let step1 = this.contactForm.getRawValue();
 

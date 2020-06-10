@@ -47,8 +47,6 @@ router.put('/:id', (req, res) => {
     return new Promise((resolve, reject) => {
         Machining.update(req.body, { where: { id: req.params.id} }).then(result => {
 
-console.log('\n\n\n test okkkk \n\n',result,'\n\n\n')
-
             sendSuccess(res,"Data updated");
         }).catch(function(err) {
 

@@ -96,7 +96,6 @@ export class InstrumentDialogComponent {
 
     let step1 = this.contactForm.getRawValue();
 
-debugger;
 
     const formData = new FormData();
 
