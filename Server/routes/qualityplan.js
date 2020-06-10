@@ -42,10 +42,6 @@ router.get('/:drgId', (req, res) => {
 
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
-
-        console.log('tset data =====>',req.body);
-        
-        
         req.body.createdBy = 1;
         PlanAbstract.create(req.body).then(function (result) {
             sendSuccess1(res, result);

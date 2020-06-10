@@ -180,7 +180,6 @@ export class PeriodicComponent implements OnInit {
       if (res.success) {
 
         let samp = res.data
-        debugger
         let re_data = [];
         for (var i in samp) {
           if (samp[i].periodicInspection) {
@@ -379,14 +378,12 @@ export class PeriodicComponent implements OnInit {
           }
           b.subdata = groubedByTeam[key]
           a.push(b);
-          console.log('inside loop', this.d_batch_qty);
 
 
         }
         this.value_expression = a;
 
 
-        console.log('check tset', JSON.stringify(a));
 
       }
 

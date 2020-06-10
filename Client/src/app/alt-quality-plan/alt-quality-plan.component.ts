@@ -106,7 +106,6 @@ export class AltQualityPlanComponent implements OnInit {
       if (result) {
         localStorage.setItem('batch_qty', result);
         this.taphide = 1;
-        console.log('The dialog was closed', localStorage.getItem('batch_qty'));
       }
     });
   }
@@ -127,7 +126,6 @@ export class AltQualityPlanComponent implements OnInit {
 
   confirmQuality() {
     let id = localStorage.getItem('DrgCode');
-    debugger
     this._processservice.confirmQuality(id).subscribe((res: any) => {
       if (res.success) {
         this.router.navigate(['/drawing']);

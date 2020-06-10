@@ -194,7 +194,6 @@ export class SamplingDialogComponent {
     this._operationservice.getOplist().subscribe((res: any) => {
       if (res.success) {
         this.Oplist = res.data;
-        debugger
       }
     });
   }

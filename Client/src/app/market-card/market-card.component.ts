@@ -108,7 +108,7 @@ export class MarketCardComponent implements OnInit {
   getoperation() {
     let drgid = localStorage.getItem('drgId');
     this._marketservice.getCarddata(drgid).subscribe((res: any) => {
-      debugger;
+      
       if (res.success) {
         let mydata = res.data;
         this.dataSource =mydata;
@@ -121,11 +121,11 @@ export class MarketCardComponent implements OnInit {
     let mpId = localStorage.getItem('drgId');
 
     this._marketservice.getCardHeader(mpId).subscribe((res: any) => {
-      debugger
+      
       if (res.success) {
         let mydata = res.data;
         this.headerSource = mydata
-        ;
+        
       }
     });
   }
@@ -139,7 +139,7 @@ export class MarketCardComponent implements OnInit {
       if (res.success) {
         this.MpheaderSource = res.data;
 
-        debugger;
+        
       }
     });
   }

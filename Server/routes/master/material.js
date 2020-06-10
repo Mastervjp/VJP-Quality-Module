@@ -32,8 +32,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     
-
-    console.log("data is",req.body);
     
     return new Promise((resolve, reject) => {
         Material.create(req.body).then(function (result) {

@@ -54,7 +54,6 @@ export class InstrumentListComponent implements OnInit {
 
   }
   editMachine(datas) {
-    debugger
     this.dialogRef = this._matDialog.open(InstrumentDialogComponent, {
       width: '600px',
       panelClass: 'contact-form-dialog',
@@ -73,7 +72,6 @@ export class InstrumentListComponent implements OnInit {
       let type = localStorage.getItem('type')
 
     this._drawingservice.getInstrument().subscribe((res: any) => {
-      debugger;
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -91,7 +89,6 @@ export class InstrumentListComponent implements OnInit {
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
 
-        console.log('test')
         this._drawingservice.deleteData(id).subscribe((res: any) => {
           if (res.success) {
             this.getMachine();

@@ -170,7 +170,6 @@ export class KindProcessPlanComponent implements OnInit {
 
 
     let drgId = localStorage.getItem('DrgCode');
-    debugger
     this._operationservice.updatePfStatus(drgId).subscribe((res: any) => {
       if (res.success) {
 
