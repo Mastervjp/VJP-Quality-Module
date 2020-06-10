@@ -91,13 +91,17 @@ export class DrgDetailsComponent implements OnInit {
     
     }
       </style>`);
-  
+
+
+   setTimeout(function() {
       WindowPrt.document.close();
       WindowPrt.focus();
       WindowPrt.print();
       WindowPrt.close();
-    
+    }, 800);
   }
+
+
 
 
 }

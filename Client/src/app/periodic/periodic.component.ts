@@ -163,12 +163,12 @@ export class PeriodicComponent implements OnInit {
     
 
     </style>`)
-    WindowPrt.document.close();
-    WindowPrt.focus();
-    WindowPrt.print();
-    WindowPrt.close();
-
-
+    setTimeout(function() {
+      WindowPrt.document.close();
+      WindowPrt.focus();
+      WindowPrt.print();
+      WindowPrt.close();
+    }, 2500);
 
 
 
