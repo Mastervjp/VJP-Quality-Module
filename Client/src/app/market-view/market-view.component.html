@@ -56,8 +56,32 @@
                             <mat-datepicker #picker></mat-datepicker>
                             <mat-error>PO Date is required!</mat-error>
                         </mat-form-field>
-
                         </div>
+                         <div class="col-md-3">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Po Revision number</mat-label>
+                              <input name="PoRevNo" formControlName="PoRevNo" matInput required>
+                              <mat-error> Po Revision number is required!</mat-error>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-md-3">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Line Item</mat-label>
+                            <input name="LineItem" formControlName="LineItem" matInput required>
+                            <mat-error> Line Item is required!</mat-error>
+                        </mat-form-field>
+                    </div> 
+                    
+                     <div class="col-md-3">
+
+                      <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Committed date</mat-label>
+                        <input matInput formControlName="CommittedDate" [matDatepicker]="picker1">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-error>Committed date is required!</mat-error>
+                    </mat-form-field>
+                    </div> 
 
                        
 

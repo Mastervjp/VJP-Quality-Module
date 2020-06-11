@@ -62,21 +62,17 @@ function sendMail(data, callback) {
         });
     } catch (err) {
 
-        console.log('errrrrrrrr===================',err)
         callback("Failed to send email!");
     }
 }
 
 router.post('/login', (req, res, next) => {
 
-
-    console.log("req=========>",req.body)
     
     return passport.authenticate('local-login', (err, token, user) => {
         
         if (err) {
 
-            console.log("rerr========>",err)
             return res.send({
                 success: false,
                 message: err,
@@ -136,8 +132,6 @@ function signupProcess(req, res, next) {
 	return passport.authenticate('local-signup', (result) => {
 
 
-        console.log("body =============>",req.body);
-
         if (result == null) {
         	return res.json({
                 success: false,
@@ -166,8 +160,6 @@ function signupProcess(req, res, next) {
             var domainRef = 'localhost:3000';
             var domainName = 'http://' + domainRef + '/api/user/validate?token=' + token
 
-            console.log("check1 =============>",req.body.email);
-
             // User.update({emailConfirmationToken: token},{where: {email:"chandru2316.ironman@gmail.com"}}).then((myres) => {
                 sendMail({
                     to: req.body.email,
@@ -175,8 +167,6 @@ function signupProcess(req, res, next) {
                     html: 'Hello ' + req.body.name + '!\n\n Welcome to Paasmer!\n\n Your token is: ' + token/* + '. Or you can click this link to validate your email. ' + domainName*/
 
                 }, (status) => {
-
-                    console.log("hi============>",status)
                     if (!status) {
                         return res.json({
                             success: false,

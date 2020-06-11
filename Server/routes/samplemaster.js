@@ -42,12 +42,8 @@ router.get('/:drgId', (req, res) => {
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
 
-        console.log('\n \n data====>',req.body)
-
-
         Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
 
-            console.log('respon====>',resp)
             if (resp) {
                 req.body.opnId = resp.id;
                 Process.create(req.body).then(function (result) {
@@ -64,8 +60,6 @@ router.post('/', (req, res) => {
                     "workCenter":req.body.workCenter,
                     "drgId": req.body.drgId
                 }
-
-                console.log(" \n \n op test \n", datas)
                 Operation.create(datas).then(function (opRes) {
                 req.body.opnId = opRes.id;
                     Process.create(req.body).then(function (result) {

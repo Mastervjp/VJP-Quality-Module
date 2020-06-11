@@ -257,8 +257,57 @@
 
             </tr>
         </table>
-
         <table style="font-size: 12px; width: 100%;">
+
+            <tr>
+                <th style="width: 10%;">DRAWING CODE</th>
+                <th style="width: 10%;">{{headerSource.id}}</th>
+                <th style="width: 10%;">PURCHASE ORDER QTY</th>
+                <th style="width: 10%;"> {{mObject.orderQty}}</th>
+                <th style="width: 10%;">START DATE</th>
+                <th style="width: 10%;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                <th style="width: 10%;">AS CAST WEIGHT</th>
+                <th style="width: 10%;">{{ headerSource.castWeight}}</th>
+            </tr>
+            <tr>
+                <th>REV NUMBER</th>
+                <th>{{headerSource.revNo}}</th>
+                <th>PURCHASE ORDER NUMBER /
+                 REVISON NO / 
+                <br>LINE ITEM NO</th>
+                <th>{{ mObject.poNo}} / {{ mObject.PoRevNo}} / {{ mObject.LineItem}}</th>
+                <th>COMMITTED DATE</th>
+                <th>{{ mObject.CommittedDate}}</th>
+                <th>RUNNER WEIGHT</th>
+                <th>{{headerSource.withRunerWeight}}</th>
+            </tr>
+            <tr>
+                <th>DRAWING NUMBER</th>
+                <th>{{headerSource.partNum}}</th>
+                <th>PURCHASE ORDER DATE</th>
+                <th>{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                <th>MATERIAL ISSUED FROM STORE IN KG</th>
+                <th>{{headerSource.castWeight}}</th>
+                <th>FINSHED WEIGHT</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>PART NAME </th>
+                <th>{{headerSource.partName}}</th>
+                <th>MATERIAL SPECIFICATION
+                </th>
+                <th>{{headerSource.materialSpec}}</th>
+                <th>BATCH QTY</th>
+                <th>{{routeObj.qty}}</th>
+                <th>REMAINING QTY</th>
+                <th>{{mObject.remainingQty}}</th>
+            </tr>
+
+
+        </table>
+
+        <!-- <table style="font-size: 12px; width: 100%;">
+             
 
             <tr>
                 <th style="width: 10%;">DRAWING CODE</th>
@@ -276,14 +325,12 @@
                 <th>PURCHASE ORDER NUMBER /
                 <br> REVISON NO / 
                 <br>LINE ITEM NO</th>
-                <th colspan="2">{{ mObject.poNo}}</th>
-                <th colspan="1.5"></th>
-                <th colspan="1"></th>
+                <th>{{ mObject.poNo}}</th>
                 <th>COMMITTED DATE</th>
                 <th></th>
                 <th>SHOT WEIGHT</th>
-                <th colspan="0.5"></th>
-            </tr>
+                <th colspan="0.5">{{ headerSource.withRunerWeight}}</th>
+            </tr> 
             <tr>
                 <th>DRAWING NUMBER</th>
                 <th>{{headerSource.partNum}}</th>
@@ -307,7 +354,7 @@
             </tr>
 
 
-        </table>
+        </table> -->
         <table style="width:100%;font-size: 70%;text-align: center;">
             <tr>
                 <th style="width: 1%;">OPNo</th>

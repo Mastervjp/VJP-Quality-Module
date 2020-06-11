@@ -41,7 +41,6 @@ router.get('/:drgId', (req, res) => {
 
 router.get('/altprocess/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
-        console.log('test altprocess')
         Operation.findAll({ where: { drgId: req.params.drgId, altProcess: true, addKind: false, deleteStatus: false }, order: [['opnNo', 'ASC']], }).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
@@ -52,7 +51,6 @@ router.get('/altprocess/:drgId', (req, res) => {
 
 router.get('/kindprocess/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
-        console.log('test altprocess')
         Operation.findAll({ where: { drgId: req.params.drgId, altProcess: false, addKind: true, deleteStatus: false }, order: [['opnNo', 'ASC']], }).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
@@ -155,7 +153,6 @@ router.get('/data/machine', (req, res) => {
 
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
-        console.log('dais is =>', req.body)
         req.body.createdBy = 1;
 
         PlanAbstract.findOne({ where: { drgId: req.body.drgId } }).then(function (resp) {
@@ -235,11 +232,8 @@ router.put('/pfstatus/:id', (req, res) => {
 
         Drawing.findOne({ where: { id: req.params.id } }).then(dResult => {
 
-            console.log("dddddddddddd", dResult);
-
             if (dResult.pfStatus) {
                 PlanAbstract.findOne({ where: { drgId: dResult.id } }).then(planRes => {
-                    console.log('ppppppppppp', planRes);
 
                     var newpfno = "";
                     var pf = planRes.pfNo
@@ -258,9 +252,6 @@ router.put('/pfstatus/:id', (req, res) => {
                             Drawing.update({ pfStatus: 1 }, { where: { id: dResult.id } }).then(result => {
                                 sendSuccess(res, result);
                             }).catch(function (err) {
-
-                                console.log(" pas err", err);
-
                                 sendError(res, err);
                             });
 
@@ -340,7 +331,6 @@ router.delete('/:id', function (req, res) {
 
 router.post('/copy', (req, res) => {
     return new Promise((resolve, reject) => {
-        console.log('dais is =>', req.body)
 
         var result = [];
         let cards = req.body.data
@@ -391,7 +381,6 @@ router.post('/copy', (req, res) => {
 
                         }).then(function (ppres) {
                         
-                        console.log('prores1')
                         })
 
 

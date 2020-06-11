@@ -52,7 +52,6 @@ export class MaterialListComponent implements OnInit {
 
   }
   editMachine(datas) {
-    debugger
     this.dialogRef = this._matDialog.open(MaterialDialogComponent, {
       width: '600px',
       panelClass: 'contact-form-dialog',
@@ -71,7 +70,6 @@ export class MaterialListComponent implements OnInit {
       let type = localStorage.getItem('type')
 
     this._drawingservice.getMaterial().subscribe((res: any) => {
-      debugger;
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

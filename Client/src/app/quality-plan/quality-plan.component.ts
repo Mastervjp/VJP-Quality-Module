@@ -28,10 +28,8 @@ export class QualityPlanComponent implements OnInit {
 
 
   checkplan() {
-    // console.log('hello',this.type);
     localStorage.setItem('type', this.type);
 
-    console.log('hrllo ', localStorage)
     this.router.navigate(['/drawing']);
   }
 

@@ -169,7 +169,6 @@ export class SamplingComponent implements OnInit {
 
 
     let drgId = localStorage.getItem('DrgCode');
-    debugger
     this._operationservice.updatePfStatus(drgId).subscribe((res: any) => {
       if (res.success) {
 
@@ -199,9 +198,7 @@ export class SamplingComponent implements OnInit {
         var result = [];
 
         mydata.forEach((opn) => {
-          debugger
           opn.Processes.forEach((pro) => {
-            debugger;
             result.push({
               "id": opn.id,
               "opnNo": opn.opnNo,
