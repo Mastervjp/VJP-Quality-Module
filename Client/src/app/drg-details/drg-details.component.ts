@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InspectionService } from '../services/inspection.service';
 
 @Component({
   selector: 'app-drg-details',
@@ -11,8 +12,9 @@ export class DrgDetailsComponent implements OnInit {
   qpaObject:any;
   psObject:any;
   routeObj :any;
+  marketData:any;
   
-  constructor() { }
+  constructor(private _inspectionservice: InspectionService) { }
 
   ngOnInit() {
 
@@ -20,7 +22,16 @@ export class DrgDetailsComponent implements OnInit {
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
+    this.getmarket(this.routeObj)
 
+  }
+  getmarket(routeObj1) {
+    let id = routeObj1.mpId;
+    this._inspectionservice.getmarket(id).subscribe((res: any) => {
+      if (res.success) {
+        this.marketData = res.data;
+      }
+    });
   }
 
   printPage() {
@@ -40,6 +51,7 @@ export class DrgDetailsComponent implements OnInit {
       th, td {
         padding: 5px;
         text-align: left;
+        font-size:10px;
       }
       .bottomBorder {
         border-bottom-color: transparent;

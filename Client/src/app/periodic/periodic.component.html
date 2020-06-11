@@ -8,10 +8,10 @@
       <tr>
         <th colspan="1" rowspan="2" style="text-align: center;"><img  src="assets/vjp2.png" height="30" ></th>
         <th colspan="4" style="text-align: center;">QUALITY PLAN - INPROCESS INSPECTION</th>
-        <td>Drawing code</td>
+        <td>Drawing Code</td>
         <th>{{drgObject.id}}</th>
         <td>Part Name</td>
-        <th colspan="2">{{drgObject.partName}}</th>
+        <th colspan="2">{{drgObject.partName | uppercase}}</th>
         
         
 
@@ -24,7 +24,7 @@
         <td>Machining Drawing No/Rev</td>
         <th>{{drgObject.partNum1}}</th>
         <th>{{drgObject.revNo1}}</th>
-        <td>Operation No.</td>
+        <td>Operation No</td>
         <th>{{psObject.opnNo}}</th>
         
         
@@ -39,8 +39,8 @@
         <th>{{psObject.workCenter}}</th>
         <td>Process Plan No</td>
         <th>{{qpaObject.pfNo}}</th>
-        <td>Quality Plan No</td>
-        <th colspan="2">{{qpaObject.qpNo}}</th>
+        <td colspan="2">Quality Plan No</td>
+        <th colspan="1">{{qpaObject.qpNo}}</th>
         
         
         
@@ -57,8 +57,8 @@
         <th>{{drgObject.materialWeight}}</th>
         <td>Material Grade</td>
         <th colspan="1">{{drgObject.materialGrade}}</th>
-        <td>Batch Quantity</td>
-        <th  colspan="2">{{routeObj.qty}}</th>
+        <td colspan="2">Batch Quantity</td>
+        <th  colspan="1">{{routeObj.qty}}</th>
         
       </tr>
 
@@ -66,13 +66,13 @@
       <tr>
         
         <td>Casting Tolerance</td>
-        <th colspan="1">{{drgObject.castingToleranceStandard}}</th>
-        <td>Machining Tolerance</td>
-        <th colspan="1">{{drgObject. machiningToleranceStandard}}</th>
-        <td>Purchase Order Number</td>
+        <th colspan="1">{{drgObject.castingToleranceStandard  | uppercase}}</th>
+        <td>MC Tolerance</td>
+        <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
+        <td>P O Number</td>
         <th>{{marketData.poNo}}</th>
-        <td>Inspection Date</td>
-                <th colspan="2"></th>
+        <td colspan="2">Inspection Date</td>
+                <th colspan="1"></th>
        
     </tr>
     </table>
@@ -85,7 +85,7 @@
     <ng-container *ngFor="let item of value_expression ; let i=index;">
       <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;padding: 5px;">
         <ng-container style="width: 100%; background-color: black;" *ngIf="item.name == '100' ">
-          Frequency 100 %
+          FREQUENCY 100 %
         </ng-container>
 
         
@@ -145,7 +145,7 @@
 
       <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive" style="text-align: left;">
         <ng-container style="width: 100%;" *ngIf="item.name != '100' ">
-          <b>Frequency 1/</b> {{item.name}}
+          <b>FREQUENCY 1/</b> {{item.name}}
         </ng-container>
 
         
