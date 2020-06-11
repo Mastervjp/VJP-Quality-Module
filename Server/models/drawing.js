@@ -86,9 +86,25 @@ module.exports = function (sequelize, DataTypes) {
             type:DataTypes.STRING(250),
             field:'measurement_unit',
         },
-        specialProcess:{
-            type:DataTypes.STRING(250),
-            field:'special_process',
+        fpi: {
+            type: DataTypes.BOOLEAN,
+            field: 'fpi',
+            allowNull: true
+        },
+        radiographyTest: {
+            type: DataTypes.BOOLEAN,
+            field: 'radiography_test',
+            allowNull: true
+        },
+        anodizing: {
+            type: DataTypes.BOOLEAN,
+            field: 'anodizing',
+            allowNull: true
+        },
+        powderCoating: {
+            type: DataTypes.BOOLEAN,
+            field: 'powder_coating',
+            allowNull: true
         },
         specialInstruction:{
             type:DataTypes.STRING(250),

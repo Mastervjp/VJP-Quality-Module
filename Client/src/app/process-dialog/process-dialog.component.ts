@@ -175,7 +175,7 @@ export class ProcessDialogComponent {
   contactForm = this._formBuilder.group({
     description: ['', Validators.required],
     specification: ['', Validators.required],
-    toloreanceGrade: ['', Validators.required],
+    // toloreanceGrade: ['', Validators.required],
     tolFrom: ['', Validators.required],
     baloonNo: ['', Validators.required],
     tolTo: ['', Validators.required],
