@@ -95,8 +95,12 @@ export class DrawingDialogComponent {
         castingToleranceStandard: _data.data.castingToleranceStandard,
         machiningToleranceStandard: _data.data.machiningToleranceStandard,
         measurementUnit: _data.data.measurementUnit,
-        specialProcess: _data.data.specialProcess,
+        // specialProcess: _data.data.specialProcess,
         specialInstruction: _data.data.specialInstruction,
+        fpi: _data.data.fpi,
+        radiographyTest:_data.data.radiographyTest,
+        anodizing:_data.data.anodizing,
+        powderCoating:_data.data.powderCoating
 
 
       });
@@ -267,7 +271,10 @@ export class DrawingDialogComponent {
     castingToleranceStandard: ['', Validators.required],
     machiningToleranceStandard: ['', Validators.required],
     measurementUnit: ['', Validators.required],
-    specialProcess: [],
+    fpi: [],
+    radiographyTest:[],
+    anodizing:[],
+    powderCoating:[],
     specialInstruction: [],
 
   });
