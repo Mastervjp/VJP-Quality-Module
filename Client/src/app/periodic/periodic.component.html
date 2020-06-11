@@ -6,10 +6,14 @@
 
     <table class="invoice" style="width:100%;">
       <tr>
-        <th colspan="1" rowspan="6" style="font-size: 25px;text-align: center;"><img  src="assets/vjp2.png" height="60"></th>
-        <th colspan="5" style="text-align: center;">QUALITY PLAN - Periodic Inspection</th>
+        <th colspan="1" rowspan="2" style="text-align: center;"><img  src="assets/vjp2.png" height="30" ></th>
+        <th colspan="4" style="text-align: center;">QUALITY PLAN - INPROCESS INSPECTION</th>
         <td>Drawing code</td>
         <th>{{drgObject.id}}</th>
+        <td>Part Name</td>
+        <th colspan="2">{{drgObject.partName}}</th>
+        
+        
 
       </tr>
 
@@ -17,50 +21,61 @@
         <td>Casting Drawing No/Rev</td>
         <th>{{drgObject.partNum}}</th>
         <th>{{drgObject.revNo}}</th>
-        <td>Operation No.</td>
-        <th>{{psObject.opnNo}}</th>
-        <td>Quality Plan No</td>
-        <th>{{qpaObject.qpNo}}</th>
-
-      </tr>
-
-      <tr>
         <td>Machining Drawing No/Rev</td>
         <th>{{drgObject.partNum1}}</th>
         <th>{{drgObject.revNo1}}</th>
+        <td>Operation No.</td>
+        <th>{{psObject.opnNo}}</th>
+        
+        
+        
+
+      </tr>
+
+      <tr>
         <td>Operation Description</td>
         <th>{{psObject.description}}</th>
-        <td>Process Plan No</td>
-        <th>{{qpaObject.pfNo}}</th>
-
-      </tr>
-      <tr>
-        <td>Part Name</td>
-        <th colspan="2">{{drgObject.partName}}</th>
         <td>Work Center</td>
         <th>{{psObject.workCenter}}</th>
+        <td>Process Plan No</td>
+        <th>{{qpaObject.pfNo}}</th>
+        <td>Quality Plan No</td>
+        <th colspan="2">{{qpaObject.qpNo}}</th>
+        
+        
+        
+        
+        
+
+      </tr>
+      <tr>
+        
+        
         <td>Route Card Number</td>
         <th>{{routeObj.cardNo}}</th>
-      </tr>
-
-      <tr>
-        <td>Material Grade</td>
-        <th colspan="2">{{drgObject.materialGrade}}</th>
         <td>Material Weight</td>
         <th>{{drgObject.materialWeight}}</th>
-
-        <td></td>
-        <th></th>
-
+        <td>Material Grade</td>
+        <th colspan="1">{{drgObject.materialGrade}}</th>
+        <td>Batch Quantity</td>
+        <th  colspan="2">{{routeObj.qty}}</th>
+        
       </tr>
-      <tr>
-        <td>Casting Tolerance</td>
-        <th colspan="3">{{drgObject.castingToleranceStandard}}</th>
 
+      
+      <tr>
+        
+        <td>Casting Tolerance</td>
+        <th colspan="1">{{drgObject.castingToleranceStandard}}</th>
         <td>Machining Tolerance</td>
-        <th colspan="3">{{drgObject. machiningToleranceStandard}}</th>
+        <th colspan="1">{{drgObject. machiningToleranceStandard}}</th>
+        <td>Purchase Order Number</td>
+        <th>{{marketData.poNo}}</th>
+        <td>Inspection Date</td>
+                <th colspan="2"></th>
+       
     </tr>
-    </table><br>
+    </table>
 
 
 
@@ -68,7 +83,7 @@
 
 
     <ng-container *ngFor="let item of value_expression ; let i=index;">
-      <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;">
+      <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;padding: 5px;">
         <ng-container style="width: 100%; background-color: black;" *ngIf="item.name == '100' ">
           Frequency 100 %
         </ng-container>
