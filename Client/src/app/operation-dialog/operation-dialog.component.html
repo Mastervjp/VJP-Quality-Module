@@ -23,14 +23,14 @@
         </div>
 
         <div class="row">
-            
+
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Process Name</mat-label>
                 <mat-select formControlName="opnName">
                     <mat-option *ngFor="let op of Oplist" [value]="op.name">
                         {{op.name}}
                     </mat-option>
-                   
+
                 </mat-select>
             </mat-form-field>
 
@@ -46,24 +46,78 @@
         </div>
 
 
-        
+
 
 
         <div class="row">
-            
-                <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Workcenter</mat-label>
-                    <mat-select formControlName="workCenter">
-                        <mat-option *ngFor="let work of workData" [value]="work.name">
-                            {{work.name}}
-                        </mat-option>
-                       
-                    </mat-select>
-                </mat-form-field>
-           
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Workcenter</mat-label>
+                <mat-select formControlName="workCenter">
+                    <mat-option *ngFor="let work of workData" [value]="work.name">
+                        {{work.name}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
 
 
         </div>
+
+        <div class="row">
+            <div class="col-6">
+                <img [src]="url1" style="width: 100px; height: 125px;">
+            </div>
+            <div class="col-6">
+                <input hidden type="file" id="file1" (change)="onFileChange1($event)" #fileInput1 />
+                <button mat-stroked-button class="add-file-button" (click)="fileInput1.click()" aria-label="Add file">
+                    Image 1
+                </button>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <img [src]="url2" style="width: 100px; height: 125px;">
+            </div>
+            <div class="col-6">
+                <input hidden type="file" id="file2" (change)="onFileChange2($event)" #fileInput2 />
+                <button mat-stroked-button class="add-file-button" (click)="fileInput2.click()" aria-label="Add file">
+                    Image 2
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <img [src]="url3" style="width: 100px; height: 125px;">
+            </div>
+            <div class="col-6">
+                <input hidden type="file" id="file3" (change)="onFileChange3($event)" #fileInput3 />
+                <button mat-stroked-button class="add-file-button" (click)="fileInput3.click()" aria-label="Add file">
+                    Image 3
+                </button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <img [src]="url4" style="width: 100px; height: 125px;">
+            </div>
+            <div class="col-6">
+                <input hidden type="file" id="file4" (change)="onFileChange4($event)" #fileInput4 />
+                <button mat-stroked-button class="add-file-button" (click)="fileInput4.click()" aria-label="Add file">
+                    Image 4
+                </button>
+            </div>
+        </div>
+
+
+
 
 
     </form>

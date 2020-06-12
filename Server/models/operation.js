@@ -30,6 +30,24 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'type'
         },
+        
+        image1: {
+            type: DataTypes.STRING(250),
+            field: 'image1'
+        },
+        image2: {
+            type: DataTypes.STRING(250),
+            field: 'image2'
+        },
+        image3: {
+            type: DataTypes.STRING(250),
+            field: 'image3'
+        },
+        image4: {
+            type: DataTypes.STRING(250),
+            field: 'image4'
+        },
+
         drgId:{
             type: DataTypes.INTEGER(11).UNSIGNED,
             field:'drg_id'

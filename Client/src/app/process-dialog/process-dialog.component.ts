@@ -45,7 +45,7 @@ export class ProcessDialogComponent {
       this.contactForm.patchValue({
         description: _data.data.description,
         specification: _data.data.specification,
-        toloreanceGrade: _data.data.toloreanceGrade,
+        // toloreanceGrade: _data.data.toloreanceGrade,
         tolFrom: _data.data.tolFrom,
         tolTo: _data.data.tolTo,
         baloonNo:_data.data.baloonNo,
