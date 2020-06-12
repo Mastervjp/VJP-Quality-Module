@@ -301,6 +301,30 @@
                 <th style="font-weight: 500;">REMAINING QTY</th>
                 <th style="font-size: 11px;">{{mObject.remainingQty}}</th>
             </tr>
+            <tr>
+                <th>Special Process</th>
+
+                <th colspan="8">
+                    <ng-container *ngIf="headerSource.fpi">
+                        FPI&nbsp;
+                      </ng-container>
+                     
+                      <ng-container *ngIf="headerSource.radiographyTest">
+                        ,&nbsp;Radiography Test&nbsp;
+                      </ng-container>
+                     
+                      <ng-container *ngIf="headerSource.anodizing">
+                        ,&nbsp;Anodizing&nbsp;
+                      </ng-container>
+                     
+                      <ng-container *ngIf="headerSource.powderCoating">
+                        ,&nbsp;Powder Coating
+                      </ng-container>
+                     
+                    
+                    
+                   </th>
+            </tr>
 
 
         </table>
