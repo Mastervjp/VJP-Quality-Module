@@ -147,9 +147,9 @@ export class PeriodicComponent implements OnInit {
     
     table, th, td {
       border: 1px solid black;
-      font-size:12px;
+      font-size:10px;
       text-align: left;
-
+      padding:2px;
     }
 
     .my-4{

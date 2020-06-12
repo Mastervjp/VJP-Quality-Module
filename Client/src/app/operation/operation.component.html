@@ -52,7 +52,7 @@
             <tr style="    border: 1px solid black;
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
-          border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
+          border-collapse: collapse;">Casting Drawing No/ Rev/ Date</td>
               <th  style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum}}</th>
               <th  style="    border: 1px solid black;
@@ -70,7 +70,7 @@
             <tr style="    border: 1px solid black;
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
-          border-collapse: collapse;">Machining Drawing No/Rev</td>
+          border-collapse: collapse;">Machining Drawing No/ Rev/ Date</td>
               <th  style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum1}}</th>
               <th  style="    border: 1px solid black;
@@ -106,7 +106,7 @@
                      <td  colspan="2" style="    border: 1px solid black;
                    border-collapse: collapse;">Machining Tolerance</td>
                      <th colspan="2"  style="    border: 1px solid black;
-                   border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
+                   border-collapse: collapse;">{{drgObject. machiningToleranceStandard | uppercase}}</th>
                    </tr>
                    
 
@@ -245,34 +245,34 @@
         <table mat-table [dataSource]="dataSource">
 
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>&nbsp; S.No </th>
+            <th mat-header-cell *matHeaderCellDef>&nbsp; S.NO </th>
             <td mat-cell *matCellDef="let element; let rIndex = index;"> {{rIndex+1}} </td>
           </ng-container>
 
           <ng-container matColumnDef="opnNo">
-            <th mat-header-cell *matHeaderCellDef> Process No </th>
+            <th mat-header-cell *matHeaderCellDef> PROCESS NO </th>
             <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(element)" *matCellDef="let element">
               {{element.opnNo}} </td>
           </ng-container>
 
           <ng-container matColumnDef="opnName">
-            <th mat-header-cell *matHeaderCellDef> Process Name </th>
+            <th mat-header-cell *matHeaderCellDef> PROCESS NAME </th>
             <td mat-cell *matCellDef="let element"> {{element.opnName | uppercase}} </td>
           </ng-container>
 
           <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <th mat-header-cell *matHeaderCellDef> DESCRIPITION </th>
             <td mat-cell *matCellDef="let element"> {{element.description | uppercase}} </td>
           </ng-container>
 
           <ng-container matColumnDef="workCenter">
-            <th mat-header-cell *matHeaderCellDef> Work Center </th>
+            <th mat-header-cell *matHeaderCellDef> WORK CENTRE </th>
             <td mat-cell *matCellDef="let element"> {{element.workCenter | uppercase}} </td>
           </ng-container>
 
 
           <ng-container *ngIf="islog && isad" matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef>Modification</th>
+            <th mat-header-cell *matHeaderCellDef>MODIFICATION</th>
             <td mat-cell *matCellDef="let element">
               <div>
                 <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
@@ -284,7 +284,7 @@
           </ng-container>
 
           <ng-container *ngIf="islog && isad" matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <th mat-header-cell *matHeaderCellDef>DELETE</th>
             <td mat-cell *matCellDef="let element">
               <div>
                 <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;

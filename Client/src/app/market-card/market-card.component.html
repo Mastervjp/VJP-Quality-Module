@@ -232,13 +232,13 @@
                 </td>
                 <td style="width: 50%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 5px;font-size: 200%;"
                     rowspan="4"><B>ROUTE CARD</B></td>
-                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;">Doc.No.
+                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;">DOC.NO
                 </td>
-                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;"></td>
+                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;">STO/R/12</td>
             </tr>
             <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">Rev.No</td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;"></td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">REV.NO</td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">00</td>
 
             </tr>
             <!-- <tr>
@@ -247,8 +247,8 @@
 
             </tr> -->
             <tr>
-                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">Page No.</td>
-                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;"></td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">PAGE NO</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">1</td>
 
             </tr>
             <tr>
@@ -293,7 +293,7 @@
             </tr>
             <tr>
                 <th>PART NAME </th>
-                <th>{{headerSource.partName}}</th>
+                <th>{{headerSource.partName | uppercase}}</th>
                 <th>MATERIAL SPECIFICATION
                 </th>
                 <th>{{headerSource.materialSpec}}</th>
@@ -355,10 +355,10 @@
 
 
         </table> -->
-        <table style="width:100%;font-size: 70%;text-align: center;">
+        <table style="width:100%;font-size: 60%;text-align: left;">
             <tr>
-                <th style="width: 1%;">OPNo</th>
-                <th style="width: -16%;">PROCESS FLOW SEQUENCE</th>
+                <th>OPNo</th>
+                <th>PROCESS FLOW SEQUENCE</th>
                 <th>Work Center</th>
                 <th>START DATE</th>
                 <th>PRODUCED QTY</th>
@@ -374,8 +374,8 @@
 
             <tr *ngFor="let element of dataSource; let rIndex = index;">
                 <th>{{element.opnNo}}</th>
-                <th>{{element.opnName}}</th>
-                <th> {{element.workCenter}}</th>
+                <th>{{element.opnName | uppercase}}</th>
+                <th> {{element.workCenter | uppercase}}</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -422,7 +422,7 @@
                     rowspan="2"></td>
             </tr>
             <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">Rev.No
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">REV.NO
                 </td>
                 <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;text-align: center;">DATE
                 </td>

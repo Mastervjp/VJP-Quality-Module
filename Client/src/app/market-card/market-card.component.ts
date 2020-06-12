@@ -78,18 +78,18 @@ export class MarketCardComponent implements OnInit {
   
   /* target the first page only */
   @page :first {
-    margin-top: 6cm;
+    margin-top: 2cm;
   }
   
   /* target left (even-numbered) pages only */
-  @page :left {
-    margin-right: 4cm;
-  }
+  // @page :left {
+  //   margin-right: 4cm;
+  // }
   
   /* target right (odd-numbered) pages only */
-  @page :right {
-    margin-left: 4cm;
-  }
+  // @page :right {
+  //   margin-left: 4cm;
+  // }
 
   table { page-break-inside:auto }
    tr    { page-break-inside:avoid; page-break-after:auto }
