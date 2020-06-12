@@ -128,7 +128,11 @@ export class PeriodicComponent implements OnInit {
     WindowPrt.document.write(printContent.innerHTML);
     WindowPrt.document.write(`<style>
     
+.testcol{
+  color:white;
+  background-color: black;
 
+}
 
    th {
 			background-color: #DDDDDD;
@@ -145,6 +149,7 @@ export class PeriodicComponent implements OnInit {
       border: 1px solid black;
       font-size:12px;
       text-align: left;
+
     }
 
     .my-4{
@@ -176,7 +181,16 @@ export class PeriodicComponent implements OnInit {
        text-align: left;
      
      } 
+     
+     
 
+     @media print {
+      .page-break	{ 
+        display: block; 
+        page-break-before: always; 
+      }
+      
+    }
     
 
     </style>`)
