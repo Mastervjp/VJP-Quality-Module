@@ -24,6 +24,20 @@ module.exports = function(sequelize, DataTypes) {
             type:DataTypes.DATEONLY,
             field:'po_date'
         },
+    
+        PoRevNo:{
+            type:DataTypes.STRING(250),
+            field:'po_rev_no'
+        },
+        
+        LineItem:{
+            type:DataTypes.STRING(250),
+            field:'line_item'
+        },
+        CommittedDate:{
+            type:DataTypes.DATEONLY,
+            field:'committed_date'
+        },
        
         drgId:{
             type: DataTypes.INTEGER(11).UNSIGNED,

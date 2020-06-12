@@ -58,7 +58,7 @@ export class FirstpartPrintComponent implements OnInit {
 
 .tg td {
     
-    font-size: 14px;
+    font-size: 10px;
     padding: 10px 5px;
     border-style: solid;
     border-width: 1px;
@@ -72,7 +72,7 @@ export class FirstpartPrintComponent implements OnInit {
 
 .tg th {
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: normal;
     padding: 10px 5px;
     border-style: solid;

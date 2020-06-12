@@ -47,6 +47,9 @@ export class PeriodicComponent implements OnInit {
   psObject: any;
   machine: any;
   routeObj :any;
+  marketData: any;
+  
+  
   
 
 
@@ -66,20 +69,32 @@ export class PeriodicComponent implements OnInit {
     let opnId = localStorage.getItem('opnNo')
 
     this.machine = localStorage.getItem('machine')
+    
 
     this.getpi(myItem1, opnId);
+    
 
 
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
+    this.getmarket(this.routeObj)
 
 
     // this.test();
 
 
   }
+  getmarket(routeObj1) {
+    let id = routeObj1.mpId;
+    this._inspectionservice.getmarket(id).subscribe((res: any) => {
+      if (res.success) {
+        this.marketData = res.data;
+      }
+    });
+  }
+  
 
   printPage() {
 
@@ -113,7 +128,11 @@ export class PeriodicComponent implements OnInit {
     WindowPrt.document.write(printContent.innerHTML);
     WindowPrt.document.write(`<style>
     
+.testcol{
+  color:white;
+  background-color: black;
 
+}
 
    th {
 			background-color: #DDDDDD;
@@ -128,6 +147,9 @@ export class PeriodicComponent implements OnInit {
     
     table, th, td {
       border: 1px solid black;
+      font-size:10px;
+      text-align: left;
+      padding:2px;
     }
 
     .my-4{
@@ -156,10 +178,19 @@ export class PeriodicComponent implements OnInit {
      }
      
      .bk th,td{  
-       text-align: center;
+       text-align: left;
      
      } 
+     
+     
 
+     @media print {
+      .page-break	{ 
+        display: block; 
+        page-break-before: always; 
+      }
+      
+    }
     
 
     </style>`)
@@ -429,3 +460,5 @@ export class PeriodicComponent implements OnInit {
 
 
 }
+
+

@@ -80,6 +80,12 @@ table tr td:last-child {
     height: 100%;
     display: block;
   }
+
+  .tg-0lax{
+    background-color: black;
+     color: white;
+}
+  
 }
 
 
@@ -100,8 +106,6 @@ td {
   padding: 2px;
   padding-left: 2px;
 }
-
-
 
 
 .bk th:first-child {
@@ -127,3 +131,4 @@ td {
 .bk th:nth-child(6) {
   width: 150px !important;
 }
+

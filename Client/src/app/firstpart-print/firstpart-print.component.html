@@ -4,74 +4,74 @@
 
         <table style="width:100%">
             <tr>
-                <th class="text-center" colspan="1" rowspan="7" style="font-size:25px;"><img src="assets/vjp2.png"
-                        height="60"></th>
-
-                <th colspan="5" style="text-align: center;">QUALITY PLAN - Frist Part Inspection</th>
-
-
+                <th colspan="1" rowspan="2" style="text-align: center;"><img  src="assets/vjp2.png" height="30" ></th>
+                <th colspan="4" style="text-align: center;">QUALITY PLAN - INPROCESS INSPECTION</th>
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
-
-            </tr>
-
-            <tr>
+                <td>Part Name</td>
+                <th colspan="2">{{drgObject.partName}}</th>
+                
+                
+        
+              </tr>
+        
+              <tr>
                 <td>Casting Drawing No/Rev</td>
                 <th>{{drgObject.partNum}}</th>
                 <th>{{drgObject.revNo}}</th>
-                <td>Operation No.</td>
-                <th>{{psObject.opnNo}}</th>
-                <td>Quality Plan No</td>
-                <th>{{qpaObject.qpNo}}</th>
-
-            </tr>
-
-            <tr>
                 <td>Machining Drawing No/Rev</td>
                 <th>{{drgObject.partNum1}}</th>
                 <th>{{drgObject.revNo1}}</th>
+                <td>Operation No.</td>
+                <th>{{psObject.opnNo}}</th>
+                
+                
+                
+        
+              </tr>
+        
+              <tr>
                 <td>Operation Description</td>
                 <th>{{psObject.description}}</th>
-                <td>Process Plan No</td>
-                <th>{{qpaObject.pfNo}}</th>
-
-            </tr>
-            <tr>
-                <td>Part Name</td>
-                <th colspan="2">{{drgObject.partName}}</th>
                 <td>Work Center</td>
                 <th>{{psObject.workCenter}}</th>
+                <td>Process Plan No</td>
+                <th>{{qpaObject.pfNo}}</th>
+                <td>Quality Plan No</td>
+                <th colspan="2">{{qpaObject.qpNo}}</th>
+                
+                
+                
+                
+                
+        
+              </tr>
+              <tr>
+                
+                
                 <td>Route Card Number</td>
                 <th>{{routeObj.cardNo}}</th>
-            </tr>
-
-            <tr>
-                <td>Material Grade</td>
-                <th colspan="2">{{drgObject.materialGrade}}</th>
                 <td>Material Weight</td>
                 <th>{{drgObject.materialWeight}}</th>
-
+                <td>Material Grade</td>
+                <th colspan="1">{{drgObject.materialGrade}}</th>
+                <td>Batch Quantity</td>
+                <th  colspan="2">{{routeObj.qty}}</th>
+                
+              </tr>
+        
+              
+              <tr>
+                
+                <td>Casting Tolerance</td>
+                <th colspan="1">{{drgObject.castingToleranceStandard}}</th>
+                <td>Machining Tolerance</td>
+                <th colspan="1">{{drgObject. machiningToleranceStandard}}</th>
                 <td>Purchase Order Number</td>
                 <th>{{marketData.poNo}}</th>
-
-            </tr>
-            <tr>
-                <td>Casting Tolerance</td>
-                <th colspan="3">{{drgObject.castingToleranceStandard}}</th>
-        
-                <td>Machining Tolerance</td>
-                <th colspan="3">{{drgObject. machiningToleranceStandard}}</th>
-            </tr>
-            <tr>
-                <td>Batch Quantity</td>
-                <th>{{routeObj.qty}}</th>
-
-                <td>Setting Date</td>
-                <th colspan="2"></th>
+                <td>Inspection Date</td>
+                        <th colspan="2"></th>
                
-                <td colspan="2"></td>
-                
-
             </tr>
 
         </table><br>

@@ -44,7 +44,7 @@
           <tr style="    border: 1px solid black;
         border-collapse: collapse;">
             <td style="    border: 1px solid black;
-          border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
+          border-collapse: collapse;">Casting Drawing No/ Rev/ Date</td>
             <th  style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum}}</th>
             <th  style="    border: 1px solid black;
@@ -62,7 +62,7 @@
           <tr style="    border: 1px solid black;
         border-collapse: collapse;">
             <td style="    border: 1px solid black;
-          border-collapse: collapse;">Machining Drawing No/Rev/Date</td>
+          border-collapse: collapse;">Machining Drawing No/ Rev/ Date</td>
             <th  style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum1}}</th>
             <th  style="    border: 1px solid black;
@@ -82,7 +82,7 @@
                    <td colspan="2" style="    border: 1px solid black;
                  border-collapse: collapse;">Machining Tolerance</td>
                    <th colspan="2" style="    border: 1px solid black;
-                 border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
+                 border-collapse: collapse;">{{drgObject. machiningToleranceStandard  | uppercase}}</th>
                  
                  </tr>
                  
@@ -215,24 +215,24 @@ border-collapse: collapse;">
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> S.No </th>
+          <th mat-header-cell *matHeaderCellDef> S.NO </th>
           <td mat-cell *matCellDef="let drg ; let rIndex = index;"> {{rIndex+1}} </td>
         </ng-container>
         <ng-container matColumnDef="qpNo">
-          <th mat-header-cell *matHeaderCellDef> Quality Plan No</th>
+          <th mat-header-cell *matHeaderCellDef> QUALITY PLAN NO</th>
           <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
             {{drg.qpNo | uppercase}}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="kind">
-          <th mat-header-cell *matHeaderCellDef> Kind </th>
+          <th mat-header-cell *matHeaderCellDef> KIND </th>
           <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
             {{drg.kind | uppercase}} </td>
         </ng-container>
 
         <ng-container matColumnDef="pfNo">
-          <th mat-header-cell *matHeaderCellDef> Process Flow No </th>
+          <th mat-header-cell *matHeaderCellDef> PROCESS FLOW NO </th>
           <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
             {{drg.pfNo | uppercase}} </td>
         </ng-container>

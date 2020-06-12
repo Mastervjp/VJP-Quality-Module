@@ -156,6 +156,9 @@ export class MarketViewComponent implements OnInit {
     orderQty: ['', Validators.required],
     poNo: ['', Validators.required],
     poDate: ['', Validators.required],
+    PoRevNo: ['', Validators.required],
+    LineItem:['', Validators.required],
+    CommittedDate:['', Validators.required],
 
 
   });
