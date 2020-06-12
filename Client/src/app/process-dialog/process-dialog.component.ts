@@ -45,7 +45,7 @@ export class ProcessDialogComponent {
       this.contactForm.patchValue({
         description: _data.data.description,
         specification: _data.data.specification,
-        toloreanceGrade: _data.data.toloreanceGrade,
+        // toloreanceGrade: _data.data.toloreanceGrade,
         tolFrom: _data.data.tolFrom,
         tolTo: _data.data.tolTo,
         baloonNo:_data.data.baloonNo,
@@ -175,7 +175,7 @@ export class ProcessDialogComponent {
   contactForm = this._formBuilder.group({
     description: ['', Validators.required],
     specification: ['', Validators.required],
-    toloreanceGrade: ['', Validators.required],
+    // toloreanceGrade: ['', Validators.required],
     tolFrom: ['', Validators.required],
     baloonNo: ['', Validators.required],
     tolTo: ['', Validators.required],
