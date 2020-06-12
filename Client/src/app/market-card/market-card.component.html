@@ -228,17 +228,17 @@
 
         <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
             <tr>
-                <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 5px;font-size: 200%;text-align: center;" rowspan="4"><b>VJP</b>
+                <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;text-align: center;" rowspan="4"><b>VJP</b>
                 </td>
-                <td style="width: 50%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 5px;font-size: 200%;"
+                <td style="width: 50%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;"
                     rowspan="4"><B>ROUTE CARD</B></td>
-                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;">DOC.NO
+                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 3px;">DOC.NO
                 </td>
-                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 5px;">STO/R/12</td>
+                <td style="width: 17.5%;  border: 1px solid black; border-collapse: collapse; padding: 3px;">STO/R/12</td>
             </tr>
             <tr>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">REV.NO</td>
-                <td style="border: 1px solid black; border-collapse: collapse; padding: 5px;">00</td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;">REV.NO</td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 3px;">00</td>
 
             </tr>
             <!-- <tr>
@@ -247,64 +247,65 @@
 
             </tr> -->
             <tr>
-                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">PAGE NO</td>
-                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">1</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">PAGE NO</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">1</td>
 
             </tr>
             <tr>
-                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">ROUTE CARD NO&DATE</td>
-                <td style="border: 1px solid black;border-collapse: collapse; padding: 5px;">{{routeObj.cardNo}} & {{routeObj.createdAt | date: 'dd/MM/yyyy'}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">ROUTE CARD NO&DATE</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 3px;">{{routeObj.cardNo}} & {{routeObj.createdAt | date: 'dd/MM/yyyy'}}</td>
 
             </tr>
         </table>
         <table style="font-size: 13px; width: 100%;">
 
             <tr>
-                <th style="width: 10%;">DRAWING CODE</th>
-                <th style="width: 10%;font-size: 15px;">{{headerSource.id}}</th>
-                <th style="width: 10%;">PURCHASE ORDER QTY</th>
-                <th style="width: 10%;font-size: 15px;"> {{mObject.orderQty}}</th>
-                <th style="width: 10%;">START DATE</th>
-                <th style="width: 10%;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
-                <th style="width: 10%;">AS CAST WEIGHT</th>
-                <th style="width: 10%;">{{ headerSource.castWeight}}</th>
+                <th style="width: 10%;font-weight: 500;">DRAWING CODE</th>
+                <th style="width: 10%;font-size: 11px;">{{headerSource.id}}</th>
+                <th style="width: 10%;font-weight: 500;">PURCHASE ORDER QTY</th>
+                <th style="width: 10%;font-size: 11px;"> {{mObject.orderQty}}</th>
+                <th style="width: 10%;font-weight: 500;">START DATE</th>
+                <th style="width: 10%;font-size: 11px;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
+                <th style="width: 10%;font-weight: 500;">AS CAST WEIGHT</th>
+                <th style="width: 10%;font-size: 11px;">{{ headerSource.castWeight}}</th>
             </tr>
             <tr>
-                <th>REV NUMBER</th>
-                <th style="font-size: 15px;">{{headerSource.revNo}}</th>
-                <th>PURCHASE ORDER NUMBER /
+                <th style="font-weight: 500;">REV NUMBER</th>
+                <th style="font-size: 11px;">{{headerSource.revNo}}</th>
+                <th style="font-weight: 500;">PURCHASE ORDER NUMBER /
                  REVISON NO / 
                 <br>LINE ITEM NO</th>
-                <th style="font-size: 15px;">{{ mObject.poNo}} / {{ mObject.PoRevNo}} / {{ mObject.LineItem}}</th>
-                <th>COMMITTED DATE</th>
-                <th>{{ mObject.CommittedDate}}</th>
-                <th>RUNNER WEIGHT</th>
-                <th>{{headerSource.withRunerWeight}}</th>
+                <th style="font-size: 11px;">{{ mObject.poNo}} / {{ mObject.PoRevNo}} / {{ mObject.LineItem}}</th>
+                <th style="font-weight: 500;">COMMITTED DATE</th>
+                <th style="font-size: 11px;">{{ mObject.CommittedDate}}</th>
+                <th style="font-weight: 500;">RUNNER WEIGHT</th>
+                <th style="font-size: 11px;">{{headerSource.withRunerWeight}}</th>
             </tr>
             <tr>
-                <th>DRAWING NUMBER</th>
-                <th style="font-size: 15px;">{{headerSource.partNum}}</th>
-                <th>PURCHASE ORDER DATE</th>
-                <th style="font-size: 15px;">{{mObject.createdAt | date: 'dd/MM/yyyy'}}</th>
-                <th>MATERIAL ISSUED FROM STORE IN KG</th>
-                <th>{{headerSource.castWeight}}</th>
-                <th>FINSHED WEIGHT</th>
-                <th>{{headerSource.machineWeight}}</th>
+                <th style="font-weight: 500;">DRAWING NUMBER</th>
+                <th style="font-size: 11px;">{{headerSource.partNum}}</th>
+                <th style="font-weight: 500;">PURCHASE ORDER DATE</th>
+                <th style="font-size: 11px;">{{mObject.poDate | date: 'dd/MM/yyyy'}}</th>
+                <th style="font-weight: 500;">MATERIAL ISSUED FROM STORE IN KG</th>
+                <th style="font-size: 11px;">{{headerSource.castWeight}}</th>
+                <th style="font-weight: 500;">FINSHED WEIGHT</th>
+                <th style="font-size: 11px;">{{headerSource.machineWeight}}</th>
             </tr>
             <tr>
-                <th>PART NAME </th>
-                <th style="font-size: 15px;">{{headerSource.partName | uppercase}}</th>
-                <th>MATERIAL SPECIFICATION
-                </th>
-                <th style="font-size: 15px;">{{headerSource.materialSpec}}</th>
-                <th>BATCH QTY</th>
-                <th style="font-size: 15px;">{{routeObj.qty}}</th>
-                <th>REMAINING QTY</th>
-                <th style="font-size: 15px;">{{mObject.remainingQty}}</th>
+                <th style="font-weight: 500;">PART NAME </th>
+                <th style="font-size: 11px;">{{headerSource.partName | uppercase}}</th>
+                <th style="font-weight: 500;">MATERIAL SPECIFICATION</th>
+                <th style="font-size: 11px;">{{headerSource.materialSpec}}</th>
+                <th style="font-weight: 500;">BATCH QTY</th>
+                <th style="font-size: 11px;">{{routeObj.qty}}</th>
+                <th style="font-weight: 500;">REMAINING QTY</th>
+                <th style="font-size: 11px;">{{mObject.remainingQty}}</th>
             </tr>
 
 
         </table>
+
+      
 
         <!-- <table style="font-size: 12px; width: 100%;">
              
@@ -355,24 +356,24 @@
 
 
         </table> -->
-        <table style="width:100%;font-size: 60%;text-align: left;">
-            <tr>
+        <table  style="width:100%;font-size: 60%;text-align: left;">
+            <tr class="test">
                 <th>OPNo</th>
                 <th>PROCESS FLOW SEQUENCE</th>
                 <th>Work Center</th>
-                <th>START DATE</th>
-                <th>PRODUCED QTY</th>
-                <th>ACCEPTED QTY</th>
+                <th>STARTING DATE</th>
+                <th>PROD QTY</th>
+                <th>ACCEPT QTY</th>
                 <th>REWORK QTY</th>
-                <th>REJECTION QTY</th>
-                <th>END DATE</th>
+                <th>REJEC QTY</th>
+                <th>ENDING DATE</th>
                 <th>OPERATOR SIGN</th>
                 <th>SUPERVISOR SIGN</th>
                 <th>QUALITY SIGN</th>
                 <th>REMARKS</th>
             </tr>
 
-            <tr *ngFor="let element of dataSource; let rIndex = index;">
+            <tr class="test" *ngFor="let element of dataSource; let rIndex = index;">
                 <th>{{element.opnNo}}</th>
                 <th>{{element.opnName | uppercase}}</th>
                 <th> {{element.workCenter | uppercase}}</th>
