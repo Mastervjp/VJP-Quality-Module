@@ -1,12 +1,15 @@
-
 <div class="container">
 
+
+  <div id="trial">
+
+  </div>
   <div id="componentID">
 
 
-    <table class="invoice" style="width:100%;">
+    <table id="invoice" class="invoice" style="width:100%;">
       <tr>
-        <th colspan="1" rowspan="2" style="text-align: center;"><img  src="assets/vjp2.png" height="30" ></th>
+        <th colspan="1" rowspan="2" style="text-align: center;"><img src="assets/vjp2.png" height="30"></th>
         <th colspan="4" style="text-align: center;">QUALITY PLAN - INPROCESS INSPECTION</th>
         <td>Drawing Code</td>
         <th>{{drgObject.id}}</th>
@@ -26,9 +29,9 @@
         <th>{{drgObject.revNo1}}</th>
         <td>Operation No</td>
         <th>{{psObject.opnNo}}</th>
-        
-        
-        
+
+
+
 
       </tr>
 
@@ -49,8 +52,8 @@
 
       </tr>
       <tr>
-        
-        
+
+
         <td>Route Card Number</td>
         <th>{{routeObj.cardNo}}</th>
         <td>Material Weight</td>
@@ -62,19 +65,19 @@
         
       </tr>
 
-      
+
       <tr>
-        
+
         <td>Casting Tolerance</td>
         <th colspan="1">{{drgObject.castingToleranceStandard  | uppercase}}</th>
         <td>MC Tolerance</td>
         <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
         <td>P O Number</td>
         <th>{{marketData.poNo}}</th>
-        <td colspan="2">Inspection Date</td>
-                <th colspan="1"></th>
-       
-    </tr>
+        <td>Inspection Date</td>
+        <th colspan="2"></th>
+
+      </tr>
     </table>
 
 
@@ -84,14 +87,13 @@
 
     <ng-container *ngFor="let item of value_expression ; let i=index;">
       <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;padding: 5px;">
-        <ng-container style="width: 100%; background-color: black;" *ngIf="item.name == '100' ">
-          FREQUENCY 100 %
-        </ng-container>
-
         
-
+         
+            <ng-container  *ngIf="item.name == '100' ">
+              <div style="box-shadow: inset 0 0 0 1000px black;color: white;"> Frequency 100 %</div></ng-container>
+         
       </table>
-      
+
 
       <ng-container *ngIf='isHundred(item.name) ; else newDeb1'>
 
@@ -109,7 +111,8 @@
 
 
                   <ng-container *ngIf="col1 == 'instrument'; else noImg">
-                    <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}" style="width: 100px;height: 30px;">
+                    <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                      style="width: 100px;height: 30px;">
                     <!-- {{subItem.Instrument.insImage}} -->
 
 
@@ -140,54 +143,144 @@
 
     </ng-container>
 
-
     <ng-container *ngFor="let item of value_expression ; let i=index;">
 
-      <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive" style="text-align: left;">
+      <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
+        style="text-align: left;">
         <ng-container style="width: 100%;" *ngIf="item.name != '100' ">
-          <b>FREQUENCY 1/</b> {{item.name}}
+
+          <div class="page-break"></div>
+          <table class="invoice" style="width:100%;">
+            <tr>
+              <th colspan="1" rowspan="2" style="text-align: center;"><img src="assets/vjp2.png" height="30"></th>
+              <th colspan="4" style="text-align: center;">QUALITY PLAN - INPROCESS INSPECTION</th>
+              <td>Drawing code</td>
+              <th>{{drgObject.id}}</th>
+              <td>Part Name</td>
+              <th colspan="2">{{drgObject.partName}}</th>
+
+
+
+            </tr>
+
+            <tr>
+              <td>Casting Drawing No/Rev</td>
+              <th>{{drgObject.partNum}}</th>
+              <th>{{drgObject.revNo}}</th>
+              <td>Machining Drawing No/Rev</td>
+              <th>{{drgObject.partNum1}}</th>
+              <th>{{drgObject.revNo1}}</th>
+              <td>Operation No.</td>
+              <th>{{psObject.opnNo}}</th>
+
+
+
+
+            </tr>
+
+            <tr>
+              <td>Operation Description</td>
+              <th>{{psObject.description}}</th>
+              <td>Work Center</td>
+              <th>{{psObject.workCenter}}</th>
+              <td>Process Plan No</td>
+              <th>{{qpaObject.pfNo}}</th>
+              <td>Quality Plan No</td>
+              <th colspan="2">{{qpaObject.qpNo}}</th>
+
+
+
+
+
+
+            </tr>
+            <tr>
+
+
+              <td>Route Card Number</td>
+              <th>{{routeObj.cardNo}}</th>
+              <td>Material Weight</td>
+              <th>{{drgObject.materialWeight}}</th>
+              <td>Material Grade</td>
+              <th colspan="1">{{drgObject.materialGrade}}</th>
+              <td>Batch Quantity</td>
+              <th colspan="2">{{routeObj.qty}}</th>
+
+            </tr>
+
+
+            <tr>
+
+              <td>Casting Tolerance</td>
+              <th colspan="1">{{drgObject.castingToleranceStandard}}</th>
+              <td>Machining Tolerance</td>
+              <th colspan="1">{{drgObject. machiningToleranceStandard}}</th>
+              <td>Purchase Order Number</td>
+              <th>{{marketData.poNo}}</th>
+              <td>Inspection Date</td>
+              <th colspan="2"></th>
+
+            </tr>
+          </table><br>
+
+          <div class="bgc-color" style="box-shadow: inset 0 0 0 100px black;color: white;">
+            <b>Frequency 1/</b> {{item.name}}
+          </div>
+
         </ng-container>
 
-        
+
 
       </table>
-      
+
 
       <ng-container *ngIf='isNumber(item.name) && item.name != 100  ; else newDeb1'>
-        
+
 
         <div style="width:100%">
-          <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]">
-            <thead>
-              <tr>
-                <th *ngFor="let col of item.headers2[val]" style="width: 41px; height: 30px ;text-align: center;">
-                  {{ col }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let subItem of item.subdata; let j = index">
-                <td *ngFor="let col1 of item.headers1[val]">
 
-
-                  <ng-container *ngIf="col1 == 'instrument'; else noImg">
-                    <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}" style="width: 100px;height: 30px;">
-                  </ng-container>
-
-                  <ng-template #noImg>
-                    {{subItem[col1]}}
-                  </ng-template>
+          <ng-container *ngFor="let val of item.headers3[0]">
 
 
 
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <table class="bk fixed my-4">
+              <thead>
+                <tr>
+                  <th *ngFor="let col of item.headers2[val]" style="width: 41px; height: 30px ;text-align: center;">
+                    {{ col }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let subItem of item.subdata; let j = index">
+                  <td *ngFor="let col1 of item.headers1[val]">
+
+
+                    <ng-container *ngIf="col1 == 'instrument'; else noImg">
+                      <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                        style="width: 100px;height: 30px;">
+                    </ng-container>
+
+                    <ng-template #noImg>
+                      {{subItem[col1]}}
+                    </ng-template>
+
+
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </ng-container>
+
+
 
         </div>
 
 
       </ng-container>
+
+
 
       <ng-template #newDeb1>
 
@@ -200,14 +293,15 @@
           <tbody>
             <tr *ngFor="let subItem of item.subdata; let j = index">
               <td *ngFor="let col1 of item.headers1">
-                
-                <ng-container *ngIf="col1 == 'instrument'; else noImg">
-                    <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}" style="width: 100px;height: 30px;">
-                  </ng-container>
 
-                  <ng-template #noImg>
-                    {{subItem[col1]}}
-                  </ng-template>
+                <ng-container *ngIf="col1 == 'instrument'; else noImg">
+                  <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                    style="width: 100px;height: 30px;">
+                </ng-container>
+
+                <ng-template #noImg>
+                  {{subItem[col1]}}
+                </ng-template>
 
 
               </td>
