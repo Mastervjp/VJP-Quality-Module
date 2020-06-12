@@ -66,7 +66,7 @@ export class MarketCardComponent implements OnInit {
     
     th,
     td {
-        padding: 9px;
+        padding: 5px;
     }
     table {
       width: 100%;

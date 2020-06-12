@@ -5,7 +5,7 @@
         <table style="width:100%">
             <tr>
                 <th colspan="1" rowspan="2" style="text-align: center;"><img  src="assets/vjp2.png" height="30" ></th>
-                <th colspan="4" style="text-align: center;">QUALITY PLAN - INPROCESS INSPECTION</th>
+                <th colspan="4" style="text-align: center;">QUALITY PLAN - FIRSTPART INSPECTION</th>
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
                 <td>Part Name</td>
@@ -64,9 +64,9 @@
               <tr>
                 
                 <td>Casting Tolerance</td>
-                <th colspan="1">{{drgObject.castingToleranceStandard}}</th>
+                <th colspan="1">{{drgObject.castingToleranceStandard | uppercase}}</th>
                 <td>Machining Tolerance</td>
-                <th colspan="1">{{drgObject. machiningToleranceStandard}}</th>
+                <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
                 <td>Purchase Order Number</td>
                 <th>{{marketData.poNo}}</th>
                 <td>Inspection Date</td>
@@ -200,13 +200,15 @@
                 </table>
             </div>
 
-            <div class="col-md-12 text-center p-4">
-                <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print
-                </button>
-            </div>
+           
 
         </div>
 
 
     </div>
+</div>
+
+<div class="col-md-12 text-center p-4">
+    <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary" >Print
+    </button>
 </div>
