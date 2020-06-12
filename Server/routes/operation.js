@@ -456,7 +456,7 @@ router.put('/:id', (req, res) => {
                 console.log("fileuploadsResult", fileuploadsResult4)
             })
 
-            var temp4 = Operation.update({ image3: newfilename3 }, { where: { id: req.params.id } });
+            var temp4 = Operation.update({ image4: newfilename4 }, { where: { id: req.params.id } });
         }
 
 
