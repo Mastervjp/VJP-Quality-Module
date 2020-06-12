@@ -399,7 +399,7 @@ router.put('/:id', (req, res) => {
     if (!fs.existsSync(checkpath)) {
         fs.mkdirSync(checkpath);
     }
-    checkpath = checkpath + '/instrument';
+    checkpath = checkpath + '/process';
     if (!fs.existsSync(checkpath)) {
         fs.mkdirSync(checkpath);
     }
