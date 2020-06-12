@@ -47,7 +47,7 @@ export class MarketCardComponent implements OnInit {
 
   printPage() {
     const printContent = document.getElementById("componentID");
-    const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+    const WindowPrt = window.open('', '', 'left=0,top=0,width=1000,height=1000,toolbar=0,scrollbars=0,status=0');
     WindowPrt.document.write(printContent.innerHTML);
     WindowPrt.document.write(`<style>   
     table,
@@ -55,40 +55,39 @@ export class MarketCardComponent implements OnInit {
     th {
         border: 1px solid BLACK;
         text-align: left;
-        height: 100%;
         font-size: 10px;
+        padding:2px;
     }
-    
+
     table {
         border-collapse: collapse;
         font-size: 10px;
     }
-    
-    th,
-    td {
-        padding: 9px;
+    td,
+    th{
+      padding:2px;
     }
     table {
       width: 100%;
   }
 
   @page {
-    margin: 2cm;
+    margin: 1cm;
   }
   
   /* target the first page only */
   @page :first {
-    margin-top: 2cm;
+    margin-top: 1cm;
   }
   
   /* target left (even-numbered) pages only */
   // @page :left {
-  //   margin-right: 4cm;
-  // }
+  //   margin-right: 1cm;
+  //  }
   
   /* target right (odd-numbered) pages only */
   // @page :right {
-  //   margin-left: 4cm;
+  //   margin-left: 1cm;
   // }
 
   table { page-break-inside:auto }

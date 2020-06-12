@@ -47,19 +47,19 @@ export class FirstpartPrintComponent implements OnInit {
     border-spacing: 0;
     border-color: #ccc;
 }
- table, th, td {
+ table, th, td, tr {
         border: 1px solid black;
         border-collapse: collapse;
       }
-      th, td {
-        padding: 5px;
+      th, td, tr {
+        
         text-align: left;
       }
 
 .tg td {
     
     font-size: 10px;
-    padding: 10px 5px;
+    // padding: 10px 5px;
     border-style: solid;
     border-width: 1px;
     overflow: hidden;
@@ -74,7 +74,7 @@ export class FirstpartPrintComponent implements OnInit {
     font-family: Arial, sans-serif;
     font-size: 10px;
     font-weight: normal;
-    padding: 10px 5px;
+    // padding: 10px 5px;
     border-style: solid;
     border-width: 1px;
     overflow: hidden;
