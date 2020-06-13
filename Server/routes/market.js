@@ -126,6 +126,7 @@ router.post('/card', (req, res) => {
                         let a = countres+1;
                         let temp = 'D'+req.body.drgId+'-'+mresult.poNo+'-'+a;
                         req.body.cardNo = temp;
+                        req.body.rQty = remainingQty;
                         MarketCard.create(req.body).then(function (result) {
                             sendSuccess(res, result)
                         })
