@@ -16,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER(20),
             field: 'qty'
         },
+        rQty: {
+            type: DataTypes.INTEGER(20),
+            field: 'r_qty'
+        },
         mpId :{
             type: DataTypes.INTEGER(20).UNSIGNED,
             field: 'mp_id'
