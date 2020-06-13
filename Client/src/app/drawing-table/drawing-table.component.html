@@ -1,8 +1,7 @@
 <app-navbar2>
   <h3 style="margin-left: 10%;"> Drawing&nbsp;Code</h3>
-  
-  
 
+   
 </app-navbar2>
 
 
@@ -30,11 +29,13 @@
           <mat-icon>add</mat-icon>
         </button> -->
       </div>
-    
+          <form class="in">
+            <input style="float: right;" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
+           </form>
+           
       <div class="p-5">
     
-    
-    
+           
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource">
     
