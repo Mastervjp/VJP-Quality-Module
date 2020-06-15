@@ -71,7 +71,7 @@
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Instrument</mat-label>
                 <mat-select formControlName="instrument">
-                    <mat-option *ngFor="let ins of instrumentList" [value]="ins">
+                    <mat-option *ngFor="let ins of instrumentList" [value]="ins.name">
                         {{ins.name}}
                     </mat-option>
 

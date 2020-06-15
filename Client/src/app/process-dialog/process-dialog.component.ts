@@ -48,14 +48,14 @@ export class ProcessDialogComponent {
         // toloreanceGrade: _data.data.toloreanceGrade,
         tolFrom: _data.data.tolFrom,
         tolTo: _data.data.tolTo,
-        baloonNo:_data.data.baloonNo,
+        baloonNo: _data.data.baloonNo,
         instrument: _data.data.instrument,
         measuringFrequency: _data.data.measuringFrequency,
         firstPartInspection: _data.data.firstPartInspection,
         periodicInspection: _data.data.periodicInspection,
         ctq: _data.data.ctq,
-        pdi:_data.data.pdi,
-        cfir:_data.data.cfir,
+        pdi: _data.data.pdi,
+        cfir: _data.data.cfir,
       });
     }
     else {
@@ -80,11 +80,14 @@ export class ProcessDialogComponent {
     step1.type = myItem3;
     step1.opnName = localStorage.getItem('opnName');
 
-    let a = step1.instrument;
+   
+    let tempdata = this.instrumentList;
 
-    step1.instrument = a.name;
-
-    step1.insId = a.id;
+    for (var k in tempdata) {
+      if (tempdata[k].name == step1.instrument) {
+        step1.insId = tempdata[k].id;
+      }
+    }
 
     if (this.type == 'altpro') {
       step1.altProcess = 1;
@@ -93,7 +96,7 @@ export class ProcessDialogComponent {
       step1.addKind = 1;
     }
 
-    
+
 
     this._process.addProcess(step1).subscribe((res: any) => {
       if (res.success) {
@@ -122,12 +125,16 @@ export class ProcessDialogComponent {
 
     let step1 = this.contactForm.getRawValue();
 
-    let a = step1.instrument;
+    let tempdata = this.instrumentList;
 
-    step1.instrument = a.name;
+    for (var k in tempdata) {
+      if (tempdata[k].name == step1.instrument) {
+        step1.insId = tempdata[k].id;
+      }
+    }
 
-    step1.insId = a.id;
-
+    step1
+    debugger;
     this._process.updateProcess(editId, step1).subscribe((res: any) => {
       if (res.success) {
         this.matDialogRef.close(true);
@@ -185,7 +192,7 @@ export class ProcessDialogComponent {
     periodicInspection: [],
     ctq: [],
     pdi: [],
-    cfir:[],
+    cfir: [],
   });
 
 
