@@ -243,7 +243,7 @@ export class PeriodicComponent implements OnInit {
 
             b.name = parseInt(key);
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
             let i = 1;
             let headers2 = [];
             while (i <= this.d_batch_qty) {
@@ -256,7 +256,7 @@ export class PeriodicComponent implements OnInit {
             let ie, j, temparray, chunk = 13;
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
-              let Theaders = ["S.No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
               let Theaders1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers2.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
@@ -277,20 +277,20 @@ export class PeriodicComponent implements OnInit {
 
             b.name = key;
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
             b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","Instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
             b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
 
             b.name = key;
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument","1", "2", "3"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax", "Instrument","1", "2", "3"]
             b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3"]
 
           }
@@ -298,7 +298,7 @@ export class PeriodicComponent implements OnInit {
           else if(key == "HEAT NUMBER PER LOT"){
             b.name = key;
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
             b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3"]
 
           }
@@ -306,7 +306,7 @@ export class PeriodicComponent implements OnInit {
           else if(key == "HOUR"){
             b.name = key;
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
             b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
 
           }
@@ -315,7 +315,7 @@ export class PeriodicComponent implements OnInit {
           else if(key == "MELTING CHARGE"){
             b.name = key;
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
             b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3"]
 
           }
@@ -325,7 +325,7 @@ export class PeriodicComponent implements OnInit {
           else if(key == "HEAT TREAMENT BATCH"){
             b.name = key;
 
-            b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
+            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
             b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","Instrument", "1", "2", "3"]
 
           }
@@ -341,7 +341,7 @@ export class PeriodicComponent implements OnInit {
 
             b.name = parseInt(key);
 
-            // b.headers = ["S.No", "Description", "Specification", "Tolmin", "Tolmax"]
+            // b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax"]
             // b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo"]
 
             let headers1 = []
@@ -379,7 +379,7 @@ export class PeriodicComponent implements OnInit {
 
 
             for (ie = 0; ie < headers1.length; ie += chunk) {
-              let Theaders = ["S.No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
               let Theaders1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument"]
 
               temparray = headers1.slice(ie, ie + chunk);
