@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
         this._auth.login(data).subscribe((res: any) => {
 
             if (res.success) {
+
+              localStorage.setItem('email', data.email);
+
                 // this.snackBar.open(res.message, "", {
                 //     duration: 3000,
                 //     horizontalPosition: 'end',

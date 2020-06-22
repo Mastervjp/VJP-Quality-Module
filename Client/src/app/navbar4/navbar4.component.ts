@@ -12,16 +12,19 @@ import { MatSnackBar } from '@angular/material';
 })
 export class Navbar4Component implements OnInit {
 
-  constructor(private router: Router,public dialog: MatDialog, private _matDialog: MatDialog, public snackBar: MatSnackBar) { }
+  constructor(private router: Router, public dialog: MatDialog, private _matDialog: MatDialog, public snackBar: MatSnackBar) { }
 
-
+  email: any;
   qty: any;
   dialogRef: any;
   confirmDialogRef: any;
-  
+
   taphide = 0;
 
   ngOnInit(): void {
+
+    this.email = localStorage.getItem('email');
+
   }
   Logout() {
     localStorage.clear();
@@ -29,7 +32,7 @@ export class Navbar4Component implements OnInit {
 
   }
 
-  
+
   openDialog(): void {
     let dialogRef = this.dialog.open(BatchquantityComponent, {
       width: '250px',
@@ -43,7 +46,7 @@ export class Navbar4Component implements OnInit {
       }
     });
   }
-  
+
 }
 
 

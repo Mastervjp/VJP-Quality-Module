@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class Navbar5Component implements OnInit {
 
+  email:any;
   constructor(private router: Router,) { }
 
   ngOnInit(): void {
+    this.email = localStorage.getItem('email');
+
   }
 
   Logout() {
