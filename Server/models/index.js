@@ -43,8 +43,8 @@ models.SpecialProcess = sequelize.import('./specialprocess')
 // models.MeasuringFrequency.sync({});
 // models.OperationList.sync({});
 // models.PlanAbstract.sync({});
-models.MarketPurchase.sync({});
-models.MarketCard.sync({});
+// models.MarketPurchase.sync({});
+// models.MarketCard.sync({});
 
 
 // models.Material.sync({});

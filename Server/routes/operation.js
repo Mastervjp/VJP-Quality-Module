@@ -553,7 +553,92 @@ router.post('/copy', (req, res) => {
 
                     })
                     if (cres) {
-                        sendSuccess(res, cres);
+
+
+
+                        PlanAbstract.findOne({ where: { drgId: req.body.drgid } }).then(function (resp1) {
+
+                            if (resp1) {
+                                sendSuccess(res, resp1);
+                            }
+                            else {
+
+                                Drawing.findOne({ where: { id: req.body.drgid } }).then(function (dres) {
+
+                                    var newpfNo = '';
+
+                                    var newqpNo = '';
+
+
+                                    let code = dres.id;
+
+                                    var n = code.toString().length
+
+                                    if (n == 1) {
+                                        newpfNo = "PP 000000" + code + "-10A"
+
+                                        newqpNo  = "QP 000000" + code + "-10AA"
+
+                                    }
+                                    else if (n == 2) {
+                                        newpfNo = "PP 00000" + code + "-10A"
+
+                                        newqpNo = "QP 00000" + code + "-10AA"
+
+                                    }
+                                    else if (n == 3) {
+                                        newpfNo = "PP 0000" + code + "-10A"
+
+                                        newqpNo = "QP 0000" + code + "-10AA"
+
+                                    }
+                                    else if (n == 4) {
+                                        newpfNo = "PP 000" + code + "-10A"
+
+                                        newqpNo = "QP 000" + code + "-10AA"
+
+                                    }
+                                    else if (n == 5) {
+                                        newpfNo = "PP 00" + code + "-10A"
+
+                                        newqpNo = "QP 00" + code + "-10AA"
+
+                                    }
+                                    else if (n == 6) {
+                                        newpfNo = "PP 0" + code + "-10A"
+
+                                        newqpNo = "QP 0" + code + "-10AA"
+
+                                    }
+                                    else {
+                                        newpfNo = "PP " + code + "-10A"
+
+                                        newqpNo = "QP " + code + "-10AA"
+
+                                    }
+
+
+                                    var mydata = {
+                                        "drgId": req.body.drgid,
+                                        "pfNo": newpfNo,
+                                        "qpNo":newqpNo
+                                    }
+                                    PlanAbstract.create(mydata).then(function (paResult) {
+                                        sendSuccess(res, paResult);
+                                    }).catch(function (err) {
+                                        console.log(err);
+                                        sendError(res, err);
+                                    })
+
+
+                                })
+
+                            }
+
+                        })
+
+
+
 
                     }
 
