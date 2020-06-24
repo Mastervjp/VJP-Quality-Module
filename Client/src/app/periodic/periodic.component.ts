@@ -176,6 +176,50 @@ export class PeriodicComponent implements OnInit {
      .bk th:nth-child(5){
        width: 100px !important;
      }
+     .bk th:nth-child(6){
+      width: 150px !important;
+    }
+
+
+    .fp th:first-child {
+      width: 50px !important;
+    }
+    
+    .fp th:nth-child(2) {
+      width: 150px !important;
+    }
+    
+    .fp th:nth-child(3) {
+      width: 100px !important;
+    }
+    
+    .fp th:nth-child(4) {
+      width: 100px !important;
+    }
+    
+    .fp th:nth-child(5) {
+      width: 100px !important;
+    }
+    
+    .fp th:nth-child(6) {
+      width: 150px !important;
+    }
+    
+    
+    .fp th:nth-child(7) {
+      width: 153px !important;
+    }.fp th:nth-child(8) {
+      width: 153px !important;
+    }.fp th:nth-child(9) {
+      width: 153px !important;
+    }
+
+    .fp th,td{  
+      text-align: left;
+    
+    } 
+
+
      
      .bk th,td{  
        text-align: left;
