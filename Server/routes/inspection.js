@@ -59,7 +59,7 @@ function sendSuccess1(res, result, msg) {
 
 router.get('/fpi/:drgCode/:opnId', (req, res) => {
     return new Promise((resolve, reject) => {
-        Process.findAll({ where: { drgId: req.params.drgCode, opnId : req.params.opnId },include: [Instrument] }).then(function (result) {
+        Process.findAll({ where: { drgId: req.params.drgCode, opnId : req.params.opnId, deleteStatus : false },include: [Instrument] }).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
