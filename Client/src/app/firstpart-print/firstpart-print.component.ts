@@ -68,7 +68,7 @@ export class FirstpartPrintComponent implements OnInit {
     border-color: #ccc;
     color: #333;
     background-color: #fff;
-    text-align: center;
+    text-align: left;
 }
 
 .tg th {
@@ -98,7 +98,8 @@ export class FirstpartPrintComponent implements OnInit {
 .tg .tg-y0n7 {
     background-color: #efefef;
     text-align: center;
-    vertical-align: middle
+    vertical-align: middle;
+    width:10%
 }
 
 .tg .tg-t31z {
