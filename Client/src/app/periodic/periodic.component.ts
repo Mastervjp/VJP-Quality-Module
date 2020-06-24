@@ -278,20 +278,20 @@ export class PeriodicComponent implements OnInit {
             b.name = key;
 
             b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","Instrument", "1"]
+            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
 
             b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1"]
+            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
 
             b.name = key;
 
             b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax", "Instrument","1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3"]
+            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
@@ -299,7 +299,7 @@ export class PeriodicComponent implements OnInit {
             b.name = key;
 
             b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3"]
+            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
@@ -307,7 +307,7 @@ export class PeriodicComponent implements OnInit {
             b.name = key;
 
             b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
 
           }
 
@@ -316,7 +316,7 @@ export class PeriodicComponent implements OnInit {
             b.name = key;
 
             b.headers = ["S/N", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "Instrument","1", "2", "3"]
+            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
@@ -326,7 +326,7 @@ export class PeriodicComponent implements OnInit {
             b.name = key;
 
             b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","Instrument", "1", "2", "3"]
+            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
 
           }
 
