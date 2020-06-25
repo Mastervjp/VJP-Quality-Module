@@ -304,7 +304,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-red': row.unlockStatus =='0' }">
             </tr>
           </table>
-          <mat-paginator #myPaginator [pageSizeOptions]="[50, 75, 100]"></mat-paginator>
+          <mat-paginator #myPaginator [pageSizeOptions]="[200,400,600]"></mat-paginator>
+          
         </div>
       </div>
     
