@@ -300,7 +300,7 @@ export class PeriodicComponent implements OnInit {
               i++;
             }
 
-            let ie, j, temparray, chunk = 5;
+            let ie, j, temparray, chunk = 10;
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
               let Theaders = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
@@ -422,7 +422,7 @@ export class PeriodicComponent implements OnInit {
 
 
 
-            let ie, j, temparray, chunk = 5;
+            let ie, j, temparray, chunk = 10;
 
 
             for (ie = 0; ie < headers1.length; ie += chunk) {
