@@ -91,7 +91,7 @@ export class FirstpartPrintComponent implements OnInit {
 }
 
 .tg .tg-nrix {
-    text-align: center;
+    text-align: left;
     vertical-align: middle
 }
 
@@ -114,7 +114,7 @@ export class FirstpartPrintComponent implements OnInit {
     vertical-align: top
 }
 td{
-    text-align: center;
+    text-align: left;
 } </style>`);
 
 setTimeout(function() {
