@@ -37,7 +37,7 @@
 
       <tr>
         <td>Operation Description</td>
-        <th>{{psObject.description}}</th>
+        <th>{{psObject.description | uppercase}}  </th>
         <td>Work Center</td>
         <th>{{psObject.workCenter}}</th>
         <td>Process Plan No</td>
@@ -101,7 +101,7 @@
           <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]" style="width: 100%;" >
             <thead>
               <tr>
-                <th *ngFor="let col of item.headers2[val]" style="width: 5%; height: 30px ;text-align: left;">
+                <th *ngFor="let col of item.headers2[val]" style="width: 6%; height: 30px ;text-align: left;">
                   {{ col }}</th>
               </tr>
             </thead>
@@ -173,7 +173,7 @@
             <table class="bk fixed my-4" style="width: 100%;">
               <thead>
                 <tr>
-                  <th *ngFor="let col of item.headers2[val]" style="width:5%; height: 30px ;text-align: left;">
+                  <th *ngFor="let col of item.headers2[val]" style="width:6%; height: 30px ;text-align: left;">
                     {{ col }}</th>
                 </tr>
               </thead>
