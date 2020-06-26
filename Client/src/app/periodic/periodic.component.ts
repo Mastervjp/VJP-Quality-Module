@@ -149,8 +149,8 @@ export class PeriodicComponent implements OnInit {
     table, th, td {
       border: 1px solid black;
       font-size:10px;
-      text-align: left;
-      
+      text-align: left !important;
+      padding:2px;
     }
    
     .my-4{
@@ -166,17 +166,14 @@ export class PeriodicComponent implements OnInit {
      }
      
      .bk th:nth-child(2){
-       width: 150px !important;
-      
+       width: 100px !important;
      }
      .bk th:nth-child(3){
-       width: 100px !important;
-      
+       width: 75px !important;
      }
      
      .bk th:nth-child(4){
-       width: 100px !important;
-      
+       width: 75px !important;
      }
      
      .bk th:nth-child(5){
@@ -184,8 +181,10 @@ export class PeriodicComponent implements OnInit {
       
      }
      .bk th:nth-child(6){
-      width: 150px !important;
-     
+      width: 100px !important;
+    }
+    .bk th, td {
+      width: 100px !important;
     }
 
 
@@ -314,7 +313,7 @@ export class PeriodicComponent implements OnInit {
               i++;
             }
 
-            let ie, j, temparray, chunk = 13;
+            let ie, j, temparray, chunk = 10;
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
               let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
@@ -436,7 +435,7 @@ export class PeriodicComponent implements OnInit {
 
 
 
-            let ie, j, temparray, chunk = 13;
+            let ie, j, temparray, chunk = 10;
 
 
             for (ie = 0; ie < headers1.length; ie += chunk) {
