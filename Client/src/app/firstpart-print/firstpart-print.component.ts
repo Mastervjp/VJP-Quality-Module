@@ -46,6 +46,7 @@ export class FirstpartPrintComponent implements OnInit {
     border-collapse: collapse;
     border-spacing: 0;
     border-color: #ccc;
+    text-align: left;
 }
  table, th, td, tr {
         border: 1px solid black;
@@ -91,7 +92,7 @@ export class FirstpartPrintComponent implements OnInit {
 }
 
 .tg .tg-nrix {
-    text-align: center;
+    text-align: left;
     vertical-align: middle
 }
 
@@ -113,8 +114,11 @@ export class FirstpartPrintComponent implements OnInit {
     text-align: left;
     vertical-align: top
 }
+.tg .tg-c3ow{
+  text-align: left;
+}
 td{
-    text-align: center;
+    text-align: left;
 } </style>`);
 
 setTimeout(function() {

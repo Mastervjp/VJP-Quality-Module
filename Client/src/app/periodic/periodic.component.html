@@ -37,7 +37,7 @@
 
       <tr>
         <td>Operation Description</td>
-        <th>{{psObject.description}}</th>
+        <th>{{psObject.description | uppercase}}  </th>
         <td>Work Center</td>
         <th>{{psObject.workCenter}}</th>
         <td>Process Plan No</td>
@@ -85,8 +85,8 @@
 
 
 
-    <ng-container *ngFor="let item of value_expression ; let i=index;">
-      <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;padding: 5px;">
+    <ng-container  *ngFor="let item of value_expression ; let i=index;">
+      <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;padding: 2px;">
         
          
             <ng-container  *ngIf="item.name == '100' ">
@@ -97,11 +97,11 @@
 
       <ng-container *ngIf='isHundred(item.name) ; else newDeb1'>
 
-        <div style="width:100%">
-          <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]">
+        <div>
+          <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]" style="width: 100%;" >
             <thead>
               <tr>
-                <th *ngFor="let col of item.headers2[val]" style="width: 41px; height: 30px ;text-align: center;">
+                <th *ngFor="let col of item.headers2[val]" style="width: 6%; height: 30px ;text-align: left;">
                   {{ col }}</th>
               </tr>
             </thead>
@@ -118,7 +118,7 @@
 
                   </ng-container>
 
-                  <ng-template #noImg>
+                  <ng-template #noImg style="width: 10%;">
                     {{subItem[col1]}}
                   </ng-template>
 
@@ -143,7 +143,7 @@
 
     </ng-container>
        
-    <ng-container *ngFor="let item of value_expression ; let i=index;">
+    <ng-container  *ngFor="let item of value_expression ; let i=index;">
 
       <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
         style="text-align: left;">
@@ -164,16 +164,16 @@
       <ng-container *ngIf='isNumber(item.name) && item.name != 100  ; else newDeb1'>
 
 
-        <div style="width:100%">
+        <div >
 
           <ng-container *ngFor="let val of item.headers3[0]">
 
 
 
-            <table class="bk fixed my-4">
+            <table class="bk fixed my-4" style="width: 100%;">
               <thead>
                 <tr>
-                  <th *ngFor="let col of item.headers2[val]" style="width: 41px; height: 30px ;text-align: center;">
+                  <th *ngFor="let col of item.headers2[val]" style="width:6%; height: 30px ;text-align: left;">
                     {{ col }}</th>
                 </tr>
               </thead>

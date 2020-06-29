@@ -229,7 +229,10 @@ td{
   width:10%
 
 }
-
+.tg-nee{
+  width:100;
+  font-size: 30px;
+}
 .tg .tg-t31z {
   background-color: #efefef;
   border-color: #c0c0c0;
@@ -240,6 +243,10 @@ td{
 .tg .tg-0lax {
   text-align: left;
   vertical-align: top
+}
+.tg .tg-c3ow{
+  text-align: left;
+  padding: 5px;
 }
 
 
