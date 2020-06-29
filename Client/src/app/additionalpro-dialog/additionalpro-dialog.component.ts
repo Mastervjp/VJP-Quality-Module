@@ -82,7 +82,7 @@ export class AdditionalproDialogComponent {
       if (res.success) {
         this.matDialogRef.close();
         this.contactForm.reset();
-        this.snackBar.open("Drawing Code Created Sucessfully", "", {
+        this.snackBar.open("Process Created Sucessfully", "", {
           duration: 1500,
           horizontalPosition: 'end',
           verticalPosition: 'top',
