@@ -179,6 +179,11 @@ td {
    height:25px ;
    text-align: left;
   }
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial;
+      }
   .nnew{
     width: 80px;
     height: 30px;

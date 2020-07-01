@@ -9,7 +9,7 @@
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
                 <td>Part Name</td>
-                <th colspan="2">{{drgObject.partName}}</th>
+                <th colspan="2">{{drgObject.partName | uppercase}}</th>
                 
                 
         
@@ -104,8 +104,8 @@
                             <th class="tg-nrix" rowspan="2"><b>Balloon No</b></th>
                             <th class="tg-nrix" rowspan="2"><b>Description</b> </th>
                             <th class="tg-nrix" rowspan="2"><b>Specification</b></th>
-                            <th class="tg-nrix" rowspan="2"><b>Tolmin</b></th>
-                            <th class="tg-nrix" rowspan="2"><b>Tolmax</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Min-Tol</b></th>
+                            <th class="tg-nrix" rowspan="2"><b>Max-Tol</b></th>
 
                             
                             <th class="tg-nrix" rowspan="2"><b>Instrument</b></th>
@@ -171,14 +171,14 @@
                         <col style="width: 89px">
                     </colgroup>
                     <tr>
-                        <th class="tg-cly1" colspan="4"style="width:12%;;">AC-ACCEPTED ,RW-REWORK , RJ-REJECTION,CA-CONDITIONALLY ACCEPTED</th>
+                        <th class="tg-cly1" colspan="4"style="width:12%;;">AC-ACCEPTED ,<br>RW-REWORK , <br>RJ-REJECTION,<br>CA-CONDITIONALLY ACCEPTED</th>
                         <th class="tg-cly1" colspan="4" style="width:11.5%;">Grey Shade -------&gt; Special Character</th>
-                        <th class="tg-cly1" colspan="2" style="width: 11%;">Component Status</th>
-                        <th class="tg-cly1" style="width: 9.2%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 9.5%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 9.5%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 9.3%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 9.4%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" colspan="2" style="width: 14%;">Component Status</th>
+                        <th class="tg-cly1" style="width: 8.8%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 8.9%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 8.8%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 9%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 9%;">AC/RW/RJ/CA</th>
                         <th class="tg-cly1" style="width: 40%;"></th>
                     </tr>
                     <tr>

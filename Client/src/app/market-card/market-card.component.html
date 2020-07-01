@@ -123,10 +123,10 @@
                     <th>PROCESS FLOW SEQUENCE</th>
                     <th>Work Center</th>
                     <th>STARTING DATE</th>
-                    <th>PROD QTY</th>
+                    <th>PRODUCT QTY</th>
                     <th>ACCEPT QTY</th>
                     <th>REWORK QTY</th>
-                    <th>REJEC QTY</th>
+                    <th>REJECTION QTY</th>
                     <th>ENDING DATE</th>
                     <th>OPERATOR SIGN</th>
                     <th>SUPERVISOR SIGN</th>
@@ -137,7 +137,7 @@
                 <tr class="test" *ngFor="let element of dataSource; let rIndex = index;">
                     <th>{{element.opnNo}}</th>
                     <td>{{element.opnName | uppercase}}</td>
-                    <td> {{element.workCenter | uppercase}}</td>
+                    <td style="padding:10px;"> {{element.workCenter | uppercase}}</td>
                     <th></th>
                     <th></th>
                     <th></th>

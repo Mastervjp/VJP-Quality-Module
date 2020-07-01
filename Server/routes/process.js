@@ -74,7 +74,14 @@ router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
 
         req.body.createdBy = 1;
+
+        console.log("body ===>",req.body);
+        
         PlanAbstract.findOne({where:{drgId : req.body.drgId}}).then(function (resp) {
+
+
+        console.log("\n\n \n res  ===>",resp);
+
             if(resp.qpNo){
 
                 Process.create(req.body).then(function (result) {

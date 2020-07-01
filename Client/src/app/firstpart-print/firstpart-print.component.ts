@@ -51,6 +51,11 @@ export class FirstpartPrintComponent implements OnInit {
       text-align: left;
       font-size:10px;
     }
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial;
+    }
 
 .tg .tg-cly1 {
     text-align: left;
@@ -59,14 +64,15 @@ export class FirstpartPrintComponent implements OnInit {
 
 .tg .tg-nrix {
     text-align: center;
-    vertical-align: middle
+    vertical-align: middle;
+    width:8%;
 }
 
 .tg .tg-y0n7 {
     background-color: #efefef;
     text-align: center;
     vertical-align: middle;
-    width:10%
+    width:7%
 }
 
 .tg .tg-t31z {
