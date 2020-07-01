@@ -309,7 +309,7 @@ td {
 
             b.name = parseInt(key);
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
             let i = 1;
             let headers2 = [];
             while (i <= this.d_batch_qty) {
@@ -322,7 +322,7 @@ td {
             let ie, j, temparray, chunk = 10 
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
-              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
               let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers2.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
@@ -343,20 +343,20 @@ td {
 
             b.name = key;
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument", "1"]
             b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1"]
             b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
 
             b.name = key;
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument","1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument","1", "2", "3"]
             b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
@@ -364,7 +364,7 @@ td {
           else if(key == "HEAT NUMBER PER LOT"){
             b.name = key;
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1", "2", "3"]
             b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
@@ -372,7 +372,7 @@ td {
           else if(key == "HOUR"){
             b.name = key;
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
             b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
 
           }
@@ -381,7 +381,7 @@ td {
           else if(key == "MELTING CHARGE"){
             b.name = key;
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol","Instrument", "Max-Tol", "1", "2", "3"]
             b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
@@ -391,7 +391,7 @@ td {
           else if(key == "HEAT TREAMENT BATCH"){
             b.name = key;
 
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3"]
             b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
 
           }
@@ -407,7 +407,7 @@ td {
 
             b.name = parseInt(key);
 
-            // b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax"]
+            // b.headers = ["S/N", "Description", "Specification", "Min-Tol", "Max-Tol"]
             // b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo"]
 
             let headers1 = []
@@ -445,7 +445,7 @@ td {
 
 
             for (ie = 0; ie < headers1.length; ie += chunk) {
-              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
               let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
 
               temparray = headers1.slice(ie, ie + chunk);
