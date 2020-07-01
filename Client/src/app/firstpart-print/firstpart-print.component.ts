@@ -74,7 +74,7 @@ export class FirstpartPrintComponent implements OnInit {
     background-color: #efefef;
     text-align: center;
     vertical-align: middle;
-    width:10%
+    width:8%
 }
 
 .tg .tg-t31z {
