@@ -125,34 +125,11 @@ export class PeriodicComponent implements OnInit {
 
 
     const printContent = document.getElementById("componentID");
-    const WindowPrt = window.open('', '', 'left=0,top=0,toolbar=0,scrollbars=0,status=0');
+    const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
     WindowPrt.document.write(printContent.innerHTML);
     WindowPrt.document.write(`<style>
-    
-.testcol{
-  color:white;
-  background-color: black;
 
-}
-
-   th {
-			background-color: #DDDDDD;
-			white-space: nowrap;
-		}
-
-    table {
-      width:100%
-      overflow:hidden;
-      border-collapse: collapse;
-    }
-    
-    table, th, td {
-      border: 1px solid black;
-      font-size:10px;
-      text-align: left !important;
-      padding:2px;
-    }
-   
+  
     .my-4{
       margin-top: 20px;
       margin-bottom : 20px;
@@ -160,96 +137,120 @@ export class PeriodicComponent implements OnInit {
     }
 
 
-    .bk th:first-child {
-      width: 50px !important;
      
-     }
      
-     .bk th:nth-child(2){
-       width: 100px !important;
-     }
-     .bk th:nth-child(3){
-       width: 75px !important;
-     }
-     
-     .bk th:nth-child(4){
-       width: 75px !important;
-     }
-     
-     .bk th:nth-child(5){
-       width: 100px !important;
-      
-     }
-     .bk th:nth-child(6){
-      width: 100px !important;
-    }
-    .bk th, td {
-      width: 100px !important;
-    }
+@media print {
+ 
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  @page {
+    size: A4 landscape;
+    max-height: 100%;
+    max-width: 100%
+  }
+
+  
+
+  
+}
 
 
-    .fp th:first-child {
-      width: 50px !important;
-     
-    }
-    
-    .fp th:nth-child(2) {
-      width: 150px !important;
-     
-    }
-    
-    .fp th:nth-child(3) {
-      width: 100px !important;
-     
-    }
-    
-    .fp th:nth-child(4) {
-      width: 100px !important;
-     
-    }
-    
-    .fp th:nth-child(5) {
-      width: 100px !important;
-     
-    }
-    
-    .fp th:nth-child(6) {
-      width: 150px !important;
-     
-    }
-    
-    
-    .fp th:nth-child(7) {
-      width: 153px !important;
-     
-    }.fp th:nth-child(8) {
-      width: 153px !important;
-     
-    }.fp th:nth-child(9) {
-      width: 153px !important;
-     
-    }
 
-    .fp th,td{  
-      text-align: left;
-    
-    } 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  font-size:10px;
+   padding: 2px; 
+  padding-left: 2px;
+  text-align:left;
+}
+.bor{
+  width:5%;
+   height:25px ;
+   text-align: left;
+  }
+  .nnew{
+    width: 80px;
+    height: 30px;
+  }
+
+.bk th:first-child {
+  width: 50px !important;
+}
+
+.bk th:nth-child(2) {
+  width: 150px !important;
+}
+
+.bk th:nth-child(3) {
+  width: 100px !important;
+}
+
+.bk th:nth-child(4) {
+  width: 100px !important;
+}
+
+.bk th:nth-child(5) {
+  width: 100px !important;
+}
+
+.bk th:nth-child(6) {
+  width: 150px !important;
+}
 
 
-     
-     .bk th,td{  
-       text-align: left;
-     
-     } 
-     
-     
+
+.fp th:first-child {
+  width: 50px !important;
+}
+
+.fp th:nth-child(2) {
+  width: 150px !important;
+}
+
+.fp th:nth-child(3) {
+  width: 100px !important;
+}
+
+.fp th:nth-child(4) {
+  width: 100px !important;
+}
+
+.fp th:nth-child(5) {
+  width: 100px !important;
+}
+
+.fp th:nth-child(6) {
+  width: 150px !important;
+}
+
+
+.fp th:nth-child(7) {
+  width: 153px !important;
+}.fp th:nth-child(8) {
+  width: 153px !important;
+}.fp th:nth-child(9) {
+  width: 153px !important;
+}
 
      @media print {
+
       .page-break	{ 
         display: block; 
         page-break-before: always; 
       }
-      
+  
+      }
     }
     
 
@@ -313,7 +314,7 @@ export class PeriodicComponent implements OnInit {
               i++;
             }
 
-            let ie, j, temparray, chunk = 10;
+            let ie, j, temparray, chunk = 10 
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
               let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
