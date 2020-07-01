@@ -7,6 +7,7 @@ import { OperationService } from '../services/operation.service';
 import { OperationDialogComponent } from '../operation-dialog/operation-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from '../services/authentication.service';
+import { CopyProcessComponent } from '../copy-process/copy-process.component';
 
 @Component({
   selector: 'app-alt-process-plan',
@@ -72,8 +73,38 @@ export class AltProcessPlanComponent implements OnInit {
     this.router.navigate(['/inspection']);
   }
 
+  showcopy(){
+
+    this.dialogRef = this._matDialog.open(CopyProcessComponent, {
+      width: '1200px',
+      panelClass: 'contact-form-dialog',
+      data: {
+        action: 'new',
+        type :'altpro'
+      }
+    })
+
+    this.dialogRef.afterClosed().subscribe(result => {
+
+      if(result){
+
+        this.snackBar.open("Process Copied Sucessfully", "", {
+          duration: 1500,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: 'successsnackbarclass'
+        });
+
+      }
+      
+      this.getoperation();
+
+    });
+
+  }
 
 
+  
   createDrawing() {
 
 

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { DrawingService } from '../services/drawing.service';
 import { OperationService } from '../services/operation.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -19,6 +20,9 @@ export class OperationDialogComponent {
   workData: any;
   Oplist: any;
   type: any;
+
+
+  private IMG_URL = environment.IMG_URL;
 
   url1: any = "assets/product-image-placeholder.png";
   url2: any = "assets/product-image-placeholder.png";
@@ -76,6 +80,12 @@ export class OperationDialogComponent {
         uploadImage3: _data.data.image3,
         uploadImage4: _data.data.image4,
       });
+
+      this.url1 = this.IMG_URL+'/'+_data.data.image1
+      this.url2 = this.IMG_URL+'/'+_data.data.image2
+      this.url3 = this.IMG_URL+'/'+_data.data.image3
+      this.url4 = this.IMG_URL+'/'+_data.data.image4
+
     }
     else {
       this.dialogTitle = 'Add Process';
