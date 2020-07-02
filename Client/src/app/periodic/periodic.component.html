@@ -107,6 +107,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let subItem of item.subdata; let j = index"  class="bor">
+                <td style="width: 10px !important;"> {{j+1}}</td>
+
                 <td *ngFor="let col1 of item.headers1[val]"  class="bor">
 
 
@@ -179,6 +181,8 @@
               </thead>
               <tbody >
                 <tr *ngFor="let subItem of item.subdata; let j = index"  class="bor">
+
+                  <td style="width: 10px !important;"> {{j+1}}</td>
                   <td *ngFor="let col1 of item.headers1[val]"  class="bor">
 
 
@@ -219,6 +223,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let subItem of item.subdata; let j = index" class="bor">
+              <td style="width: 10px !important;"> {{j+1}}</td>
+
               <td *ngFor="let col1 of item.headers1"  class="bor">
 
                 <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">

@@ -1,18 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-periodic',
-//   templateUrl: './periodic.component.html',
-//   styleUrls: ['./periodic.component.css']
-// })
-// export class PeriodicComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 import { Component, OnInit, ViewChild, destroyPlatform } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -98,32 +83,6 @@ export class PeriodicComponent implements OnInit {
   
 
   printPage() {
-
-    // let printContents, popupWin;
-    // printContents = document.getElementById('test').innerHTML;
-    // popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
-    // popupWin.document.open();
-    // popupWin.document.write(`
-    //   <html>
-    //     <head>
-    //       <title>Print tab</title>
-    //       <style>
-    //       @media print
-    //       {
-    //         table { page-break-after:auto }
-    //         tr    { page-break-inside:auto; page-break-after:auto }
-    //         td    { page-break-inside:auto; page-break-after:auto }
-    //         thead { display:table-header-group }
-    //         tfoot { display:table-footer-group }
-    //       }
-    //       </style>
-    //     </head>
-    // <body onload="window.print();window.close()">${printContents}</body>
-    //   </html>`
-    // );
-    // popupWin.document.close();
-
-
     const printContent = document.getElementById("componentID");
     const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
     WindowPrt.document.write(printContent.innerHTML);
@@ -323,7 +282,7 @@ td {
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
               let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
-              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
+              let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers2.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
                 Theaders.push(entry)
@@ -344,20 +303,20 @@ td {
             b.name = key;
 
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument", "1"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
 
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
 
             b.name = key;
 
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument","1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
@@ -365,7 +324,7 @@ td {
             b.name = key;
 
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
@@ -373,7 +332,7 @@ td {
             b.name = key;
 
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
 
           }
 
@@ -382,7 +341,7 @@ td {
             b.name = key;
 
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol","Instrument", "Max-Tol", "1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
@@ -392,7 +351,7 @@ td {
             b.name = key;
 
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
 
           }
 
@@ -446,7 +405,7 @@ td {
 
             for (ie = 0; ie < headers1.length; ie += chunk) {
               let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
-              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
+              let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
 
               temparray = headers1.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
