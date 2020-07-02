@@ -14,6 +14,51 @@ import { DrawingService } from '../services/drawing.service';
 export class CopyProcessComponent {
 
   displayedColumns: string[] = ['select', 'id', 'opnNo', 'opnName', 'description', 'workCenter'];
+  action: string;
+  dialogTitle: string;
+  viewdata: any
+  editId: any;
+  dataset: any;
+  isCast: boolean;
+  isMech: any;
+  materialdataset: any;
+  dataSource : any;
+  selection:any
+  heatdata: any;
+  castToldata: any;
+  machineToldata: any;
+  splProdata: any;
+  type: any;
+
+  constructor(
+    public matDialogRef: MatDialogRef<CopyProcessComponent>,
+    @Inject(MAT_DIALOG_DATA) private _data: any,
+    private _formBuilder: FormBuilder,
+    public snackBar: MatSnackBar,
+    private _operationservice: OperationService,
+    private _drawing: DrawingService,
+
+  ) {
+    this.action = _data.action;
+    this.type = _data.type
+   
+
+      this.dialogTitle = 'Copy Process';
+
+      this.isCast = false;
+      this.isMech = false;
+
+
+  }
+
+
+
+  contactForm = this._formBuilder.group({
+    DrgId: ['', Validators.required],
+    
+
+  });
+
 
 
 
@@ -41,10 +86,19 @@ export class CopyProcessComponent {
 
     let data1 = {
       data : a,
-      drgid :drgid
+      drgid :drgid,
+      altProcess:null,
+      addKind:null
     }
-
-
+    
+    if (this.type == 'altpro') {
+      data1.altProcess = 1;
+    }
+    if (this.type == 'addkind') {
+      data1.addKind = 1;
+    }
+data1;
+debugger;
     this._drawing.copyDrawing(data1).subscribe((res: any) => {
 
      
@@ -71,61 +125,6 @@ export class CopyProcessComponent {
 
 
   }
-
-
-
-
-
-
-
-
-
-
-
-  action: string;
-  dialogTitle: string;
-  viewdata: any
-  editId: any;
-  dataset: any;
-  isCast: boolean;
-  isMech: any;
-  materialdataset: any;
-  dataSource : any;
-  selection:any
-  heatdata: any;
-  castToldata: any;
-  machineToldata: any;
-  splProdata: any;
-
-  constructor(
-    public matDialogRef: MatDialogRef<CopyProcessComponent>,
-    @Inject(MAT_DIALOG_DATA) private _data: any,
-    private _formBuilder: FormBuilder,
-    public snackBar: MatSnackBar,
-    private _operationservice: OperationService,
-    private _drawing: DrawingService,
-
-  ) {
-    this.action = _data.action;
-
-   
-
-      this.dialogTitle = 'Copy Process';
-
-      this.isCast = false;
-      this.isMech = false;
-
-
-  }
-
-
-
-  contactForm = this._formBuilder.group({
-    DrgId: ['', Validators.required],
-    
-
-  });
-
 
   searchDrg(){
 

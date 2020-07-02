@@ -501,73 +501,57 @@ router.post('/copy', (req, res) => {
 
         var result = [];
         let cards = req.body.data
-
-        cards.map(function (card) {
-            Operation.create({
-                drgId: req.body.drgid,
-                opnNo: card.opnNo,
-                opnName: card.opnName,
-                description: card.description,
-                workCenter: card.workCenter
-
-            })
-                .then(function (cres) {
-
-                    Process.findAll({ where: { opnId: card.id, drgId: card.drgId } }).then((pres) => {
+        var len = cards.length;
 
 
-                        pres.forEach(element => {
+        cards.map(function (card, index) {
 
-                            element.drgId = req.body.drgid;
-                            element.opnId = cres.id;
+            var mytempData = {
+                "drgId": req.body.drgid,
+                "opnNo": card.opnNo,
+                "opnName": card.opnName,
+                "description": card.description,
+                "workCenter": card.workCenter,
+                "altProcess" : false,
+                "addKind":false
+            }
 
-                        });
-                        pres.map(function (pros) {
+            if (req.body.altProcess) {
+                mytempData.altProcess = true;
+            }
 
-                            Process.create({
-                                opnName: pros.opnName,
-                                description: pros.description,
-                                baloonNo: pros.baloonNo,
-                                specification: pros.specification,
-                                toloreanceGrade: pros.toloreanceGrade,
-                                tolFrom: pros.tolFrom,
-                                tolTo: pros.tolTo,
-                                instrument: pros.instrument,
-                                measuringFrequency: pros.measuringFrequency,
-                                grid: pros.grid,
-                                firstPartInspection: pros.firstPartInspection,
-                                periodicInspection: pros.periodicInspection,
-                                ctq: pros.ctq,
-                                pdi: pros.pdi,
-                                cfir: pros.cfir,
-                                opnId: pros.opnId,
-                                drgId: pros.drgId,
+            if (req.body.addKind) {
+                mytempData.addKind = true;
+            }
 
 
-                            })
-
-                        }).then(function (ppres) {
-
-                        })
+            Operation.create(mytempData).then(function (cres) {
 
 
-                    })
-                    if (cres) {
+                if (index == (len - 1)) {
 
 
+                    PlanAbstract.findOne({ where: { drgId: req.body.drgid } }).then(function (resp1) {
 
-                        PlanAbstract.findOne({ where: { drgId: req.body.drgid } }).then(function (resp1) {
+                        if (resp1) {
+                            sendSuccess(res, resp1);
+                        }
+                        else {
 
-                            if (resp1) {
-                                sendSuccess(res, resp1);
+                            if (req.body.altpro) {
+                                sendSuccess(res, cres);
                             }
-                            else {
 
+                            else if (req.body.addkind) {
+                                sendSuccess(res, cres);
+                            }
+
+                            else {
                                 Drawing.findOne({ where: { id: req.body.drgid } }).then(function (dres) {
 
                                     var newpfNo = '';
 
-                                    var newqpNo = '';
+                                    // var newqpNo = '';
 
 
                                     let code = dres.id;
@@ -577,43 +561,43 @@ router.post('/copy', (req, res) => {
                                     if (n == 1) {
                                         newpfNo = "PP 000000" + code + "-10A"
 
-                                        newqpNo  = "QP 000000" + code + "-10AA"
+                                        // newqpNo  = "QP 000000" + code + "-10AA"
 
                                     }
                                     else if (n == 2) {
                                         newpfNo = "PP 00000" + code + "-10A"
 
-                                        newqpNo = "QP 00000" + code + "-10AA"
+                                        // newqpNo = "QP 00000" + code + "-10AA"
 
                                     }
                                     else if (n == 3) {
                                         newpfNo = "PP 0000" + code + "-10A"
 
-                                        newqpNo = "QP 0000" + code + "-10AA"
+                                        // newqpNo = "QP 0000" + code + "-10AA"
 
                                     }
                                     else if (n == 4) {
                                         newpfNo = "PP 000" + code + "-10A"
 
-                                        newqpNo = "QP 000" + code + "-10AA"
+                                        // newqpNo = "QP 000" + code + "-10AA"
 
                                     }
                                     else if (n == 5) {
                                         newpfNo = "PP 00" + code + "-10A"
 
-                                        newqpNo = "QP 00" + code + "-10AA"
+                                        // newqpNo = "QP 00" + code + "-10AA"
 
                                     }
                                     else if (n == 6) {
                                         newpfNo = "PP 0" + code + "-10A"
 
-                                        newqpNo = "QP 0" + code + "-10AA"
+                                        // newqpNo = "QP 0" + code + "-10AA"
 
                                     }
                                     else {
                                         newpfNo = "PP " + code + "-10A"
 
-                                        newqpNo = "QP " + code + "-10AA"
+                                        // newqpNo = "QP " + code + "-10AA"
 
                                     }
 
@@ -621,7 +605,7 @@ router.post('/copy', (req, res) => {
                                     var mydata = {
                                         "drgId": req.body.drgid,
                                         "pfNo": newpfNo,
-                                        "qpNo":newqpNo
+                                        // "qpNo":newqpNo
                                     }
                                     PlanAbstract.create(mydata).then(function (paResult) {
                                         sendSuccess(res, paResult);
@@ -635,14 +619,16 @@ router.post('/copy', (req, res) => {
 
                             }
 
-                        })
+                        }
+
+                    })
 
 
 
 
-                    }
+                }
 
-                })
+            })
 
 
 

@@ -49,7 +49,7 @@ export class DrgDetailsComponent implements OnInit {
         border-collapse: collapse;
       }
       th, td {
-        padding: 5px;
+        padding: 2px;
         text-align: left;
         font-size:10px;
       }

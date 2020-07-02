@@ -21,6 +21,7 @@ import { DrawingService } from '../services/drawing.service';
 import { InspectionService } from '../services/inspection.service';
 import { single } from 'rxjs/operators';
 import { identifierModuleUrl } from '@angular/compiler';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-periodic',
@@ -124,119 +125,137 @@ export class PeriodicComponent implements OnInit {
 
 
     const printContent = document.getElementById("componentID");
-    const WindowPrt = window.open('', '', 'left=0,top=0,toolbar=0,scrollbars=0,status=0');
+    const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
     WindowPrt.document.write(printContent.innerHTML);
     WindowPrt.document.write(`<style>
-    
-.testcol{
-  color:white;
-  background-color: black;
 
-}
-
-   th {
-			background-color: #DDDDDD;
-			white-space: nowrap;
-		}
-
-    table {
-      width:100%
-      overflow:hidden;
-      border-collapse: collapse;
-    }
-    
-    table, th, td {
-      border: 1px solid black;
-      font-size:10px;
-      text-align: left !important;
-      padding:2px;
-    }
-
+  
     .my-4{
       margin-top: 20px;
       margin-bottom : 20px;
-    }
-
-
-    .bk th:first-child {
-      width: 50px !important;
-     }
-     
-     .bk th:nth-child(2){
-       width: 100px !important;
-     }
-     .bk th:nth-child(3){
-       width: 75px !important;
-     }
-     
-     .bk th:nth-child(4){
-       width: 75px !important;
-     }
-     
-     .bk th:nth-child(5){
-       width: 100px !important;
-     }
-     .bk th:nth-child(6){
-      width: 100px !important;
-    }
-    .bk th, td {
-      width: 100px !important;
-    }
-
-
-    .fp th:first-child {
-      width: 50px !important;
-    }
-    
-    .fp th:nth-child(2) {
-      width: 150px !important;
-    }
-    
-    .fp th:nth-child(3) {
-      width: 100px !important;
-    }
-    
-    .fp th:nth-child(4) {
-      width: 100px !important;
-    }
-    
-    .fp th:nth-child(5) {
-      width: 100px !important;
-    }
-    
-    .fp th:nth-child(6) {
-      width: 150px !important;
-    }
-    
-    
-    .fp th:nth-child(7) {
-      width: 153px !important;
-    }.fp th:nth-child(8) {
-      width: 153px !important;
-    }.fp th:nth-child(9) {
-      width: 153px !important;
-    }
-
-    .fp th,td{  
       text-align: left;
-    
-    } 
+    }
 
 
      
-     .bk th,td{  
-       text-align: left;
      
-     } 
-     
-     
+@media print {
+ 
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  @page {
+    size: A4 landscape;
+    max-height: 100%;
+    max-width: 100%
+  }
+
+  
+
+  
+}
+
+
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  font-size:10px;
+   padding: 2px; 
+  padding-left: 2px;
+  text-align:left;
+}
+.bor{
+  width:5%;
+   height:25px ;
+   text-align: left;
+  }
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial;
+      }
+  .nnew{
+    width: 80px;
+    height: 30px;
+  }
+
+.bk th:first-child {
+  width: 50px !important;
+}
+
+.bk th:nth-child(2) {
+  width: 150px !important;
+}
+
+.bk th:nth-child(3) {
+  width: 100px !important;
+}
+
+.bk th:nth-child(4) {
+  width: 100px !important;
+}
+
+.bk th:nth-child(5) {
+  width: 100px !important;
+}
+
+.bk th:nth-child(6) {
+  width: 150px !important;
+}
+
+
+
+.fp th:first-child {
+  width: 50px !important;
+}
+
+.fp th:nth-child(2) {
+  width: 150px !important;
+}
+
+.fp th:nth-child(3) {
+  width: 100px !important;
+}
+
+.fp th:nth-child(4) {
+  width: 100px !important;
+}
+
+.fp th:nth-child(5) {
+  width: 100px !important;
+}
+
+.fp th:nth-child(6) {
+  width: 150px !important;
+}
+
+
+.fp th:nth-child(7) {
+  width: 153px !important;
+}.fp th:nth-child(8) {
+  width: 153px !important;
+}.fp th:nth-child(9) {
+  width: 153px !important;
+}
 
      @media print {
+
       .page-break	{ 
         display: block; 
         page-break-before: always; 
       }
-      
+  
+      }
     }
     
 
@@ -290,7 +309,7 @@ export class PeriodicComponent implements OnInit {
 
             b.name = parseInt(key);
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
             let i = 1;
             let headers2 = [];
             while (i <= this.d_batch_qty) {
@@ -300,11 +319,11 @@ export class PeriodicComponent implements OnInit {
               i++;
             }
 
-            let ie, j, temparray, chunk = 10;
+            let ie, j, temparray, chunk = 10 
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
-              let Theaders = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
-              let Theaders1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument"]
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
+              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers2.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
                 Theaders.push(entry)
@@ -324,37 +343,37 @@ export class PeriodicComponent implements OnInit {
 
             b.name = key;
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument", "1"]
+            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1"]
+            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
 
             b.name = key;
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax", "Instrument","1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument","1", "2", "3"]
+            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
           else if(key == "HEAT NUMBER PER LOT"){
             b.name = key;
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1", "2", "3"]
+            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
           else if(key == "HOUR"){
             b.name = key;
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
 
           }
 
@@ -362,8 +381,8 @@ export class PeriodicComponent implements OnInit {
           else if(key == "MELTING CHARGE"){
             b.name = key;
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol","Instrument", "Max-Tol", "1", "2", "3"]
+            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
 
           }
 
@@ -372,8 +391,8 @@ export class PeriodicComponent implements OnInit {
           else if(key == "HEAT TREAMENT BATCH"){
             b.name = key;
 
-            b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
-            b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3"]
+            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
 
           }
 
@@ -388,7 +407,7 @@ export class PeriodicComponent implements OnInit {
 
             b.name = parseInt(key);
 
-            // b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax"]
+            // b.headers = ["S/N", "Description", "Specification", "Min-Tol", "Max-Tol"]
             // b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo"]
 
             let headers1 = []
@@ -426,8 +445,8 @@ export class PeriodicComponent implements OnInit {
 
 
             for (ie = 0; ie < headers1.length; ie += chunk) {
-              let Theaders = ["S/N", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
-              let Theaders1 = ["id", "description", "specification", "tolFrom", "tolTo","instrument"]
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
+              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
 
               temparray = headers1.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {

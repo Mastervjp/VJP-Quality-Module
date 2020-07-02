@@ -7,11 +7,11 @@
   <div id="componentID">
 
 
-    <table id="invoice" class="invoice" style="width:100%;">
+    <table  style="width:100%;">
       <tr>
-        <th colspan="1" rowspan="2" style="text-align: center;"><img src="assets/vjp2.png" height="30"></th>
+        <th colspan="1" rowspan="2" style="text-align: center;"><img  src="assets/vjp3.png" height="40" width="100"></th>
         <th colspan="4" style="text-align: center;">QUALITY PLAN - INPROCESS INSPECTION</th>
-        <td>Drawing Code</td>
+        <td>Drawing code</td>
         <th>{{drgObject.id}}</th>
         <td>Part Name</td>
         <th colspan="2">{{drgObject.partName | uppercase}}</th>
@@ -27,23 +27,23 @@
         <td>Machining Drawing No/Rev</td>
         <th>{{drgObject.partNum1}}</th>
         <th>{{drgObject.revNo1}}</th>
-        <td>Operation No</td>
+        <td>Operation No.</td>
         <th>{{psObject.opnNo}}</th>
-
-
-
+        
+        
+        
 
       </tr>
 
       <tr>
         <td>Operation Description</td>
-        <th>{{psObject.description}}</th>
+        <th>{{psObject.description | uppercase}}</th>
         <td>Work Center</td>
         <th>{{psObject.workCenter}}</th>
         <td>Process Plan No</td>
         <th>{{qpaObject.pfNo}}</th>
-        <td colspan="2">Quality Plan No</td>
-        <th colspan="1">{{qpaObject.qpNo}}</th>
+        <td>Quality Plan No</td>
+        <th colspan="2">{{qpaObject.qpNo}}</th>
         
         
         
@@ -52,32 +52,32 @@
 
       </tr>
       <tr>
-
-
+        
+        
         <td>Route Card Number</td>
         <th>{{routeObj.cardNo}}</th>
         <td>Material Weight</td>
         <th>{{drgObject.materialWeight}}</th>
         <td>Material Grade</td>
         <th colspan="1">{{drgObject.materialGrade}}</th>
-        <td colspan="2">Batch Quantity</td>
-        <th  colspan="1">{{routeObj.qty}}</th>
+        <td>Batch Quantity</td>
+        <th  colspan="2">{{routeObj.qty}}</th>
         
       </tr>
 
-
+      
       <tr>
-
+        
         <td>Casting Tolerance</td>
-        <th colspan="1">{{drgObject.castingToleranceStandard  | uppercase}}</th>
-        <td>MC Tolerance</td>
+        <th colspan="1">{{drgObject.castingToleranceStandard | uppercase}}</th>
+        <td>Machining Tolerance</td>
         <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
-        <td>P O Number</td>
+        <td>Purchase Order Number</td>
         <th>{{marketData.poNo}}</th>
         <td>Inspection Date</td>
-        <th colspan="2"></th>
-
-      </tr>
+                <th colspan="2"></th>
+       
+    </tr>
     </table>
 
 
@@ -85,8 +85,8 @@
 
 
 
-    <ng-container *ngFor="let item of value_expression ; let i=index;">
-      <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;padding: 5px;">
+    <ng-container  *ngFor="let item of value_expression ; let i=index;">
+      <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive" style="text-align: left;padding: 2px;">
         
          
             <ng-container  *ngIf="item.name == '100' ">
@@ -97,28 +97,28 @@
 
       <ng-container *ngIf='isHundred(item.name) ; else newDeb1'>
 
-        <div style="width:100%">
-          <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]">
+        <div>
+          <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]" style="width: 100%;" >
             <thead>
               <tr>
-                <th *ngFor="let col of item.headers2[val]" style="width: 41px; height: 30px ;text-align: center;">
+                <th  class="bor" *ngFor="let col of item.headers2[val]" >
                   {{ col }}</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let subItem of item.subdata; let j = index">
-                <td *ngFor="let col1 of item.headers1[val]">
+              <tr *ngFor="let subItem of item.subdata; let j = index"  class="bor">
+                <td *ngFor="let col1 of item.headers1[val]"  class="bor">
 
 
-                  <ng-container *ngIf="col1 == 'instrument'; else noImg">
+                  <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
                     <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
-                      style="width: 100px;height: 30px;">
+                      style="width: 80px;height: 30px;">
                     <!-- {{subItem.Instrument.insImage}} -->
 
 
                   </ng-container>
 
-                  <ng-template #noImg>
+                  <ng-template #noImg  class="bor" >
                     {{subItem[col1]}}
                   </ng-template>
 
@@ -143,7 +143,7 @@
 
     </ng-container>
        
-    <ng-container *ngFor="let item of value_expression ; let i=index;">
+    <ng-container  *ngFor="let item of value_expression ; let i=index;">
 
       <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
         style="text-align: left;">
@@ -164,30 +164,30 @@
       <ng-container *ngIf='isNumber(item.name) && item.name != 100  ; else newDeb1'>
 
 
-        <div style="width:100%">
+        <div >
 
           <ng-container *ngFor="let val of item.headers3[0]">
 
 
 
-            <table class="bk fixed my-4">
+            <table class="bk fixed my-4" style="width: 100%;">
               <thead>
                 <tr>
-                  <th *ngFor="let col of item.headers2[val]" style="width: 41px; height: 30px ;text-align: center;">
+                  <th  class="bor" *ngFor="let col of item.headers2[val]">
                     {{ col }}</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr *ngFor="let subItem of item.subdata; let j = index">
-                  <td *ngFor="let col1 of item.headers1[val]">
+              <tbody >
+                <tr *ngFor="let subItem of item.subdata; let j = index"  class="bor">
+                  <td *ngFor="let col1 of item.headers1[val]"  class="bor">
 
 
-                    <ng-container *ngIf="col1 == 'instrument'; else noImg">
+                    <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
                       <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
-                        style="width: 100px;height: 30px;">
+                        style="width: 80px;height: 30px;">
                     </ng-container>
 
-                    <ng-template #noImg>
+                    <ng-template #noImg  class="bor" >
                       {{subItem[col1]}}
                     </ng-template>
 
@@ -214,19 +214,19 @@
         <table class="fp fixed my-4" *ngIf="item.name != '100' " style="width: 100%;">
           <thead>
             <tr>
-              <th *ngFor="let col of item.headers">{{ col }}</th>
+              <th  class="bor" *ngFor="let col of item.headers">{{ col }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let subItem of item.subdata; let j = index">
-              <td *ngFor="let col1 of item.headers1">
+            <tr *ngFor="let subItem of item.subdata; let j = index" class="bor">
+              <td *ngFor="let col1 of item.headers1"  class="bor">
 
-                <ng-container *ngIf="col1 == 'instrument'; else noImg">
+                <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
                   <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
-                    style="width: 100px;height: 30px;">
+                    style="width: 80px;height: 30px;">
                 </ng-container>
 
-                <ng-template #noImg>
+                <ng-template #noImg  class="bor">
                   {{subItem[col1]}}
                 </ng-template>
 

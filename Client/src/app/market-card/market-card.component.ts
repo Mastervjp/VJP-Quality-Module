@@ -55,13 +55,18 @@ export class MarketCardComponent implements OnInit {
     th {
         border: 1px solid BLACK;
         text-align: left;
-        font-size: 10px;
+        font-size: 9px;
         padding:2px;
+    }
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial;
     }
 
     table {
         border-collapse: collapse;
-        font-size: 10px;
+        font-size: 9px;
     }
     td,
     th{

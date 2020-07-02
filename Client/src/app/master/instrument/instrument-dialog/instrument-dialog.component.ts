@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { MachineService } from '../../masterservice/machine.service';
 import { DrawingtypeService } from '../../masterservice/drawingtype.service';
 import { InstrumentService } from '../../masterservice/instrument.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-instrument-dialog',
@@ -19,6 +20,10 @@ export class InstrumentDialogComponent {
   editId: any;
   url: any = "assets/product-image-placeholder.png";
   uploadfile: File = null;
+
+  
+  
+  private IMG_URL = environment.IMG_URL;
 
   constructor(
     public matDialogRef: MatDialogRef<InstrumentDialogComponent>,
@@ -44,6 +49,9 @@ export class InstrumentDialogComponent {
         uploadImage:   _data.data.insImage,
 
       });
+
+      this.url = this.IMG_URL+'/'+_data.data.insImage
+      
     }
     else {
       this.dialogTitle = 'Add Instrument';

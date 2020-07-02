@@ -1,6 +1,6 @@
 
 @media print {
-
+ 
   html,
   body {
     height: 100%;
@@ -21,11 +21,7 @@
     display: block;
   }
 
-  .tg-0lax{
-    background-color: black;
-     color: white;
-}
-  
+ 
 }
 
 
@@ -43,10 +39,18 @@ td {
 th,
 td {
   font-size: small;
-  padding: 2px;
+  /* padding: 2px; */
   padding-left: 2px;
 }
-
+.bor{
+  width:5%;
+   height: 30px ;
+   text-align: left;
+  }
+.nnew{
+  width: 80px;
+  height: 30px;
+}
 
 .bk th:first-child {
   width: 50px !important;
