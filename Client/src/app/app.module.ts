@@ -103,6 +103,8 @@ import { DataService } from './services/data.service';
 import { MarketQtyComponent } from './market-qty/market-qty.component';
 import { CopyProcessComponent } from './copy-process/copy-process.component';
 import { SampleDrawingComponent } from './sample-drawing/sample-drawing.component';
+import { ContractreviewComponent } from './contractreview/contractreview.component';
+import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
 
 @NgModule({
   declarations: [
@@ -175,6 +177,8 @@ import { SampleDrawingComponent } from './sample-drawing/sample-drawing.componen
     MarketQtyComponent,
     CopyProcessComponent,
     SampleDrawingComponent,
+    ContractreviewComponent,
+    ContractreviewViewComponent,
   ],
   imports: [
     BrowserModule,

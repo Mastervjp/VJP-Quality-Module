@@ -13,6 +13,7 @@ router.use('/admin', require('./admin'))
 router.use('/quality',authCheckMiddleware, require('./qualityplan'))
 router.use('/sample',authCheckMiddleware, require('./samplemaster'))
 router.use('/market',authCheckMiddleware, require('./market'))
+router.use('/contractreview',authCheckMiddleware, require('./contractreview'))
 
 
 
