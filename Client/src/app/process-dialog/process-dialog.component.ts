@@ -134,7 +134,6 @@ export class ProcessDialogComponent {
     }
 
     step1
-    debugger;
     this._process.updateProcess(editId, step1).subscribe((res: any) => {
       if (res.success) {
         this.matDialogRef.close(true);
