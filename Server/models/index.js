@@ -27,6 +27,7 @@ models.MachiningToleranceStandard = sequelize.import('./machiningtolerance')
 models.CastingToleranceStandard = sequelize.import('./castingtolerance')
 models.HeatTreatmentCycle = sequelize.import('./heattreatment')
 models.SpecialProcess = sequelize.import('./specialprocess')
+models.ContractReview = sequelize.import('./ContractReview')
 
 
 
@@ -52,6 +53,7 @@ models.SpecialProcess = sequelize.import('./specialprocess')
 // models.CastingToleranceStandard.sync({});
 // models.HeatTreatmentCycle.sync({});
 // models.SpecialProcess.sync({});
+ models.ContractReview.sync({});
 
 
 

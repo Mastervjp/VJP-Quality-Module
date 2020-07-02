@@ -34,6 +34,8 @@ import { HeatTreatmentComponent } from './master/heat-treatment/heat-treatment.c
 import { SpecialProcessComponent } from './master/special-process/special-process.component';
 import { AddDrawingComponent } from './add-drawing/add-drawing.component';
 import { SampleDrawingComponent } from './sample-drawing/sample-drawing.component';
+import { ContractreviewComponent } from './contractreview/contractreview.component';
+import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
 
 const appRoutes: Routes = [
   {
@@ -216,6 +218,19 @@ const appRoutes: Routes = [
     component: MarketCardComponent,
     canActivate: [AuthGuardService]
   },
+  {
+    path: 'contractreview',
+    component: ContractreviewComponent,
+    canActivate: [AuthGuardService]
+    
+  },
+  {
+    path: 'contractreviewview',
+    component: ContractreviewViewComponent,
+    canActivate: [AuthGuardService]
+    
+  },
+
 
 
 

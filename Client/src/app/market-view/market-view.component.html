@@ -1,12 +1,17 @@
 <app-navbar6>
-    <h3 style="margin-left: 10%;margin-top: -3%;">Market&nbsp;Card</h3>
+  <button style="margin-left: 10%;margin-top: -3%;" mat-button [routerLink]="['/marketview']">
+    <h3  >Market&nbsp;Card</h3>
+</button>
+<button style="margin-left: 10%;margin-top: -3%;" mat-button [routerLink]="['/contractreviewview']">
+    <h3>Contract&nbsp;Review</h3>
+</button>
 </app-navbar6>
 
 
 <div style=" min-height: calc(100vh - 110px);">
   <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
     <div class="row mx-5">
-        <!-- <button (click)="show()" mat-raised-button color="primary">New Order</button> -->
+       
         <button  id="singlebutton" name="singlebutton"  class="btn btn-primary" (click)="show()" >New Order
         </button>
     </div>
