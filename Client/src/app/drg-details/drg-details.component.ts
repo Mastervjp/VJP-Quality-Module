@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InspectionService } from '../services/inspection.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-drg-details',
@@ -13,6 +14,7 @@ export class DrgDetailsComponent implements OnInit {
   psObject:any;
   routeObj :any;
   marketData:any;
+  myDate = new Date();
   
   constructor(private _inspectionservice: InspectionService) { }
 
@@ -23,6 +25,7 @@ export class DrgDetailsComponent implements OnInit {
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
     this.getmarket(this.routeObj)
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
   }
   getmarket(routeObj1) {

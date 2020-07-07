@@ -7,7 +7,7 @@ import { InspectionService } from '../services/inspection.service';
 import { single } from 'rxjs/operators';
 import { identifierModuleUrl } from '@angular/compiler';
 import { style } from '@angular/animations';
-
+import {formatDate, DatePipe} from '@angular/common';
 @Component({
   selector: 'app-periodic',
   templateUrl: './periodic.component.html',
@@ -35,7 +35,7 @@ export class PeriodicComponent implements OnInit {
   routeObj :any;
   marketData: any;
   
-  
+  myDate = new Date();
   
 
 
@@ -66,7 +66,7 @@ export class PeriodicComponent implements OnInit {
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
     this.getmarket(this.routeObj)
-
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
     // this.test();
 
