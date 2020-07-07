@@ -1,7 +1,11 @@
 <app-navbar>
-    <img src="assets/vjp3.png" height="50" alt="vjp" width="100" (click)="isOpen = !isOpen">&nbsp; &nbsp; &nbsp;
+  <button mat-icon-button aria-label (click)="isOpen = !isOpen">
+    <mat-icon style="color: white;">more_vert</mat-icon>
+  </button>
+    <img src="assets/vjp3.png" height="50" alt="vjp" width="100" >&nbsp; &nbsp; &nbsp;
     <h3 style="color: white;">Process Type </h3>
 </app-navbar>
+
 
 
 <mat-sidenav-container>

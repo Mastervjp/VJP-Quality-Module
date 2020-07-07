@@ -161,17 +161,17 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         },
         shippingAddress: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.ENUM('ok','notOk'),
             field: ' shipping_address',
             allowNull: true
         },
         ourNameAddress: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.ENUM('ok','notOk'),
             field: 'our_aame_address',
             allowNull: true
         },
         vendorCode: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.ENUM('ok','notOk','na'),
             field: 'vendor_code',
             allowNull: true
         },
@@ -202,7 +202,7 @@ module.exports = function (sequelize, DataTypes) {
         },
 
         paymentTerms: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.ENUM('ok','notOk','na'),
             field: 'payment_terms',
             allowNull: true
         },
@@ -232,17 +232,17 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         },
         foreignExchangeVariationClause: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.ENUM('ok','notOk','na'),
             field: ' foreign_exchange_variation_clause',
             allowNull: true
         },
         tax: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.ENUM('ok','notOk','na'),
             field: 'tax',
             allowNull: true
         },
         termsConditions: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.ENUM('ok','notOk'),
             field: 'terms_conditions',
             allowNull: true
         },
@@ -285,6 +285,7 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: true,
         tableName: 'contract_review'
     })
-
+    
+  
     return ContractReview
 }
