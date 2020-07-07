@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InspectionService } from '../services/inspection.service';
 import { Router } from '@angular/router';
+import {formatDate, DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-firstpart-print',
@@ -16,6 +17,7 @@ export class FirstpartPrintComponent implements OnInit {
   routeObj: any;
   mObject: any;
   marketData: any;
+  myDate = new Date();
 
   temp :any;
 
@@ -35,6 +37,7 @@ export class FirstpartPrintComponent implements OnInit {
 
     this.getfpi(myItem1, opnId);
     this.getmarket(this.routeObj)
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
 
   }

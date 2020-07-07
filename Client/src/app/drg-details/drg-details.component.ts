@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InspectionService } from '../services/inspection.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-drg-details',
@@ -8,12 +9,13 @@ import { InspectionService } from '../services/inspection.service';
 })
 export class DrgDetailsComponent implements OnInit {
 
-  drgObject: any;
-  qpaObject: any;
-  psObject: any;
-  routeObj: any;
-  marketData: any;
-
+  drgObject:any;
+  qpaObject:any;
+  psObject:any;
+  routeObj :any;
+  marketData:any;
+  myDate = new Date();
+  
   constructor(private _inspectionservice: InspectionService) { }
 
   ngOnInit() {
@@ -23,6 +25,8 @@ export class DrgDetailsComponent implements OnInit {
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
+    this.getmarket()
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
   }
   getmarket() {
