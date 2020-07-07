@@ -19,6 +19,8 @@ export class FirstpartPrintComponent implements OnInit {
   marketData: any;
   myDate = new Date();
 
+  temp :any;
+
   constructor(private _inspectionservice: InspectionService, private router: Router) { }
 
   ngOnInit() {
@@ -116,7 +118,7 @@ setTimeout(function() {
         let re_data = [];
         for (var i in samp) {
           if (samp[i].firstPartInspection) {
-            re_data[i] = samp[i]
+            re_data[re_data.length] = samp[i]
           }
         }
         this.dataSource = re_data;
