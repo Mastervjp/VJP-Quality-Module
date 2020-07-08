@@ -50,7 +50,7 @@ export class ContractreviewPrintComponent implements OnInit {
     th {
         border: 1px solid BLACK;
         text-align: left;
-        font-size: 9px;
+        font-size: 10px;
         padding:2px;
     }
     body, html {
@@ -61,7 +61,7 @@ export class ContractreviewPrintComponent implements OnInit {
 
     table {
         border-collapse: collapse;
-        font-size: 9px;
+        font-size: 10px;
     }
     td,
     th{

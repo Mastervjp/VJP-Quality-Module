@@ -12,7 +12,8 @@
         <table class="tg" style="  width: 100%;">
   
           <tr>
-            <td rowspan="4" colspan="1" style="text-align: center;"><img src="assets/vjp2.png" height="40"></td>
+            <th  rowspan="4" style="text-align: center;"><img src="assets/vjp3.png" height="60" width="100"></th>
+           
             <td rowspan="4" colspan="5" style="text-align: center;"><b>CONTRACT REVIEW</b></td>
             <td colspan="1">DOC CODE</td>
             <td colspan="3"><b>MKT/R/05</b></td>
@@ -79,7 +80,7 @@
             </td>
   
             <td colspan="3">PO Received / Required Delivery Date</td>
-            <td colspan="2"><b> {{dataSource.poReceived}}</b>
+            <td colspan="2"><b> {{dataSource.poReceived | date: 'dd-MM-yyyy'}}</b>
   
             </td>
             <td colspan="2"><b> {{dataSource.deliveryDate | date: 'dd-MM-yyyy'}}</b>
