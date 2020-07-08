@@ -44,7 +44,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         },
         poReceived: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.DATE,
             field: 'po_received',
             allowNull: true
         },
