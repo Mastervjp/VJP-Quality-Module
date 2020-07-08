@@ -21,6 +21,10 @@
     display: block;
   }
 
+  thead {
+    page-break-inside: avoid;
+    display:table-header-group;
+  }
  
 }
 
@@ -110,3 +114,7 @@ td {
 }.fp th:nth-child(9) {
   width: 153px !important;
 }
+
+/* thead {
+  display:table-header-group;
+} */
