@@ -24,46 +24,48 @@ function sendSuccess(res, result) {
 }
 
 function sendMail(data, callback) {
-    try {
-        var transporter;
-        let mailOptions;
+
+    callback(true);
+    // try {
+    //     var transporter;
+    //     let mailOptions;
       
         
         
-            transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true,
-                auth: {
-                    type: 'OAuth2',
-                    user: config.email,
-                    clientId: config.oauth_client_id,
-                    clientSecret: config.oauth_client_secret,
-                    refreshToken: config.oauth_refresh_token
-                }
-            });
+    //         transporter = nodemailer.createTransport({
+    //             host: 'smtp.gmail.com',
+    //             port: 465,
+    //             secure: true,
+    //             auth: {
+    //                 type: 'OAuth2',
+    //                 user: config.email,
+    //                 clientId: config.oauth_client_id,
+    //                 clientSecret: config.oauth_client_secret,
+    //                 refreshToken: config.oauth_refresh_token
+    //             }
+    //         });
 
-            mailOptions = {
-                from: config.email,
-                to: data.to,
-                subject: data.subject,
-                html: data.html
-            };
+    //         mailOptions = {
+    //             from: config.email,
+    //             to: data.to,
+    //             subject: data.subject,
+    //             html: data.html
+    //         };
         
 
 
-        transporter.sendMail(mailOptions, function(error, info) {
-            if (error) {
-                console.log(error)
-                callback(false);
-            } else {
-                callback(true);
-            }
-        });
-    } catch (err) {
+    //     transporter.sendMail(mailOptions, function(error, info) {
+    //         if (error) {
+    //             console.log(error)
+    //             callback(false);
+    //         } else {
+    //             callback(true);
+    //         }
+    //     });
+    // } catch (err) {
 
-        callback("Failed to send email!");
-    }
+    //     callback("Failed to send email!");
+    // }
 }
 
 router.post('/login', (req, res, next) => {

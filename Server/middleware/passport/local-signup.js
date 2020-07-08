@@ -13,6 +13,7 @@ module.exports = new PassportLocalStrategy({
         password: password.trim(),
         name: req.body.name.trim(),
         role:req.body.role.trim(),
+        logRole:req.body.logRole.trim(),
     }
 
    

@@ -1,7 +1,7 @@
 <app-navbar2>
   <h3 style="margin-left: 10%;"> Drawing&nbsp;Code</h3>
 
-   
+
 </app-navbar2>
 
 
@@ -9,67 +9,71 @@
 <div style=" min-height: calc(100vh - 110px);">
   <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
 
- 
-  <button *ngIf="islog && isET" mat-raised-button (click)="sampling()" color="primary">sampling</button>
-    
-     
-    
-      <div *ngIf="islog && isTT">
-        
-        <div style="margin-left: 3%;">
+
+    <button *ngIf="islog && isET" mat-raised-button (click)="sampling()" color="primary">sampling</button>
+
+
+
+    <div *ngIf="islog && isTT">
+
+      <div style="margin-left: 3%;">
         <button *ngIf="islog && isad" mat-mini-fab (click)="createDrawing()"
           style="background-color: #2727ec; color: white;">
           <mat-icon>add</mat-icon>
         </button>
 
       </div>
-    
-    
-        <!-- <button mat-mini-fab (click)="createDrawing()" style="background-color: #2727ec; color: white;">
+
+
+      <!-- <button mat-mini-fab (click)="createDrawing()" style="background-color: #2727ec; color: white;">
           <mat-icon>add</mat-icon>
         </button> -->
-      </div>
-          <form class="in">
-            <input style="float: right;" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
-           </form>
-           
-      <div class="p-5">
-    
-           
-        <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">
-    
-    
-    
-            <ng-container matColumnDef="sno">
-              <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}">NO </th>
-              <td mat-cell *matCellDef="let drg ; let j = index;"> {{ (j+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
+    </div>
+    <form class="in">
+      <input style="float: right;" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
+    </form>
+
+    <div class="p-5">
+
+
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+
+
+          <ng-container matColumnDef="sno">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}">NO </th>
+            <td mat-cell *matCellDef="let drg ; let j = index;">
+              {{ (j+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Hsno">
+            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">S/N</th>
+          </ng-container>
+
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> DRAWING CODE </th>
+            <ng-container *ngIf="isTT">
+              <td mat-cell matRipple *matCellDef="let drg">
+                <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
+                  <span style="cursor:pointer;">{{drg.id}} </span>
+                </ng-container>
+                <ng-template #unlockcode1>
+                  <span (click)="lockmsg()">{{drg.id}} </span>
+                </ng-template>
+              </td>
             </ng-container>
-    
-    
-            <ng-container matColumnDef="Hsno">
-              <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">S/N</th>
-            </ng-container>
-    
-    
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> DRAWING CODE </th>
-              <ng-container *ngIf="isTT">
-                <td mat-cell matRipple *matCellDef="let drg">
-                  <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
-                    <span style="cursor:pointer;" >{{drg.id}} </span>
-                  </ng-container>
-                  <ng-template #unlockcode1>
-                    <span (click)="lockmsg()">{{drg.id}} </span>
-                  </ng-template>
-                </td>
-              </ng-container>
-              <ng-container *ngIf="!isTT">
-                <td mat-cell matRipple *matCellDef="let drg">
-                  <ng-container *ngIf="isET">
-                    <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span>
-                  </ng-container>
-                  <ng-container *ngIf="!isET">
+            <ng-container *ngIf="!isTT">
+              <td mat-cell matRipple *matCellDef="let drg">
+                <ng-container *ngIf="isET">
+                  <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span>
+                </ng-container>
+
+                <ng-container *ngIf="!isET">
+
+                  <ng-container *ngIf="isUT">
                     <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
                       <span style="cursor:pointer; width: 100%; padding:0%;" (click)="callOperation(drg)"> {{drg.id}}
                       </span>
@@ -78,238 +82,251 @@
                       <span (click)="lockmsg()"> {{drg.id}} </span>
                     </ng-template>
                   </ng-container>
-                </td>
+
+                  <ng-container *ngIf="!isUT">
+                    <ng-container>
+                      <span style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}} </span>
+                    </ng-container>
+                  </ng-container>
+
+
+                </ng-container>
+              </td>
+            </ng-container>
+          </ng-container>
+
+          <ng-container matColumnDef="Hid">
+            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">DRAWING CODE</th>
+          </ng-container>
+
+          <ng-container matColumnDef="partName">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> PART NAME </th>
+            <td mat-cell *matCellDef="let drg"> {{drg.partName | uppercase}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="HpartName">
+            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> PART NAME</th>
+          </ng-container>
+
+          <ng-container matColumnDef="revNo">
+            <th mat-header-cell *matHeaderCellDef>CASTING</th>
+            <td mat-cell *matCellDef="let drg">
+
+              <ng-container *ngIf="drg.revNo; else heads1">
+                {{drg.revNo}} / {{drg.revDate | date: 'dd-MM-yyyy'}}
               </ng-container>
-            </ng-container>
-    
-            <ng-container matColumnDef="Hid">
-              <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">DRAWING CODE</th>
-            </ng-container>
-    
-            <ng-container matColumnDef="partName">
-              <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> PART NAME </th>
-              <td mat-cell *matCellDef="let drg"> {{drg.partName | uppercase}} </td>
-            </ng-container>
-    
-            <ng-container matColumnDef="HpartName">
-              <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> PART NAME</th>
-            </ng-container>
-    
-            <ng-container matColumnDef="revNo">
-              <th mat-header-cell *matHeaderCellDef>CASTING</th>
-              <td mat-cell *matCellDef="let drg"> 
-    
-                <ng-container *ngIf="drg.revNo; else heads1">
-                  {{drg.revNo}} / {{drg.revDate | date: 'dd-MM-yyyy'}}
+              <ng-template #heads1>
+                -
+              </ng-template>
+
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="revNo1">
+            <th mat-header-cell *matHeaderCellDef>MACHINING</th>
+            <td mat-cell *matCellDef="let drg">
+              <ng-container *ngIf="drg.revNo1; else heads1">
+                {{drg.revNo1}} / {{drg.revDate1 | date: 'dd-MM-yyyy'}}
+              </ng-container>
+              <ng-template #heads1>
+                -
+              </ng-template>
+            </td>
+          </ng-container>
+
+
+
+
+
+
+
+
+          <ng-container matColumnDef="partNum">
+            <th mat-header-cell *matHeaderCellDef> CASTING</th>
+            <td mat-cell *matCellDef="let drg">
+              <ng-container *ngIf="drg.partNum; else heads1">
+                {{drg.partNum}}
+              </ng-container>
+              <ng-template #heads1>
+                -
+              </ng-template>
+            </td>
+          </ng-container>
+
+
+
+          <ng-container matColumnDef="partNum1">
+            <th mat-header-cell *matHeaderCellDef> MACHINING</th>
+            <td mat-cell *matCellDef="let drg">
+              <ng-container *ngIf="drg.partNum1; else heads1">
+                {{drg.partNum1}}
+              </ng-container>
+              <ng-template #heads1>
+                -
+              </ng-template>
+            </td>
+          </ng-container>
+
+
+
+
+          <ng-container matColumnDef="customerName">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> CUSTOMER NAME </th>
+            <td mat-cell *matCellDef="let drg">
+
+              <ng-container *ngIf="isUT; else headsUT">
+                <ng-container *ngIf="drg.customerName; else heads1">
+                  Yes
                 </ng-container>
                 <ng-template #heads1>
                   -
                 </ng-template>
-    
-              </td>
-            </ng-container>
-    
-            <ng-container matColumnDef="revNo1">
-              <th mat-header-cell *matHeaderCellDef>MACHINING</th>
-              <td mat-cell *matCellDef="let drg">
-                <ng-container *ngIf="drg.revNo1; else heads1">
-                  {{drg.revNo1}} / {{drg.revDate1 | date: 'dd-MM-yyyy'}}
+              </ng-container>
+
+              <ng-template #headsUT>
+                <ng-container *ngIf="drg.customerName; else heads1">
+                  {{drg.customerName | uppercase}}
                 </ng-container>
                 <ng-template #heads1>
                   -
                 </ng-template>
-              </td>
-            </ng-container>
-    
-    
-    
-    
-    
-            
-    
-    
-            <ng-container matColumnDef="partNum">
-              <th mat-header-cell *matHeaderCellDef> CASTING</th>
-              <td mat-cell *matCellDef="let drg"> 
-                <ng-container *ngIf="drg.partNum; else heads1">
-                  {{drg.partNum}}
-                </ng-container>
-                <ng-template #heads1>
-                  -
-                </ng-template>  
-              </td>
-            </ng-container>
-    
-    
-    
-            <ng-container matColumnDef="partNum1">
-              <th mat-header-cell *matHeaderCellDef> MACHINING</th>
-              <td mat-cell *matCellDef="let drg"> 
-                <ng-container *ngIf="drg.partNum1; else heads1">
-                  {{drg.partNum1}}
-                </ng-container>
-                <ng-template #heads1>
-                  -
-                </ng-template> 
-              </td>
-            </ng-container>
-    
-    
-    
-    
-            <ng-container matColumnDef="customerName">
-              <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> CUSTOMER NAME </th>
-              <td mat-cell *matCellDef="let drg">
-
-                <ng-container *ngIf="isUT; else headsUT">
-                  <ng-container *ngIf="drg.customerName; else heads1">
-                    Yes
-                  </ng-container>
-                  <ng-template #heads1>
-                    -
-                  </ng-template> 
-                </ng-container>
-
-                <ng-template #headsUT>
-                  <ng-container *ngIf="drg.customerName; else heads1">
-                    {{drg.customerName | uppercase}}
-                  </ng-container>
-                  <ng-template #heads1>
-                    -
-                  </ng-template> 
-                </ng-template> 
-
-
-
-                
-              </td>
-            </ng-container>
-    
-            <ng-container matColumnDef="HcustomerName">
-              <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> CUSTOMER</th>
-            </ng-container>
-
-
-            <ng-container matColumnDef="materialGrade">
-              <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> MATERIAL GRADE </th>
-              <td mat-cell *matCellDef="let drg">
-                {{drg.materialGrade | uppercase}}
-              </td>
-            </ng-container>
-    
-            <ng-container matColumnDef="HmaterialGrade">
-              <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> MATERIAL GRADE</th>
-            </ng-container>
-
-
-
-
-    
-            <ng-container matColumnDef="unlockStatus">
-
-              <ng-container *ngIf="isTT; else teset">
-                <th mat-header-cell *matHeaderCellDef> LOCK </th>
-              </ng-container>
-              <ng-template #teset>
-                <th mat-header-cell *matHeaderCellDef> UNLOCK </th>
               </ng-template>
 
 
 
-              
-    
-              <td mat-cell *matCellDef="let drg">
-    
-                <ng-container *ngIf="isTT">
-    
-                  <ng-container *ngIf="drg.unlockStatus; else unlockbtn">
-                    <button mat-raised-button (click)="Lockaction(drg.id,1)">LOCK</button>
-                  </ng-container>
-                  <ng-template #unlockbtn>
-    
-                  </ng-template>
-    
-                </ng-container>
-    
-                <ng-container *ngIf="isET">
-                  <ng-container *ngIf="drg.unlockStatus; else unlockbtn">
-                  </ng-container>
-                  <ng-template #unlockbtn>
-                    <button mat-raised-button (click)="Lockaction(drg.id,0)">UNLOCK</button>
-                  </ng-template>
-    
-                </ng-container>
-    
-    
-    
-    
-              </td>
-    
-    
-    
-    
-    
+
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="HcustomerName">
+            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> CUSTOMER</th>
+          </ng-container>
+
+
+          <ng-container matColumnDef="materialGrade">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> MATERIAL GRADE </th>
+            <td mat-cell *matCellDef="let drg">
+              {{drg.materialGrade | uppercase}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="HmaterialGrade">
+            <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> MATERIAL GRADE</th>
+          </ng-container>
+
+
+
+
+
+          <ng-container matColumnDef="unlockStatus">
+
+            <ng-container *ngIf="isTT; else teset">
+              <th mat-header-cell *matHeaderCellDef> LOCK </th>
             </ng-container>
-    
-            <ng-container *ngIf="islog && isad" matColumnDef="edit">
-              <th mat-header-cell *matHeaderCellDef>EDIT</th>
-              <td mat-cell *matCellDef="let drg">
-                <div>
-                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                            padding: 0 !important;" (click)="editDrawing(drg)">
-                    <mat-icon style="color:green" selected>edit</mat-icon>
-                  </button>
-                </div>
-              </td>
-            </ng-container>
-    
-            <ng-container *ngIf="islog && isad" matColumnDef="delete">
-              <th mat-header-cell *matHeaderCellDef>DELETE</th>
-              <td mat-cell *matCellDef="let drg">
-                <div>
-                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                    padding: 0 !important;" (click)="deleteDrg(drg.id)">
-                    <mat-icon color="warn" selected>delete</mat-icon>
-                  </button>
-                </div>
-              </td>
-            </ng-container>
-    
-    
-            <ng-container matColumnDef="pno-group">
-              <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"> DRAWING NUMBER </th>
-            </ng-container>
-    
-            <ng-container matColumnDef="rno-group">
-              <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"> REVISION NUMBER </th>
-            </ng-container>
-    
-            <ng-container matColumnDef="action-group">
-              <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"> ACTION </th>
-            </ng-container>
-    
-    
-    
-    
-            <ng-container *ngIf="islog && isad; else heads1">
-              <tr  style="background: #408cfd  ;"  mat-header-row
-                *matHeaderRowDef="['Hsno','Hid','HpartName','pno-group','rno-group','HcustomerName','HmaterialGrade','action-group']"></tr>
-            </ng-container>
-            <ng-template #heads1>
-              <tr  style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="['Hsno','Hid','HpartName','pno-group','rno-group','HcustomerName','HmaterialGrade']"></tr>
+            <ng-template #teset>
+              <th mat-header-cell *matHeaderCellDef> UNLOCK </th>
             </ng-template>
-    
-    
-            <tr  style="background: #408cfd  ;"  mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-red': row.unlockStatus =='0' }">
+
+
+
+
+
+            <td mat-cell *matCellDef="let drg">
+
+              <ng-container *ngIf="isTT">
+
+                <ng-container *ngIf="drg.unlockStatus; else unlockbtn">
+                  <button mat-raised-button (click)="Lockaction(drg.id,1)">LOCK</button>
+                </ng-container>
+                <ng-template #unlockbtn>
+
+                </ng-template>
+
+              </ng-container>
+
+              <ng-container *ngIf="isET">
+                <ng-container *ngIf="drg.unlockStatus; else unlockbtn">
+                </ng-container>
+                <ng-template #unlockbtn>
+                  <button mat-raised-button (click)="Lockaction(drg.id,0)">UNLOCK</button>
+                </ng-template>
+
+              </ng-container>
+
+
+
+
+            </td>
+
+
+
+
+
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>EDIT</th>
+            <td mat-cell *matCellDef="let drg">
+              <div>
+                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                            padding: 0 !important;" (click)="editDrawing(drg)">
+                  <mat-icon style="color:green" selected>edit</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>DELETE</th>
+            <td mat-cell *matCellDef="let drg">
+              <div>
+                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                    padding: 0 !important;" (click)="deleteDrg(drg.id)">
+                  <mat-icon color="warn" selected>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="pno-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"> DRAWING NUMBER </th>
+          </ng-container>
+
+          <ng-container matColumnDef="rno-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"> REVISION NUMBER </th>
+          </ng-container>
+
+          <ng-container matColumnDef="action-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"> ACTION </th>
+          </ng-container>
+
+
+
+
+          <ng-container *ngIf="islog && isad; else heads1">
+            <tr style="background: #408cfd  ;" mat-header-row
+              *matHeaderRowDef="['Hsno','Hid','HpartName','pno-group','rno-group','HcustomerName','HmaterialGrade','action-group']">
             </tr>
-          </table>
-          <mat-paginator #myPaginator [pageSizeOptions]="[200,400,600]"></mat-paginator>
-          
-        </div>
+          </ng-container>
+          <ng-template #heads1>
+            <tr style="background: #408cfd  ;" mat-header-row
+              *matHeaderRowDef="['Hsno','Hid','HpartName','pno-group','rno-group','HcustomerName','HmaterialGrade']">
+            </tr>
+          </ng-template>
+
+
+          <tr style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngClass]="{'make-red': row.unlockStatus =='0' }">
+          </tr>
+        </table>
+        <mat-paginator #myPaginator [pageSizeOptions]="[200,400,600]"></mat-paginator>
+
       </div>
-    
     </div>
+
+  </div>
 </div>
 
 

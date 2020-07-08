@@ -71,7 +71,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         logRole: {
-            type: DataTypes.ENUM('MT', 'MKT', 'TT','ET','UT'),
+            type: DataTypes.ENUM('MT', 'MKT', 'TT','ET','UT','dIS'),
             field: 'log_role',
             allowNull: false
         },

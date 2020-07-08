@@ -67,6 +67,17 @@ router.get('/fpi/:drgCode/:opnId', (req, res) => {
     })
 })
 
+router.get('/fir/:drgCode', (req, res) => {
+    return new Promise((resolve, reject) => {
+        Process.findAll({ where: { drgId: req.params.drgCode, deleteStatus : false },include: [Instrument] }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+
 router.get('/routecard/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
         MarketCard.findAll({ where: { drgId: req.params.drgId}}).then(function (result) {
