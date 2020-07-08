@@ -10,8 +10,13 @@
   <mat-sidenav style="width:15%;background-color: black;" mode="over" [opened]="isOpen">
 
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link " [routerLink]="['/marketview']" (click)="isShown = false"
+              >Market&nbsp;card</a>
+          </li>
 
-          <li class="nav-item">
+
+          <li class="nav-item ">
               <a class="nav-link" [routerLink]="['/contractreviewview']" (click)="isShown = false"
                 >Contract&nbsp;Review</a>
             </li>

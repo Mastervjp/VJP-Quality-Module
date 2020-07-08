@@ -39,3 +39,6 @@ table {
     font-size: large;
     color: black;
   }
+  .nav-item.active .nav-link {
+    color: white;
+  }
