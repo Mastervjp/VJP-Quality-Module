@@ -105,6 +105,7 @@ import { CopyProcessComponent } from './copy-process/copy-process.component';
 import { SampleDrawingComponent } from './sample-drawing/sample-drawing.component';
 import { ContractreviewComponent } from './contractreview/contractreview.component';
 import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
+import { ContractreviewPrintComponent } from './contractreview-print/contractreview-print.component';
 
 @NgModule({
   declarations: [
@@ -179,6 +180,7 @@ import { ContractreviewViewComponent } from './contractreview-view/contractrevie
     SampleDrawingComponent,
     ContractreviewComponent,
     ContractreviewViewComponent,
+    ContractreviewPrintComponent,
   ],
   imports: [
     BrowserModule,

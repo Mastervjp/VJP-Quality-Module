@@ -8,7 +8,6 @@ import { single } from 'rxjs/operators';
 import { identifierModuleUrl } from '@angular/compiler';
 import { style } from '@angular/animations';
 import {formatDate, DatePipe} from '@angular/common';
-
 @Component({
   selector: 'app-periodic',
   templateUrl: './periodic.component.html',

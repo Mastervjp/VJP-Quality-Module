@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ContractreviewService } from '../services/contractreview.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-contractreview',
   templateUrl: './contractreview.component.html',
   styleUrls: ['./contractreview.component.css']
 })
 export class ContractreviewComponent implements OnInit {
+  
 
-  constructor(private _table: ContractreviewService, private _formBuilder: FormBuilder) { }
+
+  constructor(private _table: ContractreviewService, private _formBuilder: FormBuilder,private router: Router) { }
 
   ngOnInit(): void {
+  
   }
 
 
@@ -24,6 +27,7 @@ export class ContractreviewComponent implements OnInit {
 
     this._table.addData(step1).subscribe((res: any) => {
       console.log("test==>", res);
+      this.router.navigate(['/contractreviewview']); 
       
     });
 

@@ -27,6 +27,7 @@ export class ContractreviewService {
     }
     return this.token;
   }
+  
   addData(datas): Observable<any> {
     debugger
     console.log("service:",datas);
@@ -34,6 +35,17 @@ export class ContractreviewService {
     return this.http.post<any>(this.API_URL+'/api/contractreview/',datas ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
-  
 
+  getData(): Observable<any> {
+    return this.http.get(this.API_URL+'/api/contractreview/',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
+
+  getCustomerData(customerName): Observable<any> { 
+    debugger
+    return this.http.get(this.API_URL+'/api/contractreview/one/'+customerName, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+      
+      
+  }
 }
