@@ -79,12 +79,11 @@
       <table class="tg" style="width:100%;">
         <tr>
           <th style="width:3%;"><b>S/N</b></th>
-          <th style="width:5%;"><b>Drg.<br>Sr. No.</b></th>
-          <th style="width: 12%;"><b>Description</b> </th>
+          <th style="width: 13%;"><b>Description</b> </th>
           <th style="width: 15%;"><b>Specification</b></th>
           <th style="width: 8%;"><b>Min</b></th>
           <th style="width: 8%;"><b>Max</b></th>
-          <th style="width: 10%;"><b>Measuring <br> Technique</b></th>
+          <th style="width: 14%;"><b>Measuring <br> Technique</b></th>
           <th style="width:6%;"><b>1</b></th>
           <th style="width:6%;"><b>2</b></th>
           <th style="width:6%;"><b>3</b></th>
@@ -96,12 +95,13 @@
         <tr >
           
           <td> {{rIndex+1}}</td>
-          <td>{{element.drgId}}</td>
           <td>{{element.description}}</td>
           <td>{{element.specification}}</td>
           <td>{{element.tolFrom}}</td>
           <td>{{element.tolTo}}</td>
-          <td>{{element.instrument}}</td>
+          <td><img
+            src="http://192.168.1.222:80/vjp/instrument/{{element.Instrument.insImage}}"
+            style="width:80px;height: 30px;"></td>
           <td></td>
           <td></td>
           <td></td>
