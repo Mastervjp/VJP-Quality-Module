@@ -20,7 +20,6 @@ export class FirComponent implements OnInit {
     let myItem1 = localStorage.getItem('DrgCode');
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
-    debugger
     this.getfir(myItem1);
     this.getmarket(this.routeObj)
 
@@ -41,10 +40,11 @@ export class FirComponent implements OnInit {
   }
   
   getmarket(routeObj1) {
-    let id = routeObj1.mpId;
+    let id =JSON.parse(localStorage.getItem('routeObj')).mpId;
     this._inspectionservice.getmarket(id).subscribe((res: any) => {
       if (res.success) {
         this.marketData = res.data;
+
       }
     });
   }

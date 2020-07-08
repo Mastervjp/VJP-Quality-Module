@@ -29,7 +29,7 @@ export class ContractreviewViewComponent implements OnInit {
   }
   viewroute(data){
 
-  debugger
+
     localStorage.setItem("customerName",data);
 
 

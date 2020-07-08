@@ -253,7 +253,7 @@ td {
 
         delete groubedByTeam['SHIFT'];
 
-        debugger
+  
         let a = [];
         for (var key in groubedByTeam) {
           let b = {
@@ -380,7 +380,6 @@ td {
           a.push(b);
         }
         this.value_expression = a;
-        debugger
       }
     });
   }

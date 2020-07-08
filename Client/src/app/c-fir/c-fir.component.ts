@@ -33,8 +33,6 @@ export class CFirComponent implements OnInit {
           }
         }
         this.dataSource = re_data;
-        debugger
-
       }
     });
   }

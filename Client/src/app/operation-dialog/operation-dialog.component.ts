@@ -245,7 +245,7 @@ export class OperationDialogComponent {
 
   onFileChange1(event) {
 
-    debugger
+
     const reader1 = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file1] = event.target.files;
