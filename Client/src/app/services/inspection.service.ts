@@ -37,6 +37,10 @@ export class InspectionService {
     return this.http.get(this.API_URL+'/api/inspection/fpi/' + drgcode+'/'+opnId,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
+  getfir(drgcode): Observable<any> {
+    return this.http.get(this.API_URL+'/api/inspection/fir/' + drgcode,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
 
   getmarket(id): Observable<any> {
     return this.http.get(this.API_URL+'/api/inspection/marketdata/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(

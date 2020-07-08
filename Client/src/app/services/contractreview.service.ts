@@ -15,8 +15,6 @@ export class ContractreviewService {
   constructor(private http: HttpClient) { }
 
   private extractData1(res: any) {
-
-    debugger;
     let body = res;
     return body || {};
   }
@@ -29,7 +27,6 @@ export class ContractreviewService {
   }
   
   addData(datas): Observable<any> {
-    debugger
     console.log("service:",datas);
     
     return this.http.post<any>(this.API_URL+'/api/contractreview/',datas ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
@@ -42,7 +39,6 @@ export class ContractreviewService {
   }
 
   getCustomerData(customerName): Observable<any> { 
-    debugger
     return this.http.get(this.API_URL+'/api/contractreview/one/'+customerName, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
       

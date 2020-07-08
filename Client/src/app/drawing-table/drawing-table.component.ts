@@ -1,8 +1,3 @@
-
-
-
-
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DrawingService } from '../services/drawing.service';
 import { Observable } from 'rxjs';
@@ -41,13 +36,14 @@ export class DrawingTableComponent implements OnInit {
   displayedColumns: any;
   isTT: boolean;
   isET: boolean;
-  isUT : boolean;
+  isUT: boolean;
+  isDIS: boolean;
 
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private _drawingservice: DrawingService, public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar, ) { }
+  constructor(private _drawingservice: DrawingService, public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar,) { }
 
   ngOnInit() {
     this.getdata();
@@ -59,23 +55,27 @@ export class DrawingTableComponent implements OnInit {
 
     localStorage.removeItem('qpaObject');
     localStorage.removeItem('psObject');
-    
+
 
     if (this.islog && this.isTT) {
-      this.displayedColumns = ['sno','id', 'partName','partNum', 'partNum1','revNo','revNo1',  'customerName','materialGrade' ,'unlockStatus','edit', 'delete'];
+      this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade', 'unlockStatus', 'edit', 'delete'];
 
     }
-    else if(this.islog && this.isET) {
-      this.displayedColumns = ['sno','id','partName','partNum','partNum1','revNo','revNo1',  'customerName','materialGrade', 'unlockStatus'];
+    else if (this.islog && this.isET) {
+      this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade', 'unlockStatus'];
+
+    }
+    else if (this.islog && this.isDIS) {
+      this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade'];
 
     }
     else {
-      this.displayedColumns = ['sno','id','partName', 'partNum','partNum1','revNo','revNo1', 'customerName','materialGrade'];
+      this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade'];
 
     }
 
 
-    
+
   }
 
   checkrole() {
@@ -86,18 +86,21 @@ export class DrawingTableComponent implements OnInit {
     else if (localStorage.getItem('logRole') == "ET") {
       this.isET = true;
     }
+    else if (localStorage.getItem('logRole') == "DIS") {
+      this.isDIS = true;
+    }
     else {
       this.isTT = false;
       this.isET = false;
 
     }
-      if (localStorage.getItem('logRole') == "UT") {
-        this.isUT = true;
-      }
-      else{
-        this.isUT = false;
-      }
-      this.isUT
+    if (localStorage.getItem('logRole') == "UT") {
+      this.isUT = true;
+    }
+    else {
+      this.isUT = false;
+    }
+    this.isUT
 
   }
 
@@ -160,7 +163,7 @@ export class DrawingTableComponent implements OnInit {
     });
   }
 
-  lockmsg(){
+  lockmsg() {
     this.snackBar.open("Drawing Code is locked", "", {
       duration: 1500,
       horizontalPosition: 'end',
@@ -169,52 +172,52 @@ export class DrawingTableComponent implements OnInit {
     });
   }
 
-Lockaction(id,status){
+  Lockaction(id, status) {
 
 
-  if(status){
+    if (status) {
 
-    let datas = {"unlockStatus": 0}
+      let datas = { "unlockStatus": 0 }
 
-    this._drawingservice.updateDrawing(id, datas).subscribe((res: any) => {
-      if (res.success) {
-        this.snackBar.open("Drawing Code Locked", "", {
-          duration: 1500,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          panelClass: 'successsnackbarclass'
-        });
-        this.getdata();
-  
-      }
+      this._drawingservice.updateDrawing(id, datas).subscribe((res: any) => {
+        if (res.success) {
+          this.snackBar.open("Drawing Code Locked", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successsnackbarclass'
+          });
+          this.getdata();
 
-    });
+        }
+
+      });
+
+
+    }
+
+    else {
+
+      let datas = { "unlockStatus": 1 }
+
+      this._drawingservice.updateDrawing(id, datas).subscribe((res: any) => {
+        if (res.success) {
+          this.snackBar.open("Drawing Code Unocked", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successsnackbarclass'
+          });
+          this.getdata();
+
+        }
+      });
+    }
+
+
 
 
   }
-
-  else{
-
-    let datas = {"unlockStatus": 1}
-
-    this._drawingservice.updateDrawing(id, datas).subscribe((res: any) => {
-      if (res.success) {
-        this.snackBar.open("Drawing Code Unocked", "", {
-          duration: 1500,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          panelClass: 'successsnackbarclass'
-        });
-        this.getdata();
-  
-      }
-    });
-  }
-
-
-
-
-}
 
 
   applyFilter(filterValue: string) {
@@ -244,29 +247,43 @@ Lockaction(id,status){
   }
 
   callOperation(product) {
-
-
     localStorage.setItem('drgObject', JSON.stringify(product));
-
-    
-
     localStorage.setItem('DrgCode', product.id);
     localStorage.setItem('drgId', product.id);
-
     localStorage.setItem('d_partno', product.partNum);
     localStorage.setItem('d_revno', product.revNo);
     localStorage.setItem('d_revdate', product.revDate);
     localStorage.setItem('drg_number', product.drgCode);
-    this.router.navigate(['/qpabstract']); 
+    this.router.navigate(['/qpabstract']);
     // this.router.navigate(['/processplan']); 
+  }
+  batchqty(product) {
+    localStorage.setItem('drgObject', JSON.stringify(product));
+    localStorage.setItem('DrgCode', product.id);
+    localStorage.setItem('drgId', product.id);
 
+    localStorage.setItem('firCheck', "1");
+
+    this.router.navigate(['/batchqty']);
+    // this.router.navigate(['/processplan']); 
+  }
+  routecard(product) {
+    localStorage.setItem('drgObject', JSON.stringify(product));
+    localStorage.setItem('DrgCode', product.id);
+    localStorage.setItem('drgId', product.id);
+    localStorage.setItem('d_partno', product.partNum);
+    localStorage.setItem('d_revno', product.revNo);
+    localStorage.setItem('d_revdate', product.revDate);
+    localStorage.setItem('drg_number', product.drgCode);
+    this.router.navigate(['/qpabstract']);
+    // this.router.navigate(['/processplan']); 
   }
 
-  sampling(){
+  sampling() {
 
     // localStorage.setItem('drgObject', JSON.stringify(product));
 
-    this.router.navigate(['/samplingcode']); 
+    this.router.navigate(['/samplingcode']);
 
   }
 

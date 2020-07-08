@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL : "http://192.168.1.222:3000",
-  IMG_URL : "http://192.168.1.222:80",
+  API_URL : "http://localhost:3000",
+  IMG_URL : "http://localhost:80",
 
 };
 

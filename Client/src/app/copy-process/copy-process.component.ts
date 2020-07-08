@@ -98,7 +98,7 @@ export class CopyProcessComponent {
       data1.addKind = 1;
     }
 data1;
-debugger;
+
     this._drawing.copyDrawing(data1).subscribe((res: any) => {
 
      

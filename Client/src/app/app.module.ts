@@ -105,6 +105,8 @@ import { CopyProcessComponent } from './copy-process/copy-process.component';
 import { SampleDrawingComponent } from './sample-drawing/sample-drawing.component';
 import { ContractreviewComponent } from './contractreview/contractreview.component';
 import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
+import { FirComponent } from './fir/fir.component';
+import { CFirComponent } from './c-fir/c-fir.component';
 import { ContractreviewPrintComponent } from './contractreview-print/contractreview-print.component';
 
 @NgModule({
@@ -180,6 +182,8 @@ import { ContractreviewPrintComponent } from './contractreview-print/contractrev
     SampleDrawingComponent,
     ContractreviewComponent,
     ContractreviewViewComponent,
+    FirComponent,
+    CFirComponent,
     ContractreviewPrintComponent,
   ],
   imports: [

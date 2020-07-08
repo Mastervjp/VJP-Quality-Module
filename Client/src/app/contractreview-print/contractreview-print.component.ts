@@ -34,7 +34,7 @@ export class ContractreviewPrintComponent implements OnInit {
   ngOnInit(): void {
     this.getCustomerData();
     // this.customerName = JSON.parse(localStorage.getItem("customerName"));
-    // debugger;
+    
     // this.customerData = this._contractreviewservice.getCustomerData(this.customerName).subscribe((res: any)=>{})
     formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
@@ -109,10 +109,10 @@ export class ContractreviewPrintComponent implements OnInit {
 
  getCustomerData() {
 
-  debugger;
+ 
   let customerName = localStorage.getItem('customerName');
   this._contractreviewservice.getCustomerData(customerName).subscribe((res: any) => {
-    debugger;
+ 
     if (res.success) {
       let mydata = res.data;
       this.dataSource =mydata;

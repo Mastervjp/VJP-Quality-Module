@@ -8,22 +8,41 @@
 
     <div>
 
-        <mat-tab-group>
-            <mat-tab label="Drg Details "> <app-drg-details> </app-drg-details> </mat-tab>
-            <mat-tab label="FP Inspection">
+        <ng-container  *ngIf="fircheck">
+            <mat-tab-group>
+                <mat-tab label="FIR">
+    
+                    <app-fir> </app-fir>
+                </mat-tab>
+                <mat-tab label="C-FIR">
+                   <app-c-fir></app-c-fir>
+                </mat-tab>
+    
+                <!-- <mat-tab label="Final Inspection">
+                <app-predispatch></app-predispatch>
+                </mat-tab> -->
+    
+            </mat-tab-group>
+        </ng-container>
+<ng-container *ngIf="!fircheck">
+    <mat-tab-group>
+        <mat-tab label="Drg Details "> <app-drg-details> </app-drg-details> </mat-tab>
+        <mat-tab label="FP Inspection">
 
-                <app-firstpart-print></app-firstpart-print>
-                <!-- <app-firstpart></app-firstpart> -->
-            </mat-tab>
-            <mat-tab label="Periodic Inspection">
-                <app-periodic></app-periodic>
-            </mat-tab>
+            <app-firstpart-print></app-firstpart-print>
+            <!-- <app-firstpart></app-firstpart> -->
+        </mat-tab>
+        <mat-tab label="Periodic Inspection">
+            <app-periodic></app-periodic>
+        </mat-tab>
 
-            <!-- <mat-tab label="Final Inspection">
-            <app-predispatch></app-predispatch>
-            </mat-tab> -->
+        <!-- <mat-tab label="Final Inspection">
+        <app-predispatch></app-predispatch>
+        </mat-tab> -->
 
-        </mat-tab-group>
+    </mat-tab-group>
+</ng-container>
+       
 
     </div>
     </div>

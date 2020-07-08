@@ -253,7 +253,7 @@ td {
 
         delete groubedByTeam['SHIFT'];
 
-        debugger
+  
         let a = [];
         for (var key in groubedByTeam) {
           let b = {
@@ -281,7 +281,7 @@ td {
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
               let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
-              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
+              let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers2.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
                 Theaders.push(entry)
@@ -300,12 +300,12 @@ td {
           else if (key == "Day") {
             b.name = key;
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
             // b.name = key;
@@ -315,22 +315,22 @@ td {
           else if(key == "HEAT NUMBER PER LOT"){
             b.name = key;
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
           else if(key == "HOUR"){
             b.name = key;
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
           }
           else if(key == "MELTING CHARGE"){
             b.name = key;
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
           else if(key == "HEAT TREAMENT BATCH"){
             b.name = key;
             b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
           }
           else {
             b.name = parseInt(key);
@@ -361,7 +361,7 @@ td {
             let ie, j, temparray, chunk = 10;
             for (ie = 0; ie < headers1.length; ie += chunk) {
               let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
-              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
+              let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers1.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
                 Theaders.push(entry)
@@ -380,7 +380,6 @@ td {
           a.push(b);
         }
         this.value_expression = a;
-        debugger
       }
     });
   }

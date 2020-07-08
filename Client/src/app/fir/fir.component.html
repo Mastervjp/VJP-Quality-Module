@@ -1,0 +1,138 @@
+<div style=" min-height: calc(100vh - 110px);">
+  <div style="width: 95%;margin-left: 3%;padding-top: 2%;margin-bottom: 10px;">
+
+    <div id="componentID">
+
+      <table class="tg" style="width:100%;height: 50px;">
+        <tr>
+          <td style="width: 15%;text-align: center;" rowspan="4"><img src="assets/vjp3.png" height="70">
+          </td>
+          <td style="width: 50%; text-align: center;padding: 5px;font-size: 200%;" rowspan="4"><B>FINAL INSPECTION
+              REPORT</B></td>
+          <td style="width: 17.5%;">Doc.No.
+          </td>
+          <td style="width: 17.5%;">QA/R/05</td>
+        </tr>
+        <tr>
+          <td>Rev.No</td>
+          <td>01</td>
+
+        </tr>
+        <tr>
+          <td>Date</td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td>Page No.</td>
+          <td></td>
+
+        </tr>
+      </table>
+      <table class="tg" style="width:100%">
+        <tr>
+          <td colspan="1" style="width: 25%;">CUSTOMER NAME</td>
+          <td colspan="1" style="width: 25%;">{{drgObject.customerName}}</td>
+
+          <td colspan="1" style="width: 25%;">Customer PO.NO </td>
+          <td colspan="1" style="width: 25%;">{{marketData.poNo}}</td>
+        </tr>
+        <tr>
+          <td>Part Name </td>
+          <td>{{drgObject.partName}}</td>
+          <td>Inspection date</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Drg. No. / Rev. </td>
+          <td>{{drgObject.id}}</td>
+          <td>Inspection report no</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Material Grade</td>
+          <td>{{drgObject.materialGrade}}</td>
+          <td>Invoice No / Date </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Unit of Measurement</td>
+          <td> : MM / <s>INCH</s> </td>
+          <td>Lot Quantity </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Heat No</td>
+          <td></td>
+          <td>Sample Quantity </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>S.NO </td>
+          <td></td>
+        </tr>
+
+      </table>
+
+      <table class="tg" style="width:100%;">
+        <tr>
+          <th style="width:3%;"><b>S/N</b></th>
+          <th style="width:5%;"><b>Drg.<br>Sr. No.</b></th>
+          <th style="width: 12%;"><b>Description</b> </th>
+          <th style="width: 15%;"><b>Specification</b></th>
+          <th style="width: 8%;"><b>Min</b></th>
+          <th style="width: 8%;"><b>Max</b></th>
+          <th style="width: 10%;"><b>Measuring <br> Technique</b></th>
+          <th style="width:6%;"><b>1</b></th>
+          <th style="width:6%;"><b>2</b></th>
+          <th style="width:6%;"><b>3</b></th>
+          <th style="width:6%;"><b>4</b></th>
+          <th style="width:6%;"><b>5</b></th>
+          <th style="width: 10%;"><b>Remarks</b></th>
+        </tr>
+        <ng-container class="data" *ngFor="let element of dataSource; let rIndex = index;">
+        <tr >
+          
+          <td> {{rIndex+1}}</td>
+          <td>{{element.drgId}}</td>
+          <td>{{element.description}}</td>
+          <td>{{element.specification}}</td>
+          <td>{{element.tolFrom}}</td>
+          <td>{{element.tolTo}}</td>
+          <td>{{element.instrument}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </ng-container>
+       
+        <tr>
+          <th colspan="2" style="height: 60px;"><b>Remarks</b></th>
+          <td colspan="11"></td>
+        </tr>
+        <tr style="padding-left: 5px;">
+          <th colspan="2"><b>Status</b></th>
+          <td colspan="4">ACCEPTED</td>
+          <td colspan="4">C/A ACCEPTED</td>
+          <td colspan="3">REJECTED</td>
+        </tr>
+        <tr style="padding-left: 5px;">
+       
+          <td colspan="6" ><b>Inspected By: </b></td>
+          <td colspan="7" ><b>Approved By : </b></td>
+          
+        </tr>
+      </table>
+
+    </div>
+  </div>
+  <div class="text-center p-2">
+    <button mat-raised-button (click)="printPage()" style="background-color: blue;color: white;" >Print</button><br>
+
+  </div>
+</div>
