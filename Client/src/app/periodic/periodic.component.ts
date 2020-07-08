@@ -160,11 +160,11 @@ td {
 }
 
 .bk th:nth-child(3) {
-  width: 14% !important;
+  width: 12% !important;
 }
 
 .bk th:nth-child(4) {
-  width: 10% !important;
+  width: 4% !important;
 }
 
 .bk th:nth-child(5) {
