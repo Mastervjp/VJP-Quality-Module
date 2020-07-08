@@ -12,10 +12,10 @@
         <table class="tg" style="  width: 100%;">
   
           <tr>
-            <th  rowspan="4" style="text-align: center;"><img src="assets/vjp3.png" height="60" width="100"></th>
+            <th  rowspan="4" style="text-align: center;width: 17.8%;"><img src="assets/vjp3.png" height="60" width="100"></th>
            
-            <td rowspan="4" colspan="5" style="text-align: center;"><b>CONTRACT REVIEW</b></td>
-            <td colspan="1">DOC CODE</td>
+            <td rowspan="4" colspan="5" style="text-align: center; width: 61.8%; font-size: 20PX;"><b>CONTRACT REVIEW</b></td>
+            <td colspan="1" style="width: 10%;">DOC CODE</td>
             <td colspan="3"><b>MKT/R/05</b></td>
           </tr>
   
@@ -40,20 +40,20 @@
   
         <table class="tg" style="border-color:black;border-style:solid;border-width:1px;width:100%">
           <tr style="height: 10px;">
-            <td colspan="1" style="width: 25%;">CUSTOMER NAME</td>
-            <td colspan="2">
+            <td colspan="1" style="width:18%;">CUSTOMER NAME</td>
+            <td colspan="2" style="width:25%;">
                 <b> {{dataSource.customerName}}</b>
   
             </td>
   
-            <td colspan="3">VJP offer Number & Date</td>
-            <td colspan="2"><b> {{dataSource.offerNo}}</b>
+            <td colspan="2" style="width:20%;">VJP offer Number & Date</td>
+            <td colspan="2" style="width:17.25%;"><b> {{dataSource.offerNo}}</b>
   
   
             </td>
   
   
-            <td colspan="2"><b> {{dataSource.offerDate | date: 'dd-MM-yyyy'}}</b>
+            <td colspan="3" ><b> {{dataSource.offerDate | date: 'dd-MM-yyyy'}}</b>
   
             </td>
           </tr>
@@ -63,12 +63,12 @@
             <td colspan="2"><b> {{dataSource.billTo}}</b>
             </td>
   
-            <td colspan="3">PO Number</td>
-            <td colspan="2"><b> {{dataSource.poNumber}}</b>
+            <td colspan="2" >PO Number</td>
+            <td colspan="2" ><b> {{dataSource.poNumber}}</b>
   
             </td>
   
-            <td colspan="2"><b> {{dataSource.poDate | date: 'dd-MM-yyyy'}}</b>
+            <td colspan="3"><b> {{dataSource.poDate | date: 'dd-MM-yyyy'}}</b>
   
             </td>
           </tr>
@@ -79,11 +79,11 @@
   
             </td>
   
-            <td colspan="3">PO Received / Required Delivery Date</td>
+            <td colspan="2" >PO Received / Required Delivery Date</td>
             <td colspan="2"><b> {{dataSource.poReceived | date: 'dd-MM-yyyy'}}</b>
   
             </td>
-            <td colspan="2"><b> {{dataSource.deliveryDate | date: 'dd-MM-yyyy'}}</b>
+            <td colspan="3"><b> {{dataSource.deliveryDate | date: 'dd-MM-yyyy'}}</b>
   
             </td>
           </tr>
@@ -99,22 +99,22 @@
           </tr>
   
           <tr>
-          <td colspan="1" style="text-align: left;">
+          <td colspan="3" style="text-align: left;">
          Purchase order type
             </td>
-            <th colspan="11" style="text-align: left;">
+            <td colspan="2" style="text-align: center;">
 
                  <div *ngIf="dataSource.regular; then thenBlock else elseBlock"></div>
-            <ng-template #thenBlock><b>Regular(&#10004;),&nbsp;&nbsp;</b> </ng-template>
-            <ng-template #elseBlock><b>Regular(&#10008;),&nbsp;&nbsp;</b> </ng-template>
+            <ng-template #thenBlock><b>Regular(&#10004;)&nbsp;&nbsp;</b> </ng-template>
+            <ng-template #elseBlock><b>Regular(&#10008;)&nbsp;&nbsp;</b> </ng-template></td>
   
-            <div *ngIf="dataSource.tooling; then thenBlock1 else elseBlock1"></div>
-  <ng-template #thenBlock1><b>Tooling(&#10004;),&nbsp;&nbsp;</b> </ng-template>
-  <ng-template #elseBlock1><b>Tooling(&#10008;),&nbsp;&nbsp;</b> </ng-template>
+            <td colspan="2" style="text-align: center;"><div *ngIf="dataSource.tooling; then thenBlock1 else elseBlock1"></div>
+  <ng-template #thenBlock1><b>Tooling(&#10004;)&nbsp;&nbsp;</b> </ng-template>
+  <ng-template #elseBlock1><b>Tooling(&#10008;)&nbsp;&nbsp;</b> </ng-template></td>
             
-   <div *ngIf="dataSource.purchaseOrderType; then thenBlock2 else elseBlock2"></div>
-  <ng-template #thenBlock2><b>purchase Order Type(&#10004;)&nbsp;&nbsp;</b> </ng-template>
-  <ng-template #elseBlock2><b>purchase Order Type(&#10008;)&nbsp;&nbsp;</b> </ng-template></th>
+  <td colspan="2"  style="text-align: center;"> <div *ngIf="dataSource.purchaseOrderType; then thenBlock2 else elseBlock2"></div>
+  <ng-template #thenBlock2><b>Prototype(&#10004;)&nbsp;&nbsp;</b> </ng-template>
+  <ng-template #elseBlock2><b>Prototype(&#10008;)&nbsp;&nbsp;</b> </ng-template></td>
   
           </tr>
   
@@ -484,6 +484,11 @@
   
             </td>
           </tr>
+        </table>
+
+
+
+        <table class="tg" style="  width: 100%;">
   
   
           <tr>
@@ -495,7 +500,7 @@
           </tr>
           <tr style="height: 25PX;">
   
-            <td colspan="1" style="width: 5%;"></td>
+            <td colspan="1" style="width: 10%;"></td>
             <td colspan="1"></td>
             <td colspan="2"></td>
             <td colspan="1"></td>
@@ -523,7 +528,7 @@
           </tr>
           <tr >
   
-            <td colspan="1" style="width: 10%;" style="text-align: center;"><b>REV. No</b></td>
+            <td colspan="1" style="width: 20%;" style="text-align: center;"><b>REV. No</b></td>
             <td colspan="1" style="text-align: center;"><b>DATE</b></td>
             <td colspan="2" style="text-align: center;"><b>DESCRIPTION</b></td>
             <td colspan="1" style="text-align: center;"><b>SIGNATURE</b></td>
