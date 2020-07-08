@@ -1,11 +1,28 @@
 <app-navbar6>
-  <button style="margin-left: 10%;margin-top: -3%;" mat-button [routerLink]="['/marketview']">
-    <h3  >Market&nbsp;Card</h3>
-</button>
-<button style="margin-left: 10%;margin-top: -3%;" mat-button [routerLink]="['/contractreviewview']">
-    <h3>Contract&nbsp;Review</h3>
-</button>
+  <button mat-icon-button aria-label (click)="isOpen = !isOpen">
+    <mat-icon style="color: white;">more_vert</mat-icon>
+  </button>
+<img src="assets/vjp3.png" height="50"  alt="vjp" width="100"  >&nbsp; &nbsp; &nbsp;
+<h3 class="master"  routerLinkActive="color" style="color: white;">Market&nbsp;Card</h3>  
+ 
 </app-navbar6>
+<mat-sidenav-container>
+  <mat-sidenav style="width:15%;background-color: black;" mode="over" [opened]="isOpen">
+
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/contractreviewview']" (click)="isShown = false"
+                >Contract&nbsp;Review</a>
+            </li>
+ 
+
+         
+        </ul>
+
+
+  </mat-sidenav>
+  <mat-sidenav-content>
 
 
 <div style=" min-height: calc(100vh - 110px);">

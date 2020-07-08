@@ -107,6 +107,7 @@ import { ContractreviewComponent } from './contractreview/contractreview.compone
 import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
 import { FirComponent } from './fir/fir.component';
 import { CFirComponent } from './c-fir/c-fir.component';
+import { ContractreviewPrintComponent } from './contractreview-print/contractreview-print.component';
 
 @NgModule({
   declarations: [
@@ -183,6 +184,7 @@ import { CFirComponent } from './c-fir/c-fir.component';
     ContractreviewViewComponent,
     FirComponent,
     CFirComponent,
+    ContractreviewPrintComponent,
   ],
   imports: [
     BrowserModule,

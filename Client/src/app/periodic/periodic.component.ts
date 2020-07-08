@@ -1,18 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-periodic',
-//   templateUrl: './periodic.component.html',
-//   styleUrls: ['./periodic.component.css']
-// })
-// export class PeriodicComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 import { Component, OnInit, ViewChild, destroyPlatform } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -22,7 +7,7 @@ import { InspectionService } from '../services/inspection.service';
 import { single } from 'rxjs/operators';
 import { identifierModuleUrl } from '@angular/compiler';
 import { style } from '@angular/animations';
-
+import {formatDate, DatePipe} from '@angular/common';
 @Component({
   selector: 'app-periodic',
   templateUrl: './periodic.component.html',
@@ -39,54 +24,37 @@ export class PeriodicComponent implements OnInit {
   d_batch_qty: any;
   value_expression: any;
   displayedColumns = ['id', 'opnName', 'description', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency'];
-
   dataSource = [];
   columns: string[];
-
   drgObject: any;
   qpaObject: any;
   psObject: any;
   machine: any;
   routeObj :any;
   marketData: any;
-  
-  
-  
-
-
+  myDate = new Date();
   objectKeys = Object.keys;
 
   ngOnInit() {
-
-
     let myItem1 = localStorage.getItem('DrgCode');
     this.drgcode = myItem1;
     this.drgnum = localStorage.getItem('drg_number');
-
     this.d_partno = localStorage.getItem('d_partno');
     this.d_revno = localStorage.getItem('d_revno');
     this.d_revdate = localStorage.getItem('d_revdate');
     this.d_batch_qty = localStorage.getItem('batch_qty');
     let opnId = localStorage.getItem('opnNo')
-
     this.machine = localStorage.getItem('machine')
-    
-
     this.getpi(myItem1, opnId);
-    
-
-
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
     this.getmarket(this.routeObj)
-
-
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
     // this.test();
-
-
   }
+
   getmarket(routeObj1) {
     let id = routeObj1.mpId;
     this._inspectionservice.getmarket(id).subscribe((res: any) => {
@@ -95,7 +63,6 @@ export class PeriodicComponent implements OnInit {
       }
     });
   }
-  
 
   printPage() {
 
@@ -126,18 +93,14 @@ export class PeriodicComponent implements OnInit {
 
     const printContent = document.getElementById("componentID");
     const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-    WindowPrt.document.write(printContent.innerHTML);
+    WindowPrt.document.write(printContent.outerHTML);
     WindowPrt.document.write(`<style>
 
-  
     .my-4{
       margin-top: 20px;
       margin-bottom : 20px;
       text-align: left;
     }
-
-
-     
      
 @media print {
  
@@ -154,6 +117,10 @@ export class PeriodicComponent implements OnInit {
     max-height: 100%;
     max-width: 100%
   }
+
+  thead {
+    page-break-inside: avoid;
+    display: table-header-group;} 
 
   
 
@@ -179,11 +146,6 @@ td {
    height:25px ;
    text-align: left;
   }
-    body, html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial;
-      }
   .nnew{
     width: 80px;
     height: 30px;
@@ -266,11 +228,7 @@ td {
       WindowPrt.print();
       WindowPrt.close();
     }, 2500);
-
-
-
   }
-
 
   getpi(drgcode, opnId) {
     this._inspectionservice.getfpi(drgcode, opnId).subscribe((res: any) => {
@@ -292,9 +250,11 @@ td {
           }, {});
         }
         var groubedByTeam = groupBy(res.data, 'measuringFrequency');
-        
-        let a = [];
 
+        delete groubedByTeam['SHIFT'];
+
+        debugger
+        let a = [];
         for (var key in groubedByTeam) {
           let b = {
             "name": null,
@@ -306,10 +266,8 @@ td {
           }
           
           if (key == "100" || key == "100%") {
-
             b.name = parseInt(key);
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
             let i = 1;
             let headers2 = [];
             while (i <= this.d_batch_qty) {
@@ -322,8 +280,8 @@ td {
             let ie, j, temparray, chunk = 10 
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
-              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
-              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers2.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
                 Theaders.push(entry)
@@ -340,86 +298,51 @@ td {
           }
 
           else if (key == "Day") {
-
             b.name = key;
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument", "1"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
-
-            b.name = key;
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument","1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
-
+            // b.name = key;
+            // b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument","1", "2", "3"]
+            // b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
-
           else if(key == "HEAT NUMBER PER LOT"){
             b.name = key;
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
-
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
-
           else if(key == "HOUR"){
             b.name = key;
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
-
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
           }
-
-
           else if(key == "MELTING CHARGE"){
             b.name = key;
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol","Instrument", "Max-Tol", "1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
-
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
-
-
-
           else if(key == "HEAT TREAMENT BATCH"){
             b.name = key;
-
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3"]
-            b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
-
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
+            b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
           }
-
-
-
-
-
-
-
-
           else {
-
             b.name = parseInt(key);
-
-            // b.headers = ["S/N", "Description", "Specification", "Min-Tol", "Max-Tol"]
+            // b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax"]
             // b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo"]
-
             let headers1 = []
-
             let length = Math.ceil(this.d_batch_qty / parseInt(key));
             let i = 1;
             // b.headers.push(i);
             // b.headers1.push(i);
             headers1.push(i);
-
             let temp;
-
             while (i <= length) {
               temp = i * parseInt(key)
               temp = temp + 1;
@@ -427,27 +350,18 @@ td {
                 // b.headers.push(temp);
                 // b.headers1.push(temp);
                 headers1.push(temp);
-
               }
               else {
                 // b.headers.push(this.d_batch_qty);
                 // b.headers1.push(this.d_batch_qty);
                 headers1.push(this.d_batch_qty);
-
-
               }
               i++;
             }
-
-
-
             let ie, j, temparray, chunk = 10;
-
-
             for (ie = 0; ie < headers1.length; ie += chunk) {
-              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
-              let Theaders1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
-
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers1.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
                 Theaders.push(entry)
@@ -456,39 +370,22 @@ td {
               b.headers2.push(Theaders);
               b.headers1.push(Theaders1);
             }
-
-
             let tempz = []
             for (var z = 0; z < b.headers1.length; z++) {
               tempz.push(z);
             }
             b.headers3.push(tempz);
-
-
-
-
-
-
-
-
-
           }
           b.subdata = groubedByTeam[key]
           a.push(b);
-
-
         }
         this.value_expression = a;
-
-
-
+        debugger
       }
-
     });
   }
 
-  isNumber(val) {
-  
+  isNumber(val) { 
     if(typeof val === 'number')
     {
       if(val == 100)
@@ -502,13 +399,9 @@ td {
     else{
       return false
     }
-  
-  
   }
 
-
-    isHundred(val) {
-      
+  isHundred(val) {
     if(typeof val === 'number')
     {
       if(val == 100)
@@ -518,13 +411,6 @@ td {
       else{
         return false
       }
-    }    
-       
-    
     }
-
-
-
+    }
 }
-
-

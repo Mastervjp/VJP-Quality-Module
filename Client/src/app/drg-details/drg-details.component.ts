@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InspectionService } from '../services/inspection.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-drg-details',
@@ -13,19 +14,24 @@ export class DrgDetailsComponent implements OnInit {
   psObject:any;
   routeObj :any;
   marketData:any;
+  myDate = new Date();
   
   constructor(private _inspectionservice: InspectionService) { }
 
   ngOnInit() {
+    this.getmarket();
 
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
-    this.getmarket(this.routeObj)
+    this.getmarket()
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
   }
-  getmarket(routeObj1) {
+  getmarket() {
+
+    let routeObj1 = JSON.parse(localStorage.getItem('routeObj'));
     let id = routeObj1.mpId;
     this._inspectionservice.getmarket(id).subscribe((res: any) => {
       if (res.success) {
@@ -35,11 +41,11 @@ export class DrgDetailsComponent implements OnInit {
   }
 
   printPage() {
-  
-      const printContent = document.getElementById("componentID");
-      const WindowPrt = window.open('', '', 'left=10,top=10,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-      WindowPrt.document.write(printContent.innerHTML);
-      WindowPrt.document.write(`<style> 
+
+    const printContent = document.getElementById("componentID");
+    const WindowPrt = window.open('', '', 'left=10,top=10,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+    WindowPrt.document.write(printContent.innerHTML);
+    WindowPrt.document.write(`<style> 
       
       div{
         padding:5%
@@ -105,7 +111,7 @@ export class DrgDetailsComponent implements OnInit {
       </style>`);
 
 
-   setTimeout(function() {
+    setTimeout(function () {
       WindowPrt.document.close();
       WindowPrt.focus();
       WindowPrt.print();

@@ -36,6 +36,7 @@ import { AddDrawingComponent } from './add-drawing/add-drawing.component';
 import { SampleDrawingComponent } from './sample-drawing/sample-drawing.component';
 import { ContractreviewComponent } from './contractreview/contractreview.component';
 import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
+import { ContractreviewPrintComponent } from './contractreview-print/contractreview-print.component';
 
 const appRoutes: Routes = [
   {
@@ -92,6 +93,12 @@ const appRoutes: Routes = [
     path: 'qpabstract',
     component: QpAbstractComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'contractreviewprint',
+    component: ContractreviewPrintComponent,
+
+    
   },
 
   // {
@@ -231,6 +238,12 @@ const appRoutes: Routes = [
     
   },
 
+  {
+    path: 'contractreviewprintcomponent',
+    component: ContractreviewPrintComponent,
+
+    
+  },
 
 
 

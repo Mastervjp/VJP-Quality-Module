@@ -1,6 +1,6 @@
 <app-navbar6>
-    
-        <h3 style="margin-left: 10%;margin-top: -3%;" >Market&nbsp;Card</h3>
+  <img src="assets/vjp3.png" height="50"  alt="vjp" width="100"  >
+        <h3 style="margin-left: 10%;margin-top: -3%;color: white;" >Market&nbsp;Card</h3>
     
    
 </app-navbar6>
@@ -12,23 +12,27 @@
           <table class="tg" style="  width: 100%;">
   
             <tr>
-              <td rowspan="4" colspan="1" style="text-align: center;"><img src="assets/vjp2.png" height="40"></td>
-              <td rowspan="4" colspan="5" style="text-align: center;"><b>CONTACT REVIEW</b></td>
+              <th  rowspan="4" style="text-align: center;"><img src="assets/vjp3.png" height="60" width="100"></th>
+              <td rowspan="4" colspan="5" style="text-align: center;"><b>CONTRACT REVIEW</b></td>
               <td colspan="1">DOC CODE</td>
-              <td colspan="3"></td>
+              <td colspan="3"><b>MKT/R/05</b></td>
             </tr>
-  
+    
             <tr>
               <td colspan="1">REV.NO</td>
-              <td colspan="3"></td>
+              <td colspan="3"><b> 03</b></td>
             </tr>
             <tr>
-              <td colspan="1">Date</td>
-              <td colspan="3"></td>
+              <td colspan="1"> Date</td>
+       
+              <td colspan="3"><b> 22.06.2020</b>
+          
+    
+              </td>
             </tr>
             <tr>
               <td colspan="1" style="width: fit-content;">Page no.</td>
-              <td colspan="3" style="width: 20%;"></td>
+              <td colspan="3" style="width: 20%;"><b> 1 OF 1</b></td>
             </tr>
           </table>
   
@@ -103,9 +107,16 @@
   
               <td colspan="3">PO Received / Required Delivery Date</td>
               <td colspan="2">
-                <mat-form-field>
+                <!-- <mat-form-field>
                   <mat-label>PO Received</mat-label>
                   <input matInput placeholder="PO Received" name="poReceived" formControlName="poReceived">
+                </mat-form-field> -->
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>PO Received Date</mat-label>
+                  <input matInput [matDatepicker]="picker3" name="poReceived" formControlName="poReceived">
+                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                  <mat-datepicker #picker3></mat-datepicker>
+                  <mat-error>PO Received Date</mat-error>
                 </mat-form-field>
               </td>
               <td colspan="2">
@@ -118,19 +129,7 @@
                 </mat-form-field>
               </td>
             </tr>
-  
-            <tr>
-              <td colspan="1" style="text-align: left; ">
-                LEGEND :&nbsp;
-              </td>
-              <td colspan="11">
-  
-                <mat-radio-group aria-label="Select an option" name="legend" formControlName="legend">
-                  <mat-radio-button value="Process Available">Process Available</mat-radio-button> 
-                  <mat-radio-button value="Process Not Available"> Process Not Available </mat-radio-button>
-                </mat-radio-group>
-              </td>
-            </tr>
+
   
             <tr>
               <td colspan="1" style="text-align: left;">
@@ -138,8 +137,8 @@
               </td>
               <th colspan="10">
                 <section class="example-section">
-                  <mat-checkbox class="example-margin" name="regular" formControlName="regular">Regular </mat-checkbox>
-                  <mat-checkbox class="example-margin" name="tooling" formControlName="tooling">Tooling </mat-checkbox>
+                  <mat-checkbox class="example-margin" name="regular" formControlName="regular">Regular </mat-checkbox>&nbsp;&nbsp;
+                  <mat-checkbox class="example-margin" name="tooling" formControlName="tooling">Tooling </mat-checkbox>&nbsp;&nbsp;
                   <mat-checkbox class="example-margin" name="purchaseOrderType" formControlName="purchaseOrderType">Purchase order type</mat-checkbox>
                 </section>
               </th>
@@ -236,8 +235,8 @@
                 <mat-form-field>
                   <mat-label>Select an option</mat-label>
                   <mat-select disableRipple name="shippingAddress" formControlName="shippingAddress">
-                    <mat-option value="Ok">Ok</mat-option>
-                    <mat-option value="Not Ok">Not Ok</mat-option>
+                    <mat-option value="ok">Ok</mat-option>
+                    <mat-option value="notOk">Not Ok</mat-option>
   
                   </mat-select>
                 </mat-form-field>&nbsp;&nbsp; &nbsp;
@@ -252,8 +251,8 @@
                 <mat-form-field>
                   <mat-label>Select an option</mat-label>
                   <mat-select disableRipple name="ourNameAddress" formControlName="ourNameAddress">
-                    <mat-option value="Ok">Ok</mat-option>
-                    <mat-option value="Not Ok">Not Ok</mat-option>
+                    <mat-option value="ok">Ok</mat-option>
+                    <mat-option value="notOk">Not Ok</mat-option>
   
                   </mat-select>
                 </mat-form-field>&nbsp;&nbsp; &nbsp;
@@ -268,9 +267,9 @@
                 <mat-form-field>
                   <mat-label>Select an option</mat-label>
                   <mat-select disableRipple name="vendorCode" formControlName="vendorCode">
-                    <mat-option value="Ok">Ok</mat-option>
-                    <mat-option value="Not Ok">Not Ok</mat-option>
-                    <mat-option value="NA">NA</mat-option>
+                    <mat-option value="ok">Ok</mat-option>
+                    <mat-option value="notOk">Not Ok</mat-option>
+                    <mat-option value="na">NA</mat-option>
                   </mat-select>
                 </mat-form-field>&nbsp;&nbsp; &nbsp;
               </td>
@@ -307,9 +306,9 @@
                 <mat-form-field>
                   <mat-label>Select an option</mat-label>
                   <mat-select disableRipple name="paymentTerms" formControlName="paymentTerms">
-                    <mat-option value="Ok">Ok</mat-option>
-                    <mat-option value="Not Ok">Not Ok</mat-option>
-                    <mat-option value="NA">NA</mat-option>
+                    <mat-option value="ok">Ok</mat-option>
+                    <mat-option value="notOk">Not Ok</mat-option>
+                    <mat-option value="na">NA</mat-option>
                   </mat-select>
                 </mat-form-field>&nbsp;&nbsp; &nbsp;
               </td>
@@ -357,7 +356,7 @@
                 16. Shipping method
               </td>
               <td colspan="9">
-                <mat-radio-group aria-label="Select an option" name="shippingAddress" formControlName="shippingAddress">
+                <mat-radio-group aria-label="Select an option" name="shippingMethod" formControlName="shippingMethod">
                   <mat-radio-button value="Road">Road</mat-radio-button> &nbsp; &nbsp;&nbsp; &nbsp;
                   <mat-radio-button value="Sea">Sea</mat-radio-button>&nbsp; &nbsp; &nbsp; &nbsp;
                   <mat-radio-button value="Air">Air</mat-radio-button>
@@ -384,9 +383,9 @@
                 <mat-form-field>
                   <mat-label>Select an option</mat-label>
                   <mat-select disableRipple name="foreignExchangeVariationClause" formControlName="foreignExchangeVariationClause">
-                    <mat-option value="Ok">Ok</mat-option>
-                    <mat-option value="Not Ok">Not Ok</mat-option>
-                    <mat-option value="NA">NA</mat-option>
+                    <mat-option value="ok">Ok</mat-option>
+                    <mat-option value="notOk">Not Ok</mat-option>
+                    <mat-option value="na">NA</mat-option>
                   </mat-select>
                 </mat-form-field>&nbsp;&nbsp; &nbsp;
               </td>
@@ -400,9 +399,9 @@
                 <mat-form-field>
                   <mat-label>Select an option</mat-label>
                   <mat-select disableRipple name="tax" formControlName="tax">
-                    <mat-option value="Ok">Ok</mat-option>
-                    <mat-option value="Not Ok">Not Ok</mat-option>
-                    <mat-option value="NA">NA</mat-option>
+                    <mat-option value="ok">Ok</mat-option>
+                    <mat-option value="notOk">Not Ok</mat-option>
+                    <mat-option value="na">NA</mat-option>
                   </mat-select>
                 </mat-form-field>&nbsp;&nbsp; &nbsp;
               </td>
@@ -416,9 +415,9 @@
                 <mat-form-field>
                   <mat-label>Select an option</mat-label>
                   <mat-select disableRipple name="termsConditions" formControlName="termsConditions">
-                    <mat-option value="Ok">Ok</mat-option>
-                    <mat-option value="Not Ok">Not Ok</mat-option>
-                    <mat-option value="NA">NA</mat-option>
+                    <mat-option value="ok">Ok</mat-option>
+                    <mat-option value="notOk">Not Ok</mat-option>
+                
                   </mat-select>
                 </mat-form-field>&nbsp;&nbsp; &nbsp;
               </td>
@@ -508,8 +507,8 @@
   
       </div>
       <div class="text-center p-2">
-        <button mat-raised-button (click)="addData()" style="background-color: blue;color: white;" >Add</button><br>
-  
+        <button mat-raised-button (click)="addData()" style="background-color: blue;color: white;"  >Add</button><br>
+ 
       </div>
     </div>
 

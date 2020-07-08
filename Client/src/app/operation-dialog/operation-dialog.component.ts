@@ -81,10 +81,10 @@ export class OperationDialogComponent {
         uploadImage4: _data.data.image4,
       });
 
-      this.url1 = this.IMG_URL+'/'+_data.data.image1
-      this.url2 = this.IMG_URL+'/'+_data.data.image2
-      this.url3 = this.IMG_URL+'/'+_data.data.image3
-      this.url4 = this.IMG_URL+'/'+_data.data.image4
+      this.url1 = this.IMG_URL+'//vjp/process/'+_data.data.image1
+      this.url2 = this.IMG_URL+'//vjp/process/'+_data.data.image2
+      this.url3 = this.IMG_URL+'//vjp/process/'+_data.data.image3
+      this.url4 = this.IMG_URL+'//vjp/process/'+_data.data.image4
 
     }
     else {

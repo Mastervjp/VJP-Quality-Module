@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  email: string;
   constructor(private router: Router,) { }
 
   ngOnInit() {
+    this.email = localStorage.getItem('email');
   }
 
   Logout() {

@@ -1,0 +1,552 @@
+<app-navbar6>
+    <img src="assets/vjp3.png" height="50"  alt="vjp" width="100"  >
+    <h3 style="margin-left: 10%;color: white;" >Contract&nbsp;Review</h3>
+  
+  
+  </app-navbar6>
+  <div style=" min-height: calc(100vh - 110px);">
+    <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
+  
+      <div id="componentID" style="height: 100%;">
+  
+        <table class="tg" style="  width: 100%;">
+  
+          <tr>
+            <th  rowspan="4" style="text-align: center;"><img src="assets/vjp3.png" height="60" width="100"></th>
+           
+            <td rowspan="4" colspan="5" style="text-align: center;"><b>CONTRACT REVIEW</b></td>
+            <td colspan="1">DOC CODE</td>
+            <td colspan="3"><b>MKT/R/05</b></td>
+          </tr>
+  
+          <tr>
+            <td colspan="1">REV.NO</td>
+            <td colspan="3"><b> 03</b></td>
+          </tr>
+          <tr>
+            <td colspan="1"> Date</td>
+     
+            <td colspan="3"><b> 22.06.2020</b>
+        
+  
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" style="width: fit-content;">Page no.</td>
+            <td colspan="3" style="width: 20%;"><b> 1 OF 1</b></td>
+          </tr>
+        </table>
+  
+  
+        <table class="tg" style="border-color:black;border-style:solid;border-width:1px;width:100%">
+          <tr style="height: 10px;">
+            <td colspan="1" style="width: 25%;">CUSTOMER NAME</td>
+            <td colspan="2">
+                <b> {{dataSource.customerName}}</b>
+  
+            </td>
+  
+            <td colspan="3">VJP offer Number & Date</td>
+            <td colspan="2"><b> {{dataSource.offerNo}}</b>
+  
+  
+            </td>
+  
+  
+            <td colspan="2"><b> {{dataSource.offerDate | date: 'dd-MM-yyyy'}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="1">Bill To</td>
+            <td colspan="2"><b> {{dataSource.billTo}}</b>
+            </td>
+  
+            <td colspan="3">PO Number</td>
+            <td colspan="2"><b> {{dataSource.poNumber}}</b>
+  
+            </td>
+  
+            <td colspan="2"><b> {{dataSource.poDate | date: 'dd-MM-yyyy'}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="1">Ship To</td>
+            <td colspan="2"><b> {{dataSource.shipTo}}</b>
+  
+            </td>
+  
+            <td colspan="3">PO Received / Required Delivery Date</td>
+            <td colspan="2"><b> {{dataSource.poReceived | date: 'dd-MM-yyyy'}}</b>
+  
+            </td>
+            <td colspan="2"><b> {{dataSource.deliveryDate | date: 'dd-MM-yyyy'}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="1" style="text-align: left; ">
+              LEGEND :&nbsp;
+            </td>
+            <td colspan="11" ><b>  Process Available (&#10004;)       &nbsp;&nbsp; &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;          Process Not Available (&#10008;)
+  
+            </b>
+            </td>
+          </tr>
+  
+          <tr>
+          <td colspan="1" style="text-align: left;">
+         Purchase order type
+            </td>
+            <th colspan="11" style="text-align: left;">
+
+                 <div *ngIf="dataSource.regular; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock><b>Regular(&#10004;),&nbsp;&nbsp;</b> </ng-template>
+            <ng-template #elseBlock><b>Regular(&#10008;),&nbsp;&nbsp;</b> </ng-template>
+  
+            <div *ngIf="dataSource.tooling; then thenBlock1 else elseBlock1"></div>
+  <ng-template #thenBlock1><b>Tooling(&#10004;),&nbsp;&nbsp;</b> </ng-template>
+  <ng-template #elseBlock1><b>Tooling(&#10008;),&nbsp;&nbsp;</b> </ng-template>
+            
+   <div *ngIf="dataSource.purchaseOrderType; then thenBlock2 else elseBlock2"></div>
+  <ng-template #thenBlock2><b>purchase Order Type(&#10004;)&nbsp;&nbsp;</b> </ng-template>
+  <ng-template #elseBlock2><b>purchase Order Type(&#10008;)&nbsp;&nbsp;</b> </ng-template></th>
+  
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: center;"><b> PARTICULARS </b></td>
+            <td colspan="9" style="text-align: center;"><b> STATUS </b></td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">1. Component Name </td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.componentName}}</b>
+  
+            </td>
+        <tr>
+            <td colspan="2" style="text-align: left;">2.Part No. / Drawing No. & Rev </td>
+            <td colspan="4" style="text-align: left;"><b>{{dataSource.partNo}}</b>
+  
+            </td>
+            <td colspan="6" style="text-align: left;"><b>{{dataSource.rev}}</b>
+  
+            </td>
+          </tr>
+  
+             <tr>
+            <td colspan="2">3.Scope of supply</td>
+            <td colspan="9">        
+  
+
+            <div *ngIf="dataSource.asCast; then thenBlock3 else elseBlock3"></div>
+            <ng-template #thenBlock3><b>As Cast(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock3><b>As Cast(&#10008;),</b></ng-template>&nbsp;&nbsp;
+            <div *ngIf="dataSource.heatTreatment; then thenBlock4 else elseBlock4"></div>
+            <ng-template #thenBlock4><b>Heat Treatment(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock4><b>Heat Treatment(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.shotBlast; then thenBlock5 else elseBlock5"></div>
+            <ng-template #thenBlock5><b>Shot Blast(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock5><b>Shot Blast(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.machined; then thenBlock6 else elseBlock6"></div>
+            <ng-template #thenBlock6><b>Machined(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock6><b>Machined(&#10008;),</b> </ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.leakTest; then thenBlock7 else elseBlock7"></div>
+            <ng-template #thenBlock7><b>Leak Test(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock7><b>Leak Test(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.ndtXrayDp; then thenBlock8 else elseBlock8"></div>
+            <ng-template #thenBlock8><b>NDT, X-RAY & DP(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock8><b>NDT, X-RAY & DP(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.dp; then thenBlock9 else elseBlock9"></div>
+            <ng-template #thenBlock9><b>DP(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock9><b>DP&(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.fpi; then thenBlock10 else elseBlock10"></div>
+            <ng-template #thenBlock10><b>FPI(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock10><b>FPI(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.anodizing; then thenBlock12 else elseBlock11"></div>
+            <ng-template #thenBlock11><b>Anodizing(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock11><b>Anodizing(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.powderCoating; then thenBlock12 else elseBlock12"></div>
+            <ng-template #thenBlock12><b>Powder Coating(&#10004;),</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock12><b>Powder Coating(&#10008;),</b></ng-template>&nbsp;&nbsp;
+  
+            <div *ngIf="dataSource.painting; then thenBlock13 else elseBlock13"></div>
+            <ng-template #thenBlock13><b>Painting(&#10004;)</b></ng-template>&nbsp;&nbsp;
+            <ng-template #elseBlock13><b>Painting(&#10008;)</b></ng-template>&nbsp;&nbsp;
+  
+  
+  
+  
+            </td>
+          </tr>
+  
+        <tr>
+            <td colspan="2" style="text-align: left;">4.PO Quantity - As per VJP quote / MOQ </td>
+            <th colspan="9" style="text-align: left;"><b>{{dataSource.poQuantity}}</b>
+  
+            </th>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">5.Alloy - Grade </td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.alloyGrade}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              6.VJP Component quoted price
+            </td>
+            <td colspan="9"><b>{{dataSource.vjpComponentquotedPrice}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              7.Shipping Address
+            </td>
+            <td colspan="9" >
+                
+              <ng-container *ngIf="dataSource.shippingAddress == 'ok'">
+                <div ><b>Ok(&#10004;),&nbsp;&nbsp; Not Ok(&#10008;)</b></div>
+              </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.shippingAddress == 'notOk'">
+                  <div><b>Ok(&#10008;), &nbsp;&nbsp; Not Ok(&#10004;)</b></div>
+                </ng-container>
+            
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              8. Our Name & Address
+            </td>
+            <td colspan="9">
+                <b>
+              <ng-container *ngIf="dataSource.ourNameAddress == 'ok'">
+                <div>Ok(&#10004;),&nbsp;&nbsp;Not Ok(&#10008;)</div>
+              </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.ourNameAddress == 'notOk'">
+                  <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10004;)</div>
+                </ng-container>
+  
+            </b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              9. Vendor Code
+            </td>
+            <td colspan="9"><b>
+  
+                <ng-container *ngIf="dataSource.vendorCode == 'ok'">
+                  <div>Ok(&#10004;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10008;)</div>
+                </ng-container>
+  
+      
+                  <ng-container *ngIf="dataSource.vendorCode == 'notOk'">
+                    <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10004;),&nbsp;&nbsp;NA(&#10008;)</div>
+                  </ng-container>
+  
+      
+                  <ng-container *ngIf="dataSource.vendorCode == 'na'">
+                    <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10004;)</div>
+                  </ng-container>
+                </b>
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">10. Price </td>
+            <td colspan="9" style="text-align: left;">
+                <b>   Rs:{{dataSource.price}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2">11. Price Basis</td>
+            <td colspan="9">     
+                <b>
+  
+        <div *ngIf="dataSource.exWorks; then thenBlock14 else elseBlock14"></div>
+        <ng-template #thenBlock14>Ex-Works(&#10004;),</ng-template>&nbsp;&nbsp;
+        <ng-template #elseBlock14>Ex-Works(&#10008;),</ng-template>&nbsp;&nbsp;
+        <div *ngIf="dataSource.dap; then thenBlock15 else elseBlock15"></div>
+        <ng-template #thenBlock15>DAP(&#10004;),</ng-template>&nbsp;&nbsp;
+        <ng-template #elseBlock15>DAP(&#10008;),</ng-template>&nbsp;&nbsp;
+  
+        <div *ngIf="dataSource.fob; then thenBlock16 else elseBlock16"></div>
+        <ng-template #thenBlock16>FOB(&#10004;),</ng-template>&nbsp;&nbsp;
+        <ng-template #elseBlock16>FOB(&#10008;),</ng-template>&nbsp;&nbsp;
+  
+        <div *ngIf="dataSource.cif; then thenBlock17 else elseBlock17"></div>
+        <ng-template #thenBlock17>CIF(&#10004;),</ng-template>&nbsp;&nbsp;
+        <ng-template #elseBlock17>CIF(&#10008;),</ng-template>&nbsp;&nbsp;
+                </b>
+            </td>
+  
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              12. Payment Terms
+            </td>
+            <td colspan="9"><b>
+              <ng-container *ngIf="dataSource.paymentTerms == 'ok'">
+                <div>Ok(&#10004;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10008;)</div>
+              </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.paymentTerms == 'notOk'">
+                  <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10004;),&nbsp;&nbsp;NA(&#10008;)</div>
+                </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.paymentTerms == 'na'">
+                  <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10004;)</div>
+                </ng-container>
+            </b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">13. Is delivery requirement indicated in PO, acceptable to us</td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.deliveryRequirement}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">14. Any special documentation requirements - not acceptable to us
+            </td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.specialDocumentationRequirements}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              15. Freight Terms
+            </td>
+            <td colspan="9"><b>{{dataSource.freightTerms}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              16. Shipping method
+            </td>
+            <td colspan="9"><b>{{dataSource.shippingMethod}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">17. Aluminium - Variation Clause
+            </td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.aluminiumVariationClause}}
+            </b>
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              18. Foreign Exchange Variation Clause
+            </td>
+            <td colspan="9"><b>
+              <ng-container *ngIf="dataSource.foreignExchangeVariationClause == 'ok'">
+                <div>Ok(&#10004;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10008;)</div>
+              </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.foreignExchangeVariationClause == 'notOk'">
+                  <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10004;),&nbsp;&nbsp;NA(&#10008;)</div>
+                </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.foreignExchangeVariationClause == 'na'">
+                  <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10004;)</div>
+                </ng-container>
+            </b>
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              19.Tax
+            </td>
+            <td colspan="9"><b>
+              <ng-container *ngIf="dataSource.tax == 'ok'">
+                <div>Ok(&#10004;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10008;)</div>
+              </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.tax == 'notOk'">
+                  <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10004;),&nbsp;&nbsp;NA(&#10008;)</div>
+                </ng-container>
+  
+    
+                <ng-container *ngIf="dataSource.tax == 'na'">
+                  <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10008;),&nbsp;&nbsp;NA(&#10004;)</div>
+                </ng-container>
+            </b>
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              20. Terms & Conditions
+            </td>
+            <td colspan="9"> <b>
+                      <ng-container *ngIf="dataSource.termsConditions == 'ok'">
+              <div>Ok(&#10004;),&nbsp;&nbsp;Not Ok(&#10008;)</div>
+            </ng-container>
+  
+  
+              <ng-container *ngIf="dataSource.termsConditions == 'notOk'">
+                <div>Ok(&#10008;),&nbsp;&nbsp;Not Ok(&#10004;)</div>
+              </ng-container>
+  
+            </b>
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">21.Other requirements</td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.otherRequirements}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">22. Conditions in PO not present in VJP quote</td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.conditionsInPONotPresentInYYQuote}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2">22. a)</td>
+            <td colspan="9"><b>{{dataSource.conditionsInPONotPresentInYYQuoteA}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2">22. b)</td>
+            <td colspan="9"><b>{{dataSource.conditionsInPONotPresentInYYQuoteB}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2">22. c)</td>
+            <td colspan="9"><b>{{dataSource.conditionsInPONotPresentInYYQuoteC}}</b>
+  
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2">22. d)</td>
+            <td colspan="9"><b>{{dataSource.conditionsInPONotPresentInYYQuoteD}}</b>
+  
+            </td>
+          </tr>
+  
+          <tr>
+            <td colspan="2" style="text-align: left;">23. Process lead time</td>
+            <td colspan="9" style="text-align: left;"><b>{{dataSource.processLeadTime}}</b>
+  
+            </td>
+          </tr>
+  
+  
+          <tr>
+  
+            <td colspan="5" style="text-align: center;"><b>Change History</b></td>
+            <td colspan="2" rowspan="5" style="width: 40px;"></td>
+            <td colspan="2" rowspan="5" style="width: 40px;"></td>
+            <td colspan="2" rowspan="5" style="width: 40px;"></td>
+          </tr>
+          <tr style="height: 25PX;">
+  
+            <td colspan="1" style="width: 5%;"></td>
+            <td colspan="1"></td>
+            <td colspan="2"></td>
+            <td colspan="1"></td>
+          </tr>
+          <tr>
+  
+            <td colspan="1" style="text-align: center; width: 5%;">03</td>
+            <td colspan="1" style="text-align: center;">22.06.2020</td>
+            <td colspan="2" style="width: 25%; text-align: center;">PARTICULARS AND STATUS MODIFIED</td>
+            <td colspan="1" style="text-align: center;">PERMANANDH.C</td>
+          </tr>
+          <tr>
+  
+            <td colspan="1" style="text-align: center;">02</td>
+            <td colspan="1" style="text-align: center;">26.12.2020</td>
+            <td colspan="2" style="text-align: center;">DOCUMENT NO. & REVISION HISTROY ADDED</td>
+            <td colspan="1" style="text-align: center;"> PREMANANDH.C</td>
+          </tr>
+          <tr>
+  
+            <td colspan="1" style="text-align: center;">01</td>
+            <td colspan="1" style="text-align: center;">10.12.2018</td>
+            <td colspan="2" style="text-align: center;">INITIAL RELEASE</td>
+            <td colspan="1" style="text-align: center;">PREMANANDH.C</td>
+          </tr>
+          <tr >
+  
+            <td colspan="1" style="width: 10%;" style="text-align: center;"><b>REV. No</b></td>
+            <td colspan="1" style="text-align: center;"><b>DATE</b></td>
+            <td colspan="2" style="text-align: center;"><b>DESCRIPTION</b></td>
+            <td colspan="1" style="text-align: center;"><b>SIGNATURE</b></td>
+            <td colspan="2" style="width: 10%;text-align: center;"><b>PREPARED BY</b></td>
+            <td colspan="2" style="width: 10%;text-align: center;"><b>VERIFIED BY</b></td>
+            <td colspan="2" style="width: 10%;text-align: center;"><b>APPROVED BY</b></td>
+          </tr>
+  
+  
+  
+        </table>
+  
+  
+  
+  
+  
+      </div>
+      <div class="text-center p-2">
+        <button mat-raised-button (click)="printPage()" style="background-color: blue;color: white;">Print</button><br>
+  
+      </div>
+  
+    </div>
+  </div>
+  
+    <app-footer></app-footer>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InspectionService } from '../services/inspection.service';
 import { Router } from '@angular/router';
+import {formatDate, DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-firstpart-print',
@@ -16,6 +17,9 @@ export class FirstpartPrintComponent implements OnInit {
   routeObj: any;
   mObject: any;
   marketData: any;
+  myDate = new Date();
+
+  temp :any;
 
   constructor(private _inspectionservice: InspectionService, private router: Router) { }
 
@@ -33,6 +37,7 @@ export class FirstpartPrintComponent implements OnInit {
 
     this.getfpi(myItem1, opnId);
     this.getmarket(this.routeObj)
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
 
 
   }
@@ -74,7 +79,7 @@ export class FirstpartPrintComponent implements OnInit {
     background-color: #efefef;
     text-align: center;
     vertical-align: middle;
-    width:10%
+    width:8%
 }
 
 .tg .tg-t31z {
@@ -113,7 +118,7 @@ setTimeout(function() {
         let re_data = [];
         for (var i in samp) {
           if (samp[i].firstPartInspection) {
-            re_data[i] = samp[i]
+            re_data[re_data.length] = samp[i]
           }
         }
         this.dataSource = re_data;

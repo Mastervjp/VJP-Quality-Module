@@ -1,17 +1,55 @@
 <div class="container">
 
     <div id="componentID">
-
-        <table style="width:100%">
+      <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+        <tr>
+          <th rowspan="4" style="text-align: center; width: 12.2%;"><img src="assets/vjp3.png" height="50" width="130"></th>
+          <!-- <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;text-align: center;"
+                          rowspan="4"><b>VJP</b> 
+                      </td> -->
+          <td
+            style="width: 52%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
+            rowspan="4" ><B> FIRST PIECE INSPECTION REPORT</B></td>
+          <td style="width:8.1%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">DOC.NO
+          </td>
+          <td style="width:9.6%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+            QA/R/43</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid black; border-collapse: collapse; padding: 2px;">REV.NO</td>
+          <td style="border: 1px solid black; border-collapse: collapse; padding: 2px;">00</td>
+  
+        </tr>
+  
+        <tr>
+          <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">DATE</td>
+          <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">{{myDate | date: 'dd-MM-yyyy' }}</td>
+  
+        </tr>
+  
+        <tr>
+          <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">PAGE NO</td>
+          <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF</td>
+  
+        </tr>
+  
+  
+      </table>
+    
+    
+        <table style="width:100%;">
             <tr>
-                <th colspan="1" rowspan="2" style="text-align: center;"><img  src="assets/vjp3.png" height="40" width="100"></th>
-                <th colspan="4" style="text-align: center;">QUALITY PLAN - FIRSTPART INSPECTION</th>
+       
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
                 <td>Part Name</td>
-                <th colspan="2">{{drgObject.partName | uppercase}}</th>
-                
-                
+                <th>{{drgObject.partName | uppercase}}</th>
+                <td>Operation No.</td>
+                <th>{{psObject.opnNo}}</th>
+                <td>Batch Quantity</td>
+                <th colspan="2">{{routeObj.qty}}</th>
+        
+        
         
               </tr>
         
@@ -22,11 +60,12 @@
                 <td>Machining Drawing No/Rev</td>
                 <th>{{drgObject.partNum1}}</th>
                 <th>{{drgObject.revNo1}}</th>
-                <td>Operation No.</td>
-                <th>{{psObject.opnNo}}</th>
-                
-                
-                
+                <td>Material Grade</td>
+                <th colspan="1">{{drgObject.materialGrade}}</th>
+               
+        
+        
+        
         
               </tr>
         
@@ -39,41 +78,39 @@
                 <th>{{qpaObject.pfNo}}</th>
                 <td>Quality Plan No</td>
                 <th colspan="2">{{qpaObject.qpNo}}</th>
-                
-                
-                
-                
-                
+        
+        
+        
+        
+        
         
               </tr>
               <tr>
-                
-                
-                <td>Route Card Number</td>
-                <th>{{routeObj.cardNo}}</th>
-                <td>Material Weight</td>
-                <th>{{drgObject.materialWeight}}</th>
-                <td>Material Grade</td>
-                <th colspan="1">{{drgObject.materialGrade}}</th>
-                <td>Batch Quantity</td>
-                <th  colspan="2">{{routeObj.qty}}</th>
-                
-              </tr>
         
-              
-              <tr>
-                
                 <td>Casting Tolerance</td>
                 <th colspan="1">{{drgObject.castingToleranceStandard | uppercase}}</th>
                 <td>Machining Tolerance</td>
                 <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
-                <td>Purchase Order Number</td>
-                <th>{{marketData.poNo}}</th>
-                <td>Inspection Date</td>
-                        <th colspan="2"></th>
+                <td>Route Card Number</td>
+                <th>{{routeObj.cardNo}}</th>
+                <td>Material Weight</td>
+                <th>{{drgObject.materialWeight}}</th>
+             
+            
+        
+              </tr>
+        
+        
+              <tr>
+        
                
-            </tr>
-
+                <td>Purchase Order Number</td>
+                <th colspan="2">{{marketData.poNo}}</th>
+                <td>Inspection Date</td>
+                <th colspan="4"></th>
+        
+              </tr>
+         
         </table><br>
 
 
@@ -102,10 +139,10 @@
                         <tr>
                             <th class="tg-nrix" rowspan="2"><b>S/N</b></th>
                             <th class="tg-nrix" rowspan="2"><b>Balloon No</b></th>
-                            <th class="tg-nr" rowspan="2" style="width: 20%;"><b>Description</b> </th>
-                            <th class="tg-nr" rowspan="2"  style="width: 20%;"><b>Specification</b></th>
-                            <th class="tg-nrix" rowspan="2"><b>Min-Tol</b></th>
-                            <th class="tg-nrix" rowspan="2" style="width: 8%;"><b>Max-Tol</b></th>
+                            <th class="tg-nr" rowspan="2" style="width: 18%;"><b>Description</b> </th>
+                            <th class="tg-nr" rowspan="2"  style="width: 15%;"><b>Specification</b></th>
+                            <th class="tg-nrix" rowspan="2" style="width: 5%;"><b>Min-Tol</b></th>
+                            <th class="tg-nrix" rowspan="2" style="width: 5%;"><b>Max-Tol</b></th>
 
                             
                             <th class="tg-nrix" rowspan="2"><b>Instrument</b></th>
@@ -171,14 +208,14 @@
                         <col style="width: 89px">
                     </colgroup>
                     <tr>
-                        <th class="tg-cly1" colspan="4"style="width:12%;;">AC-ACCEPTED ,<br>RW-REWORK , <br>RJ-REJECTION,<br>CA-CONDITIONALLY ACCEPTED</th>
-                        <th class="tg-cly1" colspan="4" style="width:11.5%;">Grey Shade -------&gt; Special Character</th>
-                        <th class="tg-cly1" colspan="2" style="width: 14%;">Component Status</th>
-                        <th class="tg-cly1" style="width: 8.8%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 8.9%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 8.8%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 9%;">AC/RW/RJ/CA</th>
-                        <th class="tg-cly1" style="width: 9%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" colspan="4"style="width:22%;;">AC-ACCEPTED ,<br>RW-REWORK , <br>RJ-REJECTION,<br>CA-CONDITIONALLY ACCEPTED</th>
+                        <th class="tg-cly1" colspan="4"style="width:15%;">Grey Shade -------&gt; Special Character</th>
+                        <th class="tg-cly1" colspan="2"style="width: 23%;">Component Status</th>
+                        <th class="tg-cly1" style="width: 4.7%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 4.8%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 4.7%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 4.5%;">AC/RW/RJ/CA</th>
+                        <th class="tg-cly1" style="width: 4.4%;">AC/RW/RJ/CA</th>
                         <th class="tg-cly1" style="width: 40%;"></th>
                     </tr>
                     <tr>

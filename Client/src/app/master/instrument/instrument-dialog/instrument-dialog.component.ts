@@ -50,7 +50,7 @@ export class InstrumentDialogComponent {
 
       });
 
-      this.url = this.IMG_URL+'/'+_data.data.insImage
+      this.url = this.IMG_URL+'/vjp/instrument/'+_data.data.insImage
       
     }
     else {
