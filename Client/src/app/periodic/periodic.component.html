@@ -5,14 +5,14 @@
         <td>
           <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
             <tr>
-              <th rowspan="4" style="text-align: center; width:9.2%;"><img src="assets/vjp3.png" height="50"
+              <th rowspan="4" style="text-align: center; width:12.3%;"><img src="assets/vjp3.png" height="50"
                   width="120"></th>
               <td
                 style="width: 52%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
                 rowspan="4"><B> INPROCESS INSPECTION REPORT</B></td>
-              <td style="width:7.63%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">DOC.NO
+              <td style="width:7.98%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">DOC.NO
               </td>
-              <td style="width:9.13%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+              <td style="width:9.7%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
                 QA/R/43</td>
             </tr>
             <tr>
@@ -87,7 +87,7 @@
             <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive"
               style="text-align: left;padding: 2px;">
               <ng-container *ngIf="item.name == '100' ">
-                <div style="box-shadow: inset 0 0 0 1000px red;color: black;"> FREQUENCY 100 %</div>
+                <div style="box-shadow: inset 0 0 0 1000px yellow;color: black;"> FREQUENCY 100 %</div>
               </ng-container>
             </table>
             <ng-container *ngIf='isHundred(item.name) ; else newDeb1'>
@@ -111,6 +111,20 @@
                           {{subItem[col1]}}
                         </ng-template>
                       </td>
+                    </tr>
+                    <tr style="height: 2rem;">
+                      <td colspan="4"> Inspected By:</td>
+                      <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                   </tbody>
                 </table>
@@ -151,6 +165,20 @@
                             {{subItem[col1]}}
                           </ng-template>
                         </td>
+                      </tr>
+                      <tr style="height: 2rem;">
+                        <td colspan="4"> Inspected By:</td>
+                        <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                     </tbody>
                   </table>

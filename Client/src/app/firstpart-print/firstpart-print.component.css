@@ -174,6 +174,10 @@ td{
     height: 100%;
     display: block;
   }
+  thead {
+    page-break-inside: avoid;
+    display:table-header-group;
+  }
 }
 
 
@@ -218,7 +222,7 @@ td{
 }
 
 .tg .tg-nrix {
-  text-align: center;
+  text-align: left;
   vertical-align: middle
 }
 
