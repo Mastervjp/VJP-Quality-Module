@@ -281,6 +281,12 @@ module.exports = function (sequelize, DataTypes) {
             field: 'process_lead_time',
             allowNull: true
         },
+        status:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'status',
+            allowNull: true
+        },
     }, {
         timestamps: true,
         tableName: 'contract_review'

@@ -1,21 +1,9 @@
-// import { Component, OnInit } from '@angular/core';
-
-
-// export class ContractreviewPrintComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContractreviewService } from '../services/contractreview.service';
-import {formatDate, DatePipe} from '@angular/common';
+import { formatDate, DatePipe } from '@angular/common';
+import { AuthenticationService } from '../services/authentication.service';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-contractreview-print',
   templateUrl: './contractreview-print.component.html',
@@ -25,19 +13,28 @@ export class ContractreviewPrintComponent implements OnInit {
   customer: any;
   dataSource: any;
   customerName: any;
- customerData: any;
- myDate = new Date();
-  constructor(private _contractreviewservice: ContractreviewService,private router: Router) {
-  
-   }
+  customerData: any;
+  myDate = new Date();
+  getData: any;
+  islog: any;
+  isMAN: boolean;
+  constructor(private _contractreviewservice: ContractreviewService, private router: Router, public auth: AuthenticationService, public snackBar: MatSnackBar) {
+  }
 
   ngOnInit(): void {
     this.getCustomerData();
-    // this.customerName = JSON.parse(localStorage.getItem("customerName"));
-    
-    // this.customerData = this._contractreviewservice.getCustomerData(this.customerName).subscribe((res: any)=>{})
+    this.checkrole();
     formatDate(new Date(), 'yyyy/MM/dd', 'en');
+    this.islog = this.auth.isLoggedIn();
+  }
+  checkrole() {
 
+    if (localStorage.getItem('logRole') == "MAN") {
+      this.isMAN = true;
+    }
+    else {
+      this.isMAN = false;
+    }
   }
 
   printPage() {
@@ -97,29 +94,90 @@ export class ContractreviewPrintComponent implements OnInit {
     </style>`
     );
 
+
+    setTimeout(function () {
+      WindowPrt.document.close();
+      WindowPrt.focus();
+      WindowPrt.print();
+      WindowPrt.close();
+    }, 2500);
+  }
+
+
+  getCustomerData() {
+
+
+    let id = localStorage.getItem('id');
+  
     
-  setTimeout(function() {
-    WindowPrt.document.close();
-    WindowPrt.focus();
-    WindowPrt.print();
-    WindowPrt.close();
-  }, 2500);
+    this._contractreviewservice.getCustomerData(id).subscribe((res: any) => {
+
+      if (res.success) {
+        let mydata = res.data;
+        this.dataSource = mydata;
+
+      }
+    });
+
+
+  }
+
+  getAllData() {
+    let status =localStorage.getItem('status');
+    debugger
+  }
+
+
+
+  Lockaction(id, status) {
+
+
+
+
+    if (status) {
+
+      let status = { "status": 1 }
+      this.router.navigate(['/contractreviewview']);
+
+      this._contractreviewservice.updatestatus(id, status).subscribe((res: any) => { 
+        if (res.success) {
+          let mydata = res.data;
+          this.getData = mydata;
+          this.snackBar.open("Form Approved", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          });
+        }
+          this.getData();
+         
+        });
+      }
+
+    else {
+
+      let status = { "status": 0 }
+      this.router.navigate(['/contractreviewview']);
+      this._contractreviewservice.updatestatus(id, status).subscribe((res: any) => {
+        if (res.success) {
+          let mydata = res.data;
+          this.getData = mydata;
+          this.snackBar.open("Form Rejected", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          });
+
+         
+        }
+         this.getData();
+      });
+
+    }
 }
 
 
- getCustomerData() {
 
- 
-  let customerName = localStorage.getItem('customerName');
-  this._contractreviewservice.getCustomerData(customerName).subscribe((res: any) => {
- 
-    if (res.success) {
-      let mydata = res.data;
-      this.dataSource =mydata;
-      console.log(this.dataSource);
-    }
-  });
- }
- 
-
- }
+}

@@ -11,6 +11,7 @@ export class ContractreviewService {
 
   private token: string;
   private API_URL = environment.API_URL;
+  Data: any;
 
   constructor(private http: HttpClient) { }
 
@@ -25,23 +26,25 @@ export class ContractreviewService {
     }
     return this.token;
   }
-  
+
   addData(datas): Observable<any> {
-    console.log("service:",datas);
-    
-    return this.http.post<any>(this.API_URL+'/api/contractreview/',datas ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    console.log("service:", datas);
+
+    return this.http.post<any>(this.API_URL + '/api/contractreview/', datas, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
   getData(): Observable<any> {
-    return this.http.get(this.API_URL+'/api/contractreview/',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+    return this.http.get(this.API_URL + '/api/contractreview/', { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
-  getCustomerData(customerName): Observable<any> { 
-    return this.http.get(this.API_URL+'/api/contractreview/one/'+customerName, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+  getCustomerData(id): Observable<any> {
+    return this.http.get(this.API_URL + '/api/contractreview/one/' + id, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
-      
-      
+  }
+  updatestatus(id, status): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/contractreview/status/' + id, status, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
   }
 }

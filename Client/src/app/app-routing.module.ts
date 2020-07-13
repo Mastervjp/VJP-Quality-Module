@@ -94,12 +94,6 @@ const appRoutes: Routes = [
     component: QpAbstractComponent,
     canActivate: [AuthGuardService]
   },
-  {
-    path: 'contractreviewprint',
-    component: ContractreviewPrintComponent,
-
-    
-  },
 
   // {
   //   path: 'master', component: MasterComponent, canActivate: [AuthGuardService], children: [
@@ -229,21 +223,21 @@ const appRoutes: Routes = [
     path: 'contractreview',
     component: ContractreviewComponent,
     canActivate: [AuthGuardService]
-    
+
   },
   {
     path: 'contractreviewview',
     component: ContractreviewViewComponent,
     canActivate: [AuthGuardService]
-    
-  },
 
+  },
   {
-    path: 'contractreviewprintcomponent',
+    path: 'contractreview-print',
     component: ContractreviewPrintComponent,
+    canActivate: [AuthGuardService]
 
-    
   },
+
 
 
 

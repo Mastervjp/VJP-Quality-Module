@@ -1,41 +1,60 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContractreviewService } from '../services/contractreview.service';
 import { FormBuilder } from '@angular/forms';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'app-contractreview-view',
   templateUrl: './contractreview-view.component.html',
   styleUrls: ['./contractreview-view.component.css']
 })
 export class ContractreviewViewComponent implements OnInit {
- dataSource : any;
-  
-  displayedColumns = ['id','customerName','billTo','action'];
-  constructor(private _contractreviewservice: ContractreviewService, private _formBuilder: FormBuilder,private router: Router) { }
-
+  dataSource: any;
+  isMKT: boolean;
+  islog: any;
+  displayedColumns = ['id', 'customerName', 'billTo', 'action', 'status'];
+  constructor(private _contractreviewservice: ContractreviewService, public auth: AuthenticationService, private _formBuilder: FormBuilder, private router: Router) { }
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  
-
 
   ngOnInit(): void {
-    this.getData();
+    this.getData('logRole');
+    this.checkrole();
+    this.islog = this.auth.isLoggedIn();
   }
-  getData() {
+
+  checkrole() {
+
+    if (localStorage.getItem('logRole') == "MKT") {
+      this.isMKT = true;
+    }
+    else {
+      this.isMKT = false;
+    }
+  }
+
+  viewroute(data) {
+
+
+    localStorage.setItem("id", data);
+    localStorage.setItem("id", data);
+
+    this.router.navigate(['/contractreview-print']);
+  }
+
+  getData(logRole) {
     this._contractreviewservice.getData().subscribe((res: any) => {
-
-      this.dataSource = new MatTableDataSource(res.data);
+      if (res.success) {
+        let samp = res.data
+        let re_data = [];
+        for (var i in samp) {
+          if (samp[i]) {
+            re_data[re_data.length] = samp[i]
+          }
+        }
+        this.dataSource = re_data;
+      }
     });
-  }
-  viewroute(data){
-
-
-    localStorage.setItem("customerName",data);
-
-
-    this.router.navigate(['/contractreviewprintcomponent']); 
-
-
   }
 
 }
