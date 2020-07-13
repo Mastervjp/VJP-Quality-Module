@@ -45,7 +45,7 @@ export class FirstpartPrintComponent implements OnInit {
   printPage() {
     const printContent = document.getElementById("componentID");
     const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-    WindowPrt.document.write(printContent.innerHTML);
+    WindowPrt.document.write(printContent.outerHTML);
     WindowPrt.document.write(`<style>   
     table, th, td {
       border: 1px solid black;
@@ -61,6 +61,10 @@ export class FirstpartPrintComponent implements OnInit {
       margin: 0;
       font-family: Arial;
     }
+    thead {
+      page-break-inside: avoid;
+      display:table-header-group;
+    }
 
 .tg .tg-cly1 {
     text-align: left;
@@ -70,7 +74,7 @@ export class FirstpartPrintComponent implements OnInit {
   width:15%;
 }
 .tg .tg-nrix {
-    text-align: center;
+    text-align:center;
     vertical-align: middle;
   
 }

@@ -110,6 +110,7 @@ export class PeriodicComponent implements OnInit {
     width: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial;
   }
 
   @page {
@@ -140,83 +141,110 @@ td {
    padding: 2px; 
   padding-left: 2px;
   text-align:left;
+  font-family: Arial;
 }
 .bor{
-  width:5%;
-   height:25px ;
-   text-align: left;
-  }
-  .nnew{
-    width: 80px;
-    height: 30px;
-  }
+
+  height:25px ;
+  text-align: left;
+ }
+ .nnew{
+   width: 80px;
+   height: 30px;
+ }
 
 .bk th:first-child {
-  width: 1% !important;
+ width: 1% !important;
 }
 
 .bk th:nth-child(2) {
-  width: 0% !important;
+ width: 1% !important;
 }
 
 .bk th:nth-child(3) {
-  width: 12% !important;
+ width: 10% !important;
 }
 
 .bk th:nth-child(4) {
-  width: 4% !important;
+ width: 8% !important;
 }
 
 .bk th:nth-child(5) {
-  width: 5% !important;
+ width: 4.3% !important;
 }
 
 .bk th:nth-child(6) {
-  width: 5% !important;
+ width: 4.5% !important;
 }
 .bk th:nth-child(7) {
-  width: 7% !important;
+ width: 7% !important;
 }
 .bk th:nth-child(8) {
-  width: 5% !important;
+ width: 6% !important;
 }
 .bk th:nth-child(9) {
-  width: 5% !important;
-}
+  width: 6% !important;
+ }
+ .bk th:nth-child(10) {
+  width: 6% !important;
+ }
+ .bk th:nth-child(11) {
+   width: 6% !important;
+  }
+  .bk th:nth-child(12) {
+    width: 6% !important;
+   }
+   .bk th:nth-child(13) {
+     width: 6% !important;
+    }
+    .bk th:nth-child(14) {
+      width: 6% !important;
+     }
+     .bk th:nth-child(15) {
+       width: 6% !important;
+      }
+      .bk th:nth-child(16) {
+        width: 6% !important;
+       }
+       .bk th:nth-child(17) {
+         width: 6% !important;
+        }
+
 
 
 .fp th:first-child {
-  width:1% !important;
+ width: 1% !important;
 }
 
 .fp th:nth-child(2) {
-  width:1% !important;
+ width: 1% !important;
 }
 
 .fp th:nth-child(3) {
-  width: 14% !important;
+ width: 14% !important;
 }
 
 .fp th:nth-child(4) {
-  width: 10% !important;
+ width: 10% !important;
 }
 
 .fp th:nth-child(5) {
-  width: 5% !important;
+ width: 5% !important;
 }
 
 .fp th:nth-child(6) {
-  width: 5% !important;
+ width: 5% !important;
 }
 
 
 .fp th:nth-child(7) {
-  width: 7% !important;
+ width: 7% !important;
 }.fp th:nth-child(8) {
-  width: 5% !important;
+ width: 5% !important;
 }.fp th:nth-child(9) {
-  width: 5% !important;
+ width: 5%!important;
 }
+
 
      @media print {
 
@@ -275,7 +303,7 @@ td {
           
           if (key == "100" || key == "100%") {
             b.name = parseInt(key);
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
             let i = 1;
             let headers2 = [];
             while (i <= this.d_batch_qty) {
@@ -288,7 +316,7 @@ td {
             let ie, j, temparray, chunk = 10 
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
-              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
               let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers2.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
@@ -307,42 +335,42 @@ td {
 
           else if (key == "Day") {
             b.name = key;
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument", "1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument", "1"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
             // b.name = key;
-            // b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax", "Instrument","1", "2", "3"]
+            // b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol", "Instrument","1", "2", "3"]
             // b.headers1 = ["id","baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
           else if(key == "HEAT NUMBER PER LOT"){
             b.name = key;
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument" ,"1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument" ,"1", "2", "3"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
           else if(key == "HOUR"){
             b.name = key;
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
           }
           else if(key == "MELTING CHARGE"){
             b.name = key;
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin","Instrument", "Tolmax", "1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol","Instrument", "Max-Tol", "1", "2", "3"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
           }
           else if(key == "HEAT TREAMENT BATCH"){
             b.name = key;
-            b.headers = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument", "1", "2", "3"]
+            b.headers = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument", "1", "2", "3"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
           }
           else {
             b.name = parseInt(key);
-            // b.headers = ["S/N", "Description", "Specification", "Tolmin", "Tolmax"]
+            // b.headers = ["S/N", "Description", "Specification", "Min-Tol", "Max-Tol"]
             // b.headers1 = ["id", "description", "specification", "tolFrom", "tolTo"]
             let headers1 = []
             let length = Math.ceil(this.d_batch_qty / parseInt(key));
@@ -368,7 +396,7 @@ td {
             }
             let ie, j, temparray, chunk = 10;
             for (ie = 0; ie < headers1.length; ie += chunk) {
-              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Tolmin", "Tolmax","Instrument"]
+              let Theaders = ["S/N","Balloon No", "Description", "Specification", "Min-Tol", "Max-Tol","Instrument"]
               let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               temparray = headers1.slice(ie, ie + chunk);
               temparray.forEach(function (entry) {
