@@ -14,7 +14,7 @@ import { DataService } from '../services/data.service';
 export class AddDrawingComponent implements OnInit {
 
   action: string;
-  dialogTitle: string;
+  
   viewdata: any
   editId: any;
   dataset: any;
@@ -207,6 +207,8 @@ export class AddDrawingComponent implements OnInit {
 
   // });
 
-
+ get() {
+   
+ }
 
 }
