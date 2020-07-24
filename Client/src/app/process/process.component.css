@@ -1,7 +1,7 @@
 table {
     width: 100%;
-  }
-  
+}
+
   .lgout{
     float: right;
     background-color: #fdfdfd;
@@ -15,14 +15,18 @@ table {
 th {
   font-size: medium;
   color: black;
-  
+
 }
 
 th.mat-header-cell, td.mat-cell {
   text-align: center;
   border: 1px solid #CCC;
   padding: 0 !important;
- 
+}
+
+th.mat-header-cell{
+  background-color: #408cfd;
+  color: white;
 }
 
 td{
@@ -43,3 +47,275 @@ table { page-break-inside:auto }
   /* td, th {
     width: 25%;
   } */
+
+td,th {
+  border: 1px solid black;
+  padding: 8px;
+  }
+
+  .intro_table{
+      border-collapse: collapse;
+      width: 800px;
+      margin: auto;
+  }
+
+  .intro_table > tr > td{
+      width: 400px;
+  }
+  .title_header{
+      font-weight: 800;
+      margin-right: 15px;;
+  }
+
+  .chart_heading{
+      font-size: 20px;
+      font-weight: 700;
+      font-variant: small-caps;
+  }
+
+  .content_table{
+      border-collapse: collapse;
+      margin: 0px;
+      width: 100%;
+      text-align: center;
+  }
+
+  .content_table > thead > tr > th{
+      background-color: #408cfd;
+      color: white;
+    border: 1px solid #CCC;
+ }
+
+ .content_table_row{
+  background-color: #408cfd;
+  color: white;
+  border: 1px solid #CCC;
+ }
+
+  .brand_name{
+      margin-left:50px;
+      font-size: 28px;
+      font-variant: small-caps;
+}
+
+td {
+  padding: 0px 3px;
+  border: 1px solid #CCC;
+  border-bottom: 0px solid black;
+}
+
+.tcustom-full-width{
+  width: 100px;
+  display: inline-block;
+}
+
+.tcustom3-full-width{
+  width: 40px;
+}
+
+.mcustom-full-width{
+  width: 100px;
+}
+
+.mcustom2-full-width{
+  width: 140px;
+}
+
+.mcustom3-full-width{
+  width: 60px;
+}
+
+.submit_process{
+ float: right; 
+ margin-bottom: 15px;
+}
+
+.element_add{
+  margin-right: 18px;
+}
+
+.custom-full-width{
+ width: 9%;
+}
+
+.buttoncustom--full-width{
+  width: 6%;
+ }
+
+.meas-custom-full-width{
+  width: 13%;
+ }
+
+.from-custom-full-width{
+  width: 15.5%;
+  padding: 0px;
+}
+
+.from12-custom-full-width{
+  width: 4%;
+  padding: 0px;
+}
+
+.from121-custom-full-width{
+  width: 3%;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.from123-custom-full-width{
+  width: 3.4%;
+  padding: 0px;
+  font-size: 14px;
+}
+
+
+.from125-custom-full-width{
+  width: 7%;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.from124-custom-full-width{
+  width: 7%;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.from122-custom-full-width{
+  width: 3%;
+  padding: 0px;
+  font-size: 14px;
+}
+
+.from22-custom-full-width{
+  width: 3%;
+  padding: 0px;
+}
+.from8-custom-full-width{
+  width: 10.4%;
+  padding: 0px;
+}
+
+.from5-custom-full-width{
+  width: 9%;
+  padding: 0px;
+}
+
+.from7-custom-full-width{
+  width: 7.15%;
+  padding: 0px;
+}
+
+.from71-custom-full-width{
+  width: 7.5%;
+  padding: 0px;
+}
+
+.from51-custom-full-width{
+  width: 9.5%;
+  padding: 0px;
+}
+
+.from6-custom-full-width{
+  width: 15.4%;
+  padding: 0px;
+}
+
+.from3-custom-full-width{
+ width: 3.4%;
+ padding: 0px;
+ font-size: 15px;
+}
+
+.from4-custom-full-width{
+  width: 10.5%;
+  padding: 0px;
+}
+
+.scustom-full-width{
+  width: 0%;
+  font-size:12px;
+  padding: 0px;
+}
+.custom2-full-width{
+  width: 80px;
+ }
+
+.mat-column-description1 {
+  width: 120px;
+ }
+
+.mat-column-id {
+  width: 44px;
+}
+
+.mat-column-description {
+  width: 132px;
+}
+
+.mat-column-baloonNo{
+  width: 112.5px;
+}
+
+.mat-column-specification{
+  width: 118.5px;
+}
+
+.mat-column-tolFrom{
+  width: 89.5px;
+}
+
+.mat-column-tolTo{
+  width: 94px;
+}
+
+.mat-column-instrument{
+  width: 129px;
+}
+.mat-column-measuringFrequency{
+  width: 189px;
+}
+.mat-column-firstPartInspection{
+  width: 38px;
+} 
+
+.mat-column-periodicInspection{
+  width: 38px;
+}
+ .mat-column-ctq{
+  width: 38px;
+} 
+ 
+.mat-column-pdi{
+  width: 40px;
+} 
+
+.mat-column-cfir{
+  width: 38px;
+}
+
+.mat-column-edit{
+  width: 52px;
+}
+
+.mat-column-delete{
+  width: 61px;
+}
+
+.custom-checkbox-width{
+  width: 50px;;
+}
+.in {
+  padding-right: 50px;
+  padding-bottom: 5px;
+
+}
+
+.first-action-button{
+  margin-right: 10px;
+}
+
+.action_button{
+  float: right;
+  margin: 10px;
+}

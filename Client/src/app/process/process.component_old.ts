@@ -1,15 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { MatDialog,  MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DrawingService } from '../services/drawing.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BatchquantityComponent } from '../batchquantity/batchquantity.component';
 import { ProcessService } from '../services/process.service';
+import { ProcessDialogComponent } from '../process-dialog/process-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { MatSnackBar,MatDialogRef } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { AuthenticationService } from '../services/authentication.service';
-
 
 BatchquantityComponent
 @Component({
@@ -19,46 +20,46 @@ BatchquantityComponent
 })
 export class ProcessComponent implements OnInit {
   public invoiceForm: FormGroup;
-  
+
   constructor(
-    
-     private _processservice: ProcessService, private _process: ProcessService,
-     public auth: AuthenticationService, private router: Router, public dialog: MatDialog,     
-     private _matDialog: MatDialog, public snackBar: MatSnackBar,private _formBuilder: FormBuilder
-            ) {}
-  action: string;
-  dialogTitle: string;
-  viewdata: any
-  editId: any;
-  instrumentList: any;
-  measuringList: any;
-  type: any;            
+    private _processservice: ProcessService,
+     private _process: ProcessService,
+      public auth: AuthenticationService,
+       private router: Router,
+        public dialog: MatDialog,
+         private _matDialog: MatDialog,
+         public matDialogRef: MatDialogRef<ProcessDialogComponent>,
+          public snackBar: MatSnackBar,
+          private _formBuilder: FormBuilder) {}
+
   drgcode: any;
   opno: any;
-  qty: any; 
+  qty: any;
+  instrumentList: any;
   opnValue: any;
+  //displayedColumns = ['id', 'description', 'specification', 'toloreanceGrade','tolFrom','tolTo','measuringFrequency','grid','remarks','firstPartInspection','periodicInspection','ctq','edit','delete'];
   dataSource: MatTableDataSource<any>;
   dialogRef: any;
-  confirmDialogRef: any
+  confirmDialogRef: any;
+
   islog: boolean;
   isad: boolean;
   isUT: boolean;
+
   displayedColumns: any;
+
   taphide = 0;
+  measuringList: any;
   drgObject: any;
-  qpaObject: any
+  qpaObject: any;
+
   submitshow: boolean;
   psObject: any;
-  
+
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
-  get rows() {
-    console.log(this.invoiceForm.get('Rows'))
-    return this.invoiceForm.get('Rows') as FormArray;
-  }
 
 
   ngOnInit() {
@@ -92,7 +93,7 @@ export class ProcessComponent implements OnInit {
     this.submitshow;
 
     if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'description','baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency','firstPartInspection','periodicInspection','ctq','pdi','cfir','delete'];
+      this.displayedColumns = ['id', 'description','baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency','firstPartInspection','periodicInspection','ctq','pdi','cfir','edit','delete'];
     }
     else {
       this.displayedColumns = ['id', 'description', 'baloonNo', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', ];
@@ -107,8 +108,10 @@ export class ProcessComponent implements OnInit {
 
     this.invoiceForm = this._formBuilder.group({
       Rows: this._formBuilder.array([this.initRows()])
-    });    
+    });
   }
+
+
 
   getInstrument() {
 
@@ -152,6 +155,7 @@ export class ProcessComponent implements OnInit {
     this.router.navigate(['/inspection']);
   }
 
+
   getprocess(drgcode, opno) {
     this._processservice.getprocess(drgcode, opno).subscribe((res: any) => {
       if (res.success) {
@@ -174,6 +178,11 @@ export class ProcessComponent implements OnInit {
         });
       }
     });
+
+
+
+
+
 
     this.dialogRef.afterClosed().subscribe(result => {
 
@@ -208,6 +217,9 @@ export class ProcessComponent implements OnInit {
       disableClose: false
     });
     this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete this Drg Code?';
+
+
+
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
 
@@ -277,26 +289,27 @@ export class ProcessComponent implements OnInit {
     this.newAttribute = {};
   }
 
-
-   onChange(val, index, key) {
-
-
-     this.dataSource.data[index][key] = val.target.value
-   }
-
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
   }
 
   addProcess() {
+
+
     let step1 = this.contactForm.getRawValue();
+
+
     let myItem1 = localStorage.getItem('DrgCode');
     let myItem2 = localStorage.getItem('opnNo');
     let myItem3 = localStorage.getItem('type');
+
+
     step1.drgId = myItem1;
     step1.opnId = myItem2;
     step1.type = myItem3;
     step1.opnName = localStorage.getItem('opnName');
+
+
 
     let tempdata = this.instrumentList;
 
@@ -306,10 +319,12 @@ export class ProcessComponent implements OnInit {
       }
     }
 
+
+
     this._process.addProcess(step1).subscribe((res: any) => {
       if (res.success) {
         this.contactForm.reset();
-        this.snackBar.open("Table Added Sucessfully ", "", {
+        this.snackBar.open("Process Created Sucessfully ", "", {
           duration: 1500,
           horizontalPosition: 'end',
           verticalPosition: 'top',
@@ -330,10 +345,58 @@ export class ProcessComponent implements OnInit {
     });
   }
 
-  updateProcess(editId,  arg1) {
- 
-    let step1 = this.dataSource.data[arg1]  
+  // updateProcess(editId,rowid) {
+  //   debugger;
+    // let step1 = this.contactForm2.getRawValue();
+    // let step1 = this.invoiceForm.get("Rows") as FormArray;
+  //   let step1=this.invoiceForm.get('Rows').value;
+
+  //   debugger;
+  //   let tempdata = this.instrumentList;
+
+  //   for (var k in tempdata) {
+  //     if (tempdata[k].name == step1.instrument) {
+  //       step1.insId = tempdata[k].id;
+  //     }
+  //   }
+
+  //   step1
+  //   this._process.updateProcess(editId, step1).subscribe((res: any) => {
+  //     if (res.success) {
+  //       this.contactForm.reset();
+  //       this.snackBar.open("Process Updated Sucessfully", "", {
+  //         duration: 1500,
+  //         horizontalPosition: 'end',
+  //         verticalPosition: 'top',
+  //         panelClass: 'successsnackbarclass'
+  //       });
+  //       let myItem1 = localStorage.getItem('DrgCode');
+  //       let myItem2 = localStorage.getItem('opnNo');
+  //       this.getprocess(myItem1, myItem2);
+  //     }
+  //     else {
+  //       this.snackBar.open(res.message, "", {
+  //         duration: 1500,
+  //         horizontalPosition: 'end',
+  //         verticalPosition: 'top',
+  //         panelClass: 'errorsnackbarclass'
+  //       });
+  //     }
+  //   });
+
+
+  // }
+
+  updateProcess(editId) {
+
+    alert("inside editId");
+
+    let step1 = this.contactForm.getRawValue();
+
     let tempdata = this.instrumentList;
+
+    alert("tempdata...:"+tempdata);
+
     for (var k in tempdata) {
       if (tempdata[k].name == step1.instrument) {
         step1.insId = tempdata[k].id;
@@ -342,7 +405,7 @@ export class ProcessComponent implements OnInit {
 
     step1
     this._process.updateProcess(editId, step1).subscribe((res: any) => {
-      if (res.success) {      
+      if (res.success) {
         this.contactForm.reset();
         this.snackBar.open("Process Updated Sucessfully", "", {
           duration: 1500,
@@ -350,7 +413,9 @@ export class ProcessComponent implements OnInit {
           verticalPosition: 'top',
           panelClass: 'successsnackbarclass'
         });
-
+        let myItem1 = localStorage.getItem('DrgCode');
+        let myItem2 = localStorage.getItem('opnNo');
+        this.getprocess(myItem1, myItem2);
       }
       else {
         this.snackBar.open(res.message, "", {
@@ -361,54 +426,6 @@ export class ProcessComponent implements OnInit {
         });
       }
     });
-
-  }
-  updateProcess1()
-  {
-    
-
- 
-    for (let index = 0; index < this.dataSource.data.length; index++) {
-
-     var editId=this.dataSource.data[index].id;
-
-      let step1 = this.dataSource.data[index]  
-    let tempdata = this.instrumentList;
-    for (var k in tempdata) {
-      if (tempdata[k].name == step1.instrument) {
-        step1.insId = tempdata[k].id;
-      }
-    }
-
-    step1
-    this._process.updateProcess(editId, step1).subscribe((res: any) => {
-      if (res.success) {      
-        this.contactForm.reset();
-        this.snackBar.open("Process Updated Sucessfully", "", {
-          duration: 1500,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          panelClass: 'successsnackbarclass'
-        });
-
-      }
-      else {
-        this.snackBar.open(res.message, "", {
-          duration: 1500,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          panelClass: 'errorsnackbarclass'
-        });
-      }
-    });     
-    }
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 }
+
