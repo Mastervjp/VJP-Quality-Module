@@ -9,6 +9,8 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 import { AuthenticationService } from '../services/authentication.service';
 import { SamplingDialogComponent } from '../sampling-dialog/sampling-dialog.component';
 import { SamplingService } from '../services/sampling.service';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { ProcessService } from '../services/process.service';
 
 @Component({
   selector: 'app-sampling',
@@ -16,8 +18,19 @@ import { SamplingService } from '../services/sampling.service';
   styleUrls: ['./sampling.component.css']
 })
 export class SamplingComponent implements OnInit {
+  userTable: FormGroup;
+  control: FormArray;
+  formData;
 
-  constructor(private _sampleservice: SamplingService, public auth: AuthenticationService, private router: Router, private _operationservice: OperationService, private _matDialog: MatDialog, public snackBar: MatSnackBar) { }
+  constructor(
+    private _sampleservice: SamplingService,
+    private _formBuilder: FormBuilder,
+    public auth: AuthenticationService,
+    private router: Router,
+    private _operationservice: OperationService,
+    private _process: ProcessService,
+    private _matDialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
 
   islog: boolean;
@@ -33,38 +46,113 @@ export class SamplingComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   dialogRef: any;
   confirmDialogRef: any;
-
+  Oplist: any;
+  workData: any;
+  instrumentList: any;
+  measuringList: any;
   submitshow: boolean;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 
   ngOnInit() {
+    this.userTable = this._formBuilder.group({
+      tableRows: this._formBuilder.array([])
+    });
     this.getSampling();
-
+    this.getWorkcenter()
+    this.getOplist();
+    this.getInstrument();
+    this.getMeasuring();
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
-
     if (this.drgObject.pfStatus) {
       this.submitshow = false;
     }
     else {
       this.submitshow = true;
-
     }
-
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
-
-
     if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'grid', 'remarks', 'firstPartInspection', 'periodicInspection', 'ctq'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq'];
     }
     else {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'grid', 'remarks', 'firstPartInspection', 'periodicInspection', 'ctq'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',  'firstPartInspection', 'periodicInspection', 'ctq'];
     }
-
   }
+
+  getWorkcenter() {
+    this._operationservice.getWorkcenter().subscribe((res: any) => {
+      if (res.success) {
+        this.workData = res.data;
+      }
+    });
+  }
+
+  getOplist() {
+    this._operationservice.getOplist().subscribe((res: any) => {
+      if (res.success) {
+        this.Oplist = res.data;
+      }
+    });
+  }
+
+  getInstrument() {
+    this._process.getInstrument().subscribe((res: any) => {
+      if (res.success) {
+        this.instrumentList = res.data;
+      }
+    });
+  }
+
+  getMeasuring() {
+    this._process.getMeasuring().subscribe((res: any) => {
+      if (res.success) {
+        this.measuringList = res.data;
+      }
+    });
+  }
+
+  ngAfterOnInit() {
+    this.control = this.userTable.get('tableRows') as FormArray;
+  }
+
+  initiateForm(): FormGroup {
+    return this._formBuilder.group({
+      id: new FormControl(),
+      pid: new FormControl(),
+      opnNo: new FormControl(''),
+      opnName: new FormControl(''),
+      description: new FormControl(''),
+      workCenter: new FormControl(''),
+      specification: new FormControl('', Validators.required),
+      toloreanceGrade: new FormControl('', Validators.required),
+      tolFrom: new FormControl('', Validators.required),
+      tolTo: new FormControl('', Validators.required),
+      instrument: new FormControl(''),
+      measuringFrequency: new FormControl(''),
+      baloonNo: new FormControl(''),
+      firstPartInspection: new FormControl(),
+      periodicInspection: new FormControl(),
+      ctq: new FormControl(),
+      pdi: new FormControl(),
+      cfir: new FormControl(),
+    });
+  }
+
+  addRow() {
+    const control = this.userTable.get('tableRows') as FormArray;
+    control.push(this.initiateForm());
+  }
+
+  addNewRow() {
+    const control = this.userTable.get('tableRows') as FormArray;
+    control.insert(0, this.initiateForm());
+    this.dataSource.filteredData = this.userTable.controls["tableRows"].value
+  }
+
+
   Logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
@@ -74,17 +162,14 @@ export class SamplingComponent implements OnInit {
     this.router.navigate(['/inspection']);
   }
 
-
-
   createSampling() {
-
     this.dialogRef = this._matDialog.open(SamplingDialogComponent, {
       width: '600px',
       panelClass: 'contact-form-dialog',
       data: {
         action: 'new',
       }
-    })
+    });
 
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -96,8 +181,55 @@ export class SamplingComponent implements OnInit {
 
   }
 
-  editDrawing(datas) {
+  async updateOperation() {
+    if (this.userTable.valid) {
+      this.userTable.value.tableRows.forEach(element => {
+        if (element.id) {
+          this._sampleservice.updateSampling(element.id, element).subscribe((res: any) => {
+            console.log(res);
+          });
+        } else {
+          delete element.id;
+          delete element.pid;
+          element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
+          if (element.firstPartInspection) {
+            //action
+            element.firstPartInspection = true
 
+          }
+          else {
+            element.firstPartInspection = 0
+          }
+          if (element.periodicInspection) {
+            //action
+          }
+          else {
+            element.periodicInspection = 0
+          }
+          if (element.ctq) {
+            //action
+          }
+          else {
+            element.ctq = 0
+          }
+          this._sampleservice.addSampling(element).subscribe((res: any) => {
+            console.log(res);
+          });
+        }
+      });
+      await this.snackBar.open("Process updated successfully", "", {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        panelClass: 'errorsnackbarclass'
+      });
+    } else {
+      alert("Please fill the data in the required fields");
+    }
+
+  }
+
+  editDrawing(datas) {
     this.dialogRef = this._matDialog.open(OperationDialogComponent, {
       width: '600px',
       panelClass: 'contact-form-dialog',
@@ -121,16 +253,12 @@ export class SamplingComponent implements OnInit {
       disableClose: false
     });
     this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete this Operation?';
-
-
-
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
 
         this._operationservice.deleteOperation(id).subscribe((res: any) => {
           if (res.success) {
             this.submitshow = true;
-
             this.getSampling();
             this.snackBar.open("Operation Deleted Sucessfully", "", {
               duration: 1500,
@@ -196,11 +324,11 @@ export class SamplingComponent implements OnInit {
       if (res.success) {
         let mydata = res.data;
         var result = [];
-
         mydata.forEach((opn) => {
           opn.Processes.forEach((pro) => {
             result.push({
               "id": opn.id,
+              "baloonNo":pro.baloonNo,
               "opnNo": opn.opnNo,
               "opnName": opn.opnName,
               "description": opn.description,
@@ -283,7 +411,11 @@ export class SamplingComponent implements OnInit {
 
 
         // }
-
+        this.formData = result;
+        result.forEach(element => {
+          this.addRow();
+        });
+        this.userTable.controls["tableRows"].patchValue(this.formData)
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.paginator = this.paginator;
       }
