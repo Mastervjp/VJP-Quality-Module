@@ -1,7 +1,8 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DrawingService } from '../services/drawing.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BatchquantityComponent } from '../batchquantity/batchquantity.component';
@@ -18,9 +19,9 @@ BatchquantityComponent
   styleUrls: ['./process.component.css']
 })
 export class ProcessComponent implements OnInit {
-
-  constructor(private _processservice: ProcessService, public auth: AuthenticationService, private router: Router, public dialog: MatDialog, private _matDialog: MatDialog, public snackBar: MatSnackBar) { }
-
+  isOPE: boolean;
+  isSuper: boolean;
+  constructor(private _processservice: ProcessService, public activeRoute: ActivatedRoute, public auth: AuthenticationService, private router: Router, public dialog: MatDialog, private _matDialog: MatDialog, public snackBar: MatSnackBar) { }
   drgcode: any;
   opno: any;
   qty: any;
@@ -50,6 +51,14 @@ export class ProcessComponent implements OnInit {
 
 
   ngOnInit() {
+    let status = this.activeRoute.snapshot.queryParams.type;
+    this.checkrole(status);
+    this.islog = this.auth.isLoggedIn();
+    this.isad = this.auth.isAdmin();
+    if (status)
+
+
+      this.isSuper = this.auth.isSuperAdmin();
 
     let myItem1 = localStorage.getItem('DrgCode');
     let myItem2 = localStorage.getItem('opnNo');
@@ -63,8 +72,7 @@ export class ProcessComponent implements OnInit {
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
 
 
-    this.islog = this.auth.isLoggedIn();
-    this.isad = this.auth.isAdmin();
+
 
     if (this.drgObject.qpStatus) {
       this.submitshow = false;
@@ -76,22 +84,29 @@ export class ProcessComponent implements OnInit {
     this.submitshow;
 
     if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'description','baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency','edit', 'delete'];
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'edit', 'delete'];
     }
     else {
-      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', ];
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',];
     }
 
-    if (localStorage.getItem('logRole') == "UT") {
-      this.isUT = true;
-    }
-    else{
-      this.isUT = false;
-    }
 
 
   }
 
+  checkrole(status) {
+
+    if (localStorage.getItem('logRole') == "UT" || localStorage.getItem('adminLogRole') == 'ope') {
+      this.isUT = true;
+      this.isOPE = true;
+    }
+
+    else {
+      this.isUT = false;
+      this.isOPE = false;
+    }
+    this.isUT
+  }
   Logout() {
     localStorage.clear();
     this.router.navigate(['/login']);

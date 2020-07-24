@@ -59,16 +59,22 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('logRole', rolecheck)
           this.router.navigate(['/marketview']);
         }
-        else if (rolecheck == "MAN") {
-          localStorage.setItem('logRole', rolecheck)
-          this.router.navigate(['/marketview']);
-        }
-
-        else {
+        else if (rolecheck == "TT") {
           localStorage.setItem('logRole', rolecheck)
           this.router.navigate(['/drawing']);
         }
-
+        else if (rolecheck == "ET") {
+          localStorage.setItem('logRole', rolecheck)
+          this.router.navigate(['/drawing']);
+        }
+        else if (rolecheck == "UT") {
+          localStorage.setItem('logRole', rolecheck)
+          this.router.navigate(['/drawing']);
+        }
+        else if (rolecheck == "DIS") {
+          localStorage.setItem('logRole', rolecheck)
+          this.router.navigate(['/drawing']);
+        }
 
       } else {
         // this.snackBar.open(res.message, "", {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ContractreviewService } from '../services/contractreview.service';
 import { formatDate, DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
@@ -18,23 +18,27 @@ export class ContractreviewPrintComponent implements OnInit {
   getData: any;
   islog: any;
   isMAN: boolean;
-  constructor(private _contractreviewservice: ContractreviewService, private router: Router, public auth: AuthenticationService, public snackBar: MatSnackBar) {
+  isMANAGEMENT: boolean;
+  constructor(private _contractreviewservice: ContractreviewService, public activeRoute: ActivatedRoute, private router: Router, public auth: AuthenticationService, public snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
     this.getCustomerData();
-    this.checkrole();
+    let status= this.activeRoute.snapshot.queryParams.type;
+    this.checkrole(status);
     formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.islog = this.auth.isLoggedIn();
   }
-  checkrole() {
-
-    if (localStorage.getItem('logRole') == "MAN") {
+  checkrole(status) {
+    if (localStorage.getItem('logRole') == "MAN" ||localStorage.getItem('adminLogRole') == 'management') {
       this.isMAN = true;
+      this.isMANAGEMENT = true;
     }
     else {
       this.isMAN = false;
+      this.isMANAGEMENT = false;
     }
+
   }
 
   printPage() {
@@ -124,7 +128,6 @@ export class ContractreviewPrintComponent implements OnInit {
 
   getAllData() {
     let status =localStorage.getItem('status');
-    debugger
   }
 
 

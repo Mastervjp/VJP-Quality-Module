@@ -14,6 +14,7 @@ export class ContractreviewViewComponent implements OnInit {
   isMKT: boolean;
   islog: any;
   displayedColumns = ['id', 'customerName', 'billTo', 'action', 'status'];
+  isMARKET: boolean;
   constructor(private _contractreviewservice: ContractreviewService, public auth: AuthenticationService, private _formBuilder: FormBuilder, private router: Router) { }
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -25,11 +26,13 @@ export class ContractreviewViewComponent implements OnInit {
 
   checkrole() {
 
-    if (localStorage.getItem('logRole') == "MKT") {
+    if (localStorage.getItem('logRole') == "MKT" || localStorage.getItem('adminLogRole') == "market") {
       this.isMKT = true;
+      this.isMARKET =false;
     }
     else {
       this.isMKT = false;
+      this.isMARKET =false;
     }
   }
 
