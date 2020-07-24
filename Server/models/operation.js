@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             allowNull: false
         },
-        opnNo:{
+        opnNo: {
             type:DataTypes.INTEGER(20),
             field:'opn_no',
             allowNull: false
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'opn_name'
         },
-        description:{
+        description: {
             type:DataTypes.STRING(250),
             field:'description'
         },
@@ -52,14 +52,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER(11).UNSIGNED,
             field:'drg_id'
         },
-        altProcess:
-        {
+        altProcess: {
             type: DataTypes.BOOLEAN,
             field: 'alt_process',
             defaultValue: false
         },
-        addKind:
-        {
+        addKind: {
             type: DataTypes.BOOLEAN,
             field: 'add_kind',
             defaultValue: false
@@ -94,8 +92,6 @@ module.exports = function(sequelize, DataTypes) {
     Operation.associate = function(models) {
         Operation.hasMany(models.Process, { foreignKey: 'opnId' })
         Operation.belongsTo(models.Drawing, { foreignKey: 'drgId'})
-
-
     }
     return Operation
 }

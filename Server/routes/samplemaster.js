@@ -43,8 +43,9 @@ router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
 
         Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
-
+            
             if (resp) {
+                console.log(resp);
                 req.body.opnId = resp.id;
                 Process.create(req.body).then(function (result) {
                     sendSuccess(res, result);
@@ -88,8 +89,31 @@ router.put('/:id', (req, res) => {
 
     req.body.updatedBy = 1;
     return new Promise((resolve, reject) => {
+        let data = {
+            "id": req.body.pid,
+            "opnId": req.body.id,
+            "opnName": req.body.opnName,
+            "description": req.body.description,
+            "specification": req.body.specification,
+            "toloreanceGrade":req.body.toloreanceGrade,
+            "tolFrom": req.body.tolFrom,
+            "tolTo": req.body.tolTo,
+            "instrument": req.body.instrument,
+            "measuringFrequency": req.body.measuringFrequency,
+            "grid": req.body.grid,
+            "firstPartInspection": req.body.firstPartInspection,
+            "periodicInspection": req.body.periodicInspection,
+            "ctq": req.body.periodicInspection,
+        }
+        
+       
         Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
             sendSuccess1(res, result, "Data successfully updated");
+            Process.update(data, { where: { id: req.body.pid } }).then(result => {
+                sendSuccess1(res, result, "Data successfully updated");
+            }).catch(function (err) {
+                sendError(res, error);
+            });
         }).catch(function (err) {
             sendError(res, error);
         });

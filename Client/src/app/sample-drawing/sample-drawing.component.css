@@ -35,3 +35,8 @@ table {
     font-size: large;
     color: black;
   }
+
+  .in {
+    padding-right: 50px;
+    padding-bottom: 10px;
+  }

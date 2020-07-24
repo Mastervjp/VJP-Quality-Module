@@ -308,16 +308,11 @@ function fileuploads(uploadImage, filepath) {
 
 
 router.put('/pfstatus/:id', (req, res) => {
-
     req.body.updatedBy = 1;
-
     return new Promise((resolve, reject) => {
-
         Drawing.findOne({ where: { id: req.params.id } }).then(dResult => {
-
             if (dResult.pfStatus) {
                 PlanAbstract.findOne({ where: { drgId: dResult.id } }).then(planRes => {
-
                     var newpfno = "";
                     var pf = planRes.pfNo
                     var nameArr = pf.split('_');
@@ -327,9 +322,7 @@ router.put('/pfstatus/:id', (req, res) => {
                         var alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
                         var lastchar = part2Arr[1];
                         var index = alpha.indexOf(lastchar);
-
                         newpfno = nameArr[0] + '_' + part2Arr[0] + alpha[index + 1]
-
                         PlanAbstract.update({ pfNo: newpfno }, { where: { id: planRes.id } }).then(upres => {
 
                             Drawing.update({ pfStatus: 1 }, { where: { id: dResult.id } }).then(result => {
@@ -337,9 +330,7 @@ router.put('/pfstatus/:id', (req, res) => {
                             }).catch(function (err) {
                                 sendError(res, err);
                             });
-
                         })
-
                     }
                     else {
                         let pfnum = nameArr[0] + '_' + nameArr[1] + 'A'
@@ -350,11 +341,40 @@ router.put('/pfstatus/:id', (req, res) => {
                         });
                     }
                 })
-
             }
             else {
                 Drawing.update({ pfStatus: 1 }, { where: { id: req.params.id } }).then(result => {
-                    sendSuccess(res, result);
+                    var newpfNo = '';
+                    let code = req.params.id;
+                    var n = code.toString().length
+                    if (n == 1) {
+                        newpfNo = "PP 000000" + code + "-10A"
+                    }
+                    else if (n == 2) {
+                        newpfNo = "PP 00000" + code + "-10A"
+                    }
+                    else if (n == 3) {
+                        newpfNo = "PP 0000" + code + "-10A"
+                    }
+                    else if (n == 4) {
+                        newpfNo = "PP 000" + code + "-10A"
+                    }
+                    else if (n == 5) {
+                        newpfNo = "PP 00" + code + "-10A"
+                    }
+                    else if (n == 6) {
+                        newpfNo = "PP 0" + code + "-10A"
+                    }
+                    else {
+                        newpfNo = "PP " + code + "-10A"
+                    }
+                    var mydata = {
+                        "drgId": req.params.id,
+                        "pfNo": newpfNo
+                    }
+                    PlanAbstract.create(mydata).then((planresult) => {
+                        sendSuccess(res, planresult);
+                    })
                 }).catch(function (err) {
                     sendError(res, err);
                 });
@@ -512,8 +532,8 @@ router.post('/copy', (req, res) => {
                 "opnName": card.opnName,
                 "description": card.description,
                 "workCenter": card.workCenter,
-                "altProcess" : false,
-                "addKind":false
+                "altProcess": false,
+                "addKind": false
             }
 
             if (req.body.altProcess) {

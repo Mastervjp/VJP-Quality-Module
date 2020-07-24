@@ -32,6 +32,10 @@
           <mat-icon>add</mat-icon>
         </button> -->
       </div>
+
+      <form class="in">
+        <input style="float: right;" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
+       </form>
     
       <div class="p-5">
     

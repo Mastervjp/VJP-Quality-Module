@@ -8,194 +8,247 @@
   <div style="width: 95%;margin-left: 3%;padding-top: 1%;padding-bottom: 30px;">
 
 
-<div class="container mt-4">
-  
-  </div>
+    <div class="container mt-4">
 
+    </div>
 
-
-
-  <div class="row p-2">
-      <button mat-mini-fab (click)="createSampling()" style="background-color: #2727ec; color: white;margin-bottom: 1% ;">
-          <mat-icon>add</mat-icon>
-        </button>
-  </div>
-
-  <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> S/N </th>
-          <td mat-cell *matCellDef="let element; let rIndex = index;"> {{rIndex+1}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="opnNo">
-          <th mat-header-cell *matHeaderCellDef> OPN No </th>
-          <td mat-cell matRipple style="cursor:pointer;" *matCellDef="let element">
-            {{element.opnNo}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="opnName">
-          <th mat-header-cell *matHeaderCellDef> OPN Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.opnName  | uppercase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef> Description </th>
-          <td mat-cell *matCellDef="let element"> {{element.description | uppercase}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="workCenter">
-          <th mat-header-cell *matHeaderCellDef> Work Center </th>
-          <td mat-cell *matCellDef="let element"> {{element.workCenter | uppercase}} </td>
-        </ng-container>
-
-
-        
-
-         <!-- Weight Column -->
-         <ng-container matColumnDef="specification">
-          <th mat-header-cell *matHeaderCellDef> Specs </th>
-          <td mat-cell *matCellDef="let element"> {{element.specification | uppercase}} </td>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="toloreanceGrade">
-          <th mat-header-cell *matHeaderCellDef> Tol_Grade </th>
-          <td mat-cell *matCellDef="let element"> {{element.toloreanceGrade}} </td>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="tolFrom">
-          <th mat-header-cell *matHeaderCellDef> Tol_Min </th>
-          <td mat-cell *matCellDef="let element"> {{element.tolFrom}} </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="tolTo">
-          <th mat-header-cell *matHeaderCellDef> Tol_Max </th>
-          <td mat-cell *matCellDef="let element"> {{element.tolTo}} </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="instrument">
-          <th mat-header-cell *matHeaderCellDef> Instrument </th>
-          <td mat-cell *matCellDef="let element"> {{element.instrument | uppercase}} </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="measuringFrequency">
-          <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
-          <td mat-cell *matCellDef="let element"> 
-            
-            <ng-container *ngIf="element.measuringFrequency == '100'; else newDeb" >
-              100 % 
-           </ng-container>
-           <ng-template #newDeb>
-               1/{{element.measuringFrequency}}
-           </ng-template>
-          
-          </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="grid">
-          <th mat-header-cell *matHeaderCellDef>Grid </th>
-          <td mat-cell *matCellDef="let element"> {{element.grid}} </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="remarks">
-          <th mat-header-cell *matHeaderCellDef> Remarks </th>
-          <td mat-cell *matCellDef="let element"> {{element.remarks | uppercase}} </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="firstPartInspection">
-          <th mat-header-cell *matHeaderCellDef> FPI </th>
-          <td mat-cell *matCellDef="let element"> 
-            
-            
-            <ng-container *ngIf="element.firstPartInspection; else newDeb" >
-              <mat-icon>done_outline</mat-icon>
-           </ng-container>
-           <ng-template #newDeb>
-              
-           </ng-template>
-
-
-          </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="periodicInspection">
-          <th mat-header-cell *matHeaderCellDef> PI </th>
-          <td mat-cell *matCellDef="let element">
-            
-            <ng-container *ngIf="element.periodicInspection; else newDeb2" >
-              <mat-icon>done_outline</mat-icon>
-           </ng-container>
-           <ng-template #newDeb2>
-              
-           </ng-template>
-
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="ctq">
-          <th mat-header-cell *matHeaderCellDef> CTQ </th>
-          <td mat-cell *matCellDef="let element">
-            
-            <ng-container *ngIf="element.ctq; else newDeb1" >
-              <mat-icon>done_outline</mat-icon>
-           </ng-container>
-           <ng-template #newDeb1>
-              
-           </ng-template>
-
-          
-          </td>
-        </ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        <ng-container *ngIf="islog && isad" matColumnDef="edit">
-          <th mat-header-cell  *matHeaderCellDef>Modification</th>
-          <td mat-cell  *matCellDef="let element">
-              <div >
-                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                          padding: 0 !important;" (click)="editDrawing(element)">
-                      <mat-icon style="color:green" selected>edit</mat-icon>
-                  </button>
-              </div>
-            </td>
-      </ng-container>
-  
-      <ng-container *ngIf="islog && isad" matColumnDef="delete">
-          <th mat-header-cell *matHeaderCellDef>Delete</th>
-          <td mat-cell  *matCellDef="let element">
-              <div>
-                  <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                  padding: 0 !important;" (click)="deleteDrg(element.id)">
-                      <mat-icon color="warn" selected>delete</mat-icon>
-                  </button>
-              </div>
-            </td>
-      </ng-container>
-
-
-        <tr style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-
-      <mat-paginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
+    <div class="row p-2">
+      <button mat-mini-fab (click)="addNewRow()" style="background-color: #2727ec; color: white;margin-bottom: 1% ;">
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
 
 
-</div>
+    <form [formGroup]="userTable" focusInvalidInput (ngSubmit)="updateOperation()">
+      <div class="row p-2">
+        <button mat-button style="background-color: #2727ec; color: white;margin-bottom: 1% ; float:right; position: absolute;
+        right: 4rem;
+        margin: -3rem;">
+          save
+        </button>
+      </div>
+
+      <div class="mat-elevation-z8">
+
+        <table mat-table [dataSource]="dataSource.filteredData" formArrayName="tableRows">
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> S/N </th>
+            <td mat-cell *matCellDef="let element; let rIndex = index;"> {{rIndex+1}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="opnNo">
+            <th mat-header-cell *matHeaderCellDef> OPN No </th>
+            <td mat-cell matRipple style="cursor:pointer;" *matCellDef="let element; let i = index;"
+              [formGroupName]="i">
+              <mat-form-field style="width: 90px;">
+                <input matInput formControlName="opnNo" [(ngModel)]="element.opnNo" placeholder="Opn No.">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="opnName">
+            <th mat-header-cell *matHeaderCellDef> OPN Name </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 90px;">
+                <mat-select formControlName="opnName" [(ngModel)]="element.opnName" placeholder="Opn Name">
+                  <mat-option *ngFor="let op of Oplist" [value]="op.name">
+                    {{op.name}}
+                  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 80px;">
+                <input matInput formControlName="description" [(ngModel)]="element.description"
+                  placeholder="Description">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="workCenter">
+            <th mat-header-cell *matHeaderCellDef> Work Center </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 80px;">
+                <!-- <mat-label>Workcenter</mat-label> -->
+                <mat-select formControlName="workCenter" [(ngModel)]="element.workCenter" placeholder="Work center">
+                  <mat-option *ngFor="let work of workData" [value]="work.name">
+                    {{work.name}}
+                  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="baloonNo">
+            <th mat-header-cell *matHeaderCellDef>baloonNo </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 70px;">
+                <input matInput formControlName="baloonNo" placeholder="baloonNo" [(ngModel)]="element.baloonNo">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="specification">
+            <th mat-header-cell *matHeaderCellDef> Specs </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 80px;">
+                <input matInput formControlName="specification" placeholder="Specification"
+                  [(ngModel)]="element.specification">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="toloreanceGrade">
+            <th mat-header-cell *matHeaderCellDef> Tol_Grade </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 80px;">
+                <input matInput formControlName="toloreanceGrade" placeholder="Toloreance Grade"
+                  [(ngModel)]="element.toloreanceGrade">
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="tolFrom">
+            <th mat-header-cell *matHeaderCellDef> Tol_Min </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 80px;">
+                <input matInput formControlName="tolFrom" placeholder="Tol From" [(ngModel)]="element.tolFrom">
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="tolTo">
+            <th mat-header-cell *matHeaderCellDef> Tol_Max </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 80px;">
+                <input matInput formControlName="tolTo" placeholder="Tol To" [(ngModel)]="element.tolTo">
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="instrument">
+            <th mat-header-cell *matHeaderCellDef> Instrument </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 80px;">
+                <mat-select formControlName="instrument" placeholder="Instrument" [(ngModel)]="element.instrument">
+                  <mat-option *ngFor="let ins of instrumentList" [value]="ins.name">
+                    {{ins.name}}
+                  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="measuringFrequency">
+            <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-form-field style="width: 180px;">
+                <mat-select formControlName="measuringFrequency" placeholder="Measuring Frequency"
+                  [(ngModel)]="element.measuringFrequency">
+                  <mat-option *ngFor="let ins of measuringList" [value]="ins.name">
+
+                    <ng-container *ngIf="ins.name == '100'; else newDeb">
+                      100 %
+                    </ng-container>
+                    <ng-template #newDeb>
+                      1/{{ins.name}}
+                    </ng-template>
+
+
+                  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </ng-container>
+          
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="firstPartInspection">
+            <th mat-header-cell *matHeaderCellDef> FPI </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-checkbox class="example-margin" formControlName="firstPartInspection"
+                [(ngModel)]="element.firstPartInspection"></mat-checkbox>
+            </td>
+          </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="periodicInspection">
+            <th mat-header-cell *matHeaderCellDef> PI </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-checkbox class="example-margin" formControlName="periodicInspection"
+                [(ngModel)]="element.periodicInspection"></mat-checkbox>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ctq">
+            <th mat-header-cell *matHeaderCellDef> CTQ </th>
+            <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
+              <mat-checkbox class="example-margin" value="true" formControlName="ctq" [(ngModel)]="element.ctq">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <ng-container *ngIf="islog && isad" matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Modification</th>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                          padding: 0 !important;" (click)="editDrawing(element)">
+                  <mat-icon style="color:green" selected>edit</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let element">
+              <div>
+                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
+                  padding: 0 !important;" (click)="deleteDrg(element.id)">
+                  <mat-icon color="warn" selected>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+
+          <tr style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; let index = index; columns: displayedColumns;"></tr>
+        </table>
+
+
+        <mat-paginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
+      </div>
+
+
+    </form>
+  </div>
+
+  <code>
+</code>
 </div>
 
 <app-footer></app-footer>

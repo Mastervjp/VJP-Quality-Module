@@ -38,8 +38,8 @@ export class SamplingService {
       map(this.extractData));
   }
 
-  updateSampling(datas,id): Observable<any> {
-    return this.http.post<any>(this.API_URL+'/api/samole/'+id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+  updateSampling(id, datas): Observable<any> {
+    return this.http.put<any>(this.API_URL+'/api/sample/'+id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData));
   }
 }

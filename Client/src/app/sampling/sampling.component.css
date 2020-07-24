@@ -30,8 +30,9 @@ th.mat-header-cell, td.mat-cell {
   border: 1px solid #CCC;
   padding: 0 !important;
  
+  
 }
 th {
-  font-size: large;
+  font-size: medium;
   color: black;
 }
