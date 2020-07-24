@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource, MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
 import { DrawingDialogComponent } from '../drawing-dialog/drawing-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
@@ -42,20 +42,29 @@ export class DrawingTableComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  isADM: boolean;
+  isTEC: boolean;
+  isENGG: boolean;
+  isDISP: boolean;
+  isOPE: boolean;
 
-  constructor(private _drawingservice: DrawingService, public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar,) { }
+  constructor(private _drawingservice: DrawingService, 
+    public activeRoute: ActivatedRoute, 
+    public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar,) { }
 
   ngOnInit() {
     this.getdata();
-    this.checkrole();
+    let status= this.activeRoute.snapshot.queryParams.type;
+    this.checkrole(status);
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
-
     this.isSuper = this.auth.isSuperAdmin();
-
     localStorage.removeItem('qpaObject');
     localStorage.removeItem('psObject');
-
+    localStorage.setItem('adminLogRole', status);
+    if(status == 'ope' || status == 'disp') {
+      this.isad = false;
+    }
 
     if (this.islog && this.isTT) {
       this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade', 'unlockStatus', 'edit', 'delete'];
@@ -71,38 +80,44 @@ export class DrawingTableComponent implements OnInit {
     }
     else {
       this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade'];
-
     }
-
-
-
   }
 
-  checkrole() {
-
-    if (localStorage.getItem('logRole') == "TT") {
+  checkrole(status) {
+    if (localStorage.getItem('logRole') == "TT" || status == 'tec') {
       this.isTT = true;
+      this.isTEC =true;
     }
-    else if (localStorage.getItem('logRole') == "ET") {
+    else if (localStorage.getItem('logRole') == "ET" || status == 'engg') {
       this.isET = true;
+      this.isENGG =true;
     }
-    else if (localStorage.getItem('logRole') == "DIS") {
+    else if (localStorage.getItem('logRole') == "DIS" || status == 'disp') {
       this.isDIS = true;
+      this.isDISP =true;
     }
+   
     else {
       this.isTT = false;
       this.isET = false;
+      this.isTEC =false;
+      this.isENGG =false;
+      this.isDIS = false;
+      this.isDISP =false;
 
     }
-    if (localStorage.getItem('logRole') == "UT") {
+    if (localStorage.getItem('logRole') == "UT" || status == 'ope') {
       this.isUT = true;
+      this.isOPE = true;
     }
+
     else {
       this.isUT = false;
+      this.isOPE = false;
     }
     this.isUT
-
-  }
+ 
+ }
 
   createDrawing() {
     this.dialogRef = this._matDialog.open(DrawingDialogComponent, {
@@ -281,13 +296,12 @@ export class DrawingTableComponent implements OnInit {
 
   sampling() {
 
-    // localStorage.setItem('drgObject', JSON.stringify(product));
-
     this.router.navigate(['/samplingcode']);
 
   }
 
 }
+
 
 
 

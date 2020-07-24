@@ -31,6 +31,7 @@ export class QpAbstractComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  isENGG: boolean;
 
   constructor(private _qualityservice: QualityService, public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar, ) { }
 
@@ -52,11 +53,13 @@ export class QpAbstractComponent implements OnInit {
 
   checkrole(){
 
-   if (localStorage.getItem('logRole') == "ET") {
+   if (localStorage.getItem('logRole') == "ET" || localStorage.getItem('adminLogRole') == 'engg') {
       this.isET = true;
+      this.isENGG=true
     }
     else {
       this.isET = false;
+      this.isENGG=false
 
     }
 

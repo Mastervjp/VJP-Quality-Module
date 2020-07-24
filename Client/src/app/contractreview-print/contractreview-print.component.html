@@ -561,9 +561,10 @@
 
   </div>
   <div class="text-center p-2">
-      <button *ngIf="isMAN" (click)="Lockaction(dataSource.id, 1)" mat-raised-button
+    <button *ngIf="isMAN ||isMANAGEMENT" (click)="Lockaction(dataSource.id, 1)" mat-raised-button
       style="background-color: green;color: black;">Approve</button>
-    <button *ngIf="isMAN" (click)="Lockaction(dataSource.id, 0)" mat-raised-button color="warn" style="margin-left: 3%;">Reject</button>
+    <button *ngIf="isMAN ||isMANAGEMENT" (click)="Lockaction(dataSource.id, 0)" mat-raised-button color="warn"
+      style="margin-left: 3%;">Reject</button>
 
   </div>
 </div>

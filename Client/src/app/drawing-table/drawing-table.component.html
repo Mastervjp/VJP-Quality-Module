@@ -10,24 +10,19 @@
   <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
 
 
-    <button *ngIf="islog && isET" mat-raised-button (click)="sampling()" color="primary">sampling</button>
+    <button *ngIf="islog && isET ||isENGG " mat-raised-button (click)="sampling()" color="primary">sampling</button>
 
 
 
-    <div *ngIf="islog && isTT">
+    <div *ngIf="islog && isTT ||isTEC">
 
       <div style="margin-left: 3%;">
-        <button *ngIf="islog && isad" mat-mini-fab (click)="createDrawing()"
+        <button *ngIf="islog && isad " mat-mini-fab (click)="createDrawing()"
           style="background-color: #2727ec; color: white;">
           <mat-icon>add</mat-icon>
         </button>
 
       </div>
-
-
-      <!-- <button mat-mini-fab (click)="createDrawing()" style="background-color: #2727ec; color: white;">
-          <mat-icon>add</mat-icon>
-        </button> -->
     </div>
     <form class="in">
       <input style="float: right;" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
@@ -297,8 +292,8 @@
             <th mat-header-cell *matHeaderCellDef [attr.colspan]="2"> REVISION NUMBER </th>
           </ng-container>
 
-          <ng-container matColumnDef="action-group">
-            <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"> ACTION </th>
+          <ng-container  matColumnDef="action-group">
+            <th mat-header-cell *matHeaderCellDef [attr.colspan]="3"> ACTION</th>
           </ng-container>
 
 

@@ -1,0 +1,55 @@
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('assets/login.jpg');">
+			<div class="wrap-login100">
+              
+				<form class="login100-form validate-form"name="loginForm" [formGroup]="loginForm" novalidate (ngSubmit)="login()" >
+                    <div style="vertical-align: middle;background-repeat: no-repeat;margin-left: 36%;padding-bottom: 5px;">
+                        <img src="assets/vjp3.png" alt="VJP"  >
+                    </div>
+                    <div><b><h1 style="font-weight: 600;padding:10px; text-align: center;">Admin Panel</h1></b></div>
+
+                    <div style="font-size: larger;" class="wrap-input100 validate-input">
+                        <mat-form-field  style="width: 90%;" >
+                            <mat-label style="font-size: larger;">Email</mat-label>
+                            <input matInput formControlName="email" autocomplete>
+                           
+                            <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                                Email is required
+                            </mat-error>
+                            <mat-error
+                            *ngIf="!loginForm.get('email').hasError('required') &&
+                                    loginForm.get('email').hasError('pattern')">
+                            Please enter a valid email address
+                        </mat-error>
+                        </mat-form-field>
+                    </div>
+    
+                    <div style="font-size: larger;" class="wrap-input100 validate-input">
+                       
+                <mat-form-field style="width: 90%;">
+                    <mat-label style="font-size: larger;">Password</mat-label>
+                    <input matInput type="password" formControlName="password" autocomplete="password">
+                   
+                    <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                        Password is required.
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('password').hasError('minLength')">
+                        Password must have minimum of 6 chatacters.
+                    </mat-error>
+                </mat-form-field>
+                    </div>
+    
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn">
+                                login
+                            </button>
+                        </div>
+                        </div>
+				</form>
+			</div>
+		</div>
+    </div>
+    
+	

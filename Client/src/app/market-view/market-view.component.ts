@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MarketService } from '../services/market.service';
 import { MatSnackBar, MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MaterialService } from '../master/masterservice/material.service';
 import { MarketQtyComponent } from '../market-qty/market-qty.component';
 
@@ -26,6 +26,7 @@ export class MarketViewComponent implements OnInit {
   dialogRef: any;
 
   constructor(private _formBuilder: FormBuilder,
+    public activeRoute: ActivatedRoute, 
     public snackBar: MatSnackBar,
     private _marketservice: MarketService,
     private router: Router,
@@ -36,6 +37,9 @@ export class MarketViewComponent implements OnInit {
     // this.getMaterial();
     this.getData();
     this.showCard = false;
+    let status= this.activeRoute.snapshot.queryParams.type;
+    localStorage.setItem('adminLogRole', status);
+
 
   }
 

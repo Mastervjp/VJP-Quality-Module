@@ -31,7 +31,7 @@
   <mat-sidenav-content>
     <div style=" min-height: calc(100vh - 110px);">
       <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
-        <button *ngIf="islog && isMKT" mat-mini-fab [routerLink]="['/contractreview']"
+        <button *ngIf="islog && isMKT ||isMARKET" mat-mini-fab [routerLink]="['/contractreview']"
           style="background-color: #2727ec;">
           <mat-icon>add</mat-icon>
         </button>

@@ -37,6 +37,8 @@ import { SampleDrawingComponent } from './sample-drawing/sample-drawing.componen
 import { ContractreviewComponent } from './contractreview/contractreview.component';
 import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
 import { ContractreviewPrintComponent } from './contractreview-print/contractreview-print.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const appRoutes: Routes = [
   {
@@ -46,6 +48,15 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminLoginComponent,
+  },
+  {
+    path: 'admin-panel',
+    component: AdminPanelComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'register',
