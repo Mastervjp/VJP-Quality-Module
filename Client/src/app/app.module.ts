@@ -108,6 +108,7 @@ import { ContractreviewViewComponent } from './contractreview-view/contractrevie
 import { FirComponent } from './fir/fir.component';
 import { CFirComponent } from './c-fir/c-fir.component';
 import { ContractreviewPrintComponent } from './contractreview-print/contractreview-print.component';
+import { ContractreviewEditComponent } from './contractreview-edit/contractreview-edit.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
@@ -187,9 +188,10 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     FirComponent,
     CFirComponent,
     ContractreviewPrintComponent,
+    ContractreviewEditComponent,
     AdminLoginComponent,
     AdminPanelComponent,
-  ],
+    ],
   imports: [
     BrowserModule,
     routing,

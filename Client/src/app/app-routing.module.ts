@@ -37,6 +37,7 @@ import { SampleDrawingComponent } from './sample-drawing/sample-drawing.componen
 import { ContractreviewComponent } from './contractreview/contractreview.component';
 import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
 import { ContractreviewPrintComponent } from './contractreview-print/contractreview-print.component';
+import { ContractreviewEditComponent } from './contractreview-edit/contractreview-edit.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
@@ -58,7 +59,7 @@ const appRoutes: Routes = [
     component: AdminPanelComponent,
     canActivate: [AuthGuardService]
   },
-  {
+  {    
     path: 'register',
     component: SignupComponent,
     canActivate: [AuthGuardService]
@@ -245,6 +246,12 @@ const appRoutes: Routes = [
   {
     path: 'contractreview-print',
     component: ContractreviewPrintComponent,
+    canActivate: [AuthGuardService]
+
+  },
+  {
+    path: 'contractreview-Edit',
+    component: ContractreviewEditComponent,
     canActivate: [AuthGuardService]
 
   },
