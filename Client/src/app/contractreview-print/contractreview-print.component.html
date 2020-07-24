@@ -544,29 +544,35 @@
           <td colspan="2" style="width: 10%;text-align: center;"><b>VERIFIED BY</b></td>
           <td colspan="2" style="width: 10%;text-align: center;"><b>APPROVED BY</b></td>
         </tr>
-
-
-
       </table>
-
-
-
-
-
+    </div>    
+    <div class="text-center p-2">    
+      <button *ngIf="dataSource.status == '1'; else noprint" mat-raised-button (click)="printPage()" style="background-color: blue;color: white;">Print</button><br>
+      <ng-template #noprint>
+        <button mat-flat-button disabled>Print</button>
+       
+      </ng-template>
     </div>
-    <div class="text-center p-2">
-      <button mat-raised-button (click)="printPage()" style="background-color: blue;color: white;">Print</button><br>
-
-    </div>
-
   </div>
-  <div class="text-center p-2">
-    <button *ngIf="isMAN ||isMANAGEMENT" (click)="Lockaction(dataSource.id, 1)" mat-raised-button
-      style="background-color: green;color: black;">Approve</button>
-    <button *ngIf="isMAN ||isMANAGEMENT" (click)="Lockaction(dataSource.id, 0)" mat-raised-button color="warn"
-      style="margin-left: 3%;">Reject</button>
+   <div class="text-center p-2">
+      <ng-container *ngIf="isMAN; else headsUT">
+        <ng-container *ngIf="dataSource.status == NULL; else heads1">
+          <button  mat-raised-button class="save-button" (click)="Lockaction(dataSource.id, 1)"
+           color="primary">
+          Approve
+        </button>
+        <button  mat-raised-button class="save-button" (click)="Lockaction(dataSource.id, 0)"
+           color="warn" style="margin-left: 3%;">
+          Reject
+        </button>
+        </ng-container>
+        <ng-template #heads1>
+          <button mat-flat-button disabled>Approve</button>
+          <button mat-flat-button disabled style="margin-left: 3%;">Reject</button>
+        </ng-template>
+      </ng-container>
+    </div> 
 
-  </div>
 </div>
 
 <app-footer></app-footer>

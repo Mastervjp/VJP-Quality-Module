@@ -47,4 +47,8 @@ export class ContractreviewService {
     return this.http.put<any>(this.API_URL + '/api/contractreview/status/' + id, status, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
+  updateContract(id, datas): Observable<any> {
+    return this.http.put<any>(this.API_URL+'/api/contractreview/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
 }

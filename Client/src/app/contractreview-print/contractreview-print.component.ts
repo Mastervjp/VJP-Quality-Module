@@ -106,44 +106,27 @@ export class ContractreviewPrintComponent implements OnInit {
       WindowPrt.close();
     }, 2500);
   }
-
-
   getCustomerData() {
+    let id = localStorage.getItem('id');     
 
 
-    let id = localStorage.getItem('id');
-  
-    
     this._contractreviewservice.getCustomerData(id).subscribe((res: any) => {
 
       if (res.success) {
         let mydata = res.data;
         this.dataSource = mydata;
-
       }
     });
-
-
   }
-
   getAllData() {
     let status =localStorage.getItem('status');
   }
-
-
-
   Lockaction(id, status) {
-
-
-
-
     if (status) {
-
-      let status = { "status": 1 }
-      this.router.navigate(['/contractreviewview']);
-
+      let status = { "status": 1 } 
       this._contractreviewservice.updatestatus(id, status).subscribe((res: any) => { 
         if (res.success) {
+          this.router.navigate(['/contractreviewview']);
           let mydata = res.data;
           this.getData = mydata;
           this.snackBar.open("Form Approved", "", {
@@ -153,17 +136,14 @@ export class ContractreviewPrintComponent implements OnInit {
             panelClass: 'successSnackBar'
           });
         }
-          this.getData();
-         
+          this.getData();         
         });
       }
-
     else {
-
-      let status = { "status": 0 }
-      this.router.navigate(['/contractreviewview']);
+      let status = { "status": 0 }    
       this._contractreviewservice.updatestatus(id, status).subscribe((res: any) => {
         if (res.success) {
+          this.router.navigate(['/contractreviewview']);
           let mydata = res.data;
           this.getData = mydata;
           this.snackBar.open("Form Rejected", "", {
@@ -171,16 +151,10 @@ export class ContractreviewPrintComponent implements OnInit {
             horizontalPosition: 'end',
             verticalPosition: 'top',
             panelClass: 'successSnackBar'
-          });
-
-         
+          });         
         }
          this.getData();
       });
-
     }
 }
-
-
-
 }

@@ -59,6 +59,15 @@ router.put('/status/:id', (req, res) => {
     });
 })
 
+router.put('/:id', (req, res) => {
+    ContractReview.update(req.body, { where: { id: req.params.id } }).then(result => {
+        success(res, result, "Data updated");
+    }).catch(function (err) {
+        console.log(err)
+        error(res, err);
+    });
+})
+
 router.get('/', (req, res) => {
 
     ContractReview.findAll().then(function (result) {
