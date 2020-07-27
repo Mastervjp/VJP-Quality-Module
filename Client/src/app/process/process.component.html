@@ -1,342 +1,224 @@
 <app-navbar3>
   <h3 style="margin-left: 10%;margin-top: -3%;">Quality&nbsp;Plan</h3>
-  
-  
 </app-navbar3>
-
 <div style=" min-height: calc(100vh - 110px);">
   <div style="width: 95%;margin-left: 3%;padding-top: 1%;">
-  <div class="row"> 
-  
+  <div class="row">
     <div class="col-md-6">
-         
         <div >
-          <a style="margin-left: 80%;padding: 15px 25px ;" id="singlebutton" name="singlebutton" *ngIf="isUT ||isOPE" class="btn btn-primary"  [routerLink]="['/batchqty']">
-            Batch&nbsp;Qty</a>
-          </div>
-
-       
+          <a style="margin-left: 80%;padding: 15px 25px ;" id="singlebutton" name="singlebutton" *ngIf="isUT" class="btn btn-primary"  [routerLink]="['/batchqty']">Batch&nbsp;Qty</a>
+        </div>
     </div>
   </div>
-
-  <div *ngIf="islog && isad">
-    <div class="row">
-      <div style="margin-left: 3%;">
-        <button *ngIf="islog && isad" mat-mini-fab (click)="createProcess()"
-          style="background-color: #2727ec; color: white;">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-
-      
-
-    </div>
-  </div>
-
-
-    <div class="p-5">
-
-     
-
-      <div>
-      <mat-card>
-       
-          <table style="width:100%;    border: 1px solid black;
-          border-collapse: collapse;">
-          <tr style="    border: 1px solid black;
-          border-collapse: collapse;"> 
-             <th  style="    border: 1px solid black;
-             border-collapse: collapse;word-spacing: 15px;"> <b> VJP ALUMINIUM FOUNDRY </b> </th>
-            <th  colspan="5" style="text-align: center;" style="    border: 1px solid black;
-            border-collapse: collapse;  text-align: center;">QUALITY PLAN</th>
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;">Drawing code</td>
-             <th style="    border: 1px solid black;
-             border-collapse: collapse;">{{drgObject.id}}</th>  
-             
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;">Operation No.</td>
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">  {{psObject.opnNo}}</th>      
-     
+  <div class="p-5">
+    <div>
+     <mat-card>
+        <table style="width:100%;border: 1px solid black;border-collapse: collapse;">
+          <tr style="border: 1px solid black;border-collapse: collapse;">
+            <th style="border: 1px solid black;border-collapse: collapse;word-spacing: 15px;"><b>VJP ALUMINIUM FOUNDRY</b></th>
+            <th  colspan="5" style="text-align: center;" style="border: 1px solid black;border-collapse: collapse;  text-align: center;">QUALITY PLAN</th>
+            <td style="border: 1px solid black;border-collapse: collapse;">Drawing code</td>
+            <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.id}}</th>
+            <td style="border: 1px solid black;border-collapse: collapse;">Operation No.</td>
+            <th style="border: 1px solid black;border-collapse: collapse;">  {{drgObject.opnNo}}</th>
           </tr>
-          
-  
-          <tr style="    border: 1px solid black;
-          border-collapse: collapse;">
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">{{drgObject.partNum}}</th>
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">{{drgObject.revNo}}</th>
-       
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">{{drgObject.revDate | date: 'dd/MM/yyyy'}}</th>
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;">  Part Name</td>
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">{{drgObject.partName | uppercase}}</th>
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;  font-weight: normal !important;">Operation Description</td>
-                <th colspan="3" style="    border: 1px solid black;
-                border-collapse: collapse;">{{psObject.description | uppercase}}</th>
-          </tr>
-  
-          <tr style="    border: 1px solid black;
-          border-collapse: collapse;">
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;">Machining Drawing No/Rev/Date</td>
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">{{drgObject.partNum1}}</th>
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">{{drgObject.revNo1}}</th>
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">{{drgObject.revDate1 | date: 'dd/MM/yyyy'}}</th>
+          <tr style="border: 1px solid black;border-collapse: collapse;">
+            <td style="border: 1px solid black;border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
+            <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.partNum}}</th>
+            <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revNo}}</th>
+            <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revDate | date: 'dd/MM/yyyy'}}</th>
+            <td style="border: 1px solid black;border-collapse: collapse;">  Part Name</td>
+            <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.partName | uppercase}}</th>
+            <td style="border: 1px solid black;border-collapse: collapse;  font-weight: normal !important;">Operation Description</td>
+            <th colspan="3" style="border: 1px solid black;border-collapse: collapse;">{{drgObject.description | uppercase}}</th>
+        </tr>
+        <tr style="border: 1px solid black;border-collapse: collapse;">
+          <td style="border: 1px solid black;border-collapse: collapse;">Machining Drawing No/Rev/Date</td>
+          <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.partNum1}}</th>
+          <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revNo1}}</th>
+          <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revDate1 | date: 'dd/MM/yyyy'}}</th>
 
-<ng-container *ngIf="qpaObject; else teset">
-  <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
-  <th colspan="2"  style="border: 1px solid black; border-collapse: collapse;"> {{qpaObject.pfNo}}
-  </th>
-</ng-container>
-<ng-template #teset>
-  <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
-  <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA
-  </th>
-</ng-template>
+          <ng-container *ngIf="qpaObject; else teset">
+            <td style="border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+            <th colspan="2"  style="border: 1px solid black; border-collapse: collapse;"> {{qpaObject.pfNo}}</th>
+          </ng-container>
+          <ng-template #teset>
+            <td style="border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+            <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA</th>
+          </ng-template>
 
+          <ng-container *ngIf="qpaObject; else teset">
+            <td style="border: 1px solid black;border-collapse: collapse;">Quality Plan No</td>
+            <th colspan="2" style="border: 1px solid black;border-collapse: collapse;">{{qpaObject.qpNo}}</th>
+          </ng-container>
+          <ng-template #teset>
+            <td style="border: 1px solid black;border-collapse: collapse;">Quality Plan No</td>
+            <th colspan="2" style="border: 1px solid black;border-collapse: collapse;"> NA</th>
+          </ng-template>
+        </tr>
+        <tr style="border: 1px solid black;border-collapse: collapse;">
+          <td colspan="3" style="border: 1px solid black;border-collapse: collapse;">Casting Tolerance</td>
+          <th colspan="2" style="border: 1px solid black;border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
+          <td colspan="3" style="border: 1px solid black;border-collapse: collapse;">Machining Tolerance</td>
+          <th colspan="2" style="border: 1px solid black;border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
+       </tr>
+     </table>
+   </mat-card>
+ </div>
 
+<div class="action_button">
+  <button color="accent" mat-raised-button class="save-button first-action-button" (click)="addProcess()" aria-label="SAVE">Add</button>
+  <button color="accent" mat-raised-button class="save-button" (click)="updateProcess1()" aria-label="SAVE">Update</button>
+</div>
 
-<ng-container *ngIf="qpaObject; else teset">
-  <td style="    border: 1px solid black;
-                border-collapse: collapse;">Quality Plan No</td>
-                    <th colspan="2" style="    border: 1px solid black;
-                    border-collapse: collapse;">{{qpaObject.qpNo}}</th>
-</ng-container>
-<ng-template #teset>
-  <td style="    border: 1px solid black;
-                border-collapse: collapse;">Quality Plan No</td>
-                    <th colspan="2" style="    border: 1px solid black;
-                    border-collapse: collapse;"> NA</th>
-</ng-template>
+  <table mat-table [dataSource]="dataSource" [formGroup]="invoiceForm">    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>S/N</th>
+      <td mat-cell *matCellDef="let element; let rIndex = index;">
+        {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
+    </ng-container>
 
-
-           
-  
-  </tr> 
-  <tr style="    border: 1px solid black;
-  border-collapse: collapse;">
-      <td colspan="3" style="    border: 1px solid black;
-    border-collapse: collapse;">Casting Tolerance</td>
-      <th colspan="2" style="    border: 1px solid black;
-    border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
-    
-           <td colspan="3" style="    border: 1px solid black;
-         border-collapse: collapse;">Machining Tolerance</td>
-           <th colspan="2" style="    border: 1px solid black;
-         border-collapse: collapse;">{{drgObject. machiningToleranceStandard}}</th>
-         </tr>
  
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Desc </th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;"contenteditable="false" >
+        <mat-form-field class="tcustom-full-width">
+          <mat-label>Description</mat-label>
+          <input name="description" (keyup) ="onChange($event,rIndex,'description')" [value]="element.description" matInput required>
+          <mat-error>Description is required!</mat-error>
+        </mat-form-field>
+      </td>
+
+
+    </ng-container>
+
+    <ng-container matColumnDef="baloonNo">
+      <th mat-header-cell *matHeaderCellDef> Balloon No </th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;"  contenteditable="false">
+        <mat-form-field class="tcustom-full-width">
+            <mat-label>Balloon No</mat-label>
+            <input name="baloonNo" (keyup) ="onChange($event,rIndex,'baloonNo')" [value]="element.baloonNo" matInput required>
+            <mat-error>Baloon No is required!</mat-error>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="specification">
+      <th mat-header-cell *matHeaderCellDef> Specs </th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;"  contenteditable="false">
+        <mat-form-field class="tcustom-full-width">
+            <mat-label>Specification</mat-label>
+            <input name="specification" (keyup) ="onChange($event,rIndex,'specification')" [value]="element.specification | uppercase" matInput required>
+            <mat-error>Specification is required!</mat-error>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+
+    
+    <ng-container matColumnDef="tolFrom">
+      <th mat-header-cell *matHeaderCellDef> Tol_Min </th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;"  contenteditable="false">
+        <mat-form-field class="custom2-full-width">
+            <mat-label>Tol Min</mat-label>
+            <input name="tolFrom" (keyup) ="onChange($event,rIndex,'tolFrom')" [value]="element.tolFrom" matInput required>
+            <mat-error>Tol Min is required!</mat-error>
+        </mat-form-field>
+      </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="tolTo">
+      <th mat-header-cell *matHeaderCellDef> Tol_Max </th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+        <mat-form-field class="custom2-full-width">
+            <mat-label>Tol Max</mat-label>
+            <input name="tolTo" (keyup) ="onChange($event,rIndex,'tolTo')" [value]="element.tolTo" matInput required>
+            <mat-error>Tol Max is required!</mat-error>
+        </mat-form-field>
+      </td>
+    </ng-container>
+   
+    <ng-container matColumnDef="instrument">
+      <th mat-header-cell *matHeaderCellDef> Instrument </th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+       <mat-form-field class="tcustom-full-width">
+        <mat-label>Instrument</mat-label>
+        <mat-select [(value)]="element.instrument">
+          <mat-option *ngFor="let ins of instrumentList"  (change) ="onChange($event,rIndex,'instrument')" [value]="ins.name">{{ins.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+     </td>
+    </ng-container>
+ 
+    <ng-container matColumnDef="measuringFrequency">
+      <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+
+        <mat-form-field class="tcustom-full-width">
+          <mat-label>Measuring Frequency</mat-label>
+          <mat-select  [(value)]="element.measuringFrequency">
+              <mat-option *ngFor="let ins of measuringList" (change) ="onChange($event,rIndex,'measuringFrequency')" [value]="ins.name">
+                  <ng-container *ngIf="ins.name == '100'; else newDeb" >100 %</ng-container>
+                  <ng-template #newDeb>1/{{ins.name}}</ng-template>
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstPartInspection">
+      <th mat-header-cell *matHeaderCellDef>First Part</th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false"> <mat-checkbox class="example-margin"  [checked]="element.firstPartInspection"
+  (change)="element.firstPartInspection = !element.firstPartInspection" value="true" ></mat-checkbox> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="periodicInspection">
+      <th mat-header-cell *matHeaderCellDef>Periodic Inspection</th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false"> <mat-checkbox class="example-margin" [checked]="element.periodicInspection"
+  (change)="element.periodicInspection = !element.periodicInspection" value="true" ></mat-checkbox> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ctq">
+      <th mat-header-cell *matHeaderCellDef>CTQ</th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false"> <mat-checkbox class="example-margin" [checked]="element.ctq"
+  (change)="element.ctq = !element.ctq" value="true" ></mat-checkbox> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pdi">
+      <th mat-header-cell *matHeaderCellDef>FIR</th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false"> <mat-checkbox class="example-margin" [checked]="element.pdi"
+  (change)="element.pdi = !element.pdi" value="true" ></mat-checkbox> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cfir">
+      <th mat-header-cell *matHeaderCellDef>C-FIR</th>
+      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false"> <mat-checkbox class="example-margin" [checked]="element.cfir"
+  (change)="element.cfir = !element.cfir" value="true" ></mat-checkbox> </td>
+    </ng-container>
+
+    <ng-container *ngIf="islog && isad" matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let drg">
+        <div>
+          <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;padding: 0 !important;" (click)="deleteDrg(drg.id)">
+            <mat-icon color="warn" selected>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-row class="content_table_row" *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }" formArrayName="Rows"></tr>
   </table>
-        
-        <!-- <div class="row">
-          <div style="font-size: larger;" class="col-6">
-            <b> Drawing Code :{{drgObject.id}} </b> 
-           </div>
-          <div class="col-6">
-            Rev No :{{drgObject.revNo}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-6">
-            Rev Date :{{drgObject.revDate | date: 'dd/MM/yyyy'}}
-          </div>
-          <div class="col-6">
-            End Customer :{{drgObject.endCustomer}}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-6">
-            Component Name :{{drgObject.partName}}
-          </div>
-          <div class="col-6">
-            Company Name :{{drgObject.customerName}}
-          </div>
-        </div>
-      
-        <div class="row">
-          <div class="col-6">
-            Customer's Rep :{{drgObject.csr}}
-          </div>
-          <div style="font-size: large;" class="col-6">
-          <b>  Process Flow No :{{qpaObject.pfNo}}</b>
-          </div>
-        </div>
-
-        <div class="row">
-          
-          <div style="font-size: large;" class="col-6">
-           <b> Quality Plan No :{{qpaObject.qpNo}} </b>
-          </div>
-        </div> -->
-
-      
-      </mat-card>
+      <mat-paginator  #myPaginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
       </div>
-
-
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-
-          <!-- Position Column -->
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef style="width:20px; margin-right: 5px;"> S/N &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
-            <td mat-cell *matCellDef="let element; let rIndex = index;" style="width:20px; margin-right: 5px;">
-              {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
-          </ng-container>
-
-          <!-- Name Column -->
-          <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef> Desc </th>
-            <td mat-cell *matCellDef="let element"> {{element.description | uppercase}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="baloonNo">
-            <th mat-header-cell *matHeaderCellDef> Balloon No </th>
-            <td mat-cell *matCellDef="let element"> {{element.baloonNo}} </td>
-          </ng-container>
-
-          <!-- Weight Column -->
-          <ng-container matColumnDef="specification">
-            <th mat-header-cell *matHeaderCellDef> Specs </th>
-            <td mat-cell *matCellDef="let element"> {{element.specification | uppercase}} </td>
-          </ng-container>
-
-          <!-- Symbol Column -->
-          <!-- <ng-container matColumnDef="toloreanceGrade">
-            <th mat-header-cell *matHeaderCellDef> Tol_Grade </th>
-            <td mat-cell *matCellDef="let element"> {{element.toloreanceGrade}} </td>
-          </ng-container> -->
-
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="tolFrom">
-            <th mat-header-cell *matHeaderCellDef> Tol_Min </th>
-            <td mat-cell *matCellDef="let element"> {{element.tolFrom}} </td>
-          </ng-container>
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="tolTo">
-            <th mat-header-cell *matHeaderCellDef> Tol_Max </th>
-            <td mat-cell *matCellDef="let element"> {{element.tolTo}} </td>
-          </ng-container>
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="instrument">
-            <th mat-header-cell *matHeaderCellDef> Instrument </th>
-            <td mat-cell *matCellDef="let element"> {{element.instrument | uppercase}} </td>
-          </ng-container>
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="measuringFrequency">
-            <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
-            <td mat-cell *matCellDef="let element"> 
-              
-              <ng-container *ngIf="element.measuringFrequency == '100'; else newDeb" >
-                100 % 
-             </ng-container>
-             <ng-template #newDeb>
-                 1/{{element.measuringFrequency}}
-             </ng-template>
-            
-            </td>
-          </ng-container>
-          <!-- <ng-container matColumnDef="firstPartInspection">
-            <th mat-header-cell *matHeaderCellDef> FPI </th>
-            <td mat-cell *matCellDef="let element"> 
-              
-              
-              <ng-container *ngIf="element.firstPartInspection; else newDeb" >
-                <mat-icon>done_outline</mat-icon>
-             </ng-container>
-             <ng-template #newDeb>
-                
-             </ng-template>
-
-
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="periodicInspection">
-            <th mat-header-cell *matHeaderCellDef> PI </th>
-            <td mat-cell *matCellDef="let element">
-              
-              <ng-container *ngIf="element.periodicInspection; else newDeb2" >
-                <mat-icon>done_outline</mat-icon>
-             </ng-container>
-             <ng-template #newDeb2>
-                
-             </ng-template>
-
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="ctq">
-            <th mat-header-cell *matHeaderCellDef> CTQ </th>
-            <td mat-cell *matCellDef="let element">
-              
-              <ng-container *ngIf="element.ctq; else newDeb1" >
-                <mat-icon>done_outline</mat-icon>
-             </ng-container>
-             <ng-template #newDeb1>
-                
-             </ng-template>
-
-            
-            </td>
-          </ng-container> -->
-
-          <ng-container *ngIf="islog && isad" matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef>Modification</th>
-            <td mat-cell *matCellDef="let drg">
-              <div>
-                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                              padding: 0 !important;" (click)="editDrawing(drg)">
-                  <mat-icon style="color:green" selected>edit</mat-icon>
-                </button>
-              </div>
-            </td>
-          </ng-container>
-
-          <ng-container *ngIf="islog && isad" matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef>Delete</th>
-            <td mat-cell *matCellDef="let drg">
-              <div>
-                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                      padding: 0 !important;" (click)="deleteDrg(drg.id)">
-                  <mat-icon color="warn" selected>delete</mat-icon>
-                </button>
-              </div>
-            </td>
-          </ng-container>
-
-
-
-          <tr  style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }"></tr>
-        </table>
-
-        <mat-paginator  #myPaginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
+      <div class="col text-center">
+        <button *ngIf="submitshow" mat-raised-button (click)="confirmQuality()">Submit Quality Plan</button>
       </div>
-
-
     </div>
-
-
-    <div class="col text-center">
-      <button *ngIf="submitshow" mat-raised-button (click)="confirmQuality()">Submit Quality Plan</button>
-    </div>
-
-  </div>
   </div>
 
 
-
-  <app-footer></app-footer>
+<app-footer></app-footer>
