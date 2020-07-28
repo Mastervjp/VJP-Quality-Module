@@ -45,7 +45,7 @@ export class AuthenticationService {
 
 
     public isAdmin() {
-        debugger;
+       
         const role = localStorage.getItem('role');
         if (role == "SA" || role == "NA" || localStorage.getItem('adminLogRole') == "tec"){
             return true;

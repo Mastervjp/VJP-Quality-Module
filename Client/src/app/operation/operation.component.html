@@ -5,7 +5,7 @@
   <div style="width: 95%;margin-left: 3%;padding-top: 1%;">
 
 
-    <div *ngIf="islog && isad">
+    <div *ngIf="islog && isET || isENGG">
       <div class="row">
         <div style="margin-left: 3%;">
           <button mat-mini-fab (click)="createDrawing()" style="background-color: #2727ec; color: white;">
@@ -37,13 +37,13 @@
         border-collapse: collapse;">
             <tr style="    border: 1px solid black;
         border-collapse: collapse;">
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
               border-collapse: collapse;word-spacing: 15px;"> <b> VJP ALUMINIUM FOUNDRY </b> </th>
               <th colspan="4" style="text-align: center;" style="    border: 1px solid black;
           border-collapse: collapse;  text-align: center;word-spacing: 15px;">QUALITY PLAN</th>
-              <td  style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
           border-collapse: collapse;">Drawing code</td>
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
            border-collapse: collapse;">{{drgObject.id}}</th>
 
             </tr>
@@ -53,16 +53,16 @@
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
           border-collapse: collapse;">Casting Drawing No/ Rev/ Date</td>
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum}}</th>
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.revNo}}</th>
 
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.revDate | date: 'dd/MM/yyyy'}}</th>
               <td style="    border: 1px solid black;
           border-collapse: collapse;">Part Name</td>
-              <th  colspan="2" style="    border: 1px solid black;
+              <th colspan="2" style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partName | uppercase}}</th>
 
             </tr>
@@ -71,24 +71,24 @@
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
           border-collapse: collapse;">Machining Drawing No/ Rev/ Date</td>
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum1}}</th>
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.revNo1}}</th>
-              <th  style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
                      border-collapse: collapse;"> {{drgObject.revDate1 | date: 'dd/MM/yyyy'}}</th>
 
 
 
               <ng-container *ngIf="qpaObject; else teset">
                 <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
-                <th colspan="2"  style="border: 1px solid black; border-collapse: collapse;">
+                <th colspan="2" style="border: 1px solid black; border-collapse: collapse;">
                   {{qpaObject.pfNo}}
                 </th>
               </ng-container>
               <ng-template #teset>
                 <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
-                <th colspan="2"  style="border: 1px solid black; border-collapse: collapse;"> NA
+                <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA
                 </th>
               </ng-template>
 
@@ -98,17 +98,17 @@
             </tr>
             <tr style="    border: 1px solid black;
             border-collapse: collapse;">
-                <td colspan="1" style="    border: 1px solid black;
+              <td colspan="1" style="    border: 1px solid black;
               border-collapse: collapse;">Casting Tolerance</td>
-                <th  colspan="2" style="    border: 1px solid black;
+              <th colspan="2" style="    border: 1px solid black;
               border-collapse: collapse;">{{drgObject.castingToleranceStandard}}</th>
-              
-                     <td  colspan="2" style="    border: 1px solid black;
+
+              <td colspan="2" style="    border: 1px solid black;
                    border-collapse: collapse;">Machining Tolerance</td>
-                     <th colspan="2"  style="    border: 1px solid black;
+              <th colspan="2" style="    border: 1px solid black;
                    border-collapse: collapse;">{{drgObject. machiningToleranceStandard | uppercase}}</th>
-                   </tr>
-                   
+            </tr>
+
 
           </table>
           <!-- <table style="width:100%;    border: 1px solid black;
@@ -246,7 +246,8 @@
 
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>&nbsp; S/N </th>
-            <td mat-cell *matCellDef="let element; let rIndex = index;"> {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
+            <td mat-cell *matCellDef="let element; let rIndex = index;">
+              {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
           </ng-container>
 
           <ng-container matColumnDef="opnNo">
@@ -301,7 +302,7 @@
         </table>
 
         <mat-paginator #myPaginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
-        
+
       </div>
 
 

@@ -66,7 +66,7 @@
    </mat-card>
  </div>
 
-<div class="action_button">
+<div class="action_button" *ngIf="islog && isENGG ||isET">
   <button color="accent" mat-raised-button class="save-button first-action-button" (click)="addProcess()" aria-label="SAVE">Add</button>
   <button color="accent" mat-raised-button class="save-button" (click)="updateProcess1()" aria-label="SAVE">Update</button>
 </div>

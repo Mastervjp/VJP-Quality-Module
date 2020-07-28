@@ -3,14 +3,17 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { MatDialog,  MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DrawingService } from '../services/drawing.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BatchquantityComponent } from '../batchquantity/batchquantity.component';
 import { ProcessService } from '../services/process.service';
+
+import { ProcessDialogComponent } from '../process-dialog/process-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { MatSnackBar,MatDialogRef } from '@angular/material';
+import { MatSnackBar, MatDialogRef } from '@angular/material';
 import { AuthenticationService } from '../services/authentication.service';
-
-
 BatchquantityComponent
 @Component({
   selector: 'app-process',
@@ -18,51 +21,60 @@ BatchquantityComponent
   styleUrls: ['./process.component.css']
 })
 export class ProcessComponent implements OnInit {
+  isOPE: boolean;
+  isSuper: boolean;
+  isENGG: boolean;
+  isET: boolean;
   public invoiceForm: FormGroup;
-  
-  constructor(
-    
-     private _processservice: ProcessService, private _process: ProcessService,
-     public auth: AuthenticationService, private router: Router, public dialog: MatDialog,     
-     private _matDialog: MatDialog, public snackBar: MatSnackBar,private _formBuilder: FormBuilder
-            ) {}
+  constructor(private _processservice: ProcessService,
+    private _process: ProcessService,
+    public activeRoute: ActivatedRoute,
+     public auth: AuthenticationService,
+      private router: Router,
+       public dialog: MatDialog,
+        private _matDialog: MatDialog, 
+        public snackBar: MatSnackBar, 
+        private _formBuilder: FormBuilder,) { }
   action: string;
   dialogTitle: string;
   viewdata: any
   editId: any;
   instrumentList: any;
   measuringList: any;
-  type: any;            
+  type: any;      
   drgcode: any;
   opno: any;
-  qty: any; 
+  qty: any;
   opnValue: any;
   dataSource: MatTableDataSource<any>;
   dialogRef: any;
-  confirmDialogRef: any
+  confirmDialogRef: any;
   islog: boolean;
   isad: boolean;
   isUT: boolean;
   displayedColumns: any;
   taphide = 0;
   drgObject: any;
-  qpaObject: any
+  qpaObject: any;
   submitshow: boolean;
   psObject: any;
-  
+
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
-
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
 
   get rows() {
     console.log(this.invoiceForm.get('Rows'))
     return this.invoiceForm.get('Rows') as FormArray;
   }
-
-
   ngOnInit() {
-
+    let status = localStorage.getItem('adminlogrole')
+    this.checkrole(status);
+    this.islog = this.auth.isLoggedIn();
+    this.isad = this.auth.isAdmin();
+    this.isSuper = this.auth.isSuperAdmin();
+    localStorage.getItem('adminLogRole');
     let myItem1 = localStorage.getItem('DrgCode');
     let myItem2 = localStorage.getItem('opnNo');
 
@@ -72,15 +84,13 @@ export class ProcessComponent implements OnInit {
 
     this.getInstrument();
     this.getMeasuring();
-
-
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
 
-
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
+
 
     if (this.drgObject.qpStatus) {
       this.submitshow = false;
@@ -91,23 +101,19 @@ export class ProcessComponent implements OnInit {
     }
     this.submitshow;
 
-    if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'description','baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency','firstPartInspection','periodicInspection','ctq','pdi','cfir','delete'];
+    if (this.islog && this.isENGG || this.isET) {
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'edit', 'delete'];
     }
     else {
-      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', ];
-    }
-
-    if (localStorage.getItem('logRole') == "UT") {
-      this.isUT = true;
-    }
-    else{
-      this.isUT = false;
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',];
     }
 
     this.invoiceForm = this._formBuilder.group({
       Rows: this._formBuilder.array([this.initRows()])
-    });    
+    });
+
+
+
   }
 
   getInstrument() {
@@ -127,7 +133,23 @@ export class ProcessComponent implements OnInit {
     });
   }
 
+  checkrole(status) {
 
+    if (localStorage.getItem('logRole') == "UT" || localStorage.getItem('adminLogRole') == 'ope') {
+      this.isUT = true;
+      this.isOPE = true;
+    }
+    else if (localStorage.getItem('logRole') == "ET" || localStorage.getItem('adminLogRole') == 'engg') {
+      this.isET = true;
+      this.isENGG = true;
+    }
+
+    else {
+      this.isUT = false;
+      this.isOPE = false;
+    }
+    this.isUT
+  }
   Logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
@@ -151,6 +173,7 @@ export class ProcessComponent implements OnInit {
   inspection() {
     this.router.navigate(['/inspection']);
   }
+
 
   getprocess(drgcode, opno) {
     this._processservice.getprocess(drgcode, opno).subscribe((res: any) => {
@@ -201,7 +224,7 @@ export class ProcessComponent implements OnInit {
 
       this.getprocess(myItem1, myItem2);
     });
-  }
+  }  
 
   deleteDrg(id) {
     this.confirmDialogRef = this._matDialog.open(ConfirmDialogComponent, {
