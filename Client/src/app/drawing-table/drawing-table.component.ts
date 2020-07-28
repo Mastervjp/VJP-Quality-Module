@@ -55,16 +55,20 @@ export class DrawingTableComponent implements OnInit {
   ngOnInit() {
     this.getdata();
     let status= this.activeRoute.snapshot.queryParams.type;
-    this.checkrole(status);
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
     this.isSuper = this.auth.isSuperAdmin();
     localStorage.removeItem('qpaObject');
     localStorage.removeItem('psObject');
-    localStorage.setItem('adminLogRole', status);
+    if( status) {
+      localStorage.setItem('adminLogRole', status);
+    } else {
+      status = localStorage.getItem('adminLogRole');
+    }
+    this.checkrole(status);
     if(status == 'ope' || status == 'disp') {
       this.isad = false;
-    }
+    } 
 
     if (this.islog && this.isTT) {
       this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade', 'unlockStatus', 'edit', 'delete'];
