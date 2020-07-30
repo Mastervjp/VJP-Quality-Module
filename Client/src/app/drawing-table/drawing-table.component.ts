@@ -47,28 +47,39 @@ export class DrawingTableComponent implements OnInit {
   isENGG: boolean;
   isDISP: boolean;
   isOPE: boolean;
+  isDRAWING: boolean;
+  isADMIN: boolean;
 
-  constructor(private _drawingservice: DrawingService, 
-    public activeRoute: ActivatedRoute, 
-    public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar,) { }
+  constructor(private _drawingservice: DrawingService,
+    public activeRoute: ActivatedRoute,
+    public auth: AuthenticationService,
+    private router: Router,
+    private _matDialog: MatDialog,
+    public snackBar: MatSnackBar,) { }
 
   ngOnInit() {
     this.getdata();
-    let status= this.activeRoute.snapshot.queryParams.type;
+    if (this.activeRoute.snapshot.routeConfig.path == "drawing") {
+      this.isDRAWING = true
+    }
+    else {
+      this.isDRAWING = false
+    }
+    let status = this.activeRoute.snapshot.queryParams.type;
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
     this.isSuper = this.auth.isSuperAdmin();
     localStorage.removeItem('qpaObject');
     localStorage.removeItem('psObject');
-    if( status) {
+    if (status) {
       localStorage.setItem('adminLogRole', status);
     } else {
       status = localStorage.getItem('adminLogRole');
     }
     this.checkrole(status);
-    if(status == 'ope' || status == 'disp') {
+    if (status == 'ope' || status == 'disp') {
       this.isad = false;
-    } 
+    }
 
     if (this.islog && this.isTT) {
       this.displayedColumns = ['sno', 'id', 'partName', 'partNum', 'partNum1', 'revNo', 'revNo1', 'customerName', 'materialGrade', 'unlockStatus', 'edit', 'delete'];
@@ -90,24 +101,24 @@ export class DrawingTableComponent implements OnInit {
   checkrole(status) {
     if (localStorage.getItem('logRole') == "TT" || status == 'tec') {
       this.isTT = true;
-      this.isTEC =true;
+      this.isTEC = true;
     }
     else if (localStorage.getItem('logRole') == "ET" || status == 'engg') {
       this.isET = true;
-      this.isENGG =true;
+      this.isENGG = true;
     }
     else if (localStorage.getItem('logRole') == "DIS" || status == 'disp') {
       this.isDIS = true;
-      this.isDISP =true;
+      this.isDISP = true;
     }
-   
+
     else {
       this.isTT = false;
       this.isET = false;
-      this.isTEC =false;
-      this.isENGG =false;
+      this.isTEC = false;
+      this.isENGG = false;
       this.isDIS = false;
-      this.isDISP =false;
+      this.isDISP = false;
 
     }
     if (localStorage.getItem('logRole') == "UT" || status == 'ope') {
@@ -119,9 +130,17 @@ export class DrawingTableComponent implements OnInit {
       this.isUT = false;
       this.isOPE = false;
     }
-    this.isUT
- 
- }
+    if (localStorage.getItem('logRole') == "ADMIN") {
+      this.isADMIN = true;
+    }
+
+    else {
+      this.isADMIN = false;
+
+    }
+
+
+  }
 
   createDrawing() {
     this.dialogRef = this._matDialog.open(DrawingDialogComponent, {

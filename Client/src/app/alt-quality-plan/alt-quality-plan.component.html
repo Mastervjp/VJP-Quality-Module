@@ -1,135 +1,136 @@
-<app-navbar3>
-  <h3 style="margin-left: 10%;margin-top: -3%;">Quality&nbsp;Plan</h3>
-  
-</app-navbar3>
+<app-navbar>
+  <h3 >Quality&nbsp;Plan</h3>
+
+</app-navbar>
 
 <div style=" min-height: calc(100vh - 110px);">
   <div style="width: 95%;margin-left: 3%;padding-top: 1%;">
-  <div class="row"> 
-  
-    <div class="col-md-6">
-      <button *ngIf="taphide" type="button" class="btn " (click)="inspection()"
-        style=" margin-right: 30px; background-color: rgb(77, 148, 240);">Inspection</button>
-
-      
-        <div >
-          <a style="margin-left: 80%;padding: 15px 25px ;" id="singlebutton" name="singlebutton" *ngIf="isUT" class="btn btn-primary"  [routerLink]="['/batchqty']">
-            Batch&nbsp;Qty</a>
-          </div>
-
-       
-    </div>
-  </div>
-
-  <div *ngIf="islog && isad">
     <div class="row">
-      <div style="margin-left: 3%;">
-        <button *ngIf="islog && isad" mat-mini-fab (click)="createProcess()"
-          style="background-color: #2727ec; color: white;">
-          <mat-icon>add</mat-icon>
-        </button>
+
+      <div class="col-md-6">
+        <button *ngIf="taphide" type="button" class="btn " (click)="inspection()"
+          style=" margin-right: 30px; background-color: rgb(77, 148, 240);">Inspection</button>
+
+
+        <div>
+          <a style="margin-left: 80%;padding: 15px 25px ;" id="singlebutton" name="singlebutton" *ngIf="isUT"
+            class="btn btn-primary" [routerLink]="['/batchqty']">
+            Batch&nbsp;Qty</a>
+        </div>
+
+
       </div>
-
-      
-
     </div>
-  </div>
+
+    <div *ngIf="islog && isad">
+      <div class="row">
+        <div style="margin-left: 3%;">
+          <button *ngIf="islog && isad" mat-mini-fab (click)="createProcess()"
+            style="background-color: #2727ec; color: white;">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+
+
+      </div>
+    </div>
 
 
     <div class="p-5">
 
-     
+
 
       <div>
-      <mat-card>
-       
+        <mat-card>
+
           <table style="width:100%;    border: 1px solid black;
           border-collapse: collapse;">
-          <tr style="    border: 1px solid black;
-          border-collapse: collapse;"> 
-            <th style="    border: 1px solid black;
-            border-collapse: collapse;">  <b> VJP ALUMINIUM FOUNDRY </b> </th>
-            <th  colspan="4" style="text-align: center;" style="    border: 1px solid black;
+            <tr style="    border: 1px solid black;
+          border-collapse: collapse;">
+              <th style="    border: 1px solid black;
+            border-collapse: collapse;"> <b> VJP ALUMINIUM FOUNDRY </b> </th>
+              <th colspan="4" style="text-align: center;" style="    border: 1px solid black;
             border-collapse: collapse;  text-align: center;">QUALITY PLAN</th>
-            <td style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
             border-collapse: collapse;">Drawing code</td>
-             <th style="    border: 1px solid black;
-             border-collapse: collapse;">{{drgObject.id}}</th>  
-             
-            <td style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
+             border-collapse: collapse;">{{drgObject.id}}</th>
+
+              <td style="    border: 1px solid black;
             border-collapse: collapse;">Operation No.</td>
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;"> <b> {{psObject.opnNo}}</b></td>      
-     
-          </tr>
-          
-  
-          <tr style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;"> <b> {{psObject.opnNo}}</b></td>
+
+            </tr>
+
+
+            <tr style="    border: 1px solid black;
           border-collapse: collapse;">
-            <td style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
             border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
-            <th style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
             border-collapse: collapse;">{{drgObject.partNum}}</th>
-            <th style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
             border-collapse: collapse;">{{drgObject.revNo}}</th>
-       
-            <td style="    border: 1px solid black;
+
+              <td style="    border: 1px solid black;
             border-collapse: collapse;"><b>{{drgObject.revDate | date: 'dd/MM/yyyy'}}</b></td>
-            <td style="    border: 1px solid black;
-            border-collapse: collapse;">  Part Name</td>
-            <td style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
+            border-collapse: collapse;"> Part Name</td>
+              <td style="    border: 1px solid black;
             border-collapse: collapse;"><b>{{drgObject.partName}}</b></td>
-            <td style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
             border-collapse: collapse;  font-weight: normal !important;">Operation Description</td>
-                <td colspan="2" style="    border: 1px solid black;
+              <td colspan="2" style="    border: 1px solid black;
                 border-collapse: collapse;"><b>{{psObject.description}}</b></td>
-          </tr>
-  
-          <tr style="    border: 1px solid black;
+            </tr>
+
+            <tr style="    border: 1px solid black;
           border-collapse: collapse;">
-            <td style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
             border-collapse: collapse;">Machining Drawing No/Rev/Date</td>
-            <th style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
             border-collapse: collapse;">{{drgObject.partNum1}}</th>
-            <th style="    border: 1px solid black;
+              <th style="    border: 1px solid black;
             border-collapse: collapse;">{{drgObject.revNo1}}</th>
-            <td style="    border: 1px solid black;
+              <td style="    border: 1px solid black;
             border-collapse: collapse;"><b>{{drgObject.revDate1 | date: 'dd/MM/yyyy'}}</b></td>
 
-<ng-container *ngIf="qpaObject; else teset">
-  <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
-  <th colspan="2"  style="border: 1px solid black; border-collapse: collapse;"> {{qpaObject.pfNo}}
-  </th>
-</ng-container>
-<ng-template #teset>
-  <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
-  <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA
-  </th>
-</ng-template>
+              <ng-container *ngIf="qpaObject; else teset">
+                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+                <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> {{qpaObject.pfNo}}
+                </th>
+              </ng-container>
+              <ng-template #teset>
+                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+                <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA
+                </th>
+              </ng-template>
 
 
 
-<ng-container *ngIf="qpaObject; else teset">
-  <td style="    border: 1px solid black;
+              <ng-container *ngIf="qpaObject; else teset">
+                <td style="    border: 1px solid black;
                 border-collapse: collapse;">Quality Plan No</td>
-                    <th colspan="2" style="    border: 1px solid black;
+                <th colspan="2" style="    border: 1px solid black;
                     border-collapse: collapse;">{{qpaObject.qpNo}}</th>
-</ng-container>
-<ng-template #teset>
-  <td style="    border: 1px solid black;
+              </ng-container>
+              <ng-template #teset>
+                <td style="    border: 1px solid black;
                 border-collapse: collapse;">Quality Plan No</td>
-                    <th colspan="2" style="    border: 1px solid black;
+                <th colspan="2" style="    border: 1px solid black;
                     border-collapse: collapse;"> NA</th>
-</ng-template>
+              </ng-template>
 
 
-           
-  
-  </tr> 
- 
-  </table>
-        
-        <!-- <div class="row">
+
+
+            </tr>
+
+          </table>
+
+          <!-- <div class="row">
           <div style="font-size: larger;" class="col-6">
             <b> Drawing Code :{{drgObject.id}} </b> 
            </div>
@@ -172,8 +173,8 @@
           </div>
         </div> -->
 
-      
-      </mat-card>
+
+        </mat-card>
       </div>
 
 
@@ -228,15 +229,15 @@
           <!-- Symbol Column -->
           <ng-container matColumnDef="measuringFrequency">
             <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
-            <td mat-cell *matCellDef="let element"> 
-              
-              <ng-container *ngIf="element.measuringFrequency == '100'; else newDeb" >
-                100 % 
-             </ng-container>
-             <ng-template #newDeb>
-                 1/{{element.measuringFrequency}}
-             </ng-template>
-            
+            <td mat-cell *matCellDef="let element">
+
+              <ng-container *ngIf="element.measuringFrequency == '100'; else newDeb">
+                100 %
+              </ng-container>
+              <ng-template #newDeb>
+                1/{{element.measuringFrequency}}
+              </ng-template>
+
             </td>
           </ng-container>
           <!-- <ng-container matColumnDef="firstPartInspection">
@@ -309,7 +310,7 @@
 
 
 
-          <tr  style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }"></tr>
         </table>
 
@@ -325,8 +326,8 @@
     </div>
 
   </div>
-  </div>
+</div>
 
 
 
-  <app-footer></app-footer>
+<app-footer></app-footer>

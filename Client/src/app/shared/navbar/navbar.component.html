@@ -1,131 +1,77 @@
-<!-- <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-  <div class="container-fluid px-0">
-    <div class="row w-100">
-      <div class="col-2">
-        <img  style="width: 100px; height: 40px;" src="assets/vjp.png">
+<nav class="navbar navbar-expand-lg">
+  <div *ngIf="islog &&isPANEL">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-          aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"
-          (click)="isShown = !isShown">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div *ngIf="islog &&isADMIN">
+      <a mat-icon-button style="color: white;margin-right: 2%;" [routerLink]="['/admin-panel']">
+        <mat-icon>home</mat-icon>
+      </a>
+    </div>
+  </div>
+  <div *ngIf="islog &&isCOM ">
+    <a class="navbar-brand"
+      *ngIf="islog && isET || isENGG || isTT||isTEC || isDIS ||isDISP  || isUT ||isOPE ||isMKT||isMAN ||isMANAGEMENT ||isADMIN ">
+      <img style="margin-left:2% ;" src="assets/vjp3.png" data-toggle="modal" data-target="#logoutModal1" height="50"
+        alt="" width="100">
+    </a>
 
-      </div>
+  </div>
 
-      <div class="col-10">
+  <div class="main" *ngIf="islog && pathDrawing  ">
+    <div *ngIf="islog &&isPANEL ">
+      <div class="modal" id="logoutModal1" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 15%;">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4>Alert <i class="fa fa-lock"></i></h4>
+              <a type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">×</span></a>
 
-          <div class="collapse justify-content-end navbar-collapse" [ngClass]="{ 'show': isShown }"
-            id="navbarTogglerDemo03">
-            <ul class="navbar-nav mt-2 mt-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/machine']" (click)="isShown = false">Machining</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/workcenter']" (click)="isShown = false">Workcenter</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/operation']" (click)="isShown = false">Operation</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/instrument']" (click)="isShown = false">Instument</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/measure']" (click)="isShown = false">Measuring Frequncy</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/drawing']" (click)="isShown = false">Drawing Type</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/material']" (click)="isShown = false">Material</a>
-              </li>
-  
-              <li class="nav-item">
-                <a class="nav-link" (click)="Logout()">Logout</a>
-              </li>
-            </ul>
+
+            </div>
+            <div class="modal-body"
+              *ngIf="islog && isET || isENGG || isTT||isTEC || isDIS ||isDISP  || isUT ||isOPE ||isMKT ||isMARKET ||isMAN ||isMANAGEMENT">
+              <p><i class="fa fa-question-circle"></i> Are you sure you want to go back? <br /></p>
+              <div class="actionsBtns">
+                <form method="post">
+                  <a *ngIf="islog && isET || isENGG || isTT||isTEC || isDIS ||isDISP  || isUT ||isOPE">
+                    <button style="width:25%;text-align: center;" class="btn btn-default btn-primary"
+                      data-dismiss="modal" [routerLink]="['/drawing']">Yes</button>&nbsp;
+                  </a>
+                  <a *ngIf="islog &&  isMKT|| isMARKET ||isMAN ||isMANAGEMENT">
+                    <button style="width:25%;text-align: center;" class="btn btn-default btn-primary"
+                      data-dismiss="modal" [routerLink]="['/marketview']">Yes</button>&nbsp;
+                  </a>
+                  <button style="width:25%;text-align: center;" class="btn btn-default" data-dismiss="modal">No</button>
+                </form>
+              </div>
+            </div>
           </div>
-
-        
-          
+        </div>
       </div>
     </div>
   </div>
-</nav> -->
 
 
-<nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" style="display:flex; flex-direction: row; align-items: center;" >
+
+  <a class="navbar-brand" style="display:flex; flex-direction: row; align-items: center;">
     <ng-content></ng-content>
   </a>
-  
-
-  <!-- <div class="navbar-nav page-title">
-    <ng-content>
-     
-    </ng-content>
-  </div> -->
-
   <ul class="navbar-nav ml-auto">
-    <!-- <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/machine']" (click)="isShown = false"
-        style="color: aliceblue;">Machines / Workcenter</a>
-    </li>
-  
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/operation']" (click)="isShown = false"
-        style="color: aliceblue;">Process Type</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/instrument']" (click)="isShown = false"
-        style="color: aliceblue;">Instrument</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/measure']" (click)="isShown = false"
-        style="color: aliceblue;">Measuring Frequency</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/drawing']" (click)="isShown = false" style="color: aliceblue;">Drawing
-        Type</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/material']" (click)="isShown = false"
-        style="color: aliceblue;">Material</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/castingtol']" (click)="isShown = false"
-        style="color: aliceblue;">Casting Tolerance</a>
-    </li>
 
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/machinetol']" (click)="isShown = false"
-        style="color: aliceblue;">Machine Tolerance</a>
+    <li style="color: aliceblue;padding: 10px;">
+      {{email}}
     </li>
-
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/heattreat']" (click)="isShown = false"
-        style="color: aliceblue;">Heat Treatment</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/master/specialpro']" (click)="isShown = false"
-        style="color: aliceblue;">Special Process</a>
-    </li>
- -->
- <li style="color: aliceblue;padding: 10px;">
-  {{email}}
-</li>
 
     <li>
       <img src="assets/e.jpeg" data-toggle="modal" data-target="#logoutModal" class="avatar">
     </li>
-    
+
     <div class="modal" id="logoutModal" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 15%;">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
             <h4>Log Out <i class="fa fa-lock"></i></h4>
-            <a type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                aria-hidden="true">×</span></a>
+            <a type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></a>
 
           </div>
           <div class="modal-body">

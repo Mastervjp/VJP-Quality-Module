@@ -1,6 +1,6 @@
-<app-navbar3>
-  <h3 style="margin-left: 10%;margin-top: -3%;"> Process&nbsp;Plan</h3>
-</app-navbar3>
+<app-navbar>
+  <h3 style=" margin-top: -3%;"> Process&nbsp;Plan</h3>
+</app-navbar>
 <div style=" min-height: calc(100vh - 110px);">
   <div style="width: 95%;margin-left: 3%;padding-top: 1%;">
 
@@ -81,7 +81,8 @@
 
               <ng-container *ngIf="qpaObject; else teset">
                 <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
-                <th colspan="2" class="text-center" style="border: 1px solid black; border-collapse: collapse;"> {{qpaObject.pfNo}}
+                <th colspan="2" class="text-center" style="border: 1px solid black; border-collapse: collapse;">
+                  {{qpaObject.pfNo}}
                 </th>
               </ng-container>
               <ng-template #teset>

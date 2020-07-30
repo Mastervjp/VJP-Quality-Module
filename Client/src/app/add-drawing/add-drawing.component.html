@@ -1,7 +1,7 @@
-<app-navbar2>
-    <h3 style="margin-left: 10%;"> Drawing&nbsp;Code</h3>
-</app-navbar2>
-  
+<app-navbar>
+    <h3>Drawing&nbsp;Code</h3>
+</app-navbar>
+
 <div class="container">
 
     <form class="p-4" [formGroup]="contactForm">
@@ -16,9 +16,9 @@
         </div>
 
         <button *ngIf="action !== 'edit'" color="accent" mat-raised-button class="save-button" (click)="addDrawing()"
-        [disabled]="contactForm.invalid" aria-label="SAVE">
-        Add
-    </button>
+            [disabled]="contactForm.invalid" aria-label="SAVE">
+            Add
+        </button>
 
         <!-- <div class="row">
 
@@ -155,5 +155,5 @@
 
 
 </div>
-  
+
 <app-footer></app-footer>

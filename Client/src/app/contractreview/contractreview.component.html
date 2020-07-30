@@ -1,515 +1,543 @@
-<app-navbar6>
-  <img src="assets/vjp3.png" height="50"  alt="vjp" width="100"  >
-        <h3 style="margin-left: 10%;margin-top: -3%;color: white;" >Market&nbsp;Card</h3>
-    
-   
-</app-navbar6>
+<app-navbar>
+  <h3 style="margin-right: 2%;color: white;">CONTRACT&nbsp;REVIEW</h3>
+</app-navbar>
 <div style=" min-height: calc(100vh - 110px);">
-    <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
-  
-      <div id="componentID">
-        <form  [formGroup]="contactForm">
-          <table class="tg" style="  width: 100%;">
-  
-            <tr>
-              <th  rowspan="4" style="text-align: center;"><img src="assets/vjp3.png" height="60" width="100"></th>
-              <td rowspan="4" colspan="5" style="text-align: center;"><b>CONTRACT REVIEW</b></td>
-              <td colspan="1">DOC CODE</td>
-              <td colspan="3"><b>MKT/R/05</b></td>
-            </tr>
-    
-            <tr>
-              <td colspan="1">REV.NO</td>
-              <td colspan="3"><b> 03</b></td>
-            </tr>
-            <tr>
-              <td colspan="1"> Date</td>
-       
-              <td colspan="3"><b> 22.06.2020</b>
-          
-    
-              </td>
-            </tr>
-            <tr>
-              <td colspan="1" style="width: fit-content;">Page no.</td>
-              <td colspan="3" style="width: 20%;"><b> 1 OF 1</b></td>
-            </tr>
-          </table>
-  
-  
-          <table class="tg" style="border-color:black;border-style:solid;border-width:1px;width:100%">
-            <tr style="height: 10px;">
-              <td colspan="1" style="width: 25%;">CUSTOMER NAME</td>
-              <td colspan="4">
-                <mat-form-field>
-                  <mat-label>CUSTOMER NAME</mat-label>
-                  <input matInput placeholder="Customer name is required!" name="customerName" formControlName="customerName">
-                </mat-form-field>
-              </td>
-  
-              <td colspan="3">VJP offer Number & Date</td>
-              <td colspan="2">
-  
-                <mat-form-field>
-                  <mat-label>VJP offer Number</mat-label>
-                  <input matInput placeholder="VJP offer Number is required!" name="offerNo" formControlName="offerNo">
-                </mat-form-field>
-              </td>
-  
-  
-              <td colspan="2">
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>VJP offer Date</mat-label>
-                  <input matInput [matDatepicker]="picker" name="offerDate" formControlName="offerDate">
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                  <mat-error>VJP offer Date</mat-error>
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="1">Bill To</td>
-              <td colspan="4">
-                <mat-form-field>
-                  <mat-label>Bill To</mat-label>
-                  <input matInput placeholder="Bill To " name="billTo" formControlName="billTo">
-                </mat-form-field>
-              </td>
-  
-              <td colspan="3">PO Number</td>
-              <td colspan="2">
-                <mat-form-field>
-                  <mat-label>PO Number</mat-label>
-                  <input matInput placeholder="PO Number is required!" name="poNumber" formControlName="poNumber">
-                </mat-form-field>
-              </td>
-  
-              <td colspan="2">
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>PO Date</mat-label>
-                  <input matInput [matDatepicker]="picker1" name="poDate" formControlName="poDate">
-                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                  <mat-datepicker #picker1></mat-datepicker>
-                  <mat-error>PO Date</mat-error>
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="1">Ship To</td>
-              <td colspan="4">
-                <mat-form-field>
-                  <mat-label>Ship To</mat-label>
-                  <input matInput placeholder="Ship To" name="shipTo"  formControlName="shipTo">
-                </mat-form-field>
-              </td>
-  
-              <td colspan="3">PO Received / Required Delivery Date</td>
-              <td colspan="2">
-                <!-- <mat-form-field>
+  <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
+
+    <div id="componentID">
+      <form [formGroup]="contactForm">
+        <table class="tg" style="  width: 100%;">
+
+          <tr>
+            <th rowspan="4" style="text-align: center;"><img src="assets/vjp3.png" height="60" width="100"></th>
+            <td rowspan="4" colspan="5" style="text-align: center;"><b>CONTRACT REVIEW</b></td>
+            <td colspan="1">DOC CODE</td>
+            <td colspan="3"><b>MKT/R/05</b></td>
+          </tr>
+
+          <tr>
+            <td colspan="1">REV.NO</td>
+            <td colspan="3"><b> 03</b></td>
+          </tr>
+          <tr>
+            <td colspan="1"> Date</td>
+
+            <td colspan="3"><b> 22.06.2020</b>
+
+
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" style="width: fit-content;">Page no.</td>
+            <td colspan="3" style="width: 20%;"><b> 1 OF 1</b></td>
+          </tr>
+        </table>
+
+
+        <table class="tg" style="border-color:black;border-style:solid;border-width:1px;width:100%">
+          <tr style="height: 10px;">
+            <td colspan="1" style="width: 25%;">CUSTOMER NAME</td>
+            <td colspan="4">
+              <mat-form-field>
+                <mat-label>CUSTOMER NAME</mat-label>
+                <input matInput placeholder="Customer name is required!" name="customerName"
+                  formControlName="customerName">
+              </mat-form-field>
+            </td>
+
+            <td colspan="3">VJP offer Number & Date</td>
+            <td colspan="2">
+
+              <mat-form-field>
+                <mat-label>VJP offer Number</mat-label>
+                <input matInput placeholder="VJP offer Number is required!" name="offerNo" formControlName="offerNo">
+              </mat-form-field>
+            </td>
+
+
+            <td colspan="2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>VJP offer Date</mat-label>
+                <input matInput [matDatepicker]="picker" name="offerDate" formControlName="offerDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>VJP offer Date</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="1">Bill To</td>
+            <td colspan="4">
+              <mat-form-field>
+                <mat-label>Bill To</mat-label>
+                <input matInput placeholder="Bill To " name="billTo" formControlName="billTo">
+              </mat-form-field>
+            </td>
+
+            <td colspan="3">PO Number</td>
+            <td colspan="2">
+              <mat-form-field>
+                <mat-label>PO Number</mat-label>
+                <input matInput placeholder="PO Number is required!" name="poNumber" formControlName="poNumber">
+              </mat-form-field>
+            </td>
+
+            <td colspan="2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>PO Date</mat-label>
+                <input matInput [matDatepicker]="picker1" name="poDate" formControlName="poDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error>PO Date</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="1">Ship To</td>
+            <td colspan="4">
+              <mat-form-field>
+                <mat-label>Ship To</mat-label>
+                <input matInput placeholder="Ship To" name="shipTo" formControlName="shipTo">
+              </mat-form-field>
+            </td>
+
+            <td colspan="3">PO Received / Required Delivery Date</td>
+            <td colspan="2">
+              <!-- <mat-form-field>
                   <mat-label>PO Received</mat-label>
                   <input matInput placeholder="PO Received" name="poReceived" formControlName="poReceived">
                 </mat-form-field> -->
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>PO Received Date</mat-label>
-                  <input matInput [matDatepicker]="picker3" name="poReceived" formControlName="poReceived">
-                  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                  <mat-datepicker #picker3></mat-datepicker>
-                  <mat-error>PO Received Date</mat-error>
-                </mat-form-field>
-              </td>
-              <td colspan="2">
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Required Delivery Date</mat-label>
-                  <input matInput [matDatepicker]="picker2" name="deliveryDate" formControlName="deliveryDate">
-                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                  <mat-datepicker #picker2></mat-datepicker>
-                  <mat-error>Required Delivery Date</mat-error>
-                </mat-form-field>
-              </td>
-            </tr>
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>PO Received Date</mat-label>
+                <input matInput [matDatepicker]="picker3" name="poReceived" formControlName="poReceived">
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+                <mat-error>PO Received Date</mat-error>
+              </mat-form-field>
+            </td>
+            <td colspan="2">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Required Delivery Date</mat-label>
+                <input matInput [matDatepicker]="picker2" name="deliveryDate" formControlName="deliveryDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error>Required Delivery Date</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
 
-  
-            <tr>
-              <td colspan="1" style="text-align: left;">
-                Purchase order type
-              </td>
-              <th colspan="10">
-                <section class="example-section">
-                  <mat-checkbox class="example-margin" name="regular" formControlName="regular">Regular </mat-checkbox>&nbsp;&nbsp;
-                  <mat-checkbox class="example-margin" name="tooling" formControlName="tooling">Tooling </mat-checkbox>&nbsp;&nbsp;
-                  <mat-checkbox class="example-margin" name="purchaseOrderType" formControlName="purchaseOrderType">Prototype</mat-checkbox>
-                </section>
-              </th>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: center;"> PARTICULARS </td>
-              <td colspan="9" style="text-align: center;"> STATUS </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">1. Component Name </td>
-              <td colspan="9" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>Component Name</mat-label>
-                  <input matInput placeholder="Component Name is required!" name="componentName" formControlName="componentName">
-                </mat-form-field>
-              </td>
-            <tr>
-              <td colspan="2" style="text-align: left;">2.Part No. / Drawing No. & Rev </td>
-              <td colspan="6" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>Part No. / Drawing No.</mat-label>
-                  <input matInput placeholder="Part No. / Drawing No. is required!" name="partNo" formControlName="partNo">
-                </mat-form-field>
-              </td>
-              <td colspan="3" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>Rev</mat-label>
-                  <input matInput placeholder="Rev No.  is required!" name="rev" formControlName="rev">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2">3.Scope of supply</td>
-              <td colspan="9">
-                <section class="example-section">
-                  <mat-checkbox class="example-margin"  name="asCast" formControlName="asCast">As cast</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="heatTreatment" formControlName="heatTreatment">Heat treatment</mat-checkbox>&nbsp;&nbsp;
-                  &nbsp;
-                  <mat-checkbox class="example-margin" name="shotBlast" formControlName="shotBlast">Shotblast</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="machined" formControlName="machined">Machined</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="leakTest" formControlName="leakTest">leak test</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="ndtXrayDp" formControlName="ndtXrayDp">NDT X-ray & DP</mat-checkbox>&nbsp;&nbsp;
-                  &nbsp;
-                  <mat-checkbox class="example-margin" name="dp" formControlName="dp">DP</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="fpi" formControlName="fpi">FPI</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="anodizing" formControlName="anodizing">Anodizing</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="powderCoating" formControlName="powderCoating">Powder coating</mat-checkbox>&nbsp;&nbsp;
-                  &nbsp;
-                  <mat-checkbox class="example-margin" name="painting" formControlName="painting">Painting</mat-checkbox>
-                </section>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">4.PO Quantity - As per VJP quote / MOQ </td>
-              <td colspan="9" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>PO Quantity - As per VJP quote / MOQ</mat-label>
-                  <input matInput placeholder="PO Quantity - As per VJP quote / MOQ is required!" name="poQuantity" formControlName="poQuantity">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">5.Alloy - Grade </td>
-              <td colspan="9" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>Alloy - Grade</mat-label>
-                  <input matInput placeholder="Alloy - Grade is required!" name="alloyGrade" formControlName="alloyGrade">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                6.VJP Component quoted price
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>VJP Component quoted price</mat-label>
-                  <input matInput placeholder="VJP Component quoted price" name="vjpComponentquotedPrice" formControlName="vjpComponentquotedPrice">
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                7.Shipping Address
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select disableRipple name="shippingAddress" formControlName="shippingAddress">
-                    <mat-option value="ok">Ok</mat-option>
-                    <mat-option value="notOk">Not Ok</mat-option>
-  
-                  </mat-select>
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                8. Our Name & Address
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select disableRipple name="ourNameAddress" formControlName="ourNameAddress">
-                    <mat-option value="ok">Ok</mat-option>
-                    <mat-option value="notOk">Not Ok</mat-option>
-  
-                  </mat-select>
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                9. Vendor Code
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select disableRipple name="vendorCode" formControlName="vendorCode">
-                    <mat-option value="ok">Ok</mat-option>
-                    <mat-option value="notOk">Not Ok</mat-option>
-                    <mat-option value="na">NA</mat-option>
-                  </mat-select>
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">10. Price </td>
-              <td colspan="9" style="text-align: left;">
-                Rs
-                <mat-form-field>
-                  <mat-label>Price</mat-label>
-                  <input matInput placeholder="Price is required!" name="price" formControlName="price">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2">11. Price Basis</td>
-              <td colspan="9">
-                <section class="example-section">
-                  <mat-checkbox class="example-margin" name="exWorks" formControlName="exWorks">Ex-Works</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="dap" formControlName="dap">DAP</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="fob" formControlName="fob">FOB</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                  <mat-checkbox class="example-margin" name="cif" formControlName="cif">CIF</mat-checkbox>&nbsp;&nbsp; &nbsp;
-                </section>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                12. Payment Terms
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select disableRipple name="paymentTerms" formControlName="paymentTerms">
-                    <mat-option value="ok">Ok</mat-option>
-                    <mat-option value="notOk">Not Ok</mat-option>
-                    <mat-option value="na">NA</mat-option>
-                  </mat-select>
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">13. Is delivery requirement indicated in PO, acceptable to us</td>
-              <td colspan="9" style="text-align: left;">
-  
-                <mat-form-field>
-                  <mat-label>Is delivery requirement indicated in PO, acceptable to us</mat-label>
-                  <input matInput placeholder="Is delivery requirement indicated in PO, acceptable to us" name="deliveryRequirement" formControlName="deliveryRequirement">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">14. Any special documentation requirements - not acceptable to us
-              </td>
-              <td colspan="9" style="text-align: left;">
-  
-                <mat-form-field>
-                  <mat-label> Any special documentation requirements - not acceptable to us</mat-label>
-                  <input matInput placeholder=" Any special documentation requirements - not acceptable to us"
+
+          <tr>
+            <td colspan="1" style="text-align: left;">
+              Purchase order type
+            </td>
+            <th colspan="10">
+              <section class="example-section">
+                <mat-checkbox class="example-margin" name="regular" formControlName="regular">Regular </mat-checkbox>
+                &nbsp;&nbsp;
+                <mat-checkbox class="example-margin" name="tooling" formControlName="tooling">Tooling </mat-checkbox>
+                &nbsp;&nbsp;
+                <mat-checkbox class="example-margin" name="purchaseOrderType" formControlName="purchaseOrderType">
+                  Prototype</mat-checkbox>
+              </section>
+            </th>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: center;"> PARTICULARS </td>
+            <td colspan="9" style="text-align: center;"> STATUS </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">1. Component Name </td>
+            <td colspan="9" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>Component Name</mat-label>
+                <input matInput placeholder="Component Name is required!" name="componentName"
+                  formControlName="componentName">
+              </mat-form-field>
+            </td>
+          <tr>
+            <td colspan="2" style="text-align: left;">2.Part No. / Drawing No. & Rev </td>
+            <td colspan="6" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>Part No. / Drawing No.</mat-label>
+                <input matInput placeholder="Part No. / Drawing No. is required!" name="partNo"
+                  formControlName="partNo">
+              </mat-form-field>
+            </td>
+            <td colspan="3" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>Rev</mat-label>
+                <input matInput placeholder="Rev No.  is required!" name="rev" formControlName="rev">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">3.Scope of supply</td>
+            <td colspan="9">
+              <section class="example-section">
+                <mat-checkbox class="example-margin" name="asCast" formControlName="asCast">As cast</mat-checkbox>
+                &nbsp;&nbsp; &nbsp;
+                <mat-checkbox class="example-margin" name="heatTreatment" formControlName="heatTreatment">Heat treatment
+                </mat-checkbox>&nbsp;&nbsp;
+                &nbsp;
+                <mat-checkbox class="example-margin" name="shotBlast" formControlName="shotBlast">Shotblast
+                </mat-checkbox>&nbsp;&nbsp; &nbsp;
+                <mat-checkbox class="example-margin" name="machined" formControlName="machined">Machined</mat-checkbox>
+                &nbsp;&nbsp; &nbsp;
+                <mat-checkbox class="example-margin" name="leakTest" formControlName="leakTest">leak test</mat-checkbox>
+                &nbsp;&nbsp; &nbsp;
+                <mat-checkbox class="example-margin" name="ndtXrayDp" formControlName="ndtXrayDp">NDT X-ray & DP
+                </mat-checkbox>&nbsp;&nbsp;
+                &nbsp;
+                <mat-checkbox class="example-margin" name="dp" formControlName="dp">DP</mat-checkbox>&nbsp;&nbsp; &nbsp;
+                <mat-checkbox class="example-margin" name="fpi" formControlName="fpi">FPI</mat-checkbox>&nbsp;&nbsp;
+                &nbsp;
+                <mat-checkbox class="example-margin" name="anodizing" formControlName="anodizing">Anodizing
+                </mat-checkbox>&nbsp;&nbsp; &nbsp;
+                <mat-checkbox class="example-margin" name="powderCoating" formControlName="powderCoating">Powder coating
+                </mat-checkbox>&nbsp;&nbsp;
+                &nbsp;
+                <mat-checkbox class="example-margin" name="painting" formControlName="painting">Painting</mat-checkbox>
+              </section>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">4.PO Quantity - As per VJP quote / MOQ </td>
+            <td colspan="9" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>PO Quantity - As per VJP quote / MOQ</mat-label>
+                <input matInput placeholder="PO Quantity - As per VJP quote / MOQ is required!" name="poQuantity"
+                  formControlName="poQuantity">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">5.Alloy - Grade </td>
+            <td colspan="9" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>Alloy - Grade</mat-label>
+                <input matInput placeholder="Alloy - Grade is required!" name="alloyGrade" formControlName="alloyGrade">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              6.VJP Component quoted price
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>VJP Component quoted price</mat-label>
+                <input matInput placeholder="VJP Component quoted price" name="vjpComponentquotedPrice"
+                  formControlName="vjpComponentquotedPrice">
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              7.Shipping Address
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple name="shippingAddress" formControlName="shippingAddress">
+                  <mat-option value="ok">Ok</mat-option>
+                  <mat-option value="notOk">Not Ok</mat-option>
+
+                </mat-select>
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              8. Our Name & Address
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple name="ourNameAddress" formControlName="ourNameAddress">
+                  <mat-option value="ok">Ok</mat-option>
+                  <mat-option value="notOk">Not Ok</mat-option>
+
+                </mat-select>
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              9. Vendor Code
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple name="vendorCode" formControlName="vendorCode">
+                  <mat-option value="ok">Ok</mat-option>
+                  <mat-option value="notOk">Not Ok</mat-option>
+                  <mat-option value="na">NA</mat-option>
+                </mat-select>
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">10. Price </td>
+            <td colspan="9" style="text-align: left;">
+              Rs
+              <mat-form-field>
+                <mat-label>Price</mat-label>
+                <input matInput placeholder="Price is required!" name="price" formControlName="price">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">11. Price Basis</td>
+            <td colspan="9">
+              <section class="example-section">
+                <mat-checkbox class="example-margin" name="exWorks" formControlName="exWorks">Ex-Works</mat-checkbox>
+                &nbsp;&nbsp; &nbsp;
+                <mat-checkbox class="example-margin" name="dap" formControlName="dap">DAP</mat-checkbox>&nbsp;&nbsp;
+                &nbsp;
+                <mat-checkbox class="example-margin" name="fob" formControlName="fob">FOB</mat-checkbox>&nbsp;&nbsp;
+                &nbsp;
+                <mat-checkbox class="example-margin" name="cif" formControlName="cif">CIF</mat-checkbox>&nbsp;&nbsp;
+                &nbsp;
+              </section>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              12. Payment Terms
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple name="paymentTerms" formControlName="paymentTerms">
+                  <mat-option value="ok">Ok</mat-option>
+                  <mat-option value="notOk">Not Ok</mat-option>
+                  <mat-option value="na">NA</mat-option>
+                </mat-select>
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">13. Is delivery requirement indicated in PO, acceptable to us</td>
+            <td colspan="9" style="text-align: left;">
+
+              <mat-form-field>
+                <mat-label>Is delivery requirement indicated in PO, acceptable to us</mat-label>
+                <input matInput placeholder="Is delivery requirement indicated in PO, acceptable to us"
+                  name="deliveryRequirement" formControlName="deliveryRequirement">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">14. Any special documentation requirements - not acceptable to us
+            </td>
+            <td colspan="9" style="text-align: left;">
+
+              <mat-form-field>
+                <mat-label> Any special documentation requirements - not acceptable to us</mat-label>
+                <input matInput placeholder=" Any special documentation requirements - not acceptable to us"
                   name="specialDocumentationRequirements" formControlName="specialDocumentationRequirements">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                15. Freight Terms
-              </td>
-              <td colspan="9">
-                <mat-radio-group aria-label="Select an option" name="freightTerms" formControlName="freightTerms">
-                  <mat-radio-button value="VJP">VJP</mat-radio-button> &nbsp; &nbsp;&nbsp; &nbsp;
-                  <mat-radio-button value="Customer">Customer</mat-radio-button>&nbsp; &nbsp; &nbsp; &nbsp;
-  
-                </mat-radio-group>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                16. Shipping method
-              </td>
-              <td colspan="9">
-                <mat-radio-group aria-label="Select an option" name="shippingMethod" formControlName="shippingMethod">
-                  <mat-radio-button value="Road">Road</mat-radio-button> &nbsp; &nbsp;&nbsp; &nbsp;
-                  <mat-radio-button value="Sea">Sea</mat-radio-button>&nbsp; &nbsp; &nbsp; &nbsp;
-                  <mat-radio-button value="Air">Air</mat-radio-button>
-                </mat-radio-group>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">17. Aluminium - Variation Clause
-              </td>
-              <td colspan="9" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>Aluminium - Variation Clause</mat-label>
-                  <input matInput placeholder="Aluminium - Variation Clause is required!" name="aluminiumVariationClause" formControlName="aluminiumVariationClause">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                18. Foreign Exchange Variation Clause
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select disableRipple name="foreignExchangeVariationClause" formControlName="foreignExchangeVariationClause">
-                    <mat-option value="ok">Ok</mat-option>
-                    <mat-option value="notOk">Not Ok</mat-option>
-                    <mat-option value="na">NA</mat-option>
-                  </mat-select>
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                19.Tax
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select disableRipple name="tax" formControlName="tax">
-                    <mat-option value="ok">Ok</mat-option>
-                    <mat-option value="notOk">Not Ok</mat-option>
-                    <mat-option value="na">NA</mat-option>
-                  </mat-select>
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">
-                20. Terms & Conditions
-              </td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select disableRipple name="termsConditions" formControlName="termsConditions">
-                    <mat-option value="ok">Ok</mat-option>
-                    <mat-option value="notOk">Not Ok</mat-option>
-                
-                  </mat-select>
-                </mat-form-field>&nbsp;&nbsp; &nbsp;
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">21.Other requirements</td>
-              <td colspan="9" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>Other requirements</mat-label>
-                  <input matInput placeholder="Other requirements" name="otherRequirements" formControlName="otherRequirements">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">22. Conditions in PO not present in VJP quote</td>
-              <td colspan="9" style="text-align: left;">
-  
-                <mat-form-field>
-                  <mat-label>Conditions in PO not present in VJP quote</mat-label>
-                  <input matInput placeholder="Conditions in PO not present in VJP quote" name="conditionsInPONotPresentInYYQuote" formControlName="conditionsInPONotPresentInYYQuote">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2">22. a)</td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Conditions in PO not present in VJP quote</mat-label>
-                  <input matInput placeholder="Conditions in PO not present in VJP quote" name="conditionsInPONotPresentInYYQuoteA" formControlName="conditionsInPONotPresentInYYQuoteA">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2">22. b)</td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Conditions in PO not present in VJP quote</mat-label>
-                  <input matInput placeholder="Conditions in PO not present in VJP quote" name="conditionsInPONotPresentInYYQuoteB" formControlName="conditionsInPONotPresentInYYQuoteB">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2">22. c)</td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Conditions in PO not present in VJP quote</mat-label>
-                  <input matInput placeholder="Conditions in PO not present in VJP quote" name="conditionsInPONotPresentInYYQuoteC" formControlName="conditionsInPONotPresentInYYQuoteC">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2">22. d)</td>
-              <td colspan="9">
-                <mat-form-field>
-                  <mat-label>Conditions in PO not present in VJP quote</mat-label>
-                  <input matInput placeholder="Conditions in PO not present in VJP quote" name="conditionsInPONotPresentInYYQuoteD" formControlName="conditionsInPONotPresentInYYQuoteD">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-            <tr>
-              <td colspan="2" style="text-align: left;">23. Process lead time</td>
-              <td colspan="9" style="text-align: left;">
-                <mat-form-field>
-                  <mat-label>Process lead time</mat-label>
-                  <input matInput placeholder="Process lead time" name="processLeadTime" formControlName="processLeadTime">
-                </mat-form-field>
-              </td>
-            </tr>
-  
-         
-  
-  
-          </table>
-  
-  
-        </form>
-  
-  
-  
-  
-      </div>
-      <div class="text-center p-2">
-        <button mat-raised-button (click)="addData()" style="background-color: blue;color: white;"  >Add</button><br>
- 
-      </div>
-    </div>
+              </mat-form-field>
+            </td>
+          </tr>
 
-    <app-footer></app-footer>
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              15. Freight Terms
+            </td>
+            <td colspan="9">
+              <mat-radio-group aria-label="Select an option" name="freightTerms" formControlName="freightTerms">
+                <mat-radio-button value="VJP">VJP</mat-radio-button> &nbsp; &nbsp;&nbsp; &nbsp;
+                <mat-radio-button value="Customer">Customer</mat-radio-button>&nbsp; &nbsp; &nbsp; &nbsp;
+
+              </mat-radio-group>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              16. Shipping method
+            </td>
+            <td colspan="9">
+              <mat-radio-group aria-label="Select an option" name="shippingMethod" formControlName="shippingMethod">
+                <mat-radio-button value="Road">Road</mat-radio-button> &nbsp; &nbsp;&nbsp; &nbsp;
+                <mat-radio-button value="Sea">Sea</mat-radio-button>&nbsp; &nbsp; &nbsp; &nbsp;
+                <mat-radio-button value="Air">Air</mat-radio-button>
+              </mat-radio-group>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">17. Aluminium - Variation Clause
+            </td>
+            <td colspan="9" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>Aluminium - Variation Clause</mat-label>
+                <input matInput placeholder="Aluminium - Variation Clause is required!" name="aluminiumVariationClause"
+                  formControlName="aluminiumVariationClause">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              18. Foreign Exchange Variation Clause
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple name="foreignExchangeVariationClause"
+                  formControlName="foreignExchangeVariationClause">
+                  <mat-option value="ok">Ok</mat-option>
+                  <mat-option value="notOk">Not Ok</mat-option>
+                  <mat-option value="na">NA</mat-option>
+                </mat-select>
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              19.Tax
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple name="tax" formControlName="tax">
+                  <mat-option value="ok">Ok</mat-option>
+                  <mat-option value="notOk">Not Ok</mat-option>
+                  <mat-option value="na">NA</mat-option>
+                </mat-select>
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">
+              20. Terms & Conditions
+            </td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple name="termsConditions" formControlName="termsConditions">
+                  <mat-option value="ok">Ok</mat-option>
+                  <mat-option value="notOk">Not Ok</mat-option>
+
+                </mat-select>
+              </mat-form-field>&nbsp;&nbsp; &nbsp;
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">21.Other requirements</td>
+            <td colspan="9" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>Other requirements</mat-label>
+                <input matInput placeholder="Other requirements" name="otherRequirements"
+                  formControlName="otherRequirements">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">22. Conditions in PO not present in VJP quote</td>
+            <td colspan="9" style="text-align: left;">
+
+              <mat-form-field>
+                <mat-label>Conditions in PO not present in VJP quote</mat-label>
+                <input matInput placeholder="Conditions in PO not present in VJP quote"
+                  name="conditionsInPONotPresentInYYQuote" formControlName="conditionsInPONotPresentInYYQuote">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">22. a)</td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Conditions in PO not present in VJP quote</mat-label>
+                <input matInput placeholder="Conditions in PO not present in VJP quote"
+                  name="conditionsInPONotPresentInYYQuoteA" formControlName="conditionsInPONotPresentInYYQuoteA">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">22. b)</td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Conditions in PO not present in VJP quote</mat-label>
+                <input matInput placeholder="Conditions in PO not present in VJP quote"
+                  name="conditionsInPONotPresentInYYQuoteB" formControlName="conditionsInPONotPresentInYYQuoteB">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">22. c)</td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Conditions in PO not present in VJP quote</mat-label>
+                <input matInput placeholder="Conditions in PO not present in VJP quote"
+                  name="conditionsInPONotPresentInYYQuoteC" formControlName="conditionsInPONotPresentInYYQuoteC">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">22. d)</td>
+            <td colspan="9">
+              <mat-form-field>
+                <mat-label>Conditions in PO not present in VJP quote</mat-label>
+                <input matInput placeholder="Conditions in PO not present in VJP quote"
+                  name="conditionsInPONotPresentInYYQuoteD" formControlName="conditionsInPONotPresentInYYQuoteD">
+              </mat-form-field>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" style="text-align: left;">23. Process lead time</td>
+            <td colspan="9" style="text-align: left;">
+              <mat-form-field>
+                <mat-label>Process lead time</mat-label>
+                <input matInput placeholder="Process lead time" name="processLeadTime"
+                  formControlName="processLeadTime">
+              </mat-form-field>
+            </td>
+          </tr>
+
+
+
+
+        </table>
+
+
+      </form>
+
+
+
+
+    </div>
+    <div class="text-center p-2">
+      <button mat-raised-button (click)="addData()" style="background-color: blue;color: white;">Add</button><br>
+
+    </div>
+  </div>
+
+  <app-footer></app-footer>

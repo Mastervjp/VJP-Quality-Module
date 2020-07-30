@@ -1,60 +1,57 @@
 <app-navbar>
-    <button mat-icon-button aria-label (click)="isOpen = !isOpen">
-        <mat-icon style="color: white;">more_vert</mat-icon>
-      </button>
-    <img src="assets/vjp3.png" height="50" alt="vjp" width="100" >&nbsp; &nbsp; &nbsp;
-    <h3 style="color: white;"> Drawing Type </h3>
+    <button style="margin-right: 2%;" mat-icon-button aria-label (click)="isOpen = !isOpen">
+        <span class="material-icons" style="color: white;">
+            list
+        </span>
+    </button>
+    <img style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">
+    <h3 style="color: white;">Drawing &nbsp;Type </h3>
 </app-navbar>
 
 <mat-sidenav-container>
     <mat-sidenav style="width:15%;background-color: black;" mode="over" [opened]="isOpen">
 
-          <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-              <a class="nav-link" [routerLink]="['/master/machine']" (click)="isShown = false" >Machines / Workcenter  <span class="sr-only">(current)</span></a>
+                <a class="nav-link" [routerLink]="['/master/machine']" (click)="isShown = false">Machines / Workcenter
+                    <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/operation']" (click)="isShown = false"
-                  >Process Type</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/instrument']" (click)="isShown = false"
-                  >Instrument</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/measure']" (click)="isShown = false"
-                  >Measuring Frequency</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/master/drawing']" (click)="isShown = false" >Drawing
-                  Type</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/material']" (click)="isShown = false"
-                  >Material</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/castingtol']" (click)="isShown = false"
-                  >Casting Tolerance</a>
-              </li>
-          
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/machinetol']" (click)="isShown = false"
-                  >Machine Tolerance</a>
-              </li>
-          
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/heattreat']" (click)="isShown = false"
-                  >Heat Treatment</a>
-              </li>
-          
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/master/specialpro']" (click)="isShown = false"
-                  >Special Process</a>
-              </li>
-           
-           
-          </ul>
+                <a class="nav-link" [routerLink]="['/master/operation']" (click)="isShown = false">Process Type</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/instrument']" (click)="isShown = false">Instrument</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/measure']" (click)="isShown = false">Measuring Frequency</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/master/drawing']" (click)="isShown = false">Drawing
+                    Type</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/material']" (click)="isShown = false">Material</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/castingtol']" (click)="isShown = false">Casting
+                    Tolerance</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/machinetol']" (click)="isShown = false">Machine
+                    Tolerance</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/heattreat']" (click)="isShown = false">Heat Treatment</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/master/specialpro']" (click)="isShown = false">Special Process</a>
+            </li>
+
+
+        </ul>
 
 
     </mat-sidenav>

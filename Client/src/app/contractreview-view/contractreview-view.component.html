@@ -1,11 +1,13 @@
-<app-navbar6>
-  <button mat-icon-button aria-label (click)="isOpen = !isOpen">
-    <mat-icon style="color: white;">more_vert</mat-icon>
+<app-navbar>
+  <button style="margin-right: 2%;" mat-icon-button aria-label (click)="isOpen = !isOpen">
+    <span class="material-icons" style="color: white;">
+      list
+    </span>
   </button>
-  <img src="assets/vjp3.png" height="50" alt="vjp" width="100">&nbsp; &nbsp; &nbsp;
+  <img style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">
   <h3 class="master" style="color: white;" routerLinkActive="color">Contract&nbsp;Review</h3>
 
-</app-navbar6>
+</app-navbar>
 
 <mat-sidenav-container>
   <mat-sidenav style="width:15%;background-color: black;" mode="over" [opened]="isOpen">
