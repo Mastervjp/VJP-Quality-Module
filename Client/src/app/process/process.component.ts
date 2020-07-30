@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DrawingService } from '../services/drawing.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -12,7 +10,7 @@ import { ProcessService } from '../services/process.service';
 
 import { ProcessDialogComponent } from '../process-dialog/process-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { MatSnackBar, MatDialogRef } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { AuthenticationService } from '../services/authentication.service';
 BatchquantityComponent
 @Component({
@@ -29,19 +27,19 @@ export class ProcessComponent implements OnInit {
   constructor(private _processservice: ProcessService,
     private _process: ProcessService,
     public activeRoute: ActivatedRoute,
-     public auth: AuthenticationService,
-      private router: Router,
-       public dialog: MatDialog,
-        private _matDialog: MatDialog, 
-        public snackBar: MatSnackBar, 
-        private _formBuilder: FormBuilder,) { }
+    public auth: AuthenticationService,
+    private router: Router,
+    public dialog: MatDialog,
+    private _matDialog: MatDialog,
+    public snackBar: MatSnackBar,
+    private _formBuilder: FormBuilder,) { }
   action: string;
   dialogTitle: string;
   viewdata: any
   editId: any;
   instrumentList: any;
   measuringList: any;
-  type: any;      
+  type: any;
   drgcode: any;
   opno: any;
   qty: any;
@@ -69,7 +67,7 @@ export class ProcessComponent implements OnInit {
     return this.invoiceForm.get('Rows') as FormArray;
   }
   ngOnInit() {
-    let status = localStorage.getItem('adminlogrole')
+    let status = localStorage.getItem('adminLogRole')
     this.checkrole(status);
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
@@ -102,7 +100,7 @@ export class ProcessComponent implements OnInit {
     this.submitshow;
 
     if (this.islog && this.isENGG || this.isET) {
-      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'edit', 'delete'];
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection','periodicInspection','ctq','pdi','cfir', 'delete'];
     }
     else {
       this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',];
@@ -224,7 +222,7 @@ export class ProcessComponent implements OnInit {
 
       this.getprocess(myItem1, myItem2);
     });
-  }  
+  }
 
   deleteDrg(id) {
     this.confirmDialogRef = this._matDialog.open(ConfirmDialogComponent, {
@@ -301,10 +299,10 @@ export class ProcessComponent implements OnInit {
   }
 
 
-   onChange(val, index, key) {
+  onChange(val, index, key) {
 
-     this.dataSource.data[index][key] = val.target.value
-   }
+    this.dataSource.data[index][key] = val.target.value
+  }
 
   deleteFieldValue(index) {
     this.fieldArray.splice(index, 1);
@@ -352,9 +350,9 @@ export class ProcessComponent implements OnInit {
     });
   }
 
-  updateProcess(editId,  arg1) {
- 
-    let step1 = this.dataSource.data[arg1]  
+  updateProcess(editId, arg1) {
+
+    let step1 = this.dataSource.data[arg1]
     let tempdata = this.instrumentList;
     for (var k in tempdata) {
       if (tempdata[k].name == step1.instrument) {
@@ -364,7 +362,7 @@ export class ProcessComponent implements OnInit {
 
     step1
     this._process.updateProcess(editId, step1).subscribe((res: any) => {
-      if (res.success) {      
+      if (res.success) {
         this.contactForm.reset();
         this.snackBar.open("Process Updated Sucessfully", "", {
           duration: 1500,
@@ -384,44 +382,43 @@ export class ProcessComponent implements OnInit {
       }
     });
   }
-  updateProcess1()
-  {
-    
+  updateProcess1() {
 
- 
+
+
     for (let index = 0; index < this.dataSource.data.length; index++) {
 
-     var editId=this.dataSource.data[index].id;
+      var editId = this.dataSource.data[index].id;
 
-      let step1 = this.dataSource.data[index]  
-    let tempdata = this.instrumentList;
-    for (var k in tempdata) {
-      if (tempdata[k].name == step1.instrument) {
-        step1.insId = tempdata[k].id;
+      let step1 = this.dataSource.data[index]
+      let tempdata = this.instrumentList;
+      for (var k in tempdata) {
+        if (tempdata[k].name == step1.instrument) {
+          step1.insId = tempdata[k].id;
+        }
       }
-    }
 
-    step1
-    this._process.updateProcess(editId, step1).subscribe((res: any) => {
-      if (res.success) {      
-        this.contactForm.reset();
-        this.snackBar.open("Process Updated Sucessfully", "", {
-          duration: 1500,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          panelClass: 'successsnackbarclass'
-        });
+      step1
+      this._process.updateProcess(editId, step1).subscribe((res: any) => {
+        if (res.success) {
+          this.contactForm.reset();
+          this.snackBar.open("Process Updated Sucessfully", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successsnackbarclass'
+          });
 
-      }
-      else {
-        this.snackBar.open(res.message, "", {
-          duration: 1500,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
-          panelClass: 'errorsnackbarclass'
-        });
-      }
-    });     
+        }
+        else {
+          this.snackBar.open(res.message, "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'errorsnackbarclass'
+          });
+        }
+      });
     }
   }
 

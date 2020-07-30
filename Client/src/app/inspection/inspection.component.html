@@ -1,50 +1,52 @@
-<app-navbar3>
-    <h3 style="margin-left: 10%;">Inspection</h3>
-</app-navbar3>
+<app-navbar>
+    <h3 style=" color: white;">Inspection</h3>
+</app-navbar>
 
 
 <div style=" min-height: calc(100vh - 110px);">
     <div style="width: 95%;margin-left: 3%;padding-top: 4.3%;">
 
-    <div>
+        <div>
 
-        <ng-container  *ngIf="fircheck">
-            <mat-tab-group>
-                <mat-tab label="FIR">
-    
-                    <app-fir> </app-fir>
-                </mat-tab>
-                <mat-tab label="C-FIR">
-                   <app-c-fir></app-c-fir>
-                </mat-tab>
-    
-                <!-- <mat-tab label="Final Inspection">
+            <ng-container *ngIf="fircheck">
+                <mat-tab-group>
+                    <mat-tab label="FIR">
+
+                        <app-fir> </app-fir>
+                    </mat-tab>
+                    <mat-tab label="C-FIR">
+                        <app-c-fir></app-c-fir>
+                    </mat-tab>
+
+                    <!-- <mat-tab label="Final Inspection">
                 <app-predispatch></app-predispatch>
                 </mat-tab> -->
-    
-            </mat-tab-group>
-        </ng-container>
-<ng-container *ngIf="!fircheck">
-    <mat-tab-group>
-        <mat-tab label="Drg Details "> <app-drg-details> </app-drg-details> </mat-tab>
-        <mat-tab label="FP Inspection">
 
-            <app-firstpart-print></app-firstpart-print>
-            <!-- <app-firstpart></app-firstpart> -->
-        </mat-tab>
-        <mat-tab label="Periodic Inspection">
-            <app-periodic></app-periodic>
-        </mat-tab>
+                </mat-tab-group>
+            </ng-container>
+            <ng-container *ngIf="!fircheck">
+                <mat-tab-group>
+                    <mat-tab label="Drg Details ">
+                        <app-drg-details> </app-drg-details>
+                    </mat-tab>
+                    <mat-tab label="FP Inspection">
 
-        <!-- <mat-tab label="Final Inspection">
+                        <app-firstpart-print></app-firstpart-print>
+                        <!-- <app-firstpart></app-firstpart> -->
+                    </mat-tab>
+                    <mat-tab label="Periodic Inspection">
+                        <app-periodic></app-periodic>
+                    </mat-tab>
+
+                    <!-- <mat-tab label="Final Inspection">
         <app-predispatch></app-predispatch>
         </mat-tab> -->
 
-    </mat-tab-group>
-</ng-container>
-       
+                </mat-tab-group>
+            </ng-container>
 
-    </div>
+
+        </div>
     </div>
 </div>
 

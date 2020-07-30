@@ -1,177 +1,177 @@
-<app-navbar6>
-  <button mat-icon-button aria-label (click)="isOpen = !isOpen">
-    <mat-icon style="color: white;">more_vert</mat-icon>
+<app-navbar>
+  <button style="margin-right: 2%;" mat-icon-button aria-label (click)="isOpen = !isOpen">
+    <span class="material-icons" style="color: white;">
+      list
+    </span>
   </button>
-<img src="assets/vjp3.png" height="50"  alt="vjp" width="100"  >&nbsp; &nbsp; &nbsp;
-<h3 class="master"  routerLinkActive="color" style="color: white;">Market&nbsp;Card</h3>  
- 
-</app-navbar6>
+  <img style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">
+  <h3 class="master" routerLinkActive="color" style="color: white;">Market&nbsp;Card</h3>
+
+</app-navbar>
 <mat-sidenav-container>
   <mat-sidenav style="width:15%;background-color: black;" mode="over" [opened]="isOpen">
 
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link " [routerLink]="['/marketview']" (click)="isShown = false"
-              >Market&nbsp;card</a>
-          </li>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link " [routerLink]="['/marketview']" (click)="isShown = false">Market&nbsp;card</a>
+      </li>
 
 
-          <li class="nav-item ">
-              <a class="nav-link" [routerLink]="['/contractreviewview']" (click)="isShown = false"
-                >Contract&nbsp;Review</a>
-            </li>
- 
+      <li class="nav-item ">
+        <a class="nav-link" [routerLink]="['/contractreviewview']" (click)="isShown = false">Contract&nbsp;Review</a>
+      </li>
 
-         
-        </ul>
+
+
+    </ul>
 
 
   </mat-sidenav>
   <mat-sidenav-content>
 
 
-<div style=" min-height: calc(100vh - 110px);">
-  <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
-    <div class="row mx-5">
-       
-        <button  id="singlebutton" name="singlebutton"  class="btn btn-primary" (click)="show()" >New Order
-        </button>
-    </div>
+    <div style=" min-height: calc(100vh - 110px);">
+      <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
+        <div class="row mx-5">
 
-    <div *ngIf="showCard" class="text-center">
-        <mat-card>
+          <button id="singlebutton" name="singlebutton" class="btn btn-primary" (click)="show()">New Order
+          </button>
+        </div>
+
+        <div *ngIf="showCard" class="text-center">
+          <mat-card>
 
 
 
             <div class=" p-3">
 
-                <form class="p-4" [formGroup]="contactForm">
+              <form class="p-4" [formGroup]="contactForm">
 
-                    <div class="row">
+                <div class="row">
 
-                        <div class="col-md-3">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                                <mat-label>Drawing Code</mat-label>
-                                <input name="drgCode" formControlName="drgId" matInput required>
-                                <mat-error>Drawing Code is required!</mat-error>
-                            </mat-form-field>
-
-                        </div>
-
-                        <div class="col-md-3">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                                <mat-label>PO Number</mat-label>
-                                <input name="poNo" formControlName="poNo" matInput required>
-                                <mat-error>Purchase Order Number is required!</mat-error>
-                            </mat-form-field>
-                        </div>
-
-                        <div class="col-md-3">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                                <mat-label>Order Qty</mat-label>
-                                <input name="orderQty" formControlName="orderQty" matInput required>
-                                <mat-error> Order Qty is required!</mat-error>
-                            </mat-form-field>
-                        </div>
-
-                        <div class="col-md-3">
-
-                          <mat-form-field class="example-full-width" appearance="outline">
-                            <mat-label>PO Date</mat-label>
-                            <input matInput formControlName="poDate" [matDatepicker]="picker">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                            <mat-error>PO Date is required!</mat-error>
-                        </mat-form-field>
-                        </div>
-                         <div class="col-md-3">
-                          <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Po Revision number</mat-label>
-                              <input name="PoRevNo" formControlName="PoRevNo" matInput required>
-                              <mat-error> Po Revision number is required!</mat-error>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-md-3">
-                        <mat-form-field class="example-full-width" appearance="outline">
-                            <mat-label>Line Item</mat-label>
-                            <input name="LineItem" formControlName="LineItem" matInput required>
-                            <mat-error> Line Item is required!</mat-error>
-                        </mat-form-field>
-                    </div> 
-                    
-                     <div class="col-md-3">
-
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Committed date</mat-label>
-                        <input matInput formControlName="CommittedDate" [matDatepicker]="picker1">
-                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
-                        <mat-error>Committed date is required!</mat-error>
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Drawing Code</mat-label>
+                      <input name="drgCode" formControlName="drgId" matInput required>
+                      <mat-error>Drawing Code is required!</mat-error>
                     </mat-form-field>
-                    </div> 
 
-                       
+                  </div>
 
-                    </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>PO Number</mat-label>
+                      <input name="poNo" formControlName="poNo" matInput required>
+                      <mat-error>Purchase Order Number is required!</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Order Qty</mat-label>
+                      <input name="orderQty" formControlName="orderQty" matInput required>
+                      <mat-error> Order Qty is required!</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>PO Date</mat-label>
+                      <input matInput formControlName="poDate" [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-error>PO Date is required!</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Po Revision number</mat-label>
+                      <input name="PoRevNo" formControlName="PoRevNo" matInput required>
+                      <mat-error> Po Revision number is required!</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Line Item</mat-label>
+                      <input name="LineItem" formControlName="LineItem" matInput required>
+                      <mat-error> Line Item is required!</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-3">
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Committed date</mat-label>
+                      <input matInput formControlName="CommittedDate" [matDatepicker]="picker1">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                      <mat-error>Committed date is required!</mat-error>
+                    </mat-form-field>
+                  </div>
 
 
-                    <div class="text-center">
-                        <button mat-raised-button (click)="addRoutes()" [disabled]="contactForm.invalid"
-                            aria-label="Submit">
-                            Submit
-                        </button>
-                    </div>
+
+                </div>
 
 
-                </form>
+                <div class="text-center">
+                  <button mat-raised-button (click)="addRoutes()" [disabled]="contactForm.invalid" aria-label="Submit">
+                    Submit
+                  </button>
+                </div>
+
+
+              </form>
 
 
             </div>
 
 
 
-        </mat-card>
-    </div>
+          </mat-card>
+        </div>
 
-    <div class="my-3">
+        <div class="my-3">
 
 
-        <div class="mat-elevation-z8">
+          <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource">
 
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> S/N</th>
                 <td mat-cell *matCellDef="let drg ; let rIndex = index;"> {{rIndex+1}} </td>
               </ng-container>
-     
+
               <ng-container matColumnDef="drgId">
                 <th mat-header-cell *matHeaderCellDef> Drawing No </th>
                 <td mat-cell *matCellDef="let drg"> {{drg.drgId}} </td>
               </ng-container>
-      
+
               <ng-container matColumnDef="poNo">
-                <th mat-header-cell  *matHeaderCellDef> PO Number </th>
-                <td mat-cell matRipple style="cursor:pointer" *matCellDef="let drg" (click)="viewClick(drg)"> {{drg.poNo}} </td>
+                <th mat-header-cell *matHeaderCellDef> PO Number </th>
+                <td mat-cell matRipple style="cursor:pointer" *matCellDef="let drg" (click)="viewClick(drg)">
+                  {{drg.poNo}} </td>
               </ng-container>
-                   
+
               <ng-container matColumnDef="orderQty">
                 <th mat-header-cell *matHeaderCellDef> Order Qty</th>
                 <td mat-cell *matCellDef="let drg"> {{drg.orderQty }} </td>
               </ng-container>
-      
+
               <ng-container matColumnDef="remainingQty">
                 <th mat-header-cell *matHeaderCellDef> Remaining Qty </th>
                 <td mat-cell *matCellDef="let drg"> {{drg.remainingQty}} </td>
               </ng-container>
-      
-                   
+
+
               <ng-container matColumnDef="createdAt">
                 <th mat-header-cell *matHeaderCellDef> PO Date </th>
                 <td mat-cell *matCellDef="let drg"> {{drg.poDate | date: 'dd/MM/yyyy'}} </td>
               </ng-container>
 
-      
-              <ng-container  matColumnDef="action">
+
+              <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let drg">
                   <div>
@@ -182,21 +182,22 @@
                   </div>
                 </td>
               </ng-container>
-      
+
               <tr style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-red': row.unlockStatus =='0' }">
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                [ngClass]="{'make-red': row.unlockStatus =='0' }">
               </tr>
             </table>
             <mat-paginator [pageSizeOptions]="[200,400,600]"></mat-paginator>
           </div>
 
 
+        </div>
+
+
+      </div>
+
+
     </div>
 
-
-</div>
-
-
-</div>
-
-<app-footer></app-footer>
+    <app-footer></app-footer>

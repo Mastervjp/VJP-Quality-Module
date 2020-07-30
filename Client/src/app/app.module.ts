@@ -83,12 +83,7 @@ import { MarketCardComponent } from './market-card/market-card.component';
 import { MaterialListComponent } from './master/material/material-list/material-list.component';
 import { MaterialDialogComponent } from './master/material/material-dialog/material-dialog.component';
 import { MachineService } from './master/masterservice/machine.service';
-import { Navbar2Component } from './navbar2/navbar2.component';
-import { Navbar3Component } from './navbar3/navbar3.component';
-import { Navbar4Component } from './navbar4/navbar4.component';
 import { FooterComponent } from './footer/footer.component';
-import { Navbar5Component } from './navbar5/navbar5.component';
-import { Navbar6Component } from './navbar6/navbar6.component';
 import { PredispatchComponent } from './predispatch/predispatch.component';
 import { CastingTolComponent } from './master/casting-tol/casting-tol.component';
 import { MachineTolStdComponent } from './master/machine-tol-std/machine-tol-std.component';
@@ -164,12 +159,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     MarketCardComponent,
     MaterialListComponent,
     MaterialDialogComponent,
-    Navbar2Component,
-    Navbar3Component,
-    Navbar4Component,
     FooterComponent,
-    Navbar5Component,
-    Navbar6Component,
     PredispatchComponent,
     CastingTolComponent,
     MachineTolStdComponent,

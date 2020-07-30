@@ -26,7 +26,6 @@ export class ContractreviewComponent implements OnInit {
 
 
     this._table.addData(step1).subscribe((res: any) => {
-      console.log("test==>", res);
       this.router.navigate(['/contractreviewview']); 
       
     });

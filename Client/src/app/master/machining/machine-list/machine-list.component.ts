@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource, MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { MachineService } from '../../masterservice/machine.service';
@@ -25,15 +25,19 @@ export class MachineListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private _machineservice: MachineService, public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar, ) { }
+  constructor(private _machineservice: MachineService, public activeRoute: ActivatedRoute, public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar,) { }
 
   ngOnInit() {
     this.getMachine();
 
+    let status = this.activeRoute.snapshot.queryParams.type;
+    this.displayedColumns = ['id', 'name', 'edit', 'delete'];
 
-      this.displayedColumns = ['id', 'name', 'edit','delete'];
-
-    
+    if (status) {
+      localStorage.setItem('adminLogRole', status);
+    } else {
+      status = localStorage.getItem('adminLogRole');
+    }
   }
 
 
@@ -68,7 +72,7 @@ export class MachineListComponent implements OnInit {
 
   getMachine() {
 
-      let type = localStorage.getItem('type')
+    let type = localStorage.getItem('type')
 
     this._machineservice.getMachine().subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res);
@@ -77,7 +81,7 @@ export class MachineListComponent implements OnInit {
     });
   }
 
-  deleteData(id){
+  deleteData(id) {
 
     this.confirmDialogRef = this._matDialog.open(ConfirmDialogComponent, {
       disableClose: false
