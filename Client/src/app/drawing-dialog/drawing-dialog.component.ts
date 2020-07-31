@@ -84,7 +84,7 @@ export class DrawingDialogComponent {
         endCustomer: _data.data.endCustomer,
         materialSpec: _data.data.materialSpec,
         materialGrade: _data.data.materialGrade,
-        materialWeight: _data.data.materialWeight,
+        // materialWeight: _data.data.materialWeight,
 
 
 
@@ -262,7 +262,7 @@ export class DrawingDialogComponent {
 
     materialSpec: ['', Validators.required],
     materialGrade: ['', Validators.required],
-    materialWeight: ['', Validators.required],
+    // materialWeight: ['', Validators.required],
 
     withRunerWeight: ['', Validators.required],
     castWeight: ['', Validators.required],
