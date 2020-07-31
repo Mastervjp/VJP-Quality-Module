@@ -75,10 +75,10 @@ export class SamplingComponent implements OnInit {
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
     if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
     }
     else {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification', 'toloreanceGrade', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',  'firstPartInspection', 'periodicInspection', 'ctq'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',  'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
     }
   }
 
@@ -127,7 +127,6 @@ export class SamplingComponent implements OnInit {
       description: new FormControl(''),
       workCenter: new FormControl(''),
       specification: new FormControl('', Validators.required),
-      toloreanceGrade: new FormControl('', Validators.required),
       tolFrom: new FormControl('', Validators.required),
       tolTo: new FormControl('', Validators.required),
       instrument: new FormControl(''),
@@ -136,8 +135,8 @@ export class SamplingComponent implements OnInit {
       firstPartInspection: new FormControl(),
       periodicInspection: new FormControl(),
       ctq: new FormControl(),
-      pdi: new FormControl(),
       cfir: new FormControl(),
+      fir: new FormControl(),
     });
   }
 
@@ -212,6 +211,7 @@ export class SamplingComponent implements OnInit {
           else {
             element.ctq = 0
           }
+          element.pdi = element.fir;
           this._sampleservice.addSampling(element).subscribe((res: any) => {
             console.log(res);
           });
@@ -331,10 +331,9 @@ export class SamplingComponent implements OnInit {
               "baloonNo":pro.baloonNo,
               "opnNo": opn.opnNo,
               "opnName": opn.opnName,
-              "description": opn.description,
+              "description": pro.description,
               "workCenter": opn.workCenter,
               "specification": pro.specification,
-              "toloreanceGrade": pro.toloreanceGrade,
               "tolFrom": pro.tolFrom,
               "tolTo": pro.tolTo,
               "instrument": pro.instrument,
@@ -346,6 +345,8 @@ export class SamplingComponent implements OnInit {
               "opnId": pro.opnId,
               "drgId": pro.drgId,
               "pid": pro.id,
+              "cfir":pro.cfir,
+              "fir": pro.pdi
 
             });
           });

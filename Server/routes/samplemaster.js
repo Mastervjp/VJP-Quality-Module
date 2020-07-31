@@ -95,7 +95,6 @@ router.put('/:id', (req, res) => {
             "opnName": req.body.opnName,
             "description": req.body.description,
             "specification": req.body.specification,
-            "toloreanceGrade":req.body.toloreanceGrade,
             "tolFrom": req.body.tolFrom,
             "tolTo": req.body.tolTo,
             "instrument": req.body.instrument,
@@ -104,8 +103,10 @@ router.put('/:id', (req, res) => {
             "firstPartInspection": req.body.firstPartInspection,
             "periodicInspection": req.body.periodicInspection,
             "ctq": req.body.periodicInspection,
+            "cfir":req.body.cfir,
+            "pdi":req.body.fir,
         }
-        
+        delete req.body.description;        
        
         Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
             sendSuccess1(res, result, "Data successfully updated");
