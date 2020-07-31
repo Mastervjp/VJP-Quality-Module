@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
@@ -12,15 +12,17 @@ import { SamplingService } from '../services/sampling.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ProcessService } from '../services/process.service';
 
+
 @Component({
   selector: 'app-sampling',
   templateUrl: './sampling.component.html',
-  styleUrls: ['./sampling.component.css']
+  styleUrls: ['./sampling.component.css'],
 })
 export class SamplingComponent implements OnInit {
   userTable: FormGroup;
   control: FormArray;
   formData;
+  validityCheck;
 
   constructor(
     private _sampleservice: SamplingService,
@@ -181,7 +183,7 @@ export class SamplingComponent implements OnInit {
   }
 
   async updateOperation() {
-    if (this.userTable.valid) {
+    if (this.userTable.valid && this.validityCheck == true) {
       this.userTable.value.tableRows.forEach(element => {
         if (element.id) {
           this._sampleservice.updateSampling(element.id, element).subscribe((res: any) => {
@@ -423,5 +425,16 @@ export class SamplingComponent implements OnInit {
 
     });
 
+  }
+
+  checkAvailability(data) {
+    this.validityCheck = true;
+    debugger;
+    let tempData;
+    tempData = this.userTable.value.tableRows.find(element => data.opnNo == element.opnNo && data.pid != element.pid);
+    if( tempData.opnName != data.opnName && tempData.opnName != "" ) {
+      this.validityCheck = false;
+      alert("Please Enter the corressponding Operation number and name");
+    }
   }
 }
