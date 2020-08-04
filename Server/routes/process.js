@@ -76,70 +76,80 @@ router.post('/', (req, res) => {
         req.body.createdBy = 1;
 
         console.log("body ===>", req.body);
+        Process.create(req.body).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
 
-        PlanAbstract.findOne({ where: { drgId: req.body.drgId } }).then(function (resp) {
-
-
-            console.log("\n\n \n res  ===>", resp);
-
-            if (resp.qpNo) {
-
-                Process.create(req.body).then(function (result) {
-                    sendSuccess(res, result);
-                }).catch(function (err) {
-                    sendError(res, err);
-                });
-            }
-            else {
-
-                let pp = '';
-
-                let code = req.body.drgId
+        // PlanAbstract.findOne({ where: { drgId: req.body.drgId } }).then(function (resp) {
 
 
+        //     console.log("\n\n \n res  ===>", resp);
 
-                var n = code.toString().length
+        //     if (resp.qpNo) {
 
-                if (n == 1) {
-                    pp = "QP 000000" + code + "-10AA"
-                }
-                else if (n == 2) {
-                    pp = "QP 00000" + code + "-10AA"
-                }
-                else if (n == 3) {
-                    pp = "QP 0000" + code + "-10AA"
-                }
-                else if (n == 4) {
-                    pp = "QP 000" + code + "-10AA"
-                }
-                else if (n == 5) {
-                    pp = "QP 00" + code + "-10AA"
-                }
-                else if (n == 6) {
-                    pp = "QP 0" + code + "-10AA"
-                }
-                else {
-                    pp = "QP " + code + "-10AA"
-                }
+        //         Process.create(req.body).then(function (result) {
+        //             sendSuccess(res, result);
+        //         }).catch(function (err) {
+        //             sendError(res, err);
+        //         });
+        //     }
+        //     else {
+        //         Process.create(req.body).then(function (result) {
+        //             sendSuccess(res, result);
+        //         }).catch(function (err) {
+        //             sendError(res, err);
+        //         });
+
+        //     //     let pp = '';
+
+        //     //     let code = req.body.drgId
 
 
 
-                var mydata = {
+        //     //     var n = code.toString().length
 
-                    "qpNo": pp
-                }
-                PlanAbstract.update(mydata, { where: { drgId: req.body.drgId } }).then(function (paResult) {
-                    Process.create(req.body).then(function (result) {
-                        sendSuccess(res, result);
-                    }).catch(function (err) {
-                        sendError(res, err);
-                    });
-                })
+        //     //     if (n == 1) {
+        //     //         pp = "QP 000000" + code + "-10AA"
+        //     //     }
+        //     //     else if (n == 2) {
+        //     //         pp = "QP 00000" + code + "-10AA"
+        //     //     }
+        //     //     else if (n == 3) {
+        //     //         pp = "QP 0000" + code + "-10AA"
+        //     //     }
+        //     //     else if (n == 4) {
+        //     //         pp = "QP 000" + code + "-10AA"
+        //     //     }
+        //     //     else if (n == 5) {
+        //     //         pp = "QP 00" + code + "-10AA"
+        //     //     }
+        //     //     else if (n == 6) {
+        //     //         pp = "QP 0" + code + "-10AA"
+        //     //     }
+        //     //     else {
+        //     //         pp = "QP " + code + "-10AA"
+        //     //     }
 
 
-            }
 
-        })
+        //     //     var mydata = {
+
+        //     //         "qpNo": pp
+        //     //     }
+        //     //     PlanAbstract.update(mydata, { where: { drgId: req.body.drgId } }).then(function (paResult) {
+        //     //         Process.create(req.body).then(function (result) {
+        //     //             sendSuccess(res, result);
+        //     //         }).catch(function (err) {
+        //     //             sendError(res, err);
+        //     //         });
+        //     //     })
+
+
+        //     }
+
+        // })
 
 
 
