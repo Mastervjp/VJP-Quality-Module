@@ -210,70 +210,76 @@ router.post('/', (req, res) => {
                         req.body.image3 = newfilename3;
                         req.body.image4 = newfilename4;
 
+                        Operation.create(req.body).then(function (result) {
+                            sendSuccess1(res, result);
+                        }).catch(function (err) {
+                            console.log(err);
+                            sendError(res, err);
+                        });
 
-                        PlanAbstract.findOne({ where: { drgId: req.body.drgId } }).then(function (resp) {
+                        // PlanAbstract.findOne({ where: { drgId: req.body.drgId } }).then(function (resp) {
 
-                            if (resp) {
-                                Operation.create(req.body).then(function (result) {
-                                    sendSuccess1(res, result);
-                                }).catch(function (err) {
-                                    console.log(err);
-                                    sendError(res, err);
-                                });
-                            }
-                            else {
+                        //     if (resp) {
+                        //         Operation.create(req.body).then(function (result) {
+                        //             sendSuccess1(res, result);
+                        //         }).catch(function (err) {
+                        //             console.log(err);
+                        //             sendError(res, err);
+                        //         });
+                        //     }
+                        //     else {
 
-                                Drawing.findOne({ where: { id: req.body.drgId } }).then(function (dres) {
+                        //         Drawing.findOne({ where: { id: req.body.drgId } }).then(function (dres) {
 
-                                    var newpfNo = '';
+                        //             var newpfNo = '';
 
-                                    let code = dres.id;
+                        //             let code = dres.id;
 
-                                    var n = code.toString().length
+                        //             var n = code.toString().length
 
-                                    if (n == 1) {
-                                        newpfNo = "PP 000000" + code + "-10A"
-                                    }
-                                    else if (n == 2) {
-                                        newpfNo = "PP 00000" + code + "-10A"
-                                    }
-                                    else if (n == 3) {
-                                        newpfNo = "PP 0000" + code + "-10A"
-                                    }
-                                    else if (n == 4) {
-                                        newpfNo = "PP 000" + code + "-10A"
-                                    }
-                                    else if (n == 5) {
-                                        newpfNo = "PP 00" + code + "-10A"
-                                    }
-                                    else if (n == 6) {
-                                        newpfNo = "PP 0" + code + "-10A"
-                                    }
-                                    else {
-                                        newpfNo = "PP " + code + "-10A"
-                                    }
-
-
-                                    var mydata = {
-                                        "drgId": req.body.drgId,
-                                        "pfNo": newpfNo
-                                    }
-                                    PlanAbstract.create(mydata).then(function (paResult) {
-                                        Operation.create(req.body).then(function (result) {
-                                            sendSuccess(res, result);
-                                        }).catch(function (err) {
-                                            console.log(err);
-                                            sendError(res, err);
-                                        });
-                                    })
+                        //             if (n == 1) {
+                        //                 newpfNo = "PP 000000" + code + "-10A"
+                        //             }
+                        //             else if (n == 2) {
+                        //                 newpfNo = "PP 00000" + code + "-10A"
+                        //             }
+                        //             else if (n == 3) {
+                        //                 newpfNo = "PP 0000" + code + "-10A"
+                        //             }
+                        //             else if (n == 4) {
+                        //                 newpfNo = "PP 000" + code + "-10A"
+                        //             }
+                        //             else if (n == 5) {
+                        //                 newpfNo = "PP 00" + code + "-10A"
+                        //             }
+                        //             else if (n == 6) {
+                        //                 newpfNo = "PP 0" + code + "-10A"
+                        //             }
+                        //             else {
+                        //                 newpfNo = "PP " + code + "-10A"
+                        //             }
 
 
-                                })
+                        //             var mydata = {
+                        //                 "drgId": req.body.drgId,
+                        //                 "pfNo": newpfNo
+                        //             }
+                        //             PlanAbstract.create(mydata).then(function (paResult) {
+                        //                 Operation.create(req.body).then(function (result) {
+                        //                     sendSuccess(res, result);
+                        //                 }).catch(function (err) {
+                        //                     console.log(err);
+                        //                     sendError(res, err);
+                        //                 });
+                        //             })
 
 
-                            }
+                        //         })
 
-                        })
+
+                        //     }
+
+                        // })
 
                     })
 
@@ -338,7 +344,8 @@ router.put('/pfstatus/:id', (req, res) => {
                             sendSuccess(res, result);
                         }).catch(function (err) {
                             sendError(res, err);
-                        });
+                        }
+                        );
                     }
                 })
             }
@@ -385,11 +392,11 @@ router.put('/pfstatus/:id', (req, res) => {
             sendError(res, err);
         });
 
-        // Drawing.update({pfStatus : 1}, { where: { id: req.params.id } }).then(result => {
-        //     sendSuccess(res, result);
-        // }).catch(function (err) {
-        //     sendError(res, error);
-        // });
+        Drawing.update({pfStatus : 1}, { where: { id: req.params.id } }).then(result => {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, error);
+        });
 
 
     })
@@ -543,112 +550,118 @@ router.post('/copy', (req, res) => {
             if (req.body.addKind) {
                 mytempData.addKind = true;
             }
-
+            
 
             Operation.create(mytempData).then(function (cres) {
+                sendSuccess1(res, cres);
+            }).catch(function (err) {
+                console.log(err);
+                sendError(res, err);
+            });
+              
 
 
-                if (index == (len - 1)) {
+            //   if (index == (len - 1)) {
 
 
-                    PlanAbstract.findOne({ where: { drgId: req.body.drgid } }).then(function (resp1) {
+            //         PlanAbstract.findOne({ where: { drgId: req.body.drgid } }).then(function (resp1) {
 
-                        if (resp1) {
-                            sendSuccess(res, resp1);
-                        }
-                        else {
+            //             if (resp1) {
+            //                 sendSuccess(res, resp1);
+            //             }
+            //             else {
 
-                            if (req.body.altpro) {
-                                sendSuccess(res, cres);
-                            }
+            //                 if (req.body.altpro) {
+            //                     sendSuccess(res, cres);
+            //                 }
 
-                            else if (req.body.addkind) {
-                                sendSuccess(res, cres);
-                            }
+            //                 else if (req.body.addkind) {
+            //                     sendSuccess(res, cres);
+            //                 }
 
-                            else {
-                                Drawing.findOne({ where: { id: req.body.drgid } }).then(function (dres) {
+            //                 else {
+            //                     Drawing.findOne({ where: { id: req.body.drgid } }).then(function (dres) {
 
-                                    var newpfNo = '';
+            //                         var newpfNo = '';
 
-                                    // var newqpNo = '';
-
-
-                                    let code = dres.id;
-
-                                    var n = code.toString().length
-
-                                    if (n == 1) {
-                                        newpfNo = "PP 000000" + code + "-10A"
-
-                                        // newqpNo  = "QP 000000" + code + "-10AA"
-
-                                    }
-                                    else if (n == 2) {
-                                        newpfNo = "PP 00000" + code + "-10A"
-
-                                        // newqpNo = "QP 00000" + code + "-10AA"
-
-                                    }
-                                    else if (n == 3) {
-                                        newpfNo = "PP 0000" + code + "-10A"
-
-                                        // newqpNo = "QP 0000" + code + "-10AA"
-
-                                    }
-                                    else if (n == 4) {
-                                        newpfNo = "PP 000" + code + "-10A"
-
-                                        // newqpNo = "QP 000" + code + "-10AA"
-
-                                    }
-                                    else if (n == 5) {
-                                        newpfNo = "PP 00" + code + "-10A"
-
-                                        // newqpNo = "QP 00" + code + "-10AA"
-
-                                    }
-                                    else if (n == 6) {
-                                        newpfNo = "PP 0" + code + "-10A"
-
-                                        // newqpNo = "QP 0" + code + "-10AA"
-
-                                    }
-                                    else {
-                                        newpfNo = "PP " + code + "-10A"
-
-                                        // newqpNo = "QP " + code + "-10AA"
-
-                                    }
+            //                         // var newqpNo = '';
 
 
-                                    var mydata = {
-                                        "drgId": req.body.drgid,
-                                        "pfNo": newpfNo,
-                                        // "qpNo":newqpNo
-                                    }
-                                    PlanAbstract.create(mydata).then(function (paResult) {
-                                        sendSuccess(res, paResult);
-                                    }).catch(function (err) {
-                                        console.log(err);
-                                        sendError(res, err);
-                                    })
+            //                         let code = dres.id;
+
+            //                         var n = code.toString().length
+
+            //                         if (n == 1) {
+            //                             newpfNo = "PP 000000" + code + "-10A"
+
+            //                             // newqpNo  = "QP 000000" + code + "-10AA"
+
+            //                         }
+            //                         else if (n == 2) {
+            //                             newpfNo = "PP 00000" + code + "-10A"
+
+            //                             // newqpNo = "QP 00000" + code + "-10AA"
+
+            //                         }
+            //                         else if (n == 3) {
+            //                             newpfNo = "PP 0000" + code + "-10A"
+
+            //                             // newqpNo = "QP 0000" + code + "-10AA"
+
+            //                         }
+            //                         else if (n == 4) {
+            //                             newpfNo = "PP 000" + code + "-10A"
+
+            //                             // newqpNo = "QP 000" + code + "-10AA"
+
+            //                         }
+            //                         else if (n == 5) {
+            //                             newpfNo = "PP 00" + code + "-10A"
+
+            //                             // newqpNo = "QP 00" + code + "-10AA"
+
+            //                         }
+            //                         else if (n == 6) {
+            //                             newpfNo = "PP 0" + code + "-10A"
+
+            //                             // newqpNo = "QP 0" + code + "-10AA"
+
+            //                         }
+            //                         else {
+            //                             newpfNo = "PP " + code + "-10A"
+
+            //                             // newqpNo = "QP " + code + "-10AA"
+
+            //                         }
 
 
-                                })
+            //                         var mydata = {
+            //                            "drgId": req.body.drgid,
+            //                         //     //  "pfNo": newpfNo,
+            //                         //     // "qpNo":newqpNo
+            //                          }
+            //                         PlanAbstract.create(mydata).then(function (paResult) {
+            //                             sendSuccess(res, paResult);
+            //                         }).catch(function (err) {
+            //                             console.log(err);
+            //                             sendError(res, err);
+            //                         })
 
-                            }
 
-                        }
+            //                     })
 
-                    })
+            //                 }
+
+            //             }
+
+            //         })
 
 
 
 
-                }
+            //      }
 
-            })
+            //  })
 
 
 
