@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, public auth: AuthenticationService, public activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    let status = localStorage.getItem('adminLogRole')
+    let logRole = localStorage.getItem('logRole');
     let path = this.activeRoute.snapshot.routeConfig.path;
     if (path == "drawing") {
       this.pathDrawing = false
@@ -83,8 +85,7 @@ export class NavbarComponent implements OnInit {
       this.isPANEL = true
     }
 
-    let status = localStorage.getItem('adminLogRole')
-    let logRole = localStorage.getItem('logRole');
+    
     this.checkroles(status);
     this.checkrole(logRole);
     this.email = localStorage.getItem('email');

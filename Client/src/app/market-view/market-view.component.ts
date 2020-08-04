@@ -34,16 +34,16 @@ export class MarketViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getMaterial();
     this.getData();
     this.showCard = false;
     let status= this.activeRoute.snapshot.queryParams.type;
-    localStorage.setItem('adminLogRole', status);
-
-
+    if (status) {
+      localStorage.setItem('adminLogRole', status);
+    } else {
+      status = localStorage.getItem('adminLogRole');
+    }
   }
-
-
+  
   show() {
     if (this.showCard) {
       this.showCard = false;
