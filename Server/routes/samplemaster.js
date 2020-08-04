@@ -86,7 +86,7 @@ router.post('/', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-
+  
     req.body.updatedBy = 1;
     return new Promise((resolve, reject) => {
         let data = {
@@ -95,6 +95,7 @@ router.put('/:id', (req, res) => {
             "opnName": req.body.opnName,
             "description": req.body.description,
             "specification": req.body.specification,
+            "baloonNo": req.body.baloonNo, 
             "tolFrom": req.body.tolFrom,
             "tolTo": req.body.tolTo,
             "instrument": req.body.instrument,

@@ -22,7 +22,7 @@ export class SamplingComponent implements OnInit {
   userTable: FormGroup;
   control: FormArray;
   formData;
-  validityCheck;
+  validityCheck = true;
 
   constructor(
     private _sampleservice: SamplingService,
@@ -66,6 +66,7 @@ export class SamplingComponent implements OnInit {
     this.getOplist();
     this.getInstrument();
     this.getMeasuring();
+
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     if (this.drgObject.pfStatus) {
@@ -150,7 +151,8 @@ export class SamplingComponent implements OnInit {
   addNewRow() {
     const control = this.userTable.get('tableRows') as FormArray;
     control.insert(0, this.initiateForm());
-    this.dataSource.filteredData = this.userTable.controls["tableRows"].value
+    this.dataSource = new MatTableDataSource(this.userTable.controls["tableRows"].value);
+    this.dataSource.paginator = this.paginator;
   }
 
 
@@ -185,7 +187,7 @@ export class SamplingComponent implements OnInit {
   async updateOperation() {
     if (this.userTable.valid && this.validityCheck == true) {
       this.userTable.value.tableRows.forEach(element => {
-        if (element.id) {
+       if (element.id) {
           this._sampleservice.updateSampling(element.id, element).subscribe((res: any) => {
             console.log(res);
           });
@@ -225,6 +227,7 @@ export class SamplingComponent implements OnInit {
         verticalPosition: 'bottom',
         panelClass: 'errorsnackbarclass'
       });
+      window.location.reload();
     } else {
       alert("Please fill the data in the required fields");
     }
@@ -320,6 +323,7 @@ export class SamplingComponent implements OnInit {
 
 
   getSampling() {
+
     let temp = JSON.parse(localStorage.getItem("drgObject"));
     let drgid = temp.id;
     this._sampleservice.getSampling(drgid).subscribe((res: any) => {
