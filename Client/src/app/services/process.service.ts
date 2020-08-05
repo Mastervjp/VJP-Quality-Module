@@ -12,7 +12,7 @@ export class ProcessService {
   private API_URL = environment.API_URL;
 
   private token: string;
-  
+  getItem: any;
 
   constructor(private http: HttpClient) { }
 
@@ -75,10 +75,17 @@ export class ProcessService {
 
 
   confirmQuality(drgcode): Observable<any> {
-
     return this.http.put(this.API_URL+'/api/process/func/plan/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
 
-
+  updatestatus(id, status): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/process/' + id, status, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
+  
+  updatemasterstatus(id, masterApproval): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/process/' + id, masterApproval, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
 }

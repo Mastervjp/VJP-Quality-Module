@@ -12,6 +12,9 @@ import { ProcessDialogComponent } from '../process-dialog/process-dialog.compone
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material';
 import { AuthenticationService } from '../services/authentication.service';
+import { QualityService } from '../services/quality.service';
+import { OperationService } from '../services/operation.service';
+
 BatchquantityComponent
 @Component({
   selector: 'app-process',
@@ -23,7 +26,14 @@ export class ProcessComponent implements OnInit {
   isSuper: boolean;
   isENGG: boolean;
   isET: boolean;
+
   public invoiceForm: FormGroup;
+  isTT: boolean;
+  tec: boolean;
+  isMT: boolean;
+  appButton: boolean;
+  appButton1: boolean;
+  ismaster: boolean;
   constructor(private _processservice: ProcessService,
     private _process: ProcessService,
     public activeRoute: ActivatedRoute,
@@ -32,7 +42,10 @@ export class ProcessComponent implements OnInit {
     public dialog: MatDialog,
     private _matDialog: MatDialog,
     public snackBar: MatSnackBar,
-    private _formBuilder: FormBuilder,) { }
+    private _formBuilder: FormBuilder,
+    private _operationservice: OperationService,
+    private _qualityservice: QualityService,
+    private _drawingservice: DrawingService) { }
   action: string;
   dialogTitle: string;
   viewdata: any
@@ -100,7 +113,13 @@ export class ProcessComponent implements OnInit {
     this.submitshow;
 
     if (this.islog && this.isENGG || this.isET) {
-      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection','periodicInspection','ctq','pdi','cfir', 'delete'];
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq', 'pdi', 'cfir', 'edit', 'delete'];
+    }
+    else if (this.islog && this.isTT) {
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'Approve'];
+    }
+    else if (this.islog && this.isMT) {
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'masterApprove'];
     }
     else {
       this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',];
@@ -141,10 +160,22 @@ export class ProcessComponent implements OnInit {
       this.isET = true;
       this.isENGG = true;
     }
+    else if (localStorage.getItem('logRole') == "TT" || localStorage.getItem('adminLogRole') == 'tec') {
+      this.isTT = true;
+      this.tec = true;
+    }
+    else if (localStorage.getItem('logRole') == "MT" || localStorage.getItem('adminLogRole') == 'master') {
+      this.isMT = true;
+      this.ismaster = true;
+    }
 
     else {
       this.isUT = false;
       this.isOPE = false;
+      this.isTT = false;
+      this.tec = false;
+      this.isET = false;
+      this.isENGG = false;
     }
     this.isUT
   }
@@ -173,13 +204,51 @@ export class ProcessComponent implements OnInit {
   }
 
 
+  // getprocess(drgcode, opno) {
+  //   this._processservice.getprocess(drgcode, opno).subscribe((res: any) => {
+  //     if (res.success) {
+  //       this.dataSource = new MatTableDataSource(res.data);
+  //       this.dataSource.paginator = this.paginator;
+  //     }
+  //   });
+  // }
   getprocess(drgcode, opno) {
+    let tempCheck;
+    this.appButton = false;
+    let tempCheck1;
+    this.appButton1 = false;
     this._processservice.getprocess(drgcode, opno).subscribe((res: any) => {
+  
       if (res.success) {
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
+        res.data.forEach(element => {
+          if (element.status == true) {
+            this.appButton = true;
+          } else {
+            tempCheck = false;
+          }
+
+          if (tempCheck == false) {
+            this.appButton = false;
+          }
+
+        });
+        res.data.forEach(element => {
+          if (element.masterApproval == true) {
+            this.appButton1 = true;
+          } else {
+            tempCheck1 = false;
+          }
+
+          if (tempCheck1 == false) {
+            this.appButton1 = false;
+          }
+
+        });
       }
     });
+
   }
 
   confirmQuality() {
@@ -234,8 +303,16 @@ export class ProcessComponent implements OnInit {
 
         this._processservice.deleteProcess(id).subscribe((res: any) => {
           if (res.success) {
+            
             this.submitshow = true;
-
+            let masterApproval = { "masterApproval": '1' }
+            this._process.updatemasterstatus(id, masterApproval).subscribe((res: any) => {
+            
+            });
+            let status = { "status": '1' }
+            this._process.updatestatus(id, status).subscribe((res: any) => {
+           
+            });
             let myItem1 = localStorage.getItem('DrgCode');
             let myItem2 = localStorage.getItem('opnNo');
             this.getprocess(myItem1, myItem2);
@@ -351,6 +428,7 @@ export class ProcessComponent implements OnInit {
   }
 
   updateProcess(editId, arg1) {
+    
 
     let step1 = this.dataSource.data[arg1]
     let tempdata = this.instrumentList;
@@ -385,7 +463,6 @@ export class ProcessComponent implements OnInit {
   updateProcess1() {
 
 
-
     for (let index = 0; index < this.dataSource.data.length; index++) {
 
       var editId = this.dataSource.data[index].id;
@@ -401,6 +478,61 @@ export class ProcessComponent implements OnInit {
       step1
       this._process.updateProcess(editId, step1).subscribe((res: any) => {
         if (res.success) {
+
+          
+          let status = { "status": null }
+          this._operationservice.updatestatus(editId, status).subscribe((res: any) => {
+          });
+  
+          let masterApproval = { "masterApproval": null }
+          this._operationservice.updatemasterstatus(editId, masterApproval).subscribe((res: any) => {
+          });
+          let opnNo = localStorage.getItem('opnNo');
+          let qpTechConfirm = { "qpTechConfirm": null }
+          this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
+          });
+  
+          let qpMasterApproval = { "qpMasterApproval": null }
+          this._operationservice.approval1(opnNo, qpMasterApproval).subscribe((res: any) => {
+          });
+  
+  
+          let pfno = localStorage.getItem('pfno');
+          this._qualityservice.approval(pfno, status).subscribe((res: any) => {
+        
+          });
+
+          let masterStatus = { "masterStatus": null }
+          this._qualityservice.approval1(pfno, masterStatus).subscribe((res: any) => {
+       
+          });
+          
+          
+          let operatorStatus = { "operatorStatus": null }
+          this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
+    
+          });
+
+          
+
+          
+          let id = localStorage.getItem('DrgCode')
+          let techApproval = { "techApproval": null } 
+          this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
+          });
+  
+
+          this._process.updatemasterstatus(editId, masterApproval).subscribe((res: any) => {
+           
+          });
+
+          this._process.updatestatus(editId, status).subscribe((res: any) => {
+          
+          });
+
+
+
+
           this.contactForm.reset();
           this.snackBar.open("Process Updated Sucessfully", "", {
             duration: 1500,
@@ -430,4 +562,136 @@ export class ProcessComponent implements OnInit {
     }
 
   }
+  approval(opnNo, qpTechConfirm) {
+
+    if (qpTechConfirm) {
+      let opnNo = localStorage.getItem('opnNo');
+      let qpTechConfirm = { "qpTechConfirm": 1 }
+      this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
+      
+        if (res.success) {
+          this.router.navigate(['/processplan']);
+          this.snackBar.open("Form Approved", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+  }
+  Lockaction(id, status) {
+    if (status) {
+
+      let status = { "status": 1 }
+
+
+      this._processservice.updatestatus(id, status).subscribe((res: any) => {
+     
+        if (res.success) {
+          let myItem1 = localStorage.getItem('DrgCode');
+          let myItem2 = localStorage.getItem('opnNo');
+
+          this.getprocess(myItem1, myItem2);
+          this.snackBar.open("Form Approved", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+
+    }
+
+    else {
+
+      let status = { "status": 0 }
+
+      this._processservice.updatestatus(id, status).subscribe((res: any) => {
+    
+        if (res.success) {
+          let myItem1 = localStorage.getItem('DrgCode');
+          let myItem2 = localStorage.getItem('opnNo');
+
+          this.getprocess(myItem1, myItem2);
+          this.snackBar.open("Form Rejected", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+    
+
+
+  }
+  Lockaction1(id, masterApproval) {
+    if (masterApproval) {
+
+      let masterApproval = { "masterApproval": 1 }
+
+
+      this._processservice.updatemasterstatus(id, masterApproval).subscribe((res: any) => {
+  
+        if (res.success) {
+          let myItem1 = localStorage.getItem('DrgCode');
+          let myItem2 = localStorage.getItem('opnNo');
+          this.getprocess(myItem1, myItem2);
+          this.snackBar.open("Form Approved", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+
+    }
+
+    else {
+
+      let masterApproval = { "masterApproval": 0 }
+
+      this._processservice.updatemasterstatus(id, masterApproval).subscribe((res: any) => {
+  
+        if (res.success) {
+          let myItem1 = localStorage.getItem('DrgCode');
+          let myItem2 = localStorage.getItem('opnNo');
+
+          this.getprocess(myItem1, myItem2);
+          this.snackBar.open("Form Rejected", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+
+  }
+  approval1(opnNo, qpMasterApproval) {
+
+    if (qpMasterApproval) {
+      let opnNo = localStorage.getItem('opnNo');
+      let qpMasterApproval = { "qpMasterApproval": 1 }
+      this._operationservice.approval1(opnNo, qpMasterApproval).subscribe((res: any) => {
+  
+        if (res.success) {
+          this.router.navigate(['/processplan']);
+          this.snackBar.open("Form Approved", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+  }
+
 }

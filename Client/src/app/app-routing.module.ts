@@ -40,6 +40,8 @@ import { ContractreviewPrintComponent } from './contractreview-print/contractrev
 import { ContractreviewEditComponent } from './contractreview-edit/contractreview-edit.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpapproval-drawing-table.component';
+import { ProcessDialogComponent } from './process-dialog/process-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -255,7 +257,18 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService]
 
   },
+  {
+    path: 'qpapproval-drawingtable',
+    component: QpapprovalDrawingTableComponent,
+    canActivate: [AuthGuardService]
 
+  },
+  {
+    path: 'qpapproval',
+    component: ProcessDialogComponent,
+    canActivate: [AuthGuardService]
+
+  },
 
 
 
