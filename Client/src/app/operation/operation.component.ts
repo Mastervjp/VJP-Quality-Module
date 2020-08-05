@@ -55,7 +55,7 @@ export class OperationComponent implements OnInit {
 
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
-    ;
+    
     
 
     if (this.drgObject.pfStatus) {
