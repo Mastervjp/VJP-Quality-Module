@@ -26,7 +26,24 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'pf_no'
         },
-        
+        status:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'status',
+            allowNull: true
+        },
+        masterStatus:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'master_status',
+            allowNull: true
+        },
+        operatorStatus:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'operator_status',
+            allowNull: true
+        },
         createdBy: {
             type: DataTypes.STRING(50),
             field: 'created_by'

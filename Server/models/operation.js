@@ -62,7 +62,30 @@ module.exports = function(sequelize, DataTypes) {
             field: 'add_kind',
             defaultValue: false
         },
-
+        status:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'status',
+            allowNull: true
+        },
+        qpTechConfirm:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'qp_tech_confirm',
+            allowNull: true
+        },
+        masterApproval:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'master_approval',
+            allowNull: true
+        },
+        qpMasterApproval:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'qp_master_approval',
+            allowNull: true
+        },
 
         createdBy: {
             type: DataTypes.STRING(50),
