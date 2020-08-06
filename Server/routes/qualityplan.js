@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { QualityPlan,PlanAbstract, Operation, Drawing,  Process } = require('./../models')
+const { QualityPlan,PlanAbstract, Operation, Process } = require('./../models')
 
 
 function sendError(res, err) {
@@ -40,16 +40,6 @@ router.get('/:drgId', (req, res) => {
     })
 })
 
-router.get('/drawing/:drgId', (req, res) => {
-    return new Promise((resolve, reject) => {
-        Drawing.findAll({ where: { Id: req.params.drgId }}).then(function (result) {
-            sendSuccess(res, result);
-        }).catch(function (err) {
-            sendError(res, err);
-        });
-    })
-})
-
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
         req.body.createdBy = 1;
@@ -61,14 +51,6 @@ router.post('/', (req, res) => {
     })
 })
 
-router.put('/plan/:pfNo', (req, res) => {
-    PlanAbstract.update(req.body, { where: { pfNo: req.params.pfNo } }).then(result => {
-        sendSuccess1(res, result, "Data updated");
-    }).catch(function (err) {
-        console.log(err)
-        error(res, err);
-    });
-})
 
 router.put('/:id', (req, res) => {
 

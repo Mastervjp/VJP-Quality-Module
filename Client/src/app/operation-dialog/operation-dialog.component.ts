@@ -4,8 +4,6 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { DrawingService } from '../services/drawing.service';
 import { OperationService } from '../services/operation.service';
 import { environment } from 'src/environments/environment';
-import { QualityService } from '../services/quality.service';
-import { ProcessService } from '../services/process.service';
 
 
 @Component({
@@ -49,7 +47,7 @@ export class OperationDialogComponent {
     uploadImage3: ['', Validators.required],
     uploadImage4: ['', Validators.required],
   });
-  pfno: string;
+
 
   constructor(public matDialogRef: MatDialogRef<OperationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private _data: any,
@@ -57,8 +55,6 @@ export class OperationDialogComponent {
     private _operationservice: OperationService,
     public snackBar: MatSnackBar,
     private cd: ChangeDetectorRef,
-    private _qualityservice: QualityService,
-    private _drawingservice: DrawingService
 
   ) {
     this.action = _data.action;
@@ -134,26 +130,6 @@ export class OperationDialogComponent {
 
     this._operationservice.addOperation(formData).subscribe((res: any) => {
       if (res.success) {
-
-
-        let operatorStatus = { "operatorStatus": null }
-        let pfno = localStorage.getItem('pfno');
-        this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
-        });
-
-        let status = { "status": null }
-        this._qualityservice.approval(pfno, status).subscribe((res: any) => {
-        });
-        
-        let masterStatus = { "masterStatus": null }
-        this._qualityservice.approval1(pfno, masterStatus).subscribe((res: any) => {
-        });
-        
-        let id = localStorage.getItem('DrgCode')
-        let techApproval = { "techApproval": null } 
-        this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
-        });
-
         this.matDialogRef.close(true);
         this.contactForm.reset();
         this.snackBar.open("Process Created Sucessfully", "", {
@@ -228,44 +204,6 @@ export class OperationDialogComponent {
 
     this._operationservice.updateOperation(editId, formData).subscribe((res: any) => {
       if (res.success) {
-        let status = { "status": null }
-        this._operationservice.updatestatus(editId, status).subscribe((res: any) => {
-        });
-
-        let masterApproval = { "masterApproval": null }
-        this._operationservice.updatemasterstatus(editId, masterApproval).subscribe((res: any) => {
-        });
-        let opnNo = localStorage.getItem('opnNo');
-        let qpTechConfirm = { "qpTechConfirm": null }
-        this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
-        });
-
-        let qpMasterApproval = { "qpMasterApproval": null }
-        this._operationservice.approval1(opnNo, qpMasterApproval).subscribe((res: any) => {
-        });
-
-
-        let pfno = localStorage.getItem('pfno');
-        this._qualityservice.approval(pfno, status).subscribe((res: any) => {
-        });
-
-        let masterStatus = { "masterStatus": null }
-        this._qualityservice.approval1(pfno, masterStatus).subscribe((res: any) => {
-        });
-
-        let operatorStatus = { "operatorStatus": null }
-        this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
-        });
-
-
-               
-        let id = localStorage.getItem('DrgCode')
-        let techApproval = { "techApproval": null } 
-        this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
-        });
-
-
-        
         this.matDialogRef.close(true);
         this.contactForm.reset();
         this.snackBar.open("Process Updated Sucessfully", "", {

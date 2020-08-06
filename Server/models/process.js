@@ -108,19 +108,7 @@ module.exports = function(sequelize, DataTypes) {
             field: 'add_kind',
             defaultValue: false
         },
-        status:
-        {
-            type: DataTypes.BOOLEAN,
-            field: 'status',
-            allowNull: true
-        },
 
-        masterApproval:
-        {
-            type: DataTypes.BOOLEAN,
-            field: 'master_approval',
-            allowNull: true
-        },
         
         createdBy: {
             type: DataTypes.STRING(50),

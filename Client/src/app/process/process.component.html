@@ -1,9 +1,4 @@
 <app-navbar>
-  <a>
-    <ng-container *ngIf="islog && isMT">
-      <img   style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">
-    </ng-container>
-  </a>  
   <h3 style=" color: white;">Quality&nbsp;Plan</h3>
 </app-navbar>
 <div style=" min-height: calc(100vh - 110px);">
@@ -28,7 +23,7 @@
               <td style="border: 1px solid black;border-collapse: collapse;">Drawing code</td>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.id}}</th>
               <td style="border: 1px solid black;border-collapse: collapse;">Operation No.</td>
-              <th style="border: 1px solid black;border-collapse: collapse;"> {{opnValue}}</th>
+              <th style="border: 1px solid black;border-collapse: collapse;"> {{drgObject.opnNo}}</th>
             </tr>
             <tr style="border: 1px solid black;border-collapse: collapse;">
               <td style="border: 1px solid black;border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
@@ -41,7 +36,7 @@
               <td style="border: 1px solid black;border-collapse: collapse;  font-weight: normal !important;">Operation
                 Description</td>
               <th colspan="3" style="border: 1px solid black;border-collapse: collapse;">
-                {{psObject.description | uppercase}}</th>
+                {{drgObject.description | uppercase}}</th>
             </tr>
             <tr style="border: 1px solid black;border-collapse: collapse;">
               <td style="border: 1px solid black;border-collapse: collapse;">Machining Drawing No/Rev/Date</td>
@@ -80,422 +75,175 @@
         </mat-card>
       </div>
 
-
-
-
-
-
-
-
-      <div *ngIf="islog && isTT || isMT || isOPE">
-        <div class="mat-elevation-z8">
-          <table mat-table [dataSource]="dataSource">
-
-            <!-- Position Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef style="width:20px; margin-right: 5px;"> S/N
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
-              <td mat-cell *matCellDef="let element; let rIndex = index;" style="width:20px; margin-right: 5px;">
-                {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
-            </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="description">
-              <th mat-header-cell *matHeaderCellDef> Desc </th>
-              <td mat-cell *matCellDef="let element"> {{element.description | uppercase}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="baloonNo">
-              <th mat-header-cell *matHeaderCellDef> Balloon No </th>
-              <td mat-cell *matCellDef="let element"> {{element.baloonNo}} </td>
-            </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="specification">
-              <th mat-header-cell *matHeaderCellDef> Specs </th>
-              <td mat-cell *matCellDef="let element"> {{element.specification | uppercase}} </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="tolFrom">
-              <th mat-header-cell *matHeaderCellDef> Tol_Min </th>
-              <td mat-cell *matCellDef="let element"> {{element.tolFrom}} </td>
-            </ng-container>
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="tolTo">
-              <th mat-header-cell *matHeaderCellDef> Tol_Max </th>
-              <td mat-cell *matCellDef="let element"> {{element.tolTo}} </td>
-            </ng-container>
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="instrument">
-              <th mat-header-cell *matHeaderCellDef> Instrument </th>
-              <td mat-cell *matCellDef="let element"> {{element.instrument | uppercase}} </td>
-            </ng-container>
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="measuringFrequency">
-              <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
-              <td mat-cell *matCellDef="let element">
-
-                <ng-container *ngIf="element.measuringFrequency == '100'; else newDeb">
-                  100 %
-                </ng-container>
-                <ng-template #newDeb>
-                  1/{{element.measuringFrequency}}
-                </ng-template>
-
-              </td>
-            </ng-container>
-
-            <ng-container *ngIf="islog && isad" matColumnDef="Approve">
-              <th mat-header-cell *matHeaderCellDef>Approval</th>
-              <td mat-cell *matCellDef="let element">
-                <div class="text-center p-2">
-                  <ng-container *ngIf="element.status == NULL">
-                    <button mat-raised-button class="save-button" (click)="Lockaction(element.id, 1)"
-                      [disabled]="element.status == '1'">
-                      <mat-icon style="color:green;background-color: white;" selected>done</mat-icon>
-                    </button>&nbsp;
-                    <button mat-raised-button class="save-button" (click)="Lockaction(element.id, 0)"
-                      [disabled]="element.status == '0'" style="background-color: red;">
-                      <mat-icon style="color:white;background-color: red;" selected>clear</mat-icon>
-                    </button>
-                  </ng-container>
-
-
-                  <ng-container *ngIf="element.status == '0' || element.status == '1'">
-                    <span *ngIf="element.status == '1'"><a mat-stroked-button disabled
-                        style="color: green; width: 100px;">Approved</a> </span>
-                    <span *ngIf="element.status == '0'"><a mat-stroked-button disabled
-                        style="color:red; width: 100px;">Rejected</a> </span> &nbsp;
-                  </ng-container>
-                </div>
-              </td>
-            </ng-container>
-
-
-            <ng-container *ngIf="islog && isad" matColumnDef="masterApprove">
-              <th mat-header-cell *matHeaderCellDef>Approval</th>
-              <td mat-cell *matCellDef="let element">
-                <div class="text-center p-2">
-                  <ng-container *ngIf="element.masterApproval == NULL">
-                    <button mat-raised-button class="save-button" (click)="Lockaction1(element.id, 1)"
-                      [disabled]="element.masterApproval == '1'">
-                      <mat-icon style="color:green;background-color: white;" selected>done</mat-icon>
-                    </button>&nbsp;
-                    <button mat-raised-button class="save-button" (click)="Lockaction1(element.id, 0)"
-                      [disabled]="element.masterApproval == '0'" style="background-color: red;">
-                      <mat-icon style="color:white;background-color: red;" selected>clear</mat-icon>
-                    </button>
-                  </ng-container>
-
-
-                  <ng-container *ngIf="element.masterApproval == '0' || element.masterApproval == '1'">
-                    <span *ngIf="element.masterApproval == '1'"><a mat-stroked-button disabled
-                        style="color: green; width: 100px;">Approved</a> </span>
-                    <span *ngIf="element.masterApproval == '0'"><a mat-stroked-button disabled
-                        style="color:red; width: 100px;">Rejected</a> </span> &nbsp;
-                  </ng-container>
-                </div>
-              </td>
-            </ng-container>
-
-            <!-- <ng-container *ngIf="islog && isad" matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef>Modification</th>
-            <td mat-cell *matCellDef="let drg">
-              <div>
-                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                              padding: 0 !important;" (click)="editDrawing(drg)">
-                  <mat-icon style="color:green" selected>edit</mat-icon>
-                </button>
-              </div>
-            </td>
-          </ng-container> -->
-            <ng-container *ngIf="islog && isad" matColumnDef="edit">
-              <th mat-header-cell *matHeaderCellDef>MODIFICATION</th>
-              <td mat-cell *matCellDef="let drg">
-                <div>
-                  <ng-container *ngIf="drg.status == '0' || drg.masterApproval == '0'">
-                    <span><a mat-stroked-button disabled style="color:red; width: 100px;">Form Rejected Click To
-                        Edit</a> </span> &nbsp;
-                    <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                              padding: 0 !important;" (click)="editDrawing(drg)">
-                      <mat-icon style="color:green" selected>edit</mat-icon>
-                    </button>
-                  </ng-container>
-                  <ng-container *ngIf="drg.status == NULL || drg.masterApproval == NULL">
-                    <span><a mat-stroked-button disabled style="color:blue; width: 100px;">Form Approval Pending</a>
-                    </span> &nbsp;
-                  </ng-container>
-                  <ng-container *ngIf="drg.status == '1' && drg.masterApproval == '1'">
-                    <span><a mat-stroked-button disabled style="color: green; width: 100px;">Approved</a> </span>
-                  </ng-container>
-                </div>
-              </td>
-
-            </ng-container>
-            <!-- 
-          <ng-container *ngIf="islog && isad" matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef>Delete</th>
-            <td mat-cell *matCellDef="let drg">
-              <div>
-                <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                      padding: 0 !important;" (click)="deleteDrg(drg.id)">
-                  <mat-icon color="warn" selected>delete</mat-icon>
-                </button>
-              </div>
-            </td>
-          </ng-container> -->
-
-            <ng-container *ngIf="islog && isad" matColumnDef="delete">
-              <th mat-header-cell *matHeaderCellDef>DELETE</th>
-              <td mat-cell *matCellDef="let drg">
-                <div>
-                  <ng-container
-                    *ngIf="drg.status == '0' || drg.status == NULL || drg.masterApproval == '0' || drg.masterApproval == NULL">
-                    <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                 padding: 0 !important;" (click)="deleteDrg(drg.id)">
-                      <mat-icon color="warn" selected>delete</mat-icon>
-                    </button>
-                  </ng-container>
-
-                </div>
-              </td>
-
-            </ng-container>
-
-
-
-            <tr style="background: #408cfd  ;" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }">
-            </tr>
-          </table>
-
-          <mat-paginator #myPaginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
-        </div>
-
-        <div *ngIf="appButton" style="text-align: right;">
-          <button *ngIf="islog &&isTT ||isTEC" mat-raised-button class="save-button" (click)="approval(opnNo,1)">
-            Confirm Approval </button>
-        </div>
-
-        <div *ngIf="appButton1" style="text-align: right;">
-          <button *ngIf="islog &&isMT ||isMASTER" mat-raised-button class="save-button" (click)="approval1(opnNo,1)">
-            Confirm master Approval </button>
-        </div>
-
-      </div>
-
-
-
-
-
-
-
-
       <div class="action_button" *ngIf="islog && isENGG ||isET">
         <button color="accent" mat-raised-button class="save-button first-action-button" (click)="addProcess()"
           aria-label="SAVE">Add</button>
         <button color="accent" mat-raised-button class="save-button" (click)="updateProcess1()"
           aria-label="SAVE">Update</button>
       </div>
-<div *ngIf="islog && isENGG ||isET">
-  <table mat-table [dataSource]="dataSource" [formGroup]="invoiceForm">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>S/N</th>
-      <td mat-cell *matCellDef="let element; let rIndex = index;">
-        {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
-    </ng-container>
+
+      <table mat-table [dataSource]="dataSource" [formGroup]="invoiceForm">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>S/N</th>
+          <td mat-cell *matCellDef="let element; let rIndex = index;">
+            {{ (rIndex+1) + (myPaginator.pageIndex * myPaginator.pageSize) }} </td>
+        </ng-container>
 
 
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Desc </th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-form-field class="tcustom-full-width">
-          <mat-label>Description</mat-label>
-          <input name="description" (keyup)="onChange($event,rIndex,'description')" [value]="element.description"
-            matInput required>
-          <mat-error>Description is required!</mat-error>
-        </mat-form-field>
-      </td>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef> Desc </th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-form-field class="tcustom-full-width">
+              <mat-label>Description</mat-label>
+              <input name="description" (keyup)="onChange($event,rIndex,'description')" [value]="element.description"
+                matInput required>
+              <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+          </td>
 
 
-    </ng-container>
+        </ng-container>
 
-    <ng-container matColumnDef="baloonNo">
-      <th mat-header-cell *matHeaderCellDef> Balloon No </th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-form-field class="tcustom-full-width">
-          <mat-label>Balloon No</mat-label>
-          <input name="baloonNo" (keyup)="onChange($event,rIndex,'baloonNo')" [value]="element.baloonNo" matInput
-            required>
-          <mat-error>Baloon No is required!</mat-error>
-        </mat-form-field>
-      </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="specification">
-      <th mat-header-cell *matHeaderCellDef> Specs </th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-form-field class="tcustom-full-width">
-          <mat-label>Specification</mat-label>
-          <input name="specification" (keyup)="onChange($event,rIndex,'specification')"
-            [value]="element.specification | uppercase" matInput required>
-          <mat-error>Specification is required!</mat-error>
-        </mat-form-field>
-      </td>
-    </ng-container>
+        <ng-container matColumnDef="baloonNo">
+          <th mat-header-cell *matHeaderCellDef> Balloon No </th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-form-field class="tcustom-full-width">
+              <mat-label>Balloon No</mat-label>
+              <input name="baloonNo" (keyup)="onChange($event,rIndex,'baloonNo')" [value]="element.baloonNo" matInput
+                required>
+              <mat-error>Baloon No is required!</mat-error>
+            </mat-form-field>
+          </td>
+        </ng-container>
 
 
-
-    <ng-container matColumnDef="tolFrom">
-      <th mat-header-cell *matHeaderCellDef> Tol_Min </th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-form-field class="custom2-full-width">
-          <mat-label>Tol Min</mat-label>
-          <input name="tolFrom" (keyup)="onChange($event,rIndex,'tolFrom')" [value]="element.tolFrom" matInput
-            required>
-          <mat-error>Tol Min is required!</mat-error>
-        </mat-form-field>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="tolTo">
-      <th mat-header-cell *matHeaderCellDef> Tol_Max </th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-form-field class="custom2-full-width">
-          <mat-label>Tol Max</mat-label>
-          <input name="tolTo" (keyup)="onChange($event,rIndex,'tolTo')" [value]="element.tolTo" matInput required>
-          <mat-error>Tol Max is required!</mat-error>
-        </mat-form-field>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="instrument">
-      <th mat-header-cell *matHeaderCellDef> Instrument </th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-form-field class="tcustom-full-width">
-          <mat-label>Instrument</mat-label>
-          <mat-select [(value)]="element.instrument">
-            <mat-option *ngFor="let ins of instrumentList" (change)="onChange($event,rIndex,'instrument')"
-              [value]="ins.name">{{ins.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="measuringFrequency">
-      <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-
-        <mat-form-field class="tcustom-full-width">
-          <mat-label>Measuring Frequency</mat-label>
-          <mat-select [(value)]="element.measuringFrequency">
-            <mat-option *ngFor="let ins of measuringList" (change)="onChange($event,rIndex,'measuringFrequency')"
-              [value]="ins.name">
-              <ng-container *ngIf="ins.name == '100'; else newDeb">100 %</ng-container>
-              <ng-template #newDeb>1/{{ins.name}}</ng-template>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="firstPartInspection">
-      <th mat-header-cell *matHeaderCellDef>First Part</th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-checkbox class="example-margin" [checked]="element.firstPartInspection"
-          (change)="element.firstPartInspection = !element.firstPartInspection" value="true"></mat-checkbox>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="periodicInspection">
-      <th mat-header-cell *matHeaderCellDef>Periodic Inspection</th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-checkbox class="example-margin" [checked]="element.periodicInspection"
-          (change)="element.periodicInspection = !element.periodicInspection" value="true"></mat-checkbox>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ctq">
-      <th mat-header-cell *matHeaderCellDef>CTQ</th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-checkbox class="example-margin" [checked]="element.ctq" (change)="element.ctq = !element.ctq"
-          value="true"></mat-checkbox>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="pdi">
-      <th mat-header-cell *matHeaderCellDef>M-FIR</th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-checkbox class="example-margin" [checked]="element.pdi" (change)="element.pdi = !element.pdi"
-          value="true"></mat-checkbox>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="cfir">
-      <th mat-header-cell *matHeaderCellDef>C-FIR</th>
-      <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
-        <mat-checkbox class="example-margin" [checked]="element.cfir" (change)="element.cfir = !element.cfir"
-          value="true"></mat-checkbox>
-      </td>
-    </ng-container>
-
-
-    <ng-container *ngIf="islog && isad" matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef>Approval Status</th>
-      <td mat-cell *matCellDef="let element">
-        <div>
-          <ng-container *ngIf="element.status == '0' && element.masterApproval == NULL">
-            <span><a mat-stroked-button disabled style="color:red; width: 100px;">Rejected </a>
-            </span>
-          </ng-container>
-
-          <ng-container *ngIf="element.status == '1' && element.masterApproval == '0'">
-            <span><a mat-stroked-button disabled style="color:red; width: 100px;">Rejected </a>
-            </span>
-          </ng-container>
+        <ng-container matColumnDef="specification">
+          <th mat-header-cell *matHeaderCellDef> Specs </th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-form-field class="tcustom-full-width">
+              <mat-label>Specification</mat-label>
+              <input name="specification" (keyup)="onChange($event,rIndex,'specification')"
+                [value]="element.specification | uppercase" matInput required>
+              <mat-error>Specification is required!</mat-error>
+            </mat-form-field>
+          </td>
+        </ng-container>
 
 
 
-          <ng-container *ngIf="element.status == NULL && element.masterApproval == NULL">
-            <span><a mat-stroked-button disabled style="color:blue; width: 100px;"> Pending</a> </span>
+        <ng-container matColumnDef="tolFrom">
+          <th mat-header-cell *matHeaderCellDef> Tol_Min </th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-form-field class="custom2-full-width">
+              <mat-label>Tol Min</mat-label>
+              <input name="tolFrom" (keyup)="onChange($event,rIndex,'tolFrom')" [value]="element.tolFrom" matInput
+                required>
+              <mat-error>Tol Min is required!</mat-error>
+            </mat-form-field>
+          </td>
+        </ng-container>
 
-          </ng-container>
-          <ng-container *ngIf="element.status == '1' && element.masterApproval == NULL">
-            <span><a mat-stroked-button disabled style="color:blue; width: 100px;">Pending</a> </span>
+        <ng-container matColumnDef="tolTo">
+          <th mat-header-cell *matHeaderCellDef> Tol_Max </th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-form-field class="custom2-full-width">
+              <mat-label>Tol Max</mat-label>
+              <input name="tolTo" (keyup)="onChange($event,rIndex,'tolTo')" [value]="element.tolTo" matInput required>
+              <mat-error>Tol Max is required!</mat-error>
+            </mat-form-field>
+          </td>
+        </ng-container>
 
-          </ng-container>
-          <ng-container *ngIf="element.status == '1' && element.masterApproval == '1'">
-            <span><a mat-stroked-button disabled style="color: green; width: 100px;">Approved</a> </span>
-          </ng-container>
-        </div>
-      </td>
+        <ng-container matColumnDef="instrument">
+          <th mat-header-cell *matHeaderCellDef> Instrument </th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-form-field class="tcustom-full-width">
+              <mat-label>Instrument</mat-label>
+              <mat-select [(value)]="element.instrument">
+                <mat-option *ngFor="let ins of instrumentList" (change)="onChange($event,rIndex,'instrument')"
+                  [value]="ins.name">{{ins.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </ng-container>
 
-    </ng-container>
+        <ng-container matColumnDef="measuringFrequency">
+          <th mat-header-cell *matHeaderCellDef> Measuring Frequency </th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
 
-    <ng-container *ngIf="islog && isad" matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef>Delete</th>
-      <td mat-cell *matCellDef="let drg">
-        <div>
-          <button mat-raised-button selected
-            style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;padding: 0 !important;"
-            (click)="deleteDrg(drg.id)">
-            <mat-icon color="warn" selected>delete</mat-icon>
-          </button>
-        </div>
-      </td>
-    </ng-container>
+            <mat-form-field class="tcustom-full-width">
+              <mat-label>Measuring Frequency</mat-label>
+              <mat-select [(value)]="element.measuringFrequency">
+                <mat-option *ngFor="let ins of measuringList" (change)="onChange($event,rIndex,'measuringFrequency')"
+                  [value]="ins.name">
+                  <ng-container *ngIf="ins.name == '100'; else newDeb">100 %</ng-container>
+                  <ng-template #newDeb>1/{{ins.name}}</ng-template>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-    <tr mat-row class="content_table_row" *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }"
-      formArrayName="Rows"></tr>
-  </table>
-  <mat-paginator #myPaginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
-</div>
-</div>
-     
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstPartInspection">
+          <th mat-header-cell *matHeaderCellDef>First Part</th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-checkbox class="example-margin" [checked]="element.firstPartInspection"
+              (change)="element.firstPartInspection = !element.firstPartInspection" value="true"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="periodicInspection">
+          <th mat-header-cell *matHeaderCellDef>Periodic Inspection</th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-checkbox class="example-margin" [checked]="element.periodicInspection"
+              (change)="element.periodicInspection = !element.periodicInspection" value="true"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ctq">
+          <th mat-header-cell *matHeaderCellDef>CTQ</th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-checkbox class="example-margin" [checked]="element.ctq" (change)="element.ctq = !element.ctq"
+              value="true"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pdi">
+          <th mat-header-cell *matHeaderCellDef>M-FIR</th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-checkbox class="example-margin" [checked]="element.pdi" (change)="element.pdi = !element.pdi"
+              value="true"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cfir">
+          <th mat-header-cell *matHeaderCellDef>C-FIR</th>
+          <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
+            <mat-checkbox class="example-margin" [checked]="element.cfir" (change)="element.cfir = !element.cfir"
+              value="true"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container *ngIf="islog && isad" matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let drg">
+            <div>
+              <button mat-raised-button selected
+                style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;padding: 0 !important;"
+                (click)="deleteDrg(drg.id)">
+                <mat-icon color="warn" selected>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-row class="content_table_row" *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }"
+          formArrayName="Rows"></tr>
+      </table>
+      <mat-paginator #myPaginator [pageSizeOptions]="[200,400,600]" showFirstLastButtons></mat-paginator>
+    </div>
     <div class="col text-center">
       <button *ngIf="submitshow" mat-raised-button (click)="confirmQuality()">Submit Quality Plan</button>
     </div>
