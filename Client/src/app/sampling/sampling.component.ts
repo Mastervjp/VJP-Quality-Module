@@ -125,7 +125,7 @@ export class SamplingComponent implements OnInit {
     return this._formBuilder.group({
       id: new FormControl(),
       pid: new FormControl(),
-      opnNo: new FormControl(''),
+      opnNo: new FormControl(),
       opnName: new FormControl(''),
       description: new FormControl(''),
       workCenter: new FormControl(''),
@@ -153,7 +153,7 @@ export class SamplingComponent implements OnInit {
     control.insert(0, this.initiateForm());
     this.dataSource = new MatTableDataSource(this.userTable.controls["tableRows"].value);
     this.dataSource.paginator = this.paginator;
-  }
+    }
 
 
   Logout() {
@@ -186,15 +186,20 @@ export class SamplingComponent implements OnInit {
 
   async updateOperation() {
     if (this.userTable.valid && this.validityCheck == true) {
-      this.userTable.value.tableRows.forEach(element => {
-       if (element.id) {
+      let tempData = this.userTable.value.tableRows;
+        for(let element of tempData){
+          element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
+        if (element.id) {
           this._sampleservice.updateSampling(element.id, element).subscribe((res: any) => {
             console.log(res);
           });
+          console.log(element.id, "update");
         } else {
+          element.desc = element.description;
           delete element.id;
           delete element.pid;
-          element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
+          delete element.description;
+          
           if (element.firstPartInspection) {
             //action
             element.firstPartInspection = true
@@ -216,12 +221,15 @@ export class SamplingComponent implements OnInit {
             element.ctq = 0
           }
           element.pdi = element.fir;
-          this._sampleservice.addSampling(element).subscribe((res: any) => {
-            console.log(res);
-          });
+          await new Promise ((resolve, reject) => { 
+            this._sampleservice.addSampling(element).subscribe((res: any) => {
+                console.log(res);
+                resolve();
+              });                  
+        }); 
         }
-      });
-      await this.snackBar.open("Process updated successfully", "", {
+      }
+       this.snackBar.open("Process updated successfully", "", {
         duration: 1500,
         horizontalPosition: 'center',
         verticalPosition: 'bottom',

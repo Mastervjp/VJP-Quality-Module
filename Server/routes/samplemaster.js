@@ -47,6 +47,10 @@ router.post('/', (req, res) => {
             if (resp) {
                 console.log(resp);
                 req.body.opnId = resp.id;
+                if( req.body.desc ) {
+                    req.body.description = req.body.desc;
+                }
+
                 Process.create(req.body).then(function (result) {
                     sendSuccess(res, result);
                 }).catch(function (err) {
@@ -63,6 +67,9 @@ router.post('/', (req, res) => {
                 }
                 Operation.create(datas).then(function (opRes) {
                 req.body.opnId = opRes.id;
+                if( req.body.desc ) {
+                    req.body.description = req.body.desc;
+                }
                     Process.create(req.body).then(function (result) {
                         sendSuccess(res, result);
                     }).catch(function (err) {
@@ -86,12 +93,12 @@ router.post('/', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-  
+    debugger;
+
     req.body.updatedBy = 1;
     return new Promise((resolve, reject) => {
         let data = {
             "id": req.body.pid,
-            "opnId": req.body.id,
             "opnName": req.body.opnName,
             "description": req.body.description,
             "specification": req.body.specification,
@@ -107,17 +114,40 @@ router.put('/:id', (req, res) => {
             "cfir":req.body.cfir,
             "pdi":req.body.fir,
         }
-        delete req.body.description;        
-       
-        Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
-            sendSuccess1(res, result, "Data successfully updated");
-            Process.update(data, { where: { id: req.body.pid } }).then(result => {
-                sendSuccess1(res, result, "Data successfully updated");
-            }).catch(function (err) {
-                sendError(res, error);
-            });
-        }).catch(function (err) {
-            sendError(res, error);
+        delete req.body.description;    
+        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
+            
+            if (resp) {
+                data.opnId = resp.id;
+                Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
+                    sendSuccess1(res, result, "Data successfully updated");
+                    Process.update(data, { where: { id: req.body.pid } }).then(result => {
+                        sendSuccess1(res, result, "Data successfully updated");
+                    }).catch(function (err) {
+                        sendError(res, error);
+                    });
+                }).catch(function (err) {
+                    sendError(res, error);
+                });
+            }    
+            else {
+                let datas = {
+                    "opnNo":req.body.opnNo,
+                    "opnName": req.body.opnName,
+                    // "description": req.body.description,
+                    "workCenter":req.body.workCenter,
+                    "drgId": req.body.drgId
+                }
+                Operation.create(datas).then(function (opRes) {
+                data.opnId = opRes.id;
+                Process.update(data, { where: { id: req.body.pid } }).then(result => {
+                    sendSuccess1(res, result, "Data successfully updated");
+                }).catch(function (err) {
+                    sendError(res, err);
+                });
+                });
+
+            }
         });
     })
 })
