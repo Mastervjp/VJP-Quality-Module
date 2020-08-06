@@ -8,8 +8,6 @@ import { OperationDialogComponent } from '../operation-dialog/operation-dialog.c
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { CopyProcessComponent } from '../copy-process/copy-process.component';
-import { QualityService } from '../services/quality.service';
-import { ProcessService } from '../services/process.service';
 
 @Component({
   selector: 'app-operation',
@@ -22,23 +20,9 @@ export class OperationComponent implements OnInit {
   isET: boolean;
   isENGG: boolean;
   isSuper: boolean;
-  isTT: boolean;
-  pfno: string;
-  getdata: any;
-  appButton: boolean;
-  isMT: boolean;
-  appButton1: boolean;
-  isMASTER: boolean;
-  isTEC: boolean;
-  constructor(private _qualityservice: QualityService,
-    private _processservice: ProcessService,
-    private _drawingservice: DrawingService,
-    public auth: AuthenticationService,
-    private router: Router,
-    private _operationservice: OperationService,
-    private _matDialog: MatDialog,
-    public activeRoute: ActivatedRoute,
-    public snackBar: MatSnackBar) { }
+
+  constructor(private _drawingservice: DrawingService, public activeRoute: ActivatedRoute, public auth: AuthenticationService, private router: Router, private _operationservice: OperationService, private _matDialog: MatDialog, public snackBar: MatSnackBar) { }
+
 
   islog: boolean;
   isad: boolean;
@@ -46,6 +30,10 @@ export class OperationComponent implements OnInit {
   displayedColumns: any;
   drgObject: any;
   qpaObject: any;
+
+  // dataSource: FilesDataSource | null;
+  //displayedColumns = ['id', 'opnNo', 'opnName', 'description','type', 'workCenter','edit','delete'];
+
   dataSource: MatTableDataSource<any>;
   dialogRef: any;
   confirmDialogRef: any;
@@ -56,18 +44,20 @@ export class OperationComponent implements OnInit {
 
 
   ngOnInit() {
-
+  
     this.getoperation();
-    this.pfno = localStorage.getItem('pfno');
-    let status = localStorage.getItem('adminlogrole')
+    let status =localStorage.getItem('adminlogrole')
     this.checkrole(status);
-
+    
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
     this.isSuper = this.auth.isSuperAdmin();
 
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
+    
+    
+
     if (this.drgObject.pfStatus) {
       this.submitshow = false;
     }
@@ -77,19 +67,9 @@ export class OperationComponent implements OnInit {
     }
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
-    let logRole = localStorage.getItem('logRole');
-    console.log(logRole);
-    console.log(this.islog);
 
-
-    if (this.islog && this.isET) {
+    if (this.islog && this.isET || this.isENGG) {
       this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'edit', 'delete'];
-    }
-    else if (this.islog && this.isTT) {
-      this.displayedColumns = ['id', 'techOpnNo', 'opnName', 'description', 'workCenter', 'Approve', 'qpapprove'];
-    }
-    else if (this.islog && this.isMT) {
-      this.displayedColumns = ['id', 'masterOpnNo', 'opnName', 'description', 'workCenter', 'masterApprove', 'qpmasterapprove'];
     }
     else {
       this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter'];
@@ -100,7 +80,6 @@ export class OperationComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
-
   checkrole(status) {
 
     if (localStorage.getItem('logRole') == "UT" || localStorage.getItem('adminLogRole') == 'ope') {
@@ -111,28 +90,11 @@ export class OperationComponent implements OnInit {
       this.isET = true;
       this.isENGG = true;
     }
-    else if (localStorage.getItem('logRole') == "MT" || localStorage.getItem('adminLogRole') == 'master') {
-      this.isMT = true;
-      this.isMASTER = true;
-    }
 
     else {
       this.isUT = false;
       this.isOPE = false;
-      this.isMT = false;
-      this.isMASTER = false;
     }
-    if (localStorage.getItem('logRole') == "TT" || localStorage.getItem('adminLogRole') == 'tec') {
-      this.isTT = true;
-      this.isTEC = true;
-    }
-    else{
-      this.isTT = false;
-      this.isTEC = false;
-    }
-    debugger
-   
-    
   }
 
 
@@ -226,13 +188,7 @@ export class OperationComponent implements OnInit {
         this._operationservice.deleteOperation(id).subscribe((res: any) => {
           if (res.success) {
             this.submitshow = true;
-            let status = { "status": '1' }
-            this._operationservice.updatestatus(id, status).subscribe((res: any) => {
-            });
-    
-            let masterApproval = { "masterApproval": '1' }
-            this._operationservice.updatemasterstatus(id, masterApproval).subscribe((res: any) => {
-            });
+
             this.getoperation();
             this.snackBar.open("Operation Deleted Sucessfully", "", {
               duration: 1500,
@@ -265,24 +221,7 @@ export class OperationComponent implements OnInit {
     localStorage.setItem('opnName', product.opnName);
 
     this.router.navigate(['/process']); //we can send product object as route param
-
   }
-
-  // callOperation1(product) {
-
-  //   localStorage.setItem('psObject', JSON.stringify(product))
-  //   var a = product.id;
-
-  //   let key = 'opnNo';
-  //   localStorage.setItem(key, a);
-
-  //   localStorage.setItem('opnValue', product.opnNo);
-
-  //   localStorage.setItem('opnName', product.opnName);
-
-  //   this.router.navigate(['/qpapproval']); //we can send product object as route param
-
-  // }
 
   confirmProcess() {
 
@@ -309,10 +248,6 @@ export class OperationComponent implements OnInit {
 
 
   getoperation() {
-    let tempCheck;
-    this.appButton = false;
-    let tempCheck1;
-    this.appButton1 = false;
     let qpid = localStorage.getItem('qpid');
     let drgid = localStorage.getItem('DrgCode');
     this._operationservice.getoperation(drgid).subscribe((res: any) => {
@@ -320,154 +255,12 @@ export class OperationComponent implements OnInit {
         let mydata = res.data;
         this.dataSource = new MatTableDataSource(mydata);
         this.dataSource.paginator = this.paginator;
-        res.data.forEach(element => {
-          if (element.status == true && element.qpTechConfirm == true) {
-            this.appButton = true;
-          } else {
-            tempCheck = false;
-          }
-
-          if (tempCheck == false) {
-            this.appButton = false;
-          }
-
-        });
-        res.data.forEach(element => {
-          if (element.masterApproval == true && element.qpMasterApproval == true) {
-            this.appButton1 = true;
-          } else {
-            tempCheck1 = false;
-          }
-
-          if (tempCheck1 == false) {
-            this.appButton1 = false;
-          }
-        });
       }
+
     });
 
   }
-  Lockaction(id, status) {
-    if (status) {
-
-      let status = { "status": 1 }
-      this._operationservice.updatestatus(id, status).subscribe((res: any) => {
-        debugger
-        if (res.success) {
-          this.getoperation();
-          this.snackBar.open("Form Approved", "", {
-            duration: 1500,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: 'successSnackBar'
-          })
-        }
-      });
-
-
-
-    }
-
-    else {
-
-      let status = { "status": 0 }
-
-      this._operationservice.updatestatus(id, status).subscribe((res: any) => {
-        debugger
-        if (res.success) {
-          this.getoperation();
-          this.snackBar.open("Form Rejected", "", {
-            duration: 1500,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: 'successSnackBar'
-          })
-        }
-      });
-    }
-
-  }
-
-  Lockaction1(id, masterApproval) {
-    if (masterApproval) {
-
-      let masterApproval = { "masterApproval": 1 }
-      this._operationservice.updatemasterstatus(id, masterApproval).subscribe((res: any) => {
-        debugger
-        if (res.success) {
-          this.getoperation();
-          this.snackBar.open("Form Approved", "", {
-            duration: 1500,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: 'successSnackBar'
-          })
-        }
-      });
-
-
-
-    }
-
-    else {
-
-      let masterApproval = { "masterApproval": 0 }
-
-      this._operationservice.updatemasterstatus(id, masterApproval).subscribe((res: any) => {
-        debugger
-        if (res.success) {
-          this.getoperation();
-          this.snackBar.open("Form Rejected", "", {
-            duration: 1500,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: 'successSnackBar'
-          })
-        }
-      });
-    }
-
-  }
-
-
-  approval(pfno, status) {
-
-    if (status) {
-      let status = { "status": 1 }
-      debugger;
-      this._qualityservice.approval(pfno, status).subscribe((res: any) => {    
-        if (res.success) {
-          debugger;
-          this.router.navigate(['/qpabstract']);
-          this.snackBar.open("Form Approved", "", {
-            duration: 1500,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: 'successSnackBar'
-          })
-        }
-      });
-    }
-
-  }
-
-  approval1(pfno, masterStatus) {
-
-    if (masterStatus) {
-      let masterStatus = { "masterStatus": 1 }
-      this._qualityservice.approval(pfno, masterStatus).subscribe((res: any) => {
-        debugger;
-        if (res.success) {
-          this.router.navigate(['/qpabstract']);
-          this.snackBar.open("Form Approved", "", {
-            duration: 1500,
-            horizontalPosition: 'end',
-            verticalPosition: 'top',
-            panelClass: 'successSnackBar'
-          })
-        }
-      });
-    }
-  }
 
 }
+
+

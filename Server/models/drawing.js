@@ -139,12 +139,7 @@ module.exports = function (sequelize, DataTypes) {
             field: 'qp_status',
             defaultValue: false
         },
-        techApproval:
-        {
-            type: DataTypes.BOOLEAN,
-            field: 'pp_qp_techapproval',
-            allowNull: true
-        },
+
         createdBy: {
             type: DataTypes.STRING(50),
             field: 'created_by'
