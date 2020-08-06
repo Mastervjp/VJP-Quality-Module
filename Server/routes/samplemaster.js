@@ -31,7 +31,7 @@ function sendSuccess1(res, result, msg) {
 
 router.get('/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
-        Operation.findAll({ where: { drgId: req.params.drgId }, include: [Process]}).then(function (result) {
+        Operation.findAll({ where: { drgId: req.params.drgId, deleteStatus: false }, include: [Process]}).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
