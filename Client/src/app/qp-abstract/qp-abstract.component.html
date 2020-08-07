@@ -44,7 +44,7 @@
             <tr style="    border: 1px solid black;
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
-          border-collapse: collapse;">Casting Drawing No/ Rev/ Date</td>
+          border-collapse: collapse;">Casting Drawing #/ Rev/ Date</td>
               <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum}}</th>
               <th style="    border: 1px solid black;
@@ -62,7 +62,7 @@
             <tr style="    border: 1px solid black;
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
-          border-collapse: collapse;">Machining Drawing No/ Rev/ Date</td>
+          border-collapse: collapse;">Machining Drawing #/ Rev/ Date</td>
               <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum1}}</th>
               <th style="    border: 1px solid black;
@@ -219,7 +219,7 @@ border-collapse: collapse;">
             <td mat-cell *matCellDef="let drg ; let rIndex = index;"> {{rIndex+1}} </td>
           </ng-container>
           <ng-container matColumnDef="qpNo">
-            <th mat-header-cell *matHeaderCellDef> QUALITY PLAN NO</th>
+            <th mat-header-cell *matHeaderCellDef> QUALITY PLAN #</th>
             <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
               {{drg.qpNo | uppercase}}
             </td>
@@ -232,7 +232,7 @@ border-collapse: collapse;">
           </ng-container>
 
           <ng-container matColumnDef="pfNo">
-            <th mat-header-cell *matHeaderCellDef> PROCESS FLOW NO </th>
+            <th mat-header-cell *matHeaderCellDef> PROCESS FLOW # </th>
             <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
               {{drg.pfNo | uppercase}} </td>
           </ng-container>

@@ -22,11 +22,11 @@
                 style="border: 1px solid black;border-collapse: collapse;  text-align: center;">QUALITY PLAN</th>
               <td style="border: 1px solid black;border-collapse: collapse;">Drawing code</td>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.id}}</th>
-              <td style="border: 1px solid black;border-collapse: collapse;">Operation No.</td>
-              <th style="border: 1px solid black;border-collapse: collapse;"> {{opnValue}}</th>
+              <td style="border: 1px solid black;border-collapse: collapse;">Operation #</td>
+              <th style="border: 1px solid black;border-collapse: collapse;"> {{drgObject.opnNo}}</th>
             </tr>
             <tr style="border: 1px solid black;border-collapse: collapse;">
-              <td style="border: 1px solid black;border-collapse: collapse;">Casting Drawing No/Rev/Date</td>
+              <td style="border: 1px solid black;border-collapse: collapse;">Casting Drawing #/Rev/Date</td>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.partNum}}</th>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revNo}}</th>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revDate | date: 'dd/MM/yyyy'}}
@@ -36,30 +36,30 @@
               <td style="border: 1px solid black;border-collapse: collapse;  font-weight: normal !important;">Operation
                 Description</td>
               <th colspan="3" style="border: 1px solid black;border-collapse: collapse;">
-                {{psObject.description | uppercase}}</th>
+                {{drgObject.description | uppercase}}</th>
             </tr>
             <tr style="border: 1px solid black;border-collapse: collapse;">
-              <td style="border: 1px solid black;border-collapse: collapse;">Machining Drawing No/Rev/Date</td>
+              <td style="border: 1px solid black;border-collapse: collapse;">Machining Drawing #/Rev/Date</td>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.partNum1}}</th>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revNo1}}</th>
               <th style="border: 1px solid black;border-collapse: collapse;">{{drgObject.revDate1 | date: 'dd/MM/yyyy'}}
               </th>
 
               <ng-container *ngIf="qpaObject; else teset">
-                <td style="border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">Process Plan #</td>
                 <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> {{qpaObject.pfNo}}</th>
               </ng-container>
               <ng-template #teset>
-                <td style="border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">Process Plan #</td>
                 <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA</th>
               </ng-template>
 
               <ng-container *ngIf="qpaObject; else teset">
-                <td style="border: 1px solid black;border-collapse: collapse;">Quality Plan No</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">Quality Plan #</td>
                 <th colspan="2" style="border: 1px solid black;border-collapse: collapse;">{{qpaObject.qpNo}}</th>
               </ng-container>
               <ng-template #teset>
-                <td style="border: 1px solid black;border-collapse: collapse;">Quality Plan No</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">Quality Plan #</td>
                 <th colspan="2" style="border: 1px solid black;border-collapse: collapse;"> NA</th>
               </ng-template>
             </tr>
@@ -105,13 +105,13 @@
         </ng-container>
 
         <ng-container matColumnDef="baloonNo">
-          <th mat-header-cell *matHeaderCellDef> Balloon No </th>
+          <th mat-header-cell *matHeaderCellDef> Balloon # </th>
           <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
             <mat-form-field class="tcustom-full-width">
-              <mat-label>Balloon No</mat-label>
+              <mat-label>Balloon #</mat-label>
               <input name="baloonNo" (keyup)="onChange($event,rIndex,'baloonNo')" [value]="element.baloonNo" matInput
                 required>
-              <mat-error>Baloon No is required!</mat-error>
+              <mat-error>Baloon # is required!</mat-error>
             </mat-form-field>
           </td>
         </ng-container>

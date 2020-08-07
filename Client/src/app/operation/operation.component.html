@@ -52,7 +52,7 @@
             <tr style="    border: 1px solid black;
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
-          border-collapse: collapse;">Casting Drawing No/ Rev/ Date</td>
+          border-collapse: collapse;">Casting Drawing #/ Rev/ Date</td>
               <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum}}</th>
               <th style="    border: 1px solid black;
@@ -70,7 +70,7 @@
             <tr style="    border: 1px solid black;
         border-collapse: collapse;">
               <td style="    border: 1px solid black;
-          border-collapse: collapse;">Machining Drawing No/ Rev/ Date</td>
+          border-collapse: collapse;">Machining Drawing #/ Rev/ Date</td>
               <th style="    border: 1px solid black;
           border-collapse: collapse;">{{drgObject.partNum1}}</th>
               <th style="    border: 1px solid black;
@@ -81,13 +81,13 @@
 
 
               <ng-container *ngIf="qpaObject; else teset">
-                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan #</td>
                 <th colspan="2" style="border: 1px solid black; border-collapse: collapse;">
                   {{qpaObject.pfNo}}
                 </th>
               </ng-container>
               <ng-template #teset>
-                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan No</td>
+                <td style="    border: 1px solid black;border-collapse: collapse;">Process Plan #</td>
                 <th colspan="2" style="border: 1px solid black; border-collapse: collapse;"> NA
                 </th>
               </ng-template>
@@ -251,7 +251,7 @@
           </ng-container>
 
           <ng-container matColumnDef="opnNo">
-            <th mat-header-cell *matHeaderCellDef>PROCESS NUM </th>
+            <th mat-header-cell *matHeaderCellDef>PROCESS # </th>
             <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(element)" *matCellDef="let element">
               {{element.opnNo}} </td>
           </ng-container>
