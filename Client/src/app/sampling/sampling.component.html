@@ -38,7 +38,7 @@
           </ng-container>
 
           <ng-container matColumnDef="opnNo">
-            <th mat-header-cell *matHeaderCellDef> OPN # </th>
+            <th mat-header-cell *matHeaderCellDef> OPN No </th>
             <td mat-cell matRipple style="cursor:pointer;" *matCellDef="let element; let i = index;"
               [formGroupName]="i">
               <mat-form-field style="width: 90px;">
@@ -48,7 +48,7 @@
           </ng-container>
 
           <ng-container matColumnDef="opnName">
-            <th mat-header-cell *matHeaderCellDef> Process Name </th>
+            <th mat-header-cell *matHeaderCellDef> OPN Name </th>
             <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
               <mat-form-field style="width: 90px;">
                 <mat-select formControlName="opnName" (selectionChange)="checkAvailability(element)" [(ngModel)]="element.opnName" placeholder="Opn Name">
@@ -87,7 +87,7 @@
           </ng-container>
 
           <ng-container matColumnDef="baloonNo">
-            <th mat-header-cell *matHeaderCellDef>Baloon # </th>
+            <th mat-header-cell *matHeaderCellDef>baloonNo </th>
             <td mat-cell *matCellDef="let element; let i = index;" [formGroupName]="i">
               <mat-form-field style="width: 70px;">
                 <input matInput formControlName="baloonNo" placeholder="baloonNo" [(ngModel)]="element.baloonNo">

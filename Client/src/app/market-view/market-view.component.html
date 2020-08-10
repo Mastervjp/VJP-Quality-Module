@@ -60,7 +60,7 @@
 
                   <div class="col-md-3">
                     <mat-form-field class="example-full-width" appearance="outline">
-                      <mat-label>PO Number</mat-label>
+                      <mat-label>PO #</mat-label>
                       <input name="poNo" formControlName="poNo" matInput required>
                       <mat-error>Purchase Order Number is required!</mat-error>
                     </mat-form-field>
@@ -86,7 +86,7 @@
                   </div>
                   <div class="col-md-3">
                     <mat-form-field class="example-full-width" appearance="outline">
-                      <mat-label>Po Revision number</mat-label>
+                      <mat-label>Po Revision #</mat-label>
                       <input name="PoRevNo" formControlName="PoRevNo" matInput required>
                       <mat-error> Po Revision number is required!</mat-error>
                     </mat-form-field>
@@ -144,12 +144,12 @@
               </ng-container>
 
               <ng-container matColumnDef="drgId">
-                <th mat-header-cell *matHeaderCellDef> Drawing No </th>
+                <th mat-header-cell *matHeaderCellDef> Drawing # </th>
                 <td mat-cell *matCellDef="let drg"> {{drg.drgId}} </td>
               </ng-container>
 
               <ng-container matColumnDef="poNo">
-                <th mat-header-cell *matHeaderCellDef> PO Number </th>
+                <th mat-header-cell *matHeaderCellDef> PO # </th>
                 <td mat-cell matRipple style="cursor:pointer" *matCellDef="let drg" (click)="viewClick(drg)">
                   {{drg.poNo}} </td>
               </ng-container>
