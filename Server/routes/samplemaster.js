@@ -110,26 +110,34 @@ router.put('/:id', (req, res) => {
             "grid": req.body.grid,
             "firstPartInspection": req.body.firstPartInspection,
             "periodicInspection": req.body.periodicInspection,
-            "ctq": req.body.periodicInspection,
+            "ctq": req.body.ctq,
             "cfir":req.body.cfir,
             "pdi":req.body.fir,
         }
         delete req.body.description;    
         Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
-            
+          
             if (resp) {
                 data.opnId = resp.id;
-                Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
-                    sendSuccess1(res, result, "Data successfully updated");
+                if(resp.id == req.body.id) {
+                    Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
+                        sendSuccess1(res, result, "Data successfully updated");
+                        Process.update(data, { where: { id: req.body.pid } }).then(result => {
+                            sendSuccess1(res, result, "Data successfully updated");
+                        }).catch(function (err) {
+                            sendError(res, error);
+                        });
+                    }).catch(function (err) {
+                        sendError(res, error);
+                    });
+                } else {
                     Process.update(data, { where: { id: req.body.pid } }).then(result => {
                         sendSuccess1(res, result, "Data successfully updated");
                     }).catch(function (err) {
                         sendError(res, error);
                     });
-                }).catch(function (err) {
-                    sendError(res, error);
-                });
-            }    
+                }
+            } 
             else {
                 let datas = {
                     "opnNo":req.body.opnNo,

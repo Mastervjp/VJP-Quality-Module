@@ -190,9 +190,11 @@ export class SamplingComponent implements OnInit {
         for(let element of tempData){
           element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
         if (element.id) {
+          await new Promise ((resolve, reject) => { 
           this._sampleservice.updateSampling(element.id, element).subscribe((res: any) => {
             console.log(res);
           });
+        });
           console.log(element.id, "update");
         } else {
           element.desc = element.description;
