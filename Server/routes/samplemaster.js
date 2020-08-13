@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { Operation, Process } = require('./../models')
+const { Operation, Process, Instrument } = require('./../models')
 
 
 function sendError(res, err) {
@@ -41,7 +41,13 @@ router.get('/:drgId', (req, res) => {
 
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
-
+        if(req.body.instrument) {
+            Instrument.findOne({ where: { name: req.body.instrument} }).then(function (res) {   
+                if(res)  {
+                    req.body.insId = res.id
+                }        
+                              });
+         }
         Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
             
             if (resp) {
@@ -113,8 +119,16 @@ router.put('/:id', (req, res) => {
             "ctq": req.body.ctq,
             "cfir":req.body.cfir,
             "pdi":req.body.fir,
+            
         }
-        delete req.body.description;    
+        delete req.body.description;   
+        if(req.body.instrument) {
+            Instrument.findOne({ where: { name: req.body.instrument} }).then(function (res) {   
+                if(res)  {
+                    data.insId = res.id
+                }        
+                              });
+                            } 
         Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
           
             if (resp) {

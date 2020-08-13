@@ -193,6 +193,7 @@ export class SamplingComponent implements OnInit {
           await new Promise ((resolve, reject) => { 
           this._sampleservice.updateSampling(element.id, element).subscribe((res: any) => {
             console.log(res);
+            resolve();
           });
         });
           console.log(element.id, "update");
