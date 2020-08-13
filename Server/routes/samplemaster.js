@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const { Operation, Process } = require('./../models')
+const { Operation, Process, Instrument } = require('./../models')
 
 
 function sendError(res, err) {
@@ -41,7 +41,13 @@ router.get('/:drgId', (req, res) => {
 
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
-
+        if(req.body.instrument) {
+            Instrument.findOne({ where: { name: req.body.instrument} }).then(function (res) {   
+                if(res)  {
+                    req.body.insId = res.id
+                }        
+                              });
+         }
         Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
             
             if (resp) {
@@ -110,26 +116,42 @@ router.put('/:id', (req, res) => {
             "grid": req.body.grid,
             "firstPartInspection": req.body.firstPartInspection,
             "periodicInspection": req.body.periodicInspection,
-            "ctq": req.body.periodicInspection,
+            "ctq": req.body.ctq,
             "cfir":req.body.cfir,
             "pdi":req.body.fir,
-        }
-        delete req.body.description;    
-        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
             
+        }
+        delete req.body.description;   
+        if(req.body.instrument) {
+            Instrument.findOne({ where: { name: req.body.instrument} }).then(function (res) {   
+                if(res)  {
+                    data.insId = res.id
+                }        
+                              });
+                            } 
+        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
+          
             if (resp) {
                 data.opnId = resp.id;
-                Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
-                    sendSuccess1(res, result, "Data successfully updated");
+                if(resp.id == req.body.id) {
+                    Operation.update(req.body, { where: { id: req.params.id } }).then(result => {
+                        sendSuccess1(res, result, "Data successfully updated");
+                        Process.update(data, { where: { id: req.body.pid } }).then(result => {
+                            sendSuccess1(res, result, "Data successfully updated");
+                        }).catch(function (err) {
+                            sendError(res, error);
+                        });
+                    }).catch(function (err) {
+                        sendError(res, error);
+                    });
+                } else {
                     Process.update(data, { where: { id: req.body.pid } }).then(result => {
                         sendSuccess1(res, result, "Data successfully updated");
                     }).catch(function (err) {
                         sendError(res, error);
                     });
-                }).catch(function (err) {
-                    sendError(res, error);
-                });
-            }    
+                }
+            } 
             else {
                 let datas = {
                     "opnNo":req.body.opnNo,
