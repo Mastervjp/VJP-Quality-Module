@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DrawingService } from '../services/drawing.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 import { BatchquantityComponent } from '../batchquantity/batchquantity.component';
 import { ProcessService } from '../services/process.service';
 
@@ -56,6 +56,7 @@ export class ProcessComponent implements OnInit {
   qpaObject: any;
   submitshow: boolean;
   psObject: any;
+  disable = false;
 
   private fieldArray: Array<any> = [];
   private newAttribute: any = {};
@@ -136,6 +137,8 @@ export class ProcessComponent implements OnInit {
     if (localStorage.getItem('logRole') == "UT" || localStorage.getItem('adminLogRole') == 'ope') {
       this.isUT = true;
       this.isOPE = true;
+      this.disable = true;
+
     }
     else if (localStorage.getItem('logRole') == "ET" || localStorage.getItem('adminLogRole') == 'engg') {
       this.isET = true;
