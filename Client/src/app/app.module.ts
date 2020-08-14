@@ -106,6 +106,7 @@ import { ContractreviewPrintComponent } from './contractreview-print/contractrev
 import { ContractreviewEditComponent } from './contractreview-edit/contractreview-edit.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpapproval-drawing-table.component';
 
 @NgModule({
   declarations: [
@@ -181,6 +182,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     ContractreviewEditComponent,
     AdminLoginComponent,
     AdminPanelComponent,
+    QpapprovalDrawingTableComponent,
     ],
   imports: [
     BrowserModule,

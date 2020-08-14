@@ -8,6 +8,8 @@ import { OperationDialogComponent } from '../operation-dialog/operation-dialog.c
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { CopyProcessComponent } from '../copy-process/copy-process.component';
+import { ProcessService } from '../services/process.service';
+import { QualityService } from '../services/quality.service';
 
 @Component({
   selector: 'app-operation',
@@ -20,9 +22,22 @@ export class OperationComponent implements OnInit {
   isET: boolean;
   isENGG: boolean;
   isSuper: boolean;
-
-  constructor(private _drawingservice: DrawingService, public activeRoute: ActivatedRoute, public auth: AuthenticationService, private router: Router, private _operationservice: OperationService, private _matDialog: MatDialog, public snackBar: MatSnackBar) { }
-
+  isTT: boolean;
+  isMT: boolean;
+  isMASTER: boolean;
+  isTEC: boolean;
+  appButton: boolean;
+  appButton1: boolean;
+  pfno: string;
+  constructor(private _qualityservice: QualityService,
+    private _processservice: ProcessService,
+    private _drawingservice: DrawingService,
+    public auth: AuthenticationService,
+    private router: Router,
+    private _operationservice: OperationService,
+    private _matDialog: MatDialog,
+    public activeRoute: ActivatedRoute,
+    public snackBar: MatSnackBar) { }
 
   islog: boolean;
   isad: boolean;
@@ -46,6 +61,7 @@ export class OperationComponent implements OnInit {
   ngOnInit() {
   
     this.getoperation();
+    this.pfno = localStorage.getItem('pfno');
     let status =localStorage.getItem('adminlogrole')
     this.checkrole(status);
     
@@ -71,6 +87,12 @@ export class OperationComponent implements OnInit {
     if (this.islog && this.isET || this.isENGG) {
       this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'edit', 'delete'];
     }
+    else if (this.islog && this.isTT) {
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'qpapprove'];
+    }
+    else if (this.islog && this.isMT) {
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter',  'qpmasterapprove'];
+    }
     else {
       this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter'];
     }
@@ -90,10 +112,23 @@ export class OperationComponent implements OnInit {
       this.isET = true;
       this.isENGG = true;
     }
-
+    else if (localStorage.getItem('logRole') == "MT" || localStorage.getItem('adminLogRole') == 'master') {
+      this.isMT = true;
+      this.isMASTER = true;
+    }
     else {
       this.isUT = false;
       this.isOPE = false;
+      this.isMT = false;
+      this.isMASTER = false;
+    }
+    if (localStorage.getItem('logRole') == "TT" || localStorage.getItem('adminLogRole') == 'tec') {
+      this.isTT = true;
+      this.isTEC = true;
+    }
+    else{
+      this.isTT = false;
+      this.isTEC = false;
     }
   }
 
@@ -188,7 +223,13 @@ export class OperationComponent implements OnInit {
         this._operationservice.deleteOperation(id).subscribe((res: any) => {
           if (res.success) {
             this.submitshow = true;
-
+            // let qpTechConfirm = { "qpTechConfirm": '1' }
+            // this._operationservice.updatestatus(id, qpTechConfirm).subscribe((res: any) => {
+            // });
+    
+            // let qpMasterApproval = { "qpMasterApproval": '1' }
+            // this._operationservice.updatemasterstatus(id, qpMasterApproval).subscribe((res: any) => {
+            // });
             this.getoperation();
             this.snackBar.open("Operation Deleted Sucessfully", "", {
               duration: 1500,
@@ -248,6 +289,10 @@ export class OperationComponent implements OnInit {
 
 
   getoperation() {
+    let tempCheck;
+    this.appButton = false;
+    let tempCheck1;
+    this.appButton1 = false;
     let qpid = localStorage.getItem('qpid');
     let drgid = localStorage.getItem('DrgCode');
     this._operationservice.getoperation(drgid).subscribe((res: any) => {
@@ -255,12 +300,68 @@ export class OperationComponent implements OnInit {
         let mydata = res.data;
         this.dataSource = new MatTableDataSource(mydata);
         this.dataSource.paginator = this.paginator;
-      }
+        res.data.forEach(element => {
+          if ( element.qpTechConfirm == true) {
+            this.appButton = true;
+          } else {
+            tempCheck = false;
+          }
 
+          if (tempCheck == false) {
+            this.appButton = false;
+          }
+
+        });
+        res.data.forEach(element => {
+          if (element.qpMasterApproval == true) {
+            this.appButton1 = true;
+          } else {
+            tempCheck1 = false;
+          }
+
+          if (tempCheck1 == false) {
+            this.appButton1 = false;
+          }
+        });
+      }
     });
 
+}
+approval(pfno, status) {
+
+  if (status) {
+    let status = { "status": 1 }
+    this._qualityservice.approval(pfno, status).subscribe((res: any) => {    
+      if (res.success) {
+        this.router.navigate(['/qpabstract']);
+        this.snackBar.open("Form Approved", "", {
+          duration: 1500,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: 'successSnackBar'
+        })
+      }
+    });
   }
 
 }
+approvalMaster(pfno, masterStatus) {
 
+  if (masterStatus) {
+    let masterStatus = { "masterStatus": 1 }
+    this._qualityservice.approvalMaster(pfno, masterStatus).subscribe((res: any) => {
+
+      if (res.success) {
+        this.router.navigate(['/qpabstract']);
+        this.snackBar.open("Form Approved", "", {
+          duration: 1500,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: 'successSnackBar'
+        })
+      }
+    });
+  }
+}
+}
 

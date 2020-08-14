@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { OperationService } from '../services/operation.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DrawingService } from '../services/drawing.service';
+import { QualityService } from '../services/quality.service';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class CopyProcessComponent {
     public snackBar: MatSnackBar,
     private _operationservice: OperationService,
     private _drawing: DrawingService,
-
+    private _qualityservice: QualityService,
   ) {
     this.action = _data.action;
     this.type = _data.type
@@ -103,6 +104,24 @@ data1;
 
      
       if (res.success) {
+        let operatorStatus = { "operatorStatus": null }
+        let pfno = localStorage.getItem('pfno');
+        this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
+        });
+
+        let status = { "status": null }
+        this._qualityservice.approval(pfno, status).subscribe((res: any) => {
+        });
+        
+        let masterStatus = { "masterStatus": null }
+        this._qualityservice.approvalMaster(pfno, masterStatus).subscribe((res: any) => {
+        });
+        
+        let id = localStorage.getItem('DrgCode')
+        let techApproval = { "techApproval": null } 
+        this._drawing.updatestatus(id, techApproval).subscribe((res: any) => {
+        });
+
         this.matDialogRef.close(true);
         this.contactForm.reset();
         this.snackBar.open("Code Copied Sucessfully", "", {

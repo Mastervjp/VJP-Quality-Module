@@ -1,4 +1,9 @@
 <app-navbar>
+  <a>
+    <ng-container *ngIf="islog && isMT">
+      <img style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">
+    </ng-container>
+  </a>
   <h3 style=" color: white;"> Quality&nbsp;Plan&nbsp;Abstract</h3>
 </app-navbar>
 
@@ -225,6 +230,18 @@ border-collapse: collapse;">
             </td>
           </ng-container>
 
+          <ng-container matColumnDef="operatorQpNo">
+            <th mat-header-cell *matHeaderCellDef> QUALITY FLOW # </th>
+            <td mat-cell *matCellDef="let drg">
+              <ng-container *ngIf="drg.operatorStatus == '1'">
+                <span matRipple style="cursor:pointer;" (click)="callOperation(drg)">{{drg.qpNo | uppercase}} </span>
+              </ng-container>
+              <ng-container *ngIf="drg.operatorStatus == NULL || drg.operatorStatus == '0'">
+                <span>{{drg.qpNo | uppercase}} </span>
+              </ng-container>
+            </td>
+          </ng-container>
+
           <ng-container matColumnDef="kind">
             <th mat-header-cell *matHeaderCellDef> KIND </th>
             <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
@@ -237,6 +254,102 @@ border-collapse: collapse;">
               {{drg.pfNo | uppercase}} </td>
           </ng-container>
 
+          <ng-container matColumnDef="operatorPfNo">
+            <th mat-header-cell *matHeaderCellDef> PROCESS FLOW # </th>
+            <td mat-cell *matCellDef="let drg">
+              <ng-container *ngIf="drg.operatorStatus == '1'">
+                <span matRipple style="cursor:pointer;" (click)="callOperation(drg)">{{drg.pfNo | uppercase}} </span>
+              </ng-container>
+              <ng-container *ngIf="drg.operatorStatus == NULL || drg.operatorStatus == '0'">
+                <span>{{drg.pfNo | uppercase}} </span>
+              </ng-container>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="pfstatus">
+            <th mat-header-cell *matHeaderCellDef>Approval Status</th>
+            <td mat-cell *matCellDef="let drg">
+              <div class="text-center p-2">
+                <ng-container *ngIf="drg.status == NULL || drg.status == '1'">
+
+                  <button *ngIf="drg.status == '1'" mat-raised-button class="save-button" [disabled] color="primary">
+                    Process & Quality Plan Approved
+                  </button>
+                  <button *ngIf="drg.status == NULL" mat-raised-button class="save-button" [disabled] color="warn"
+                    style="margin-left: 3%;">
+                    Process & Quality Plan Approval Pending
+                  </button>
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="sendmaster">
+            <th mat-header-cell *matHeaderCellDef>Send for Master Verification</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="text-center p-2">
+                <ng-container *ngIf = "element.status == '1' && element.button == false" >
+                    <button mat-raised-button class="save-button" (click)="Lockaction(element.id, 1)">
+                      Send
+                    </button>&nbsp;
+                  </ng-container>
+                  <ng-container *ngIf = "element.button == true" >
+                    <button mat-raised-button class="save-button" [disabled] color="primary">
+                      Successfully sended for master verification
+                    </button>
+                  </ng-container>
+                <ng-container *ngIf="element.status == NULL">
+                  <button mat-stroked-button disabled>Send</button>
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+
+
+          <ng-container *ngIf="islog && isad" matColumnDef="pfmasterstatus">
+            <th mat-header-cell *matHeaderCellDef>Approval Status</th>
+            <td mat-cell *matCellDef="let drg">
+              <div class="text-center p-2">
+                <ng-container *ngIf="drg.masterStatus == NULL || drg.masterStatus == '1'">
+
+                  <button *ngIf="drg.masterStatus == '1'" mat-raised-button class="save-button" [disabled]
+                    color="primary">
+                    Process & Quality Plan Approved
+                  </button>
+                  <button *ngIf="drg.masterStatus == NULL" mat-raised-button class="save-button" [disabled] color="warn"
+                    style="margin-left: 3%;">
+                    Process & Quality Plan Approval Pending
+                  </button>
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="islog && isad" matColumnDef="sendOperator">
+            <th mat-header-cell *matHeaderCellDef>Approve for operator</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="text-center p-2">
+                <ng-container *ngIf="element.masterStatus == '1' && element.operatorStatus == NULL">
+                
+                    <button mat-raised-button class="save-button" (click)="LockactionOp(pfno, 1)">
+                      Approve
+                    </button>&nbsp;
+                  </ng-container>
+                  <ng-container *ngIf="element.operatorStatus == '1' && element.masterStatus == '1'">
+
+                    <button mat-raised-button class="save-button" [disabled] color="primary">
+                      Successfully sended To operator
+                    </button>
+                  </ng-container>
+                
+
+                <ng-container *ngIf="element.masterStatus == NULL">
+                  <button mat-stroked-button disabled>Approve</button>
+                </ng-container>
+              </div>
+            </td>
+          </ng-container>
 
 
 

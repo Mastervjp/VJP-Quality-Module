@@ -81,7 +81,10 @@ export class DrawingService {
     return this.http.get(this.API_URL+'/api/master/specialpro',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
-
+  updatestatus(id, techApproval): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/drawing/' + id, techApproval, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
 
 }
 

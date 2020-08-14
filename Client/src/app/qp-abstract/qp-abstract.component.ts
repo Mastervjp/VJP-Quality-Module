@@ -32,9 +32,23 @@ export class QpAbstractComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   isENGG: boolean;
+  DrgCode: string;
+  status: string;
+  techApproval: string;
+  approvalbutton: boolean;
+  dragObject: string;
+  status1: string;
+  qpaObject: string;
+  isMT: boolean;
+  isMASTER: boolean;
 
-  constructor(private _qualityservice: QualityService, public auth: AuthenticationService, private router: Router, private _matDialog: MatDialog, public snackBar: MatSnackBar, ) { }
-
+  constructor(private _drawingservice: DrawingService,
+    private _qualityservice: QualityService,
+    public auth: AuthenticationService,
+    private router: Router,
+    private _matDialog: MatDialog,
+    public snackBar: MatSnackBar,) { }
+    
   ngOnInit() {
     this.getdata();
     this.checkrole();
@@ -46,9 +60,19 @@ export class QpAbstractComponent implements OnInit {
     this.isSuper = this.auth.isSuperAdmin();
 
 
-
-    this.displayedColumns = ['id', 'pfNo', 'kind', 'qpNo'];
-
+    let logRole = localStorage.getItem('logRole');
+    if (logRole == 'TT') {
+      this.displayedColumns = ['id', 'pfNo', 'kind', 'qpNo', 'pfstatus', 'sendmaster'];
+    }
+    else if (logRole == 'MT') {
+      this.displayedColumns = ['id', 'pfNo', 'kind', 'qpNo', 'pfmasterstatus', 'sendOperator'];
+    }
+    else if (logRole == 'UT') {
+      this.displayedColumns = ['id', 'operatorPfNo', 'kind', 'operatorQpNo'];
+    }
+    else {
+      this.displayedColumns = ['id', 'pfNo', 'kind', 'qpNo'];
+    }
   }
 
   checkrole(){
@@ -57,9 +81,15 @@ export class QpAbstractComponent implements OnInit {
       this.isET = true;
       this.isENGG=true
     }
+    else if (localStorage.getItem('logRole') == "MT" || status == 'MASTER') {
+      this.isMT = true;
+      this.isMASTER = true;
+    }
     else {
       this.isET = false;
-      this.isENGG=false
+      this.isENGG=false;
+      this.isMT = false;
+      this.isMASTER = false;
 
     }
 
@@ -119,9 +149,26 @@ export class QpAbstractComponent implements OnInit {
     let DrgCode = localStorage.getItem('DrgCode')
 
     this._qualityservice.getquality(DrgCode).subscribe((res: any) => {
+
+      this._qualityservice.getDrawing(DrgCode).subscribe((drawRes: any) => {
+        res.data.forEach(element => {
+          if(element.status == true && drawRes.data[0].techApproval == true) {
+            element.button = true;
+          }
+          else
+          {
+            element.button = false;
+          }
+          console.log(element);
+          console.log(res.data)
+          
+        });
+
+      });
       this.dataSource = new MatTableDataSource(res.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.dragObject = localStorage.getItem('drgObject.techApproval')
     });
   }
 
@@ -152,7 +199,41 @@ export class QpAbstractComponent implements OnInit {
 
   }
 
+  Lockaction(id, techApproval) {
+    if (techApproval) {
+      let id = localStorage.getItem('DrgCode')
+      let techApproval = { "techApproval": 1 }
+      this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
+        if (res.success) {
+          window.location.reload();
+          this.snackBar.open("Successfully sended for master verification", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+  }
 
 
+  LockactionOp(pfno, operatorStatus) {
+    if (operatorStatus) {
+      let pfno = localStorage.getItem('pfno')
+      let operatorStatus = { "operatorStatus": 1 }
+      this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
+        if (res.success) {
+          window.location.reload();
+          this.snackBar.open("Successfully sended To operator", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+  }
 
 }

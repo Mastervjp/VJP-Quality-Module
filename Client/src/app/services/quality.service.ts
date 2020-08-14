@@ -39,7 +39,10 @@ export class QualityService {
     return this.http.get(this.API_URL+'/api/quality/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
-
+  getDrawing(drgcode): Observable<any> {
+    return this.http.get(this.API_URL+'/api/quality/drawing/' + drgcode ,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
   addQuality(datas): Observable<any> {
     return this.http.post<any>(this.API_URL+'/api/quality/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
@@ -54,7 +57,35 @@ export class QualityService {
     return this.http.delete(this.API_URL+'/api/quality/' + id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
+  approval(pfno, status): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/quality/plan/' + pfno, status, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
+  
+  approvalMaster(pfno, masterStatus): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/quality/plan/' + pfno, masterStatus, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
 
+  updatestatus(pfno, operatorStatus): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/quality/plan/' + pfno, operatorStatus, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
+
+  approvalsample(drgId, status): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/quality/plan/sample/' + drgId, status, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
+
+  approvalSampleMaster(drgId, masterStatus): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/quality/plan/sample/' + drgId, masterStatus, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
+
+  updatesamplestatus(drgId, operatorStatus): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/quality/plan/sample/' + drgId, operatorStatus, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));      
+  }
 
 
 }

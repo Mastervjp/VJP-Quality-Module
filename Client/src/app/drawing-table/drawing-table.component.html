@@ -18,6 +18,8 @@
           style="background-color: #2727ec; color: white;">
           <mat-icon>add</mat-icon>
         </button>
+        <button *ngIf="islog && isad" mat-raised-button selected style="cursor:pointer;   min-width: fit-content;min-height: 34px !important;
+        padding: 0 !important;" style="background-color: rgb(238, 20, 20); color: white;" [routerLink]="['/qpapproval-drawingtable']">QP approve</button>
 
       </div>
     </div>
