@@ -99,7 +99,14 @@ export class OperationService {
     return this.http.delete(this.API_URL+'/api/operation/' + id, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
-
+  approval(opnNo, qpTechConfirm): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/operation/' + opnNo, qpTechConfirm, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
+  approvalMaster(opnNo, qpMasterApproval): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/operation/' + opnNo, qpMasterApproval, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
 
 
 }

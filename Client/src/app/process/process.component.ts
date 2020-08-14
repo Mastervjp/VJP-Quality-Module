@@ -12,6 +12,8 @@ import { ProcessDialogComponent } from '../process-dialog/process-dialog.compone
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material';
 import { AuthenticationService } from '../services/authentication.service';
+import { OperationService } from '../services/operation.service';
+import { QualityService } from '../services/quality.service';
 BatchquantityComponent
 @Component({
   selector: 'app-process',
@@ -23,7 +25,15 @@ export class ProcessComponent implements OnInit {
   isSuper: boolean;
   isENGG: boolean;
   isET: boolean;
+  isTT: boolean;
+  tec: boolean;
+  isMT: boolean;
+  appButton: boolean;
+  appButton1: boolean;
+  ismaster: boolean;
   public invoiceForm: FormGroup;
+  qpMasterApproval: any;
+  qpTechConfirm: any;
   constructor(private _processservice: ProcessService,
     private _process: ProcessService,
     public activeRoute: ActivatedRoute,
@@ -32,7 +42,10 @@ export class ProcessComponent implements OnInit {
     public dialog: MatDialog,
     private _matDialog: MatDialog,
     public snackBar: MatSnackBar,
-    private _formBuilder: FormBuilder,) { }
+    private _formBuilder: FormBuilder,
+    private _operationservice: OperationService,
+    private _qualityservice: QualityService,
+    private _drawingservice: DrawingService) { }
   action: string;
   dialogTitle: string;
   viewdata: any
@@ -77,6 +90,10 @@ export class ProcessComponent implements OnInit {
     let myItem1 = localStorage.getItem('DrgCode');
     let myItem2 = localStorage.getItem('opnNo');
 
+
+   
+
+
     this.opnValue = localStorage.getItem('opnValue');
 
     this.getprocess(myItem1, myItem2);
@@ -86,6 +103,9 @@ export class ProcessComponent implements OnInit {
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
+
+    this.qpMasterApproval = JSON.parse(localStorage.getItem('psObject')).qpMasterApproval;
+    this.qpTechConfirm = JSON.parse(localStorage.getItem('psObject')).qpTechConfirm;
 
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
@@ -102,6 +122,12 @@ export class ProcessComponent implements OnInit {
 
     if (this.islog && this.isENGG || this.isET) {
       this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection','periodicInspection','ctq','pdi','cfir', 'delete'];
+    }
+    else if (this.islog && this.isTT) {
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency'];
+    }
+    else if (this.islog && this.isMT) {
+      this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency'];
     }
     else {
       this.displayedColumns = ['id', 'description', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',];
@@ -144,10 +170,21 @@ export class ProcessComponent implements OnInit {
       this.isET = true;
       this.isENGG = true;
     }
-
+    else if (localStorage.getItem('logRole') == "TT" || localStorage.getItem('adminLogRole') == 'tec') {
+      this.isTT = true;
+      this.tec = true;
+    }
+    else if (localStorage.getItem('logRole') == "MT" || localStorage.getItem('adminLogRole') == 'master') {
+      this.isMT = true;
+      this.ismaster = true;
+    }
     else {
       this.isUT = false;
       this.isOPE = false;
+      this.isTT = false;
+      this.tec = false;
+      this.isET = false;
+      this.isENGG = false;
     }
     this.isUT
   }
@@ -366,6 +403,31 @@ export class ProcessComponent implements OnInit {
     step1
     this._process.updateProcess(editId, step1).subscribe((res: any) => {
       if (res.success) {
+
+        let opnNo = localStorage.getItem('opnNo');
+        let qpMasterApproval = { "qpMasterApproval": null }
+        this._operationservice.approvalMaster(opnNo, qpMasterApproval).subscribe((res: any) => {
+        });
+
+
+        let pfno = localStorage.getItem('pfno');
+        this._qualityservice.approval(pfno, status).subscribe((res: any) => {
+        });
+
+        let masterStatus = { "masterStatus": null }
+        this._qualityservice.approvalMaster(pfno, masterStatus).subscribe((res: any) => {
+        });
+        
+        let operatorStatus = { "operatorStatus": null }
+        this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
+        }); 
+        
+        let id = localStorage.getItem('DrgCode')
+        let techApproval = { "techApproval": null } 
+        this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
+        });
+
+ 
         this.contactForm.reset();
         this.snackBar.open("Process Updated Sucessfully", "", {
           duration: 1500,
@@ -400,10 +462,45 @@ export class ProcessComponent implements OnInit {
           step1.insId = tempdata[k].id;
         }
       }
-
+      if(step1.status == 0 || step1.masterApproval == 0)
+      {
+        step1.status = null;
+        step1.masterApproval = null;
+      }
       step1
       this._process.updateProcess(editId, step1).subscribe((res: any) => {
         if (res.success) {
+          let status = { "status": null }
+
+          let opnNo = localStorage.getItem('opnNo');
+          let qpTechConfirm = { "qpTechConfirm": null }
+          this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
+          });
+  
+          let qpMasterApproval = { "qpMasterApproval": null }
+          this._operationservice.approvalMaster(opnNo, qpMasterApproval).subscribe((res: any) => {
+          });
+  
+  
+          let pfno = localStorage.getItem('pfno');
+          this._qualityservice.approval(pfno, status).subscribe((res: any) => {
+          });
+
+          let masterStatus = { "masterStatus": null }
+          this._qualityservice.approvalMaster(pfno, masterStatus).subscribe((res: any) => {
+          });
+          
+          
+          let operatorStatus = { "operatorStatus": null }
+          this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
+          });
+          
+          let id = localStorage.getItem('DrgCode')
+          let techApproval = { "techApproval": null } 
+          this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
+          });
+  
+
           this.contactForm.reset();
           this.snackBar.open("Process Updated Sucessfully", "", {
             duration: 1500,
@@ -432,5 +529,75 @@ export class ProcessComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
 
+  }
+  approval(opnNo, qpTechConfirm) {
+    
+    if (qpTechConfirm) {
+      let opnNo = localStorage.getItem('opnNo');
+      let qpTechConfirm = { "qpTechConfirm": 1 }
+      this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
+        if (res.success) {
+          this.router.navigate(['/processplan']);
+          this.snackBar.open("Form Approved", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+    else {
+      let opnNo = localStorage.getItem('opnNo');
+      let qpTechConfirm = { "qpTechConfirm": 0 }
+
+      this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
+        if (res.success) {
+          this.router.navigate(['/processplan']);
+          this.snackBar.open("Form Rejected", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+  }
+
+
+  approvalMaster(opnNo, qpMasterApproval) {
+
+    if (qpMasterApproval) {
+      let opnNo = localStorage.getItem('opnNo');
+      let qpMasterApproval = { "qpMasterApproval": 1 }
+      this._operationservice.approvalMaster(opnNo, qpMasterApproval).subscribe((res: any) => {
+        if (res.success) {
+          this.router.navigate(['/processplan']);
+          this.snackBar.open("Form Approved", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
+    else {
+      let opnNo = localStorage.getItem('opnNo');
+      let qpMasterApproval = { "qpMasterApproval": 0 }
+
+      this._operationservice.approvalMaster(opnNo, qpMasterApproval).subscribe((res: any) => {
+        if (res.success) {
+          this.router.navigate(['/processplan']);
+          this.snackBar.open("Form Rejected", "", {
+            duration: 1500,
+            horizontalPosition: 'end',
+            verticalPosition: 'top',
+            panelClass: 'successSnackBar'
+          })
+        }
+      });
+    }
   }
 }

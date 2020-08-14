@@ -11,6 +11,7 @@ import { SamplingDialogComponent } from '../sampling-dialog/sampling-dialog.comp
 import { SamplingService } from '../services/sampling.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ProcessService } from '../services/process.service';
+import { QualityService } from '../services/quality.service';
 
 
 @Component({
@@ -32,7 +33,9 @@ export class SamplingComponent implements OnInit {
     private _operationservice: OperationService,
     private _process: ProcessService,
     private _matDialog: MatDialog,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    private _qualityservice: QualityService,
+    private _drawingservice: DrawingService) { }
 
 
   islog: boolean;
@@ -78,10 +81,10 @@ export class SamplingComponent implements OnInit {
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
     if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'workCenter', 'baloonNo', 'description', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
     }
     else {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'description', 'workCenter', 'baloonNo', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',  'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'workCenter', 'baloonNo', 'description', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',  'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
     }
   }
 
@@ -129,9 +132,9 @@ export class SamplingComponent implements OnInit {
       opnName: new FormControl(''),
       description: new FormControl(''),
       workCenter: new FormControl(''),
-      specification: new FormControl('', Validators.required),
-      tolFrom: new FormControl('', Validators.required),
-      tolTo: new FormControl('', Validators.required),
+      specification: new FormControl(''),
+      tolFrom: new FormControl(''),
+      tolTo: new FormControl(''),
       instrument: new FormControl(''),
       measuringFrequency: new FormControl(''),
       baloonNo: new FormControl(''),
@@ -188,6 +191,7 @@ export class SamplingComponent implements OnInit {
     if (this.userTable.valid && this.validityCheck == true) {
       let tempData = this.userTable.value.tableRows;
         for(let element of tempData){
+          if(element.opnName || element.opnNo) {
           element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
         if (element.id) {
           await new Promise ((resolve, reject) => { 
@@ -232,6 +236,31 @@ export class SamplingComponent implements OnInit {
         }); 
         }
       }
+      for (let element of tempData) {
+        element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
+        if (element.id) {
+          let status = { "status": null }
+          this._qualityservice.approvalsample(element.drgId, status).subscribe((res: any) => {
+          });
+
+          let masterStatus = { "masterStatus": null }
+          this._qualityservice.approvalSampleMaster(element.drgId, masterStatus).subscribe((res: any) => {
+          });
+
+
+          let operatorStatus = { "operatorStatus": null }
+          this._qualityservice.updatesamplestatus(element.drgId, operatorStatus).subscribe((res: any) => {
+          });
+
+
+
+
+          let id = localStorage.getItem('DrgCode')
+          let techApproval = { "techApproval": null }
+          this._drawingservice.updatestatus(element.drgId, techApproval).subscribe((res: any) => {
+          });
+        }
+      }
        this.snackBar.open("Process updated successfully", "", {
         duration: 1500,
         horizontalPosition: 'center',
@@ -239,6 +268,7 @@ export class SamplingComponent implements OnInit {
         panelClass: 'errorsnackbarclass'
       });
       window.location.reload();
+    }
     } else {
       alert("Please fill the data in the required fields");
     }
@@ -444,7 +474,6 @@ export class SamplingComponent implements OnInit {
 
   checkAvailability(data) {
     this.validityCheck = true;
-    debugger;
     let tempData;
     tempData = this.userTable.value.tableRows.find(element => data.opnNo == element.opnNo && data.pid != element.pid);
     if( tempData.opnName != data.opnName && tempData.opnName != "" ) {
