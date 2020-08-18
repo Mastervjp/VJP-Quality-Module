@@ -230,9 +230,9 @@
 
       <div class="action_button" *ngIf="islog && isENGG ||isET">
         <button color="accent" mat-raised-button class="save-button first-action-button" (click)="addProcess()"
-          aria-label="SAVE" [disabled]="qpMasterApproval == '1' || qpTechConfirm == '1'">Add</button>
+          aria-label="SAVE" [disabled]="qpMasterApproval == '1' && qpTechConfirm == '1'">Add</button>
         <button color="accent" mat-raised-button class="save-button first-action-button" (click)="updateProcess1()"
-          aria-label="SAVE" [disabled]="qpMasterApproval == '1' || qpTechConfirm == '1'">Update</button>
+          aria-label="SAVE" [disabled]="qpMasterApproval == '1' && qpTechConfirm == '1'">Update</button>
       </div>
 
       <div *ngIf="islog && isENGG ||isET">
