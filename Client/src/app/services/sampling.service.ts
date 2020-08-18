@@ -42,4 +42,9 @@ export class SamplingService {
     return this.http.put<any>(this.API_URL+'/api/sample/'+id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData));
   }
+
+  deleteOperation(id): Observable<any> {
+    return this.http.delete(this.API_URL+'/api/process/' + id, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData));
+  }
 }

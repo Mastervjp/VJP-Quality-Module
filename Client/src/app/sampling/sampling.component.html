@@ -216,7 +216,7 @@
 
 
 
-          <ng-container *ngIf="islog && isad" matColumnDef="edit">
+          <!-- <ng-container  matColumnDef="edit">
             <th mat-header-cell *matHeaderCellDef>Modification</th>
             <td mat-cell *matCellDef="let element">
               <div>
@@ -226,14 +226,14 @@
                 </button>
               </div>
             </td>
-          </ng-container>
+          </ng-container> -->
 
-          <ng-container *ngIf="islog && isad" matColumnDef="delete">
+          <ng-container  matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef>Delete</th>
             <td mat-cell *matCellDef="let element">
               <div>
                 <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                  padding: 0 !important;" (click)="deleteDrg(element.id)">
+                  padding: 0 !important;" (click)="deleteDrg(element.pid); $event.preventDefault()">
                   <mat-icon color="warn" selected>delete</mat-icon>
                 </button>
               </div>
