@@ -236,32 +236,33 @@ export class SamplingComponent implements OnInit {
         }); 
         }
       }
-      for (let element of tempData) {
-        element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
-        if (element.id) {
-          let status = { "status": null }
-          this._qualityservice.approvalsample(element.drgId, status).subscribe((res: any) => {
-          });
-
-          let masterStatus = { "masterStatus": null }
-          this._qualityservice.approvalSampleMaster(element.drgId, masterStatus).subscribe((res: any) => {
-          });
-
-
-          let operatorStatus = { "operatorStatus": null }
-          this._qualityservice.updatesamplestatus(element.drgId, operatorStatus).subscribe((res: any) => {
-          });
-
-
-
-
-          let id = localStorage.getItem('DrgCode')
-          let techApproval = { "techApproval": null }
-          this._drawingservice.updatestatus(element.drgId, techApproval).subscribe((res: any) => {
-          });
-        }
-      }
+     
       
+    }
+    for (let element of tempData) {
+      element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
+      if (element.id) {
+        let status = { "status": null }
+        this._qualityservice.approvalsample(element.drgId, status).subscribe((res: any) => {
+        });
+
+        let masterStatus = { "masterStatus": null }
+        this._qualityservice.approvalSampleMaster(element.drgId, masterStatus).subscribe((res: any) => {
+        });
+
+
+        let operatorStatus = { "operatorStatus": null }
+        this._qualityservice.updatesamplestatus(element.drgId, operatorStatus).subscribe((res: any) => {
+        });
+
+
+
+
+        let id = localStorage.getItem('DrgCode')
+        let techApproval = { "techApproval": null }
+        this._drawingservice.updatestatus(element.drgId, techApproval).subscribe((res: any) => {
+        });
+      }
     }
     
      this.snackBar.open("Process updated successfully", "", {
@@ -272,7 +273,8 @@ export class SamplingComponent implements OnInit {
       panelClass: 'errorsnackbarclass'
     });
     this.ngOnInit();
-    } else {
+    }
+     else {
       alert("Please fill the data in the required fields");
     }
 
