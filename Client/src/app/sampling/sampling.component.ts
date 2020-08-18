@@ -188,16 +188,15 @@ export class SamplingComponent implements OnInit {
   }
 
   async updateOperation() {
-    if (this.userTable.valid && this.validityCheck == true) {   
+    if (this.userTable.valid && this.validityCheck == true) {
       let tempData = this.userTable.value.tableRows;
         for(let element of tempData){
-          if(element.opnName || element.opnNo) {
           element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
         if (element.id) {
           await new Promise ((resolve, reject) => { 
           this._sampleservice.updateSampling(element.id, element).subscribe((res: any) => {
             console.log(res);
-            resolve();            
+            resolve();
           });
         });
           console.log(element.id, "update");
@@ -228,53 +227,47 @@ export class SamplingComponent implements OnInit {
             element.ctq = 0
           }
           element.pdi = element.fir;
-          await new Promise ((resolve, reject) => { 
+           await new Promise ((resolve, reject) => { 
             this._sampleservice.addSampling(element).subscribe((res: any) => {
                 console.log(res);
                 resolve();
-              });                
+              });                  
         }); 
         }
       }
-     
-      
-    }
-    for (let element of tempData) {
-      element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
-      if (element.id) {
-        let status = { "status": null }
-        this._qualityservice.approvalsample(element.drgId, status).subscribe((res: any) => {
-        });
+      for (let element of tempData) {
+        element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
+        if (element.id) {
+          let status = { "status": null }
+          this._qualityservice.approvalsample(element.drgId, status).subscribe((res: any) => {
+          });
 
-        let masterStatus = { "masterStatus": null }
-        this._qualityservice.approvalSampleMaster(element.drgId, masterStatus).subscribe((res: any) => {
-        });
+          let masterStatus = { "masterStatus": null }
+          this._qualityservice.approvalSampleMaster(element.drgId, masterStatus).subscribe((res: any) => {
+          });
 
 
-        let operatorStatus = { "operatorStatus": null }
-        this._qualityservice.updatesamplestatus(element.drgId, operatorStatus).subscribe((res: any) => {
-        });
+          let operatorStatus = { "operatorStatus": null }
+          this._qualityservice.updatesamplestatus(element.drgId, operatorStatus).subscribe((res: any) => {
+          });
 
 
 
 
-        let id = localStorage.getItem('DrgCode')
-        let techApproval = { "techApproval": null }
-        this._drawingservice.updatestatus(element.drgId, techApproval).subscribe((res: any) => {
-        });
+          let id = localStorage.getItem('DrgCode')
+          let techApproval = { "techApproval": null }
+          this._drawingservice.updatestatus(element.drgId, techApproval).subscribe((res: any) => {
+          });
+        }
       }
-    }
-    
-     this.snackBar.open("Process updated successfully", "", {
-
-      duration: 1500,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: 'errorsnackbarclass'
-    });
-    this.ngOnInit();
-    }
-     else {
+       this.snackBar.open("Process updated successfully", "", {
+        duration: 1500,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        panelClass: 'errorsnackbarclass'
+      });
+      this.ngOnInit();
+    } else {
       alert("Please fill the data in the required fields");
     }
 
@@ -298,7 +291,7 @@ export class SamplingComponent implements OnInit {
     });
   }
 
-  deleteDrg(id) {
+   deleteDrg(id) {
 
     this.confirmDialogRef = this._matDialog.open(ConfirmDialogComponent, {
       disableClose: false
@@ -306,7 +299,7 @@ export class SamplingComponent implements OnInit {
     this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete this Process?';
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
-
+       
         this._sampleservice.deleteOperation(id).subscribe((res: any) => {
           if (res.success) {
             this.submitshow = true;
@@ -319,11 +312,12 @@ export class SamplingComponent implements OnInit {
             });
           }
 
+        
         });
 
 
       }
-      this.confirmDialogRef = null;
+       this.confirmDialogRef = null;
     });
   }
 
