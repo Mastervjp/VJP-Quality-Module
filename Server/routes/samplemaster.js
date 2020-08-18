@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
                 }        
                               });
          }
-        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo,opnName:req.body.opnName } }).then(function (resp) {
+        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
             
             if (resp) {
                 console.log(resp);
@@ -99,7 +99,8 @@ router.post('/', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-    
+    debugger;
+
     req.body.updatedBy = 1;
     return new Promise((resolve, reject) => {
         let data = {
@@ -128,7 +129,7 @@ router.put('/:id', (req, res) => {
                 }        
                               });
                             } 
-        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo, opnName: req.body.opnName } }).then(function (resp) {
+        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
           
             if (resp) {
                 data.opnId = resp.id;
