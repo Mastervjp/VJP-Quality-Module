@@ -81,10 +81,10 @@ export class SamplingComponent implements OnInit {
     this.islog = this.auth.isLoggedIn();
     this.isad = this.auth.isAdmin();
     if (this.islog && this.isad) {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'workCenter', 'baloonNo', 'description', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'workCenter', 'baloonNo', 'description', 'specification', 'tolFrom', 'tolTo', 'instrument', 'measuringFrequency', 'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir',  'delete'];
     }
     else {
-      this.displayedColumns = ['id', 'opnNo', 'opnName', 'workCenter', 'baloonNo', 'description', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',  'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir'];
+      this.displayedColumns = ['id', 'opnNo', 'opnName', 'workCenter', 'baloonNo', 'description', 'specification',  'tolFrom', 'tolTo', 'instrument', 'measuringFrequency',  'firstPartInspection', 'periodicInspection', 'ctq', 'cfir', 'fir', 'delete'];
     }
   }
 
@@ -191,7 +191,6 @@ export class SamplingComponent implements OnInit {
     if (this.userTable.valid && this.validityCheck == true) {
       let tempData = this.userTable.value.tableRows;
         for(let element of tempData){
-          if(element.opnName || element.opnNo) {
           element.drgId = JSON.parse(localStorage.getItem('drgObject')).id;
         if (element.id) {
           await new Promise ((resolve, reject) => { 
@@ -228,7 +227,7 @@ export class SamplingComponent implements OnInit {
             element.ctq = 0
           }
           element.pdi = element.fir;
-          await new Promise ((resolve, reject) => { 
+           await new Promise ((resolve, reject) => { 
             this._sampleservice.addSampling(element).subscribe((res: any) => {
                 console.log(res);
                 resolve();
@@ -267,8 +266,7 @@ export class SamplingComponent implements OnInit {
         verticalPosition: 'bottom',
         panelClass: 'errorsnackbarclass'
       });
-      window.location.reload();
-    }
+      this.ngOnInit();
     } else {
       alert("Please fill the data in the required fields");
     }
@@ -293,16 +291,16 @@ export class SamplingComponent implements OnInit {
     });
   }
 
-  deleteDrg(id) {
+   deleteDrg(id) {
 
     this.confirmDialogRef = this._matDialog.open(ConfirmDialogComponent, {
       disableClose: false
     });
-    this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete this Operation?';
+    this.confirmDialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete this Process?';
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
-
-        this._operationservice.deleteOperation(id).subscribe((res: any) => {
+       
+        this._sampleservice.deleteOperation(id).subscribe((res: any) => {
           if (res.success) {
             this.submitshow = true;
             this.getSampling();
@@ -314,11 +312,12 @@ export class SamplingComponent implements OnInit {
             });
           }
 
+        
         });
 
 
       }
-      this.confirmDialogRef = null;
+       this.confirmDialogRef = null;
     });
   }
 
