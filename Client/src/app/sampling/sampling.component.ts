@@ -12,6 +12,7 @@ import { SamplingService } from '../services/sampling.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ProcessService } from '../services/process.service';
 import { QualityService } from '../services/quality.service';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 
 @Component({
@@ -24,6 +25,7 @@ export class SamplingComponent implements OnInit {
   control: FormArray;
   formData;
   validityCheck = true;
+  isLoading = true;
 
   constructor(
     private _sampleservice: SamplingService,
@@ -61,6 +63,7 @@ export class SamplingComponent implements OnInit {
 
 
   ngOnInit() {
+    this.isLoading = true;
     this.userTable = this._formBuilder.group({
       tableRows: this._formBuilder.array([])
     });
@@ -395,76 +398,16 @@ export class SamplingComponent implements OnInit {
               "fir": pro.pdi
 
             });
+            this.addRow();
           });
         });
 
-        // for (var key in mydata) {
-
-        //   let mydata1 = mydata[key];
-        //   var tmp1 = new Object();
-        //   for (var key1 in mydata1) {
-
-        //     if (key1 == "Processes") {
-
-        //       var mydata2 = mydata1[key1];
-        //       for (var key2 in mydata2) {
-
-        //         var mydata3 = mydata2[key2];
-
-        //         var tmp = new Object();
-
-        //         tmp["specification"]=mydata3.specification
-        //         tmp["toloreanceGrade"]=mydata3.toloreanceGrade
-        //         tmp["tolFrom"]=mydata3.tolFrom
-        //         tmp["tolTo"]=mydata3.tolTo
-        //         tmp["instrument"]=mydata3.instrument
-        //         tmp["measuringFrequency"]=mydata3.measuringFrequency
-        //         tmp["grid"]=mydata3.grid
-        //         tmp["firstPartInspection"]=mydata3.firstPartInspection
-        //         tmp["periodicInspection"]=mydata3.periodicInspection
-        //         tmp["ctq"]=mydata3.ctq
-        //         tmp["opnId"]=mydata3.opnId
-        //         tmp["drgId"]=mydata3.drgId
-        //         // for (var key3 in mydata3) {
-
-        //         //   if(key3 =="id"){
-        //         //     tmp["pid"] = mydata3.id
-        //         //   }
-        //         //   else if(key3 =="opnName"){
-        //         //     tmp["popnName"] = mydata3.opnName
-        //         //   }
-        //         //   else if(key3 =="description"){
-        //         //     tmp["pdescription"] = mydata3.description
-        //         //   }
-        //         //   else{
-        //         //     tmp[key3] = mydata3[key3]
-        //         //   }
-        //         // }
-
-        //         let test = Object.assign(tmp1, tmp)
-
-        //       temp1.push(test);
-
-
-
-        //       }
-
-
-        //     }
-        //     else {
-        //       tmp1[key1] = mydata1[key1];
-        //     }
-        //   }
-
-
-        // }
+        
         this.formData = result;
-        result.forEach(element => {
-          this.addRow();
-        });
         this.userTable.controls["tableRows"].patchValue(this.formData)
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.paginator = this.paginator;
+        this.isLoading = false;
       }
 
     });
