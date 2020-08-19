@@ -107,7 +107,7 @@ import { ContractreviewEditComponent } from './contractreview-edit/contractrevie
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpapproval-drawing-table.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -190,6 +190,7 @@ import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpap
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
 
 
     MatButtonModule,

@@ -14,6 +14,19 @@ table {
 }
 
 
+
+
+
+  
+:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
+  stroke: #30A6EE;
+}
+
+:host ::ng-deep .track circle{       
+  stroke-opacity: 0.3 !important;
+}
+
+
 .successsnackbarclass {
   background-color: green !important;
   color: white;
