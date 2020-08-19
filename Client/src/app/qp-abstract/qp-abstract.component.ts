@@ -205,7 +205,7 @@ export class QpAbstractComponent implements OnInit {
       let techApproval = { "techApproval": 1 }
       this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
         if (res.success) {
-          window.location.reload();
+          this.getdata();
           this.snackBar.open("Successfully sended for master verification", "", {
             duration: 1500,
             horizontalPosition: 'end',
@@ -224,7 +224,7 @@ export class QpAbstractComponent implements OnInit {
       let operatorStatus = { "operatorStatus": 1 }
       this._qualityservice.updatestatus(pfno, operatorStatus).subscribe((res: any) => {
         if (res.success) {
-          window.location.reload();
+          this.getdata();
           this.snackBar.open("Successfully sended To operator", "", {
             duration: 1500,
             horizontalPosition: 'end',
