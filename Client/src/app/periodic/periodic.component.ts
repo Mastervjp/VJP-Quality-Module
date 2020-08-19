@@ -20,6 +20,8 @@ export class PeriodicComponent implements OnInit {
   drgnum: any;
   d_partno: any
   d_revno: any;
+  d_from: any;
+  d_to: any;
   d_revdate: any;
   d_batch_qty: any;
   value_expression: any;
@@ -307,9 +309,11 @@ td {
             let i = 1;
             let headers2 = [];
             while (i <= this.d_batch_qty) {
+              if(i>=this.d_from && i<=this.d_to) {
               b.headers.push(i);
               // b.headers1.push(i);
               headers2.push(i)
+              }
               i++;
             }
 

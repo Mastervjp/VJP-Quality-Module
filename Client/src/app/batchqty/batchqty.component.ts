@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { OperationService } from '../services/operation.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
@@ -40,9 +40,21 @@ export class BatchqtyComponent implements OnInit {
       this.batchForm = this._formBuilder.group({
         card: ['', [Validators.required]],
         qty: ['', [Validators.required]],
-        machine: ['', [Validators.required]]
+        machine: ['', [Validators.required]],
+        from: ['', [Validators.required]],
+        to: ['', [Validators.required,  ]]
 
       });
+      this.batchForm.controls.to.setValidators([
+        Validators.required,Validators.min(1),
+        (control: AbstractControl) => Validators.max(this.batchForm.controls.qty.value)(control),
+        
+
+    ]);
+      this.batchForm.controls.to.setValidators([
+        Validators.required,Validators.min(1),
+        (control: AbstractControl) => Validators.max(this.batchForm.controls.qty.value)(control)
+    ]);
 
     }
 
@@ -110,6 +122,8 @@ export class BatchqtyComponent implements OnInit {
     let step1 = this.batchForm.getRawValue();
     localStorage.setItem('batch_qty', step1.qty);
     localStorage.setItem('machine', step1.machine);
+    localStorage.setItem('qty_from', step1.from);
+    localStorage.setItem('qty_to', step1.to);
     this.router.navigate(['/inspection']);
   }
 
