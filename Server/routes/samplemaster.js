@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
                 }        
                               });
          }
-        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
+        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo, deleteStatus: false } }).then(function (resp) {
             
             if (resp) {
                 console.log(resp);
@@ -129,7 +129,7 @@ router.put('/:id', (req, res) => {
                 }        
                               });
                             } 
-        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo } }).then(function (resp) {
+        Operation.findOne({ where: { drgId: req.body.drgId, opnNo: req.body.opnNo, deleteStatus: false } }).then(function (resp) {
           
             if (resp) {
                 data.opnId = resp.id;
