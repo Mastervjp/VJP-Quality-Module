@@ -32,7 +32,7 @@ function sendSuccess1(res, result, msg) {
 
 router.get('/:drgCode/:opnNo', (req, res) => {
     return new Promise((resolve, reject) => {
-        Process.findAll({ where: { drgId: req.params.drgCode, opnId: req.params.opnNo, altProcess: false, addKind: false, deleteStatus: false }, order: [['baloonNo', 'ASC']], }).then(function (result) {
+        Process.findAll({ where: { drgId: req.params.drgCode, opnId: req.params.opnNo, altProcess: false, addKind: false, deleteStatus: false }, }).then(function (result) { //order: [['baloonNo', 'ASC']], 
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -42,7 +42,7 @@ router.get('/:drgCode/:opnNo', (req, res) => {
 
 router.get('/altprocess/:drgCode/:opnNo', (req, res) => {
     return new Promise((resolve, reject) => {
-        Process.findAll({ where: { drgId: req.params.drgCode, opnId: req.params.opnNo, altProcess: true, addKind: false, deleteStatus: false }, order: [['baloonNo', 'ASC']], }).then(function (result) {
+        Process.findAll({ where: { drgId: req.params.drgCode, opnId: req.params.opnNo, altProcess: true, addKind: false, deleteStatus: false }, }).then(function (result) { //order: [['baloonNo', 'ASC']], 
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -52,7 +52,7 @@ router.get('/altprocess/:drgCode/:opnNo', (req, res) => {
 
 router.get('/addkind/:drgCode/:opnNo', (req, res) => {
     return new Promise((resolve, reject) => {
-        Process.findAll({ where: { drgId: req.params.drgCode, opnId: req.params.opnNo, altProcess: false, addKind: true, deleteStatus: false }, order: [['baloonNo', 'ASC']], }).then(function (result) {
+        Process.findAll({ where: { drgId: req.params.drgCode, opnId: req.params.opnNo, altProcess: false, addKind: true, deleteStatus: false },}).then(function (result) { // order: [['baloonNo', 'ASC']], 
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
