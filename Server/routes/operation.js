@@ -5,7 +5,7 @@ var path = require('path')
 const fs = require('fs')
 const fileUpload = require('express-fileupload');
 
-const { OperationList, Operation, Machining, Material, Process, WorkCenter, MeasuringFrequency, Instrument, PlanAbstract, Drawing, DrawingType } = require('./../models')
+const { OperationList, Operation, Machining, Material, Process, WorkCenter, MeasuringFrequency, Instrument, PlanAbstract, Drawing, DrawingType,ProcessCharacteristics,ProductCharacteristics,IncomingSource } = require('./../models')
 
 
 function sendError(res, err) {
@@ -76,6 +76,38 @@ router.get('/data/workcenter', (req, res) => {
 router.get('/data/oplist', (req, res) => {
     return new Promise((resolve, reject) => {
         OperationList.findAll().then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+router.get('/data/incoming', (req, res) => {
+    return new Promise((resolve, reject) => {
+        IncomingSource.findAll().then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+
+router.get('/data/ProcessCharacteristics', (req, res) => {
+    return new Promise((resolve, reject) => {
+        ProcessCharacteristics.findAll().then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+
+router.get('/data/ProductCharacteristics', (req, res) => {
+    return new Promise((resolve, reject) => {
+        ProductCharacteristics.findAll().then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);

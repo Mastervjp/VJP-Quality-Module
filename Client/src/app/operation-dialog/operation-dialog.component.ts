@@ -21,6 +21,9 @@ export class OperationDialogComponent {
   workData: any;
   Oplist: any;
   type: any;
+  processData: any;
+  productData: any;
+  incomingData: any;
 
 
   private IMG_URL = environment.IMG_URL;
@@ -42,6 +45,9 @@ export class OperationDialogComponent {
     opnName: ['', Validators.required],
     description: ['', Validators.required],
     workCenter: ['', Validators.required],
+    incomingSource: ['', Validators.required],
+    processCharacteristics: ['', Validators.required],
+    productCharacteristics: ['', Validators.required],
 
     uploadImage1: ['', Validators.required],
     uploadImage2: ['', Validators.required],
@@ -49,6 +55,7 @@ export class OperationDialogComponent {
     uploadImage4: ['', Validators.required],
   });
 
+ 
 
   constructor(public matDialogRef: MatDialogRef<OperationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private _data: any,
@@ -63,9 +70,12 @@ export class OperationDialogComponent {
     this.action = _data.action;
     this.type = _data.type
 
-    this.getWorkcenter()
+    this.getWorkcenter();
     this.getOplist();
-
+    this. getincoming();
+    this.getProcessCharacteristics(); 
+    this.getProductCharacteristics();
+    
     if (this.action === 'edit') {
 
       this.dialogTitle = "Edit Process";
@@ -76,6 +86,9 @@ export class OperationDialogComponent {
         opnName: _data.data.opnName,
         description: _data.data.description,
         workCenter: _data.data.workCenter,
+        incomingSource: _data.data.incomingSource,
+        processCharacteristics: _data.data.processCharacteristics,
+        productCharacteristics: _data.data.productCharacteristics,
         type: _data.data.type,
 
         uploadImage1: _data.data.image1,
@@ -119,7 +132,9 @@ export class OperationDialogComponent {
     formData.append('opnName', step1.opnName);
     formData.append('description', step1.description);
     formData.append('workCenter', step1.workCenter);
-
+    formData.append('incomingSource', step1.incomingSource);
+    formData.append('processCharacteristics', step1.processCharacteristics);
+    formData.append('productCharacteristics', step1.productCharacteristics);
 
 
     if (this.type == 'altpro') {
@@ -220,7 +235,9 @@ export class OperationDialogComponent {
     formData.append('opnName', step1.opnName);
     formData.append('description', step1.description);
     formData.append('workCenter', step1.workCenter);
-
+    formData.append('incomingSource', step1.incomingSource);
+    formData.append('processCharacteristics', step1.processCharacteristics);
+    formData.append('productCharacteristics', step1.productCharacteristics);
 
 
     this._operationservice.updateOperation(editId, formData).subscribe((res: any) => {
@@ -292,6 +309,14 @@ export class OperationDialogComponent {
     });
   }
 
+  getincoming() {
+    this._operationservice.getincoming().subscribe((res: any) => {
+      if (res.success) {
+        this.incomingData = res.data;
+      }
+    });
+  }
+
   getOplist() {
     this._operationservice.getOplist().subscribe((res: any) => {
       if (res.success) {
@@ -300,6 +325,24 @@ export class OperationDialogComponent {
     });
   }
 
+  
+  getProcessCharacteristics() {
+    this._operationservice.getProcessCharacteristics().subscribe((res: any) => {
+      if (res.success) {
+        this.processData = res.data;
+      }
+    });
+  }
+  
+  getProductCharacteristics() {
+    this._operationservice.getProductCharacteristics().subscribe((res: any) => {
+      if (res.success) {
+        this.productData = res.data;
+      }
+    });
+  }
+
+  
   onFileChange1(event) {
 
 

@@ -65,11 +65,60 @@
 
         </div>
 
+        
+
+        <div class="row">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Incoming source of variation</mat-label>
+                <mat-select formControlName="incomingSource">
+                    <mat-option *ngFor="let incoming of incomingData" [value]="incoming.name">
+                        {{incoming.name}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>ProcessCharacteristics</mat-label>
+                <mat-select formControlName="processCharacteristics">
+                    <mat-option *ngFor="let process of processData" [value]="process.name">
+                        {{process.name}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>ProductCharacteristics</mat-label>
+                <mat-select formControlName="productCharacteristics">
+                    <mat-option *ngFor="let product of productData" [value]="product.name">
+                        {{product.name}}
+                    </mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+        <div>
+            <h3 style="text-align:center;padding: 5px;">BEFORE</h3>
+        </div>
+
         <div class="row">
             <div class="col-6">
                 <img [src]="url1" style="width: 100px; height: 125px;">
             </div>
+
             <div class="col-6">
+               
                 <input hidden type="file" id="file1" (change)="onFileChange1($event)" #fileInput1 />
                 <button mat-stroked-button class="add-file-button" (click)="fileInput1.click()" aria-label="Add file">
                     Image 1
@@ -91,10 +140,17 @@
             </div>
         </div>
 
+        <div>
+            <h3 Style="text-align:center;padding: 5px;">AFTER</h3>
+        </div>
+     
+
         <div class="row">
+        
             <div class="col-6">
                 <img [src]="url3" style="width: 100px; height: 125px;">
             </div>
+            
             <div class="col-6">
                 <input hidden type="file" id="file3" (change)="onFileChange3($event)" #fileInput3 />
                 <button mat-stroked-button class="add-file-button" (click)="fileInput3.click()" aria-label="Add file">

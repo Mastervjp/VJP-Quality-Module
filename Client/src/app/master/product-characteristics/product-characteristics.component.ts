@@ -1,48 +1,54 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router';
-import { MatTableDataSource, MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
+import { ProductcharacteristicsService } from '../masterservice/productcharacteristics.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
+import { MatSnackBar, MatDialog, MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+// import { ProductCharacteristicsDialogComponent } from './product-characteristics-dialog/product-characteristics-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
-import { SpecialProDialogComponent } from './special-pro-dialog/special-pro-dialog.component';
-import { SpecialProcessService } from '../masterservice/special-process.service';
+import { ProductcharacteristicsComponent } from '../dialog/productcharacteristics/productcharacteristics.component';
 
 @Component({
-  selector: 'app-special-process',
-  templateUrl: './special-process.component.html',
-  styleUrls: ['./special-process.component.css']
+  selector: 'app-product-characteristics',
+  templateUrl: './product-characteristics.component.html',
+  styleUrls: ['./product-characteristics.component.css']
 })
-export class SpecialProcessComponent implements OnInit {
-
-  
+export class ProductCharacteristicsComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   dialogRef: any;
   confirmDialogRef: any;
   displayedColumns: any;
 
 
+  
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private _service: SpecialProcessService,
+  constructor(private _ProductcharacteristicsService: ProductcharacteristicsService,
      public auth: AuthenticationService, 
      private router: Router,
       private _matDialog: MatDialog,
        public snackBar: MatSnackBar, ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
 
 
-      this.displayedColumns = ['id', 'name', 'edit','delete'];
+    this.displayedColumns = ['id', 'name', 'edit','delete'];
 
-    
+  }
+ getData() {
+
+      let type = localStorage.getItem('type')
+
+    this._ProductcharacteristicsService.getData().subscribe((res: any) => {
+      this.dataSource = new MatTableDataSource(res);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
-
   createData() {
-    this.dialogRef = this._matDialog.open(SpecialProDialogComponent, {
+    this.dialogRef = this._matDialog.open(ProductcharacteristicsComponent, {
       width: '600px',
       panelClass: 'contact-form-dialog',
       data: {
@@ -57,7 +63,7 @@ export class SpecialProcessComponent implements OnInit {
 
   }
   editData(datas) {
-    this.dialogRef = this._matDialog.open(SpecialProDialogComponent, {
+    this.dialogRef = this._matDialog.open(ProductcharacteristicsComponent, {
       width: '600px',
       panelClass: 'contact-form-dialog',
       data: {
@@ -70,16 +76,6 @@ export class SpecialProcessComponent implements OnInit {
     });
   }
 
-  getData() {
-
-      let type = localStorage.getItem('type')
-
-    this._service.getData().subscribe((res: any) => {
-      this.dataSource = new MatTableDataSource(res);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-  }
 
   deleteData(id){
 
@@ -91,7 +87,7 @@ export class SpecialProcessComponent implements OnInit {
     this.confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
 
-        this._service.deleteData(id).subscribe((res: any) => {
+        this._ProductcharacteristicsService.deleteData(id).subscribe((res: any) => {
           if (res.success) {
             this.getData();
             this.snackBar.open("Special Process Deleted Sucessfully", "", {

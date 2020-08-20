@@ -80,6 +80,21 @@ export class OperationService {
       map(this.extractData1));
   }
 
+  getincoming(): Observable<any> {
+    return this.http.get(this.API_URL+'/api/operation/data/incoming',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
+
+  getProcessCharacteristics(): Observable<any> {
+    return this.http.get(this.API_URL+'/api/operation/data/ProcessCharacteristics',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
+
+  getProductCharacteristics(): Observable<any> {
+    return this.http.get(this.API_URL+'/api/operation/data/ProductCharacteristics',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
+
   addOperation(datas): Observable<any> {
     return this.http.post<any>(this.API_URL+'/api/operation/', datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));

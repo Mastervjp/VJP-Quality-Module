@@ -28,6 +28,9 @@ models.CastingToleranceStandard = sequelize.import('./castingtolerance')
 models.HeatTreatmentCycle = sequelize.import('./heattreatment')
 models.SpecialProcess = sequelize.import('./specialprocess')
 models.ContractReview = sequelize.import('./ContractReview')
+models.ProcessCharacteristics = sequelize.import('./processcharacteristics')
+models.IncomingSource = sequelize.import('./incomingsource')
+models.ProductCharacteristics = sequelize.import('./productcharacteristics')
 
 
 
@@ -55,6 +58,9 @@ models.ContractReview = sequelize.import('./ContractReview')
 // models.SpecialProcess.sync({});
  models.ContractReview.sync({});
 
+models.ProcessCharacteristics.sync({});
+models.IncomingSource.sync({});
+models.ProductCharacteristics.sync({});
 
 
 
