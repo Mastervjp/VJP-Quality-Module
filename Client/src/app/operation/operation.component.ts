@@ -141,7 +141,7 @@ export class OperationComponent implements OnInit {
 
 
     this.dialogRef = this._matDialog.open(OperationDialogComponent, {
-      width: '600px',
+      width: '1500px',
       panelClass: 'contact-form-dialog',
       data: {
         action: 'new',

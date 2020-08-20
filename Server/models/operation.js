@@ -26,6 +26,19 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'work_center'
         },
+        incomingSource: {
+            type: DataTypes.STRING(250),
+            field: 'incoming_source'
+        },
+        processCharacteristics: {
+            type: DataTypes.STRING(250),
+            field: 'process_characteristics'
+        },
+        productCharacteristics: {
+            type: DataTypes.STRING(250),
+            field: 'product_characteristics'
+        },
+
         type: {
             type: DataTypes.STRING(250),
             field: 'type'

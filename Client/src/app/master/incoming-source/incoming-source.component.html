@@ -4,12 +4,11 @@
       list
     </span>
   </button>
-  <img style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">&nbsp; &nbsp; &nbsp;
-  <h3 style="color: white;">Instrument </h3>&nbsp; &nbsp; &nbsp;
+  <img style="margin-right: 2%;" src="assets/vjp3.png" height="50" alt="vjp" width="100">
+  <h3 style="color: white;">Incoming&nbsp;source</h3>&nbsp; &nbsp; &nbsp;
   <button  mat-raised-button selected style="cursor:pointer;" style="background-color: rgb(238, 20, 20); color: white; width: 150px;" [routerLink]="['/qpapproval-drawingtable']">QP Approval</button>
 
 </app-navbar>
-
 
 <mat-sidenav-container>
   <mat-sidenav style="width:15%;background-color: black;" mode="over" [opened]="isOpen">
@@ -22,7 +21,7 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/master/operation']" (click)="isShown = false">Process Type</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/master/instrument']" (click)="isShown = false">Instrument</a>
       </li>
       <li class="nav-item">
@@ -47,11 +46,11 @@
         <a class="nav-link" [routerLink]="['/master/heattreat']" (click)="isShown = false">Heat Treatment</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item ">
         <a class="nav-link" [routerLink]="['/master/specialpro']" (click)="isShown = false">Special Process</a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item ">
         <a class="nav-link" [routerLink]="['/master/Productcharacteristics']" (click)="isShown = false">Product characteristics</a>
       </li>
 
@@ -59,7 +58,7 @@
         <a class="nav-link" [routerLink]="['/master/Processcharacteristics']" (click)="isShown = false">Process characteristics</a>
       </li>
 
-      <li class="nav-item ">
+      <li class="nav-item active ">
         <a class="nav-link" [routerLink]="['/master/Incomingsource']" (click)="isShown = false">Incoming source</a>
       </li>
 
@@ -72,7 +71,7 @@
     <div style=" min-height: calc(100vh - 110px);">
       <div style="width: 95%;margin-left: 3%;padding-top: 2%;padding-bottom: 30px;">
         <div class="row  my-4">
-          <button mat-mini-fab (click)="createMachine()" style="background-color: #2727ec; color: white;">
+          <button mat-mini-fab (click)="addData()" style="background-color: #2727ec; color: white;">
             <mat-icon>add</mat-icon>
           </button>
         </div>
@@ -84,34 +83,17 @@
               <td mat-cell *matCellDef="let drg ; let rIndex = index;"> {{rIndex+1}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="insId">
-              <th mat-header-cell *matHeaderCellDef> Instrument ID </th>
-              <td mat-cell *matCellDef="let drg"> {{drg.insId}} </td>
-            </ng-container>
-
-
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Instrument Name </th>
+              <th mat-header-cell *matHeaderCellDef>Incoming source of variation </th>
               <td mat-cell *matCellDef="let drg"> {{drg.name}} </td>
             </ng-container>
-
-            <ng-container matColumnDef="insSpecs">
-              <th mat-header-cell *matHeaderCellDef> Specification / Range </th>
-              <td mat-cell *matCellDef="let drg"> {{drg.insSpecs}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="dueDate">
-              <th mat-header-cell *matHeaderCellDef> Due Date </th>
-              <td mat-cell *matCellDef="let drg"> {{drg.dueDate | date: 'dd/MM/yyyy' }} </td>
-            </ng-container>
-
 
             <ng-container matColumnDef="edit">
               <th mat-header-cell *matHeaderCellDef>Edit</th>
               <td mat-cell *matCellDef="let drg">
                 <div>
                   <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                          padding: 0 !important;" (click)="editMachine(drg)">
+                          padding: 0 !important;" (click)="editData(drg)">
                     <mat-icon style="color:green" selected>edit</mat-icon>
                   </button>
                 </div>
@@ -123,13 +105,12 @@
               <td mat-cell *matCellDef="let drg">
                 <div>
                   <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-                      padding: 0 !important;" (click)="deleteData(drg.id)">
+                    padding: 0 !important;" (click)="deleteData(drg.id)">
                     <mat-icon color="warn" selected>delete</mat-icon>
                   </button>
                 </div>
               </td>
             </ng-container>
-
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

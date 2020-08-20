@@ -41,6 +41,9 @@ import { ContractreviewEditComponent } from './contractreview-edit/contractrevie
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpapproval-drawing-table.component';
+import { ProductCharacteristicsComponent } from './master/product-characteristics/product-characteristics.component';
+import { ProcessCharacteristicsComponent } from './master/process-characteristics/process-characteristics.component';
+import { IncomingSourceComponent } from './master/incoming-source/incoming-source.component';
 
 const appRoutes: Routes = [
   {
@@ -180,6 +183,24 @@ const appRoutes: Routes = [
     component: MaterialListComponent,
     canActivate: [AuthGuardService]
   },
+  {
+    path: 'master/Productcharacteristics',
+    component:  ProductCharacteristicsComponent,
+    canActivate: [AuthGuardService]
+  },
+
+  {
+    path: 'master/Processcharacteristics',
+    component: ProcessCharacteristicsComponent,
+    canActivate: [AuthGuardService]
+  },
+
+  {
+    path: 'master/Incomingsource',
+    component: IncomingSourceComponent,
+    canActivate: [AuthGuardService]
+  },
+
 
 
 

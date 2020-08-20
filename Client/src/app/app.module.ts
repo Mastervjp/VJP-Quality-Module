@@ -108,6 +108,13 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpapproval-drawing-table.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ProductCharacteristicsComponent } from './master/product-characteristics/product-characteristics.component';
+import { ProcessCharacteristicsComponent } from './master/process-characteristics/process-characteristics.component';
+import { IncomingSourceComponent } from './master/incoming-source/incoming-source.component';
+import { IncomingComponent } from './master/dialog/incoming/incoming.component';
+import { ProductcharacteristicsComponent } from './master/dialog/productcharacteristics/productcharacteristics.component';
+import { ProcesscharacteristicsComponent } from './master/dialog/processcharacteristics/processcharacteristics.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -183,6 +190,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AdminLoginComponent,
     AdminPanelComponent,
     QpapprovalDrawingTableComponent,
+    ProductCharacteristicsComponent,
+    ProcessCharacteristicsComponent,
+    IncomingSourceComponent,
+    IncomingComponent,
+    ProductcharacteristicsComponent,
+    ProcesscharacteristicsComponent,
+   
     ],
   imports: [
     BrowserModule,
@@ -192,7 +206,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     MatProgressSpinnerModule,
 
-
+    
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,

@@ -17,6 +17,9 @@ router.use('/machinetol', require('./machiningtolerance'))
 router.use('/specialpro', require('./specialprocess'))
 
 
+router.use('/incomingsource', require('./incomingsource'))
+router.use('/processcharacteristics', require('./processcharacteristics'))
+router.use('/productcharacteristics', require('./productcharacteristics'))
 // router.use('/track',authCheckMiddleware, require('./track'))
 
  
