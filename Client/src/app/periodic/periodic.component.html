@@ -37,8 +37,10 @@
               <th>{{drgObject.partName | uppercase}}</th>
               <td>Operation No.</td>
               <th>{{psObject.opnNo}}</th>
-              <td>Batch Quantity</td>
-              <th colspan="2">{{routeObj.qty}}</th>
+              <th >Route Card Number</th>
+              <th >{{routeObj.cardNo}}</th>
+
+
             </tr>
             <tr>
               <td>Casting Drawing No/Rev</td>
@@ -47,8 +49,9 @@
               <td>Machining Drawing No/Rev</td>
               <th>{{drgObject.partNum1}}</th>
               <th>{{drgObject.revNo1}}</th>
-              <td>Material Grade</td>
-              <th colspan="1">{{drgObject.materialGrade}}</th>
+              <td>Batch Quantity</td>
+              <th colspan="2">{{routeObj.qty}}</th>
+
             </tr>
             <tr>
               <td>Operation Description</td>
@@ -65,8 +68,8 @@
               <th colspan="1">{{drgObject.castingToleranceStandard | uppercase}}</th>
               <td>Machining Tolerance</td>
               <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
-              <td>Route Card Number</td>
-              <th>{{routeObj.cardNo}}</th>
+              <td>Material Grade</td>
+              <th>{{drgObject.materialGrade}}</th>
               <td>Material Weight</td>
               <th>{{drgObject.materialWeight}}</th>
             </tr>

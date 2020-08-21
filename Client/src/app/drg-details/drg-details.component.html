@@ -1,77 +1,78 @@
-
 <div class="container">
 
     <div id="componentID">
         <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
-          <tr>
-            <th rowspan="4" style="text-align: center; width:12.3%;"><img src="assets/vjp3.png" height="50" width="120"></th>
-            <!-- <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;text-align: center;"
+            <tr>
+                <th rowspan="4" style="text-align: center; width:12.3%;"><img src="assets/vjp3.png" height="50"
+                        width="120"></th>
+                <!-- <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;text-align: center;"
                             rowspan="4"><b>VJP</b> 
                         </td> -->
-            <td
-              style="width: 52%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
-              rowspan="4" ><B> DRAWING INSPECTION REPORT</B></td>
-            <td style="width:7.98%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">DOC.NO
-            </td>
-            <td style="width:9.7%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
-              QA/R/43</td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid black; border-collapse: collapse; padding: 2px;">REV.NO</td>
-            <td style="border: 1px solid black; border-collapse: collapse; padding: 2px;">00</td>
-    
-          </tr>
-    
-          <tr>
-            <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">DATE</td>
-            <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">{{myDate | date: 'dd-MM-yyyy' }}</td>
-    
-          </tr>
-    
-          <tr>
-            <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">PAGE NO</td>
-            <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF</td>
-    
-          </tr>
-    
-    
+                <td style="width: 52%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
+                    rowspan="4"><B> DRAWING INSPECTION REPORT</B></td>
+                <td style="width:7.98%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">DOC.NO
+                </td>
+                <td style="width:9.7%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                    QA/R/43</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 2px;">REV.NO</td>
+                <td style="border: 1px solid black; border-collapse: collapse; padding: 2px;">00</td>
+
+            </tr>
+
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">DATE</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                    {{myDate | date: 'dd-MM-yyyy' }}</td>
+
+            </tr>
+
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">PAGE NO</td>
+                <td style="border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF</td>
+
+            </tr>
+
+
         </table>
-       
-    
-    
+
+
+
         <table style="width:100%;">
             <tr>
-       
+
                 <td>Drawing code</td>
                 <th>{{drgObject.id}}</th>
                 <td>Part Name</td>
                 <th>{{drgObject.partName | uppercase}}</th>
                 <td>Operation No.</td>
                 <th>{{psObject.opnNo}}</th>
-                <td>Batch Quantity</td>
-                <th colspan="2">{{routeObj.qty}}</th>
-        
-        
-        
-              </tr>
-        
-              <tr>
+
+
+                <th >Route Card Number</th>
+                <th >{{routeObj.cardNo}}</th>
+
+
+            </tr>
+
+            <tr>
                 <td>Casting Drawing No/Rev</td>
                 <th>{{drgObject.partNum}}</th>
                 <th>{{drgObject.revNo}}</th>
                 <td>Machining Drawing No/Rev</td>
                 <th>{{drgObject.partNum1}}</th>
                 <th>{{drgObject.revNo1}}</th>
-                <td>Material Grade</td>
-                <th colspan="1">{{drgObject.materialGrade}}</th>
-               
-        
-        
-        
-        
-              </tr>
-        
-              <tr>
+                <td>Batch Quantity</td>
+                <th colspan="1">{{routeObj.qty}}</th>
+
+
+
+
+
+            </tr>
+
+            <tr>
                 <td>Operation Description</td>
                 <th>{{psObject.description | uppercase}}</th>
                 <td>Work Center</td>
@@ -80,42 +81,42 @@
                 <th>{{qpaObject.pfNo}}</th>
                 <td>Quality Plan No</td>
                 <th colspan="2">{{qpaObject.qpNo}}</th>
-        
-        
-        
-        
-        
-        
-              </tr>
-              <tr>
-        
+
+
+
+
+
+
+            </tr>
+            <tr>
+
                 <td>Casting Tolerance</td>
                 <th colspan="1">{{drgObject.castingToleranceStandard | uppercase}}</th>
                 <td>Machining Tolerance</td>
                 <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
-                <td>Route Card Number</td>
-                <th>{{routeObj.cardNo}}</th>
+                <td>Material Grade</td>
+                <th>{{drgObject.materialGrade}}</th>
                 <td>Material Weight</td>
                 <th>{{drgObject.materialWeight}}</th>
-             
-            
-        
-              </tr>
-        
-        
-              <tr>
-        
-               
+
+
+
+            </tr>
+
+
+            <tr>
+
+
                 <td>Purchase Order Number</td>
                 <th colspan="2">{{marketData.poNo}}</th>
                 <td>Inspection Date</td>
                 <th colspan="4"></th>
-        
-              </tr>
-        
+
+            </tr>
+
 
         </table>
-       
+
 
         <table style="width: 100%; height: 200px;margin-top: 3px; ">
             <tr>
@@ -124,18 +125,22 @@
             </tr>
             <tr>
                 <th>
-                    <img style="width: 250px; height: 200px;"  src="http://192.168.1.222:80/vjp/process/{{psObject.image1}}">
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image1}}">
                 </th>
                 <th>
-                    <img style="width: 250px; height: 200px;"  src="http://192.168.1.222:80/vjp/process/{{psObject.image2}}">
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image2}}">
                 </th>
                 <th>
-                    <img style="width: 250px; height: 200px;"  src="http://192.168.1.222:80/vjp/process/{{psObject.image3}}">
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image3}}">
                 </th>
                 <th>
-                    <img  style="width: 250px; height: 200px;" src="http://192.168.1.222:80/vjp/process/{{psObject.image4}}">
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image4}}">
                 </th>
-               
+
             </tr>
         </table>
         <table style="width:100%; margin-top:3px; ">
