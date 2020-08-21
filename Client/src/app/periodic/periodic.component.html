@@ -31,52 +31,52 @@
           </table>
           <table style="width:100%;">
             <tr>
-              <td>Drawing code</td>
+              <td>DRAWING CODE</td>
               <th>{{drgObject.id}}</th>
-              <td>Part Name</td>
+              <td>PART NAME</td>
               <th>{{drgObject.partName | uppercase}}</th>
-              <td>Operation No.</td>
+              <td>OPERATION NO.</td>
               <th>{{psObject.opnNo}}</th>
-              <th >Route Card Number</th>
+              <th >ROUTE CARD NUMBER</th>
               <th >{{routeObj.cardNo}}</th>
 
 
             </tr>
             <tr>
-              <td>Casting Drawing No/Rev</td>
+              <td>CASTING DRAWING NO/REV</td>
               <th>{{drgObject.partNum}}</th>
               <th>{{drgObject.revNo}}</th>
-              <td>Machining Drawing No/Rev</td>
+              <td>MACHINING NO/REV</td>
               <th>{{drgObject.partNum1}}</th>
               <th>{{drgObject.revNo1}}</th>
-              <td>Batch Quantity</td>
+              <td>BATCH QUANTITY</td>
               <th colspan="2">{{routeObj.qty}}</th>
 
             </tr>
             <tr>
-              <td>Operation Description</td>
+              <td>OPERATOIN DESCRIPTION</td>
               <th>{{psObject.description | uppercase}}</th>
-              <td>Work Center</td>
+              <td>WORK CENTER</td>
               <th>{{psObject.workCenter}}</th>
-              <td>Process Plan No</td>
+              <td>PROCESS PLAN NO</td>
               <th>{{qpaObject.pfNo}}</th>
-              <td>Quality Plan No</td>
+              <td>QUALITY PLAN NO</td>
               <th colspan="2">{{qpaObject.qpNo}}</th>
             </tr>
             <tr>
-              <td>Casting Tolerance</td>
+              <td>CASTING TOLERANCE</td>
               <th colspan="1">{{drgObject.castingToleranceStandard | uppercase}}</th>
-              <td>Machining Tolerance</td>
+              <td>MACHINING TOLERANCE</td>
               <th colspan="1">{{drgObject. machiningToleranceStandard | uppercase}}</th>
-              <td>Material Grade</td>
+              <td>MATERIAL GRADE</td>
               <th>{{drgObject.materialGrade}}</th>
-              <td>Material Weight</td>
+              <td>MATERIAL WEIGHT</td>
               <th>{{drgObject.materialWeight}}</th>
             </tr>
             <tr>
-              <td>Purchase Order Number</td>
+              <td>PURCHASE ORDER NUMBER</td>
               <th colspan="2">{{marketData.poNo}}</th>
-              <td>Inspection Date</td>
+              <td>INSPECTION DATE</td>
               <th colspan="4"></th>
             </tr>
           </table>
@@ -107,7 +107,7 @@
                       <td>{{j+1}}</td>
                       <td *ngFor="let col1 of item.headers1[val]" class="bor">
                         <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
-                          <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                          <img src="http://192.168.1.108:80/vjp/instrument/{{subItem.Instrument.insImage}}"
                             style="width: 60px;height: 30px;">
                         </ng-container>
                         <ng-template #noImg class="bor">
@@ -116,7 +116,7 @@
                       </td>
                     </tr>
                     <tr style="height: 2rem;">
-                      <td colspan="4"> Inspected By:</td>
+                      <td colspan="4"> INSPECTED BY:</td>
                       <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
                       <td></td>
                       <td></td>
@@ -160,7 +160,7 @@
                         <td>{{j+1}}</td>
                         <td *ngFor="let col1 of item.headers1[val]" class="bor">
                           <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
-                            <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                            <img src="http://192.168.1.108:80/vjp/instrument/{{subItem.Instrument.insImage}}"
                               style="width: 60px;height: 30px;">
                           </ng-container>
 
@@ -170,7 +170,7 @@
                         </td>
                       </tr>
                       <tr style="height: 2rem;">
-                        <td colspan="4"> Inspected By:</td>
+                        <td colspan="4"> INSPECTED BY:</td>
                         <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
                         <td></td>
                         <td></td>
@@ -200,7 +200,7 @@
                     <td>{{j+1}}</td>
                     <td *ngFor="let col1 of item.headers1" class="bor">
                       <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
-                        <img src="http://192.168.1.222:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                        <img src="http://192.168.1.108:80/vjp/instrument/{{subItem.Instrument.insImage}}"
                           style="width: 60px;height: 30px;">
                       </ng-container>
                       <ng-template #noImg class="bor">
