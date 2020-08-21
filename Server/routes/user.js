@@ -105,7 +105,7 @@ router.post('/resend', (req, res, next) => {
                 to: req.body.email,
                 subject: 'Email Confirmation',
                 html: 'Hello ' + req.body.name + '! Welcome to Paasmer! Your token is:\n\n' + user.emailConfirmationToken + '\n\n' +
-                      'Or you can click this link to validate your email: <a href="http://192.168.1.222:3000/api/user/validate?token='+user.emailConfirmationToken+'"> Click here </a>'
+                      'Or you can click this link to validate your email: <a href="http://192.168.1.108:3000/api/user/validate?token='+user.emailConfirmationToken+'"> Click here </a>'
             }, (status) => {
                 if (!status) {
                     return res.json({
