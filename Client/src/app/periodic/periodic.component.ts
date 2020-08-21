@@ -388,16 +388,18 @@ td {
             while (i <= length) {
               temp = i * parseInt(key)
               temp = temp + 1;
-              if (temp < this.d_batch_qty) {
+              if (temp <= this.d_batch_qty) {
+                if(temp<this.d_to && temp>=this.d_from) {
                 // b.headers.push(temp);
                 // b.headers1.push(temp);
                 headers1.push(temp);
+                }
               }
-              else {
-                // b.headers.push(this.d_batch_qty);
-                // b.headers1.push(this.d_batch_qty);
-                headers1.push(this.d_batch_qty);
-              }
+              // else {
+              //   // b.headers.push(this.d_batch_qty);
+              //   // b.headers1.push(this.d_batch_qty);
+              //   headers1.push(this.d_batch_qty);
+              // }
               i++;
             }
             let ie, j, temparray, chunk = 10;
