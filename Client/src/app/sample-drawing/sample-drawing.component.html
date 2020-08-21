@@ -60,11 +60,7 @@
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> Drawing Code </th>
 
-            <td mat-cell matRipple *matCellDef="let drg">
-              <ng-container>
-                <span style="cursor:pointer;" (click)="sampling(drg)">{{drg.id}} </span>
-              </ng-container>
-
+            <td mat-cell matRipple style="cursor:pointer;" (click)="sampling(drg)" *matCellDef="let drg">{{drg.id}}
             </td>
 
           </ng-container>

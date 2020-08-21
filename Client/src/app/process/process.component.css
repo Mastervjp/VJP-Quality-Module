@@ -100,7 +100,7 @@ table { page-break-inside:auto }
   }
   
   .tcustom-full-width{
-    width: 100px;
+    width: 190px;
     display: inline-block;
   }
   
@@ -233,7 +233,7 @@ table { page-break-inside:auto }
     padding: 0px;
   }
   .custom2-full-width{
-    width: 80px;
+    width: 40px;
    }
   
   .mat-column-description1 {
@@ -249,7 +249,7 @@ table { page-break-inside:auto }
   }
   
   .mat-column-baloonNo{
-    width: 112.5px;
+    width: 72.5px;
   }
   
   .mat-column-specification{
@@ -257,18 +257,18 @@ table { page-break-inside:auto }
   }
   
   .mat-column-tolFrom{
-    width: 89.5px;
+    width: 59.5px;
   }
   
   .mat-column-tolTo{
-    width: 94px;
+    width: 54px;
   }
   
   .mat-column-instrument{
     width: 129px;
   }
   .mat-column-measuringFrequency{
-    width: 189px;
+    width: 139px;
   }
   .mat-column-firstPartInspection{
     width: 38px;
