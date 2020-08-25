@@ -116,6 +116,11 @@ export class PeriodicComponent implements OnInit {
     padding: 0;
     font-family: Arial;
   }
+  div.break{
+    -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+  }
 
   @page {
     size: A4 landscape;
@@ -273,9 +278,8 @@ td {
 
       .page-break	{ 
         display: block; 
-        page-break-before: always; 
+        page-break-inside: avoid;
       }
-  
       }
     }
     
@@ -290,7 +294,6 @@ td {
   }
 
   getpi(drgcode, opnId) {
-    debugger;
     this._inspectionservice.getfpi(drgcode, opnId).subscribe((res: any) => {
       if (res.success) {
 
@@ -301,7 +304,6 @@ td {
             re_data[i] = samp[i]
           }
         }
-        console.log(re_data);
         this.dataSource = re_data;
 
         var groupBy = function (xs, key) {
@@ -346,9 +348,6 @@ td {
               }
               i++;
             }
-            b.headers.push(this.d_batch_qty);
-            headers2.push(this.d_batch_qty);
-
             let ie, j, temparray, chunk = 10 
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
@@ -440,12 +439,15 @@ td {
                 headers1.push(temp);
               }
               }
-              else {
-                // b.headers.push(this.d_batch_qty);
-                // b.headers1.push(this.d_batch_qty);
-                headers1.push(this.d_batch_qty);
-              }
+              // else {
+              //   // b.headers.push(this.d_batch_qty);
+              //   // b.headers1.push(this.d_batch_qty);
+              //   headers1.push(this.d_batch_qty);
+              // }
               i++;
+            }
+            if(headers1[-1] != this.d_to){
+              headers1.push(this.d_to);
             }
             let ie, j, temparray, chunk = 10;
             for (ie = 0; ie < headers1.length; ie += chunk) {

@@ -129,7 +129,8 @@
             </ng-template>
           </ng-container>
           <ng-container *ngFor="let item of value_expression ; let i=index;">
-            <table class="style1"  *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
+            <div class="break">
+              <table  *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
               style="text-align: left;">
               <ng-container style="width: 100%;" *ngIf="item.name != '100' ">
                 <div class="bgc-color" style="box-shadow: inset 0 0 0 100px YELLOW;color: BLACK;">
@@ -211,6 +212,7 @@
                 </tbody>
               </table>
             </ng-template>
+          </div>
           </ng-container>
         </td>
       </tr>
