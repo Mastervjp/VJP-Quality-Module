@@ -123,6 +123,7 @@ export class PeriodicComponent implements OnInit {
     max-width: 100%
   }
 
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -329,22 +330,30 @@ td {
           
           if (key == "100" || key == "100%") {
             b.name = parseInt(key);
-            b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT"]
+            b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT"]
             let i = 1;
             let headers2 = [];
             while (i <= this.d_batch_qty) {
-              if(i>=this.d_from && i<=this.d_to) {
-              b.headers.push(i);
-              // b.headers1.push(i);
-              headers2.push(i)
+              if(this.d_from !="" && this.d_to != ""){
+                if(i>=this.d_from && i<=this.d_to) {
+                b.headers.push(i);
+               // b.headers1.push(i);
+               headers2.push(i)
+                }
+              } else {
+                b.headers.push(i);
+                // b.headers1.push(i);
+                headers2.push(i)
               }
               i++;
             }
+            b.headers.push(this.d_batch_qty);
+            headers2.push(this.d_batch_qty);
 
             let ie, j, temparray, chunk = 10 
 
             for (ie = 0; ie < headers2.length; ie += chunk) {
-              let Theaders = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT"]
+              let Theaders = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT"]
               let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               let Theaders4 =[]
               temparray = headers2.slice(ie, ie + chunk);
@@ -366,24 +375,24 @@ td {
 
           else if (key == "Day") {
             b.name = key;
-            b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL", "INSTRUMENT", "1"]
+            b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL", "INSTRUMENT", "1"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1"]
             b.headers4 = [""]
           }
           else if (key == "Setting" || key == "SETTING") {
             b.name = key;
-            b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT" ,"1"]
+            b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT" ,"1"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1"]
             b.headers4 =[""]
           }
           else if (key == "Shift" || key == "SHIFT" ) {
             // b.name = key;
-            // b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL", "INSTRUMENT","1", "2", "3"]
+            // b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL", "INSTRUMENT","1", "2", "3"]
             // b.headers1 = ["id","baloonNo", "DESCRIPTION", "SPECIFICATION", "tolFrom", "tolTo", "INSTRUMENT","1", "2", "3"]
           }
           else if(key == "HEAT NUMBER PER LOT"){
             b.name = key;
-            b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT" ,"1", "2", "3"]
+            b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT" ,"1", "2", "3"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
             b.headers4 = ["", "", ""]
           
@@ -391,19 +400,19 @@ td {
           }
           else if(key == "HOUR"){
             b.name = key;
-            b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
+            b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT", "1", "2", "3","4","5","6","7","8","9","10","11","12"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3","4","5","6","7","8","9","10","11","12"]
             b.headers4 = ["", "", "", "", "", "", "", "", "", "", "", ""]
           }
           else if(key == "MELTING CHARGE"){
             b.name = key;
-            b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL","INSTRUMENT", "MAX-TOL", "1", "2", "3"]
+            b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL","INSTRUMENT", "MAX-TOL", "1", "2", "3"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
             b.headers4 = ["", "", ""]
           }
           else if(key == "HEAT TREAMENT BATCH"){
             b.name = key;
-            b.headers = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT", "1", "2", "3"]
+            b.headers = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT", "1", "2", "3"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument", "1", "2", "3"]
             b.headers4 = ["", "", ""]
           }
@@ -417,30 +426,31 @@ td {
             // b.headers.push(i);
             // b.headers1.push(i);
             headers1.push(i);
-            
-            
-        
             let temp;
             while (i <= length) {
               temp = i * parseInt(key)
               temp = temp + 1;
               if (temp <= this.d_batch_qty) {
+                if(this.d_from !="" && this.d_to != ""){
                 if(temp<this.d_to && temp>=this.d_from) {
                 // b.headers.push(temp);
                 // b.headers1.push(temp);
                 headers1.push(temp);
                 }
+              } else {
+                headers1.push(temp);
               }
-              // else {
-              //   // b.headers.push(this.d_batch_qty);
-              //   // b.headers1.push(this.d_batch_qty);
-              //   headers1.push(this.d_batch_qty);
-              // }
+              }
+              else {
+                // b.headers.push(this.d_batch_qty);
+                // b.headers1.push(this.d_batch_qty);
+                headers1.push(this.d_batch_qty);
+              }
               i++;
             }
             let ie, j, temparray, chunk = 10;
             for (ie = 0; ie < headers1.length; ie += chunk) {
-              let Theaders = ["S/N","BALLON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT"]
+              let Theaders = ["S/N","BALLOON NO", "DESCRIPTION", "SPECIFICATION", "MIN-TOL", "MAX-TOL","INSTRUMENT"]
               let Theaders1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo","instrument"]
               let Theaders4 =[]
               temparray = headers1.slice(ie, ie + chunk);
