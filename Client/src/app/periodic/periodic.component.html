@@ -87,7 +87,7 @@
       <tr>
         <td>
           <ng-container *ngFor="let item of value_expression ; let i=index;">
-            <table class="style1" *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive"
+            <table class="style1"  *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive"
               style="text-align: left;padding: 2px;">
               <ng-container *ngIf="item.name == '100' ">
                 <div style="box-shadow: inset 0 0 0 1000px yellow;color: black;"> FREQUENCY 100 %</div>
@@ -100,6 +100,7 @@
                     <tr>
                       <th class="bor" *ngFor="let col of item.headers2[val]">
                         {{ col }}</th>
+                        <td style="visibility: hidden;"></td>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,19 +116,10 @@
                         </ng-template>
                       </td>
                     </tr>
-                    <tr style="height: 2rem;">
+                    <tr style="height: 1.5rem;">
                       <td colspan="4"> INSPECTED BY:</td>
                       <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td *ngFor="let col1 of item.headers4[val]"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -137,7 +129,7 @@
             </ng-template>
           </ng-container>
           <ng-container *ngFor="let item of value_expression ; let i=index;">
-            <table class="style1" *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
+            <table class="style1"  *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
               style="text-align: left;">
               <ng-container style="width: 100%;" *ngIf="item.name != '100' ">
                 <div class="bgc-color" style="box-shadow: inset 0 0 0 100px YELLOW;color: BLACK;">
@@ -153,6 +145,7 @@
                       <tr>
                         <th class="bor" *ngFor="let col of item.headers2[val]">
                           {{ col }}</th>
+                          <td style="visibility: hidden;"></td>
                       </tr>
                     </thead>
                     <tbody>
@@ -169,9 +162,11 @@
                           </ng-template>
                         </td>
                       </tr>
-                      <tr style="height: 2rem;">
+                      <tr style="height: 1.5rem;">
                         <td colspan="4"> INSPECTED BY:</td>
                         <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
+                        <td *ngFor="let col1 of item.headers4[val]"></td>
+                        <!-- <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -180,8 +175,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
+                        <td></td> -->
                       </tr>
                     </tbody>
                   </table>
@@ -193,6 +187,7 @@
                 <thead>
                   <tr>
                     <th class="bor" *ngFor="let col of item.headers">{{ col }}</th>
+                    <td style="visibility: hidden;"></td>
                   </tr>
                 </thead>
                 <tbody>
@@ -207,6 +202,11 @@
                         {{subItem[col1]}}
                       </ng-template>
                     </td>
+                  </tr>
+                  <tr style="height: 1.5rem;">
+                    <td colspan="4"> INSPECTED BY:</td>
+                    <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
+                    <td *ngFor="let col1 of item.headers4"></td>
                   </tr>
                 </tbody>
               </table>
