@@ -128,9 +128,6 @@ table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
-table{
-  page-break-inside: avoid;
-}
 th,
 td {
   font-size:9px;
@@ -293,6 +290,7 @@ td {
   }
 
   getpi(drgcode, opnId) {
+    debugger;
     this._inspectionservice.getfpi(drgcode, opnId).subscribe((res: any) => {
       if (res.success) {
 
@@ -303,6 +301,7 @@ td {
             re_data[i] = samp[i]
           }
         }
+        console.log(re_data);
         this.dataSource = re_data;
 
         var groupBy = function (xs, key) {

@@ -51,6 +51,9 @@ export class FirstpartPrintComponent implements OnInit {
       border: 1px solid black;
       border-collapse: collapse;
     }
+    .print-row {
+      height: 30px;
+    }
     th, td {
       padding: 2px;
       text-align: left;
@@ -77,6 +80,9 @@ export class FirstpartPrintComponent implements OnInit {
     text-align:center;
     vertical-align: middle;
   
+}
+.mt-4 . tg-cly1 {
+  width: 1px;
 }
 
 .tg .tg-y0n7 {
@@ -105,7 +111,8 @@ export class FirstpartPrintComponent implements OnInit {
 }
 td{
     text-align: left;
-} </style>`);
+}
+ </style>`);
 
 setTimeout(function() {
   WindowPrt.document.close();

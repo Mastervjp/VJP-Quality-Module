@@ -1,5 +1,5 @@
 <div class="container">
-  <table id="componentID" style="width : 100%">
+  <table id="componentID" style="width : 100%; text-transform: uppercase;">
     <thead class="report-header">
       <tr>
         <td>
@@ -7,7 +7,7 @@
 
           <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
             <tr>
-              <th rowspan="4" style="text-align: center; width: 12.3%;"><img src="assets/vjp3.png" height="50"
+              <th rowspan="4" style="text-align: center; width: 14.1%;"><img src="assets/vjp3.png" height="50"
                   width="120"></th>
               <!-- <td style="width: 15%;  border: 1px solid black; border-collapse: collapse; padding: 3px;font-size: 200%;text-align: center;"
                           rowspan="4"><b>VJP</b> 
@@ -15,9 +15,9 @@
               <td
                 style="width: 52%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
                 rowspan="4"><B> FIRST PIECE INSPECTION REPORT</B></td>
-              <td style="width:7.98%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">DOC.NO
+              <td style="width:11.65%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">DOC.NO
               </td>
-              <td style="width:9.7%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+              <td style="width:8.85%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
                 QA/R/43</td>
             </tr>
             <tr>
@@ -174,7 +174,7 @@
 
 
                 <ng-container *ngFor="let element of dataSource; let rIndex = index;">
-                  <tr>
+                  <tr class = "print-row">
                     <td class="tg-cly1" style="text-align: center;"> {{rIndex+1}} </td>
                     <td class="tg-cly1">{{element.baloonNo | uppercase}} </td>
                     <td class="tg-cly1"> {{element.description |uppercase}} </td>
@@ -199,7 +199,7 @@
 
 
 
-              <table class="tg mt-4" style=" width: 100%">
+              <table class="mt-4" style=" width: 100%">
                 <colgroup>
                   <col style="width: 167px">
                   <col style="width: 95px">
@@ -218,16 +218,16 @@
                   <col style="width: 89px">
                 </colgroup>
                 <tr>
-                  <th class="tg-cly1" colspan="4" style="width:16%;;">AC-ACCEPTED ,<br>RW-REWORK ,
+                  <th class="tg-cly1" colspan="4.2" style="width:15.3%;;">AC-ACCEPTED ,<br>RW-REWORK ,
                     <br>RJ-REJECTION,<br>CA-CONDITIONALLY ACCEPTED</th>
-                  <th class="tg-cly1" colspan="4" style="width:13%;">GREY SHADE ---&gt;SPECIAL CHARACTER</th>
-                  <th class="tg-cly1" colspan="2" style="width: 10.7%;">COMPONENT STATUS</th>
-                  <th class="tg-cly1" style="width:7.5%;">AC/RW/RJ/CA</th>
-                  <th class="tg-cly1" style="width:7.3%;">AC/RW/RJ/CA</th>
-                  <th class="tg-cly1" style="width:6.9%;">AC/RW/RJ/CA</th>
-                  <th class="tg-cly1" style="width:7.4%;">AC/RW/RJ/CA</th>
-                  <th class="tg-cly1" style="width: 6.5%;">AC/RW/RJ/CA</th>
-                  <th class="tg-cly1" style="width: 18%;"></th>
+                  <th class="tg-cly1" colspan="4" style="width:11%;">GREY SHADE ---&gt;SPECIAL CHARACTER</th>
+                  <th class="tg-cly1" colspan="2" style="width: 18.1%;">COMPONENT STATUS</th>
+                  <th class="tg-cly1" style="width:7%;">AC/RW/RJ/CA</th>
+                  <th class="tg-cly1" style="width:6.7%;">AC/RW/RJ/CA</th>
+                  <th class="tg-cly1" style="width:6.95%;">AC/RW/RJ/CA</th>
+                  <th class="tg-cly1" style="width:6.85%;">AC/RW/RJ/CA</th>
+                  <th class="tg-cly1" style="width: 6.7%;">AC/RW/RJ/CA</th>
+                  <th class="tg-cly1" style="width: 13.8%;"></th>
                 </tr>
                 <tr>
                   <td colspan="4"><span style="text-align:left;">MACHINE<br> NUMBER</span></td>
