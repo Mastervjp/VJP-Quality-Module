@@ -41,18 +41,18 @@ export class BatchqtyComponent implements OnInit {
         card: ['', [Validators.required]],
         qty: ['', [Validators.required]],
         machine: ['', [Validators.required]],
-        from: ['', [Validators.required]],
-        to: ['', [Validators.required,  ]]
+        from: ['', ],
+        to: ['', ]
 
       });
       this.batchForm.controls.to.setValidators([
-        Validators.required,Validators.min(1),
+        Validators.min(1),
         (control: AbstractControl) => Validators.max(this.batchForm.controls.qty.value)(control),
         
 
     ]);
       this.batchForm.controls.to.setValidators([
-        Validators.required,Validators.min(1),
+       Validators.min(1),
         (control: AbstractControl) => Validators.max(this.batchForm.controls.qty.value)(control)
     ]);
 

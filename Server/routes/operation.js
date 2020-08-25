@@ -35,7 +35,7 @@ function sendSuccess1(res, result, msg) {
 
 router.get('/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
-        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: false, addKind: false, deleteStatus: false }, }).then(function (result) { //order: [['opnNo', 'ASC']], 
+        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: false, addKind: false, deleteStatus: false }, order: [['opnNo', 'ASC']], }).then(function (result) { //order: [['opnNo', 'ASC']], 
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -45,7 +45,7 @@ router.get('/:drgId', (req, res) => {
 
 router.get('/altprocess/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
-        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: true, addKind: false, deleteStatus: false }, }).then(function (result) { // order: [['opnNo', 'ASC']],
+        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: true, addKind: false, deleteStatus: false }, order: [['opnNo', 'ASC']],}).then(function (result) { 
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -55,7 +55,7 @@ router.get('/altprocess/:drgId', (req, res) => {
 
 router.get('/kindprocess/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
-        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: false, addKind: true, deleteStatus: false }, }).then(function (result) { //order: [['opnNo', 'ASC']], 
+        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: false, addKind: true, deleteStatus: false }, order: [['opnNo', 'ASC']], }).then(function (result) { 
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
