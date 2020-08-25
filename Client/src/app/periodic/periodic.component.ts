@@ -45,6 +45,8 @@ export class PeriodicComponent implements OnInit {
     this.d_revno = localStorage.getItem('d_revno');
     this.d_revdate = localStorage.getItem('d_revdate');
     this.d_batch_qty = localStorage.getItem('batch_qty');
+    this.d_to = localStorage.getItem('qty_to');
+    this.d_from = localStorage.getItem('qty_from');
     let opnId = localStorage.getItem('opnNo')
     this.machine = localStorage.getItem('machine')
     this.getpi(myItem1, opnId);
