@@ -232,9 +232,9 @@ border-collapse: collapse;">
 
           <ng-container matColumnDef="operatorQpNo">
             <th mat-header-cell *matHeaderCellDef> QUALITY FLOW # </th>
-            <td mat-cell *matCellDef="let drg">
+            <td mat-cell *matCellDef="let drg" style="cursor:pointer;">
               <ng-container *ngIf="drg.operatorStatus == '1'">
-                <span matRipple style="cursor:pointer;" (click)="callOperation(drg)">{{drg.qpNo | uppercase}} </span>
+                <span matRipple style="cursor:pointer;width: 100%; padding:0%; height: 100%;" (click)="callOperation(drg)">{{drg.qpNo | uppercase}} </span>
               </ng-container>
               <ng-container *ngIf="drg.operatorStatus == NULL || drg.operatorStatus == '0'">
                 <span>{{drg.qpNo | uppercase}} </span>
@@ -256,9 +256,9 @@ border-collapse: collapse;">
 
           <ng-container matColumnDef="operatorPfNo">
             <th mat-header-cell *matHeaderCellDef> PROCESS FLOW # </th>
-            <td mat-cell *matCellDef="let drg">
+            <td mat-cell *matCellDef="let drg" style="cursor:pointer;">
               <ng-container *ngIf="drg.operatorStatus == '1'">
-                <span matRipple style="cursor:pointer;" (click)="callOperation(drg)">{{drg.pfNo | uppercase}} </span>
+                <span matRipple style="cursor:pointer;width: 100%; padding:0%;height: 100%;" (click)="callOperation(drg)">{{drg.pfNo | uppercase}} </span>
               </ng-container>
               <ng-container *ngIf="drg.operatorStatus == NULL || drg.operatorStatus == '0'">
                 <span>{{drg.pfNo | uppercase}} </span>

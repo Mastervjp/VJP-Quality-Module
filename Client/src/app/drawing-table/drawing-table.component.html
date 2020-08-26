@@ -60,14 +60,16 @@
               </td>
             </ng-container>
             <ng-container *ngIf="!isTT">
-              <td mat-cell matRipple *matCellDef="let drg">
+              <!-- <td mat-cell matRipple *matCellDef="let drg"> -->
                 <ng-container *ngIf="isET">
-                  <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span>
+                  <!-- <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span> -->
+                  <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}}</td>
                 </ng-container>
 
                 <ng-container *ngIf="!isET">
 
                   <ng-container *ngIf="isUT">
+                    <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;">
                     <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
                       <span style="cursor:pointer; width: 100%; padding:0%;" (click)="callOperation(drg)"> {{drg.id}}
                       </span>
@@ -75,17 +77,19 @@
                     <ng-template #unlockcode1>
                       <span (click)="lockmsg()"> {{drg.id}} </span>
                     </ng-template>
+                  </td>
                   </ng-container>
 
                   <ng-container *ngIf="!isUT">
                     <ng-container>
-                      <span style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}} </span>
+                      <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}}</td>
+                      <!-- <span style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}} </span> -->
                     </ng-container>
                   </ng-container>
 
 
                 </ng-container>
-              </td>
+              <!-- </td> -->
             </ng-container>
           </ng-container>
 

@@ -191,6 +191,7 @@ export class SamplingComponent implements OnInit {
   }
 
   async updateOperation() {
+    this.isLoading = true;
     if (this.userTable.valid && this.validityCheck == true) {
       let tempData = this.userTable.value.tableRows;
         for(let element of tempData){

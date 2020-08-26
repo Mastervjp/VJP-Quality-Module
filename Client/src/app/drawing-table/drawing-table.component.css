@@ -12,7 +12,10 @@ table {
 .make-red {
   background-color: #ffd0c2;
 }
-
+span{
+  display: inline-block;
+  margin: 0;
+}
 
 .successsnackbarclass {
   background-color: green !important;

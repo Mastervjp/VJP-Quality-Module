@@ -37,12 +37,15 @@
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> DRAWING CODE </th>
                 <ng-container >
-                  <td mat-cell matRipple *matCellDef="let drg">
+                  <!-- <td mat-cell matRipple *matCellDef="let drg">
                     <ng-container >
                         <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span>
                       </ng-container>
       
     
+                  </td> -->
+                  <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;" (click)="callOperation(drg)">
+                    {{drg.id}}
                   </td>
                 </ng-container>
               </ng-container>
