@@ -52,7 +52,7 @@ export class FirstpartPrintComponent implements OnInit {
       border-collapse: collapse;
     }
     .print-row {
-      height: 30px;
+      height: 25px;
     }
     th, td {
       padding: 2px;

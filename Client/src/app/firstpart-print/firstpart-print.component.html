@@ -98,7 +98,7 @@
             <tr>
 
 
-              <td >PURCHASE ORDER NMUBER</td>
+              <td >PURCHASE ORDER NUMBER</td>
               <th colspan="2">{{marketData.poNo}}</th>
               <td colspan="2">Inspection Date</td>
               <th colspan="5"></th>
@@ -139,7 +139,7 @@
                 <THEAD>
                   <tr>
                     <th class="tg-nrix" colspan="1" rowspan="2"><b>S/N</b></th>
-                    <th class="tg-nrix" colspan="1" rowspan="2" style="text-align: center;"><b>BALLON NO</b></th>
+                    <th class="tg-nrix" colspan="1" rowspan="2" style="text-align: center;"><b>B/N</b></th>
                     <th class="tg-nr" colspan="1" rowspan="2" style="width: 10%;text-align: center;"><b>DESCRIPTION</b> </th>
                     <th class="tg-nr" colspan="1"  rowspan="2" style="width: 8.8%;text-align: center;"><b>SPECIFICATION</b></th>
                     <th class="tg-nrix" colspan="1" rowspan="2" style="width: 5%;text-align: center;"><b>MIN-TOL</b></th>
@@ -163,7 +163,7 @@
 
 
                 <ng-container *ngFor="let element of dataSource; let rIndex = index;">
-                  <tr>
+                  <tr class="print-row">
                     <td class="tg-cly1" style="text-align: center;"> {{rIndex+1}} </td>
                     <td class="tg-cly1">{{element.baloonNo | uppercase}} </td>
                     <td class="tg-cly1"> {{element.description |uppercase}} </td>
