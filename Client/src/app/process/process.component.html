@@ -268,7 +268,7 @@
             <th mat-header-cell *matHeaderCellDef> Balloon # </th>
             <td mat-cell *matCellDef="let element; let rIndex=index;" contenteditable="false">
               <div *ngIf="!disable; else input">
-                <mat-form-field class="tcustom-full-width">
+                <mat-form-field class="tcustom-full-width" style="width: 60px;">
                   <mat-label>Balloon #</mat-label>
                   <input name="baloonNo" [readonly]=disable (keyup)="onChange($event,rIndex,'baloonNo')"
                     [value]="element.baloonNo" matInput required>
