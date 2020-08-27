@@ -145,25 +145,26 @@ td {
 
   height:25px ;
   text-align: left;
+  word-break: break-word;
  }
  .nnew{
    width: 80px;
    height: 30px;
  }
 .bk th:first-child {
-  width: 1% !important;
+  width: 3% !important;
  }
  
  .bk th:nth-child(2) {
-  width: 1% !important;
+  width: 3% !important;
  }
  
  .bk th:nth-child(3) {
-  width: 5% !important;
+  width: 7% !important;
  }
  
  .bk th:nth-child(4) {
-  width: 12% !important;
+  width: 11% !important;
  }
  
  .bk th:nth-child(5) {
@@ -174,69 +175,69 @@ td {
   width: 3.5% !important;
  }
  .bk th:nth-child(7) {
-  width: 5% !important;
+  width: 6% !important;
  }
  .bk th:nth-child(8) {
-  width: 4.6% !important;
+  width: 4.14% !important;
  }
  .bk th:nth-child(9) {
-   width: 4.6% !important;
+   width: 4.14% !important;
   }
   .bk th:nth-child(10) {
-   width: 4.6% !important;
+   width: 4.14% !important;
   }
   .bk th:nth-child(11) {
-    width: 4.6% !important;
+    width: 4.14% !important;
    }
    .bk th:nth-child(12) {
-     width: 4.6% !important;
+     width: 4.14% !important;
     }
     .bk th:nth-child(13) {
-      width: 4.6% !important;
+      width: 4.14% !important;
      }
      .bk th:nth-child(14) {
-       width: 4.6% !important;
+       width: 4.14% !important;
       }
       .bk th:nth-child(15) {
-        width: 4.6% !important;
+        width: 4.14% !important;
        }
        .bk th:nth-child(16) {
-         width: 4.6% !important;
+         width: 4.14% !important;
         }
         .bk th:nth-child(17) {
-          width: 4.6% !important;
+          width: 4.14% !important;
          }
          .bk th:nth-child(18) {
-          width: 4.6% !important;
+          width: 4.14% !important;
          }
          .bk th:nth-child(19) {
-          width: 4.6% !important;
+          width: 4.14% !important;
          }
          .bk th:nth-child(20) {
-          width: 4.6% !important;
+          width: 4.14% !important;
          }
          .bk th:nth-child(21) {
-          width: 4.6% !important;
+          width: 4.14% !important;
          }
          .bk th:nth-child(22) {
-          width: 4.6% !important;
+          width: 4.14% !important;
          }
 
 
          .fp th:first-child {
-          width: 1% !important;
+          width: 3% !important;
          }
          
          .fp th:nth-child(2) {
-          width: 1% !important;
+          width: 3% !important;
          }
          
          .fp th:nth-child(3) {
-          width: 5% !important;
+          width: 7% !important;
          }
          
          .fp th:nth-child(4) {
-          width: 12% !important;
+          width: 11% !important;
          }
          
          .fp th:nth-child(5) {
@@ -247,52 +248,52 @@ td {
           width: 3.5% !important;
          }
          .fp th:nth-child(7) {
-          width: 5% !important;
+          width: 6% !important;
          }
          .fp th:nth-child(8) {
-          width: 4.6% !important;
+          width: 4.14% !important;
          }
          .fp th:nth-child(9) {
-           width: 4.6% !important;
+           width: 4.14% !important;
           }
           .fp th:nth-child(10) {
-           width: 4.6% !important;
+           width: 4.14% !important;
           }
           .fp th:nth-child(11) {
-            width: 4.6% !important;
+            width: 4.14% !important;
            }
            .fp th:nth-child(12) {
-             width: 4.6% !important;
+             width: 4.14% !important;
             }
             .fp th:nth-child(13) {
-              width: 4.6% !important;
+              width: 4.14% !important;
              }
              .fp th:nth-child(14) {
-               width: 4.6% !important;
+               width: 4.14% !important;
               }
               .fp th:nth-child(15) {
-                width: 4.6% !important;
+                width: 4.14% !important;
                }
                .fp th:nth-child(16) {
-                 width: 4.6% !important;
+                 width: 4.14% !important;
                 }
                 .fp th:nth-child(17) {
-                  width: 4.6% !important;
+                  width: 4.14% !important;
                  }
                  .fp th:nth-child(18) {
-                  width: 4.6% !important;
+                  width: 4.14% !important;
                  }
                  .fp th:nth-child(19) {
-                  width: 4.6% !important;
+                  width: 4.14% !important;
                  }
                  .fp th:nth-child(20) {
-                  width: 4.6% !important;
+                  width: 4.14% !important;
                  }
                  .fp th:nth-child(21) {
-                  width: 4.6% !important;
+                  width: 4.14% !important;
                  }
                  .fp th:nth-child(22) {
-                  width: 4.6% !important;
+                  width: 4.14% !important;
                  }
 
 
