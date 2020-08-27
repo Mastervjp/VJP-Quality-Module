@@ -13,15 +13,7 @@
 
     <div *ngIf="islog && isTT ||isTEC">
 
-      <div style="margin-left: 3%;">
-        <button *ngIf="islog && isad " mat-mini-fab (click)="createDrawing()"
-          style="background-color: #2727ec; color: white;">
-          <mat-icon>add</mat-icon>
-        </button>
-        <button *ngIf="islog && isad" mat-raised-button selected style="cursor:pointer;   min-width: fit-content;min-height: 34px !important;
-        padding: 0 !important;" style="background-color: rgb(238, 20, 20); color: white;" [routerLink]="['/qpapproval-drawingtable']">QP approve</button>
-
-      </div>
+     
     </div>
     <form class="in">
       <input style="float: right;" type="text" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
@@ -49,10 +41,11 @@
 
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> DRAWING CODE </th>
+         
             <ng-container *ngIf="isTT">
               <td mat-cell matRipple *matCellDef="let drg">
                 <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
-                  <span style="cursor:pointer;">{{drg.id}} </span>
+                  <span style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}} </span>
                 </ng-container>
                 <ng-template #unlockcode1>
                   <span (click)="lockmsg()">{{drg.id}} </span>
@@ -60,16 +53,14 @@
               </td>
             </ng-container>
             <ng-container *ngIf="!isTT">
-              <!-- <td mat-cell matRipple *matCellDef="let drg"> -->
+              <td mat-cell matRipple *matCellDef="let drg">
                 <ng-container *ngIf="isET">
-                  <!-- <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span> -->
-                  <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}}</td>
+                  <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span>
                 </ng-container>
 
                 <ng-container *ngIf="!isET">
 
                   <ng-container *ngIf="isUT">
-                    <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;">
                     <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
                       <span style="cursor:pointer; width: 100%; padding:0%;" (click)="callOperation(drg)"> {{drg.id}}
                       </span>
@@ -77,19 +68,17 @@
                     <ng-template #unlockcode1>
                       <span (click)="lockmsg()"> {{drg.id}} </span>
                     </ng-template>
-                  </td>
                   </ng-container>
 
-                  <ng-container *ngIf="!isUT">
+                  <ng-container *ngIf="isDIS">
                     <ng-container>
-                      <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}}</td>
-                      <!-- <span style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}} </span> -->
+                      <span style="cursor:pointer;" (click)="batchqty(drg)">{{drg.id}} </span>
                     </ng-container>
                   </ng-container>
 
 
                 </ng-container>
-              <!-- </td> -->
+              </td>
             </ng-container>
           </ng-container>
 

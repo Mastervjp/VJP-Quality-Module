@@ -1,0 +1,171 @@
+<div style=" min-height: calc(100vh - 110px);">
+  
+    <div style="width: 95%;margin-left: 3%;padding-top: 2%;">
+
+        <div id="componentID" style="height: 100%;">
+
+            <table class="tg" style="  width: 100%;">
+
+                <tr>
+                    <th rowspan="2" colspan="1" style="text-align: center;width: 13%;"><img src="assets/vjp3.png"
+                            height="60" width="100">
+                    </th>
+
+                    <td rowspan="2" colspan="7" style="text-align: center;width: 67%; font-size: 20px;">
+                        <b>PROCESS&nbsp;FLOW&nbsp;DIAGRAM
+                        </b><br>
+                        <a style="font-size:medium ;">
+                            <img src="assets/1.png" height="40px" width="40px" alt="">PROTOTYPE
+                            <img src="assets/1.png" height="40px" width="40px" alt="">PRE-LAUNCH
+                            <img src="assets/1.png" height="40px" width="40px" alt=""> PRODUCTION
+                        </a>
+                     
+                    </td>
+                    <td colspan="1" style="width: 11%;">DOC CODE</td>
+                    <td colspan="3" style="width: 9%;"><b>DEV/D/01</b></td>
+                </tr>
+
+                <tr>
+                    <td colspan="1">DOC REV.#</td>
+                    <td colspan="3"><b> 00</b></td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="width: 14%;">CASTING PART NAME:</td>
+                    <td colspan="1" style="width: 12%;"><b>{{drgObject.partName  |uppercase}}</b></td>
+                    <td colspan="3" style="width: 27%;">CUSTOMER CODE:</td>
+                    <td colspan="3" style="width: 27%;"></td>
+                    <td colspan="1" style="width: 10%;"> DATE</td>
+                    <td colspan="3" style="width: 10%;"><b>10.12.2018 </b>
+
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="1">CASTING PART #/REV #:</td>
+                    <td colspan="1"><b>{{drgObject.partNum  |uppercase}}</b></td>
+                    <td colspan="3">CAVITY #:</td>
+                    <td colspan="3"><b>1</b> </td>
+                    <td colspan="1">PAGE #.</td>
+                    <td colspan="3"><b> 1 OF 1</b></td>
+                </tr>
+
+                <tr>
+                    <td colspan="1">MACHING PART NAME:</td>
+                    <td colspan="1"></td>
+                    <td colspan="3">KEY DATE:</td>
+                    <td colspan="3"><b>02.08.2019</b></td>
+                    <td colspan="1">DATE OF CREATE</td>
+                    <td colspan="3"><b> 27.03.2020</b></td>
+                </tr>
+
+                <tr>
+                    <td colspan="1">MACHING PART #/REV #:</td>
+                    <td colspan="1"><b>{{drgObject.partNum1  |uppercase}}</b></td>
+                    <td colspan="3">Orginated Date:</td>
+                    <td colspan="3"><b>02.08.2019</b></td>
+                    <td colspan="1">PROCESS FLOW CHART #</td>
+                    <td colspan="3"><b> {{drgObject.partNum1  |uppercase}}</b></td>
+                </tr>
+            </table>
+
+
+            <table class="sec" style="  width: 100%;">
+
+
+                <tr style="text-align: center;">
+
+
+                    <th style="width: 3%;"><b>OPER<br>#</b></th>
+                    <th style="width: 14%;"><b>OPERATION&nbsp;NAME</b></th>
+                    <th style="width: 9%;"><b>PROCESS&nbsp;FLOW<br>DIAGRAM</b> </th>
+                    <th style="width: 19%;"><b>NAME&nbsp;OF&nbsp;THE&nbsp;EQUIPMENT</b> </th>
+                    <th style="width: 20%;"><b>RECQUIRED&nbsp;PRODUCT&nbsp;CHARACTERISTICS</b></th>
+                    <th style="width: 15%;"><b>RECQUIRED&nbsp;PROCESS<br>CHARACTERISTICS</b></th>
+                    <th style="width: 20%;"><b>INCOMIG&nbsp;SOURCE&nbsp;OF<br>VARIATION</b></th>
+
+                </tr>
+
+
+             
+                <ng-container class="data" *ngFor="let element of process; let rIndex = index;">
+                    <tr>
+                        <td>{{element.opnNo}}</td>
+                        <td>{{element.opnName}}</td>
+                        <td>{{element.opnNo}}</td>
+                        <td>{{element.workCenter}}</td>
+                        <td>{{element.productCharacteristics}}</td>
+                        <td>{{element.processCharacteristics}}</td>
+                        <td>{{element.incomingSource}}</td>
+    
+                    </tr>
+                    </ng-container>
+
+                <tr></tr>
+
+
+                <tr>
+                    <td colspan="12"><u><b>REVISION&nbsp;CHANGE&nbsp;DETAILS:</b></u>REVISION #1 PRODUCTION RELEASED
+                    </td>
+                </tr>
+
+
+            </table>
+
+            <table class="sec" style="width:100%">
+                <tr>
+                    <td style="width: 12.5%;height: 35px;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                </tr>
+
+                <tr style="text-align:center ;">
+                    <td style="width: 12.5%;">PREPARED BY:</td>
+                    <td style="width: 12.5%;">VERIFIED BY:</td>
+                    <td style="width: 12.5%;">APPROVED BY:</td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                </tr>
+
+            </table>
+
+            <table>
+                <tr style="font-size: small;text-align:center ;">
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;">PROCESS/OPERATION <br>
+                        <img src="assets/ellipse.png" height="20" width="20" alt="">
+
+                    </td>
+                    <td style="width: 12.5%;">INSPECTION <br>
+                       <img src="assets/1.png"  height="25" width="25"  alt="">
+                    </td>
+                    <td style="width: 12.5%;">STORAGE<br>
+                       <img src="assets/triangle.png"  height="25" width="25"  alt="">
+                    </td>
+                    <td style="width: 12.5%;">TRANSPORTATION <br>
+                        <img src="assets/arrow.png"  height="25" width="25" alt="">
+                    </td>
+                    <td style="width: 12.5%;">PROCESS CUM INSPECTION</td>
+
+                    <td style="width: 12.5%;"></td>
+                    <td style="width: 12.5%;"></td>
+                </tr>
+            </table>
+
+
+
+        </div>
+    </div>
+
+    <div class="col-md-12 text-center p-4">
+        <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
+    </div>
+</div>

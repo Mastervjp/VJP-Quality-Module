@@ -3,7 +3,45 @@
 </app-navbar>
 <div style=" min-height: calc(100vh - 110px);">
     <div style="width: 95%;margin-left: 3%;padding-top: 5%;">
+        <ng-container *ngIf="isTT">
+            <div class="p-5">
+                <mat-card>
+                    <form name="batchForm" [formGroup]="batchForm">
+                        <div class="row">
+                         
+                            <div class="col-4">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Process Number</mat-label>
 
+                                  
+                                <mat-select (selectionChange)="changeCard($event)" formControlName="process">
+                                    <mat-option *ngFor="let op of processList" [value]="op">
+                                        {{op.pfNo}}
+                                    </mat-option>
+                                </mat-select>
+
+                                </mat-form-field>
+
+                            </div>
+
+
+                         
+                        
+
+                        </div>
+
+                        <div class="col text-center">
+                            <button mat-raised-button (click)="getInspection()"
+                            [disabled]="batchForm.invalid"  >Proceed</button>
+                        </div>
+                      
+                    </form>
+                </mat-card>
+
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="isDIS ||isUT">
         <div class="p-5">
             <mat-card>
                 <form name="batchForm" [formGroup]="batchForm">
@@ -78,7 +116,7 @@
 
         </div>
 
-
+    </ng-container>
 
     </div>
 

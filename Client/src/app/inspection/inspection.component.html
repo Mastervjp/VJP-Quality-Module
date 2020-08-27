@@ -7,8 +7,16 @@
     <div style="width: 95%;margin-left: 3%;padding-top: 4.3%;">
 
         <div>
-
-            <ng-container *ngIf="fircheck">
+            <div *ngIf="isTT">
+                <ng-container>
+                    <mat-tab-group>
+                        <mat-tab label="Process Flow Diagram">
+                            <app-process-flow-diagram></app-process-flow-diagram>
+                        </mat-tab>
+                    </mat-tab-group>
+                </ng-container>
+            </div>
+            <ng-container *ngIf="fircheck &&isDIS">
                 <mat-tab-group>
                     <mat-tab label="M-FIR">
 

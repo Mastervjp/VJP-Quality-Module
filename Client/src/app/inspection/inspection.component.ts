@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./inspection.component.css']
 })
 export class InspectionComponent implements OnInit {
+  isTT: boolean;
+  isUT: boolean;
+  isDIS: boolean;
 
   constructor(private router: Router) { }
 
@@ -16,6 +17,35 @@ export class InspectionComponent implements OnInit {
 
   ngOnInit() {
     let temp = localStorage.getItem("firCheck");
+    let status = localStorage.getItem('adminLogRole');
+    let role = localStorage.getItem('logRole');
+
+    if(role =="TT" ||status =="tec")
+    {
+      this.isTT =true;
+    }
+    else{
+      this.isTT =false
+    }
+
+    if(role =="UT" ||status =="ope")
+    {
+      this.isUT =true
+    }
+    
+    else{
+      this.isUT =false
+    }
+
+    if(role =="DIS" ||status =="disp")
+    {
+      this.isDIS =true
+    }
+    
+    else{
+      this.isDIS =false
+    }
+    debugger
     if (temp == '1') {
       this.fircheck = true
     }

@@ -32,7 +32,6 @@ import { CastingTolComponent } from './master/casting-tol/casting-tol.component'
 import { MachineTolStdComponent } from './master/machine-tol-std/machine-tol-std.component';
 import { HeatTreatmentComponent } from './master/heat-treatment/heat-treatment.component';
 import { SpecialProcessComponent } from './master/special-process/special-process.component';
-import { AddDrawingComponent } from './add-drawing/add-drawing.component';
 import { SampleDrawingComponent } from './sample-drawing/sample-drawing.component';
 import { ContractreviewComponent } from './contractreview/contractreview.component';
 import { ContractreviewViewComponent } from './contractreview-view/contractreview-view.component';
@@ -44,6 +43,9 @@ import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpap
 import { ProductCharacteristicsComponent } from './master/product-characteristics/product-characteristics.component';
 import { ProcessCharacteristicsComponent } from './master/process-characteristics/process-characteristics.component';
 import { IncomingSourceComponent } from './master/incoming-source/incoming-source.component';
+import { TechPanelComponent } from './tech-panel/tech-panel.component';
+import { AddDrawingComponent } from './add-drawing/add-drawing.component';
+import { ProcessFlowDiagramComponent } from './process-flow-diagram/process-flow-diagram.component';
 
 const appRoutes: Routes = [
   {
@@ -75,7 +77,7 @@ const appRoutes: Routes = [
   },
 
   {
-    path: 'drawing_action',
+    path: 'add-drawing',
     component: AddDrawingComponent,
     canActivate: [AuthGuardService]
   },
@@ -283,8 +285,17 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService]
   },
 
+  {
+    path: 'tech-panel',
+    component: TechPanelComponent,
+    canActivate: [AuthGuardService]
+  },
 
-
+  {
+    path: 'processflow',
+    component:  ProcessFlowDiagramComponent,
+    // canActivate: [AuthGuardService]
+  },
 
 
 

@@ -20,12 +20,18 @@ export class BatchqtyComponent implements OnInit {
   isOPE: boolean;
   isDISP: boolean;
   isDIS: boolean;
+  isTT: boolean;
+  processList: any;
 
-  constructor(private _formBuilder: FormBuilder, private _opservice: OperationService, public auth: AuthenticationService, private router: Router) { }
+  constructor(private _formBuilder: FormBuilder,
+    private _opservice: OperationService,
+    public auth: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getMachine();
     this.getRoute();
+    this.getProcess()
     this.islog = this.auth.isLoggedIn();
     let status = localStorage.getItem('adminLogRole')
     this.checkrole(status);
@@ -36,25 +42,31 @@ export class BatchqtyComponent implements OnInit {
         card: ['', [Validators.required]],
         qty: ['', [Validators.required]],
       });
-    } else {
+    }
+    else if ((this.islog == true && this.isTT == true)) {
+      this.batchForm = this._formBuilder.group({
+        process: ['', [Validators.required]],
+      });
+    }
+    else {
       this.batchForm = this._formBuilder.group({
         card: ['', [Validators.required]],
         qty: ['', [Validators.required]],
         machine: ['', [Validators.required]],
-        from: ['', ],
-        to: ['', ]
+        from: ['', [Validators.required]],
+        to: ['', [Validators.required,]]
 
       });
       this.batchForm.controls.to.setValidators([
-        Validators.min(1),
+        Validators.required, Validators.min(1),
         (control: AbstractControl) => Validators.max(this.batchForm.controls.qty.value)(control),
-        
 
-    ]);
+
+      ]);
       this.batchForm.controls.to.setValidators([
-       Validators.min(1),
+        Validators.required, Validators.min(1),
         (control: AbstractControl) => Validators.max(this.batchForm.controls.qty.value)(control)
-    ]);
+      ]);
 
     }
 
@@ -72,6 +84,7 @@ export class BatchqtyComponent implements OnInit {
       this.isDISP = false;
 
     }
+
     if (localStorage.getItem('logRole') == "UT" || status == 'ope') {
       this.isUT = true;
       this.isOPE = true;
@@ -81,6 +94,16 @@ export class BatchqtyComponent implements OnInit {
       this.isUT = false;
       this.isOPE = false;
     }
+
+    if (localStorage.getItem('logRole') == "TT" || status == 'tec') {
+      this.isTT = true;
+
+    }
+
+    else {
+      this.isTT = false;
+    }
+    debugger
   }
 
 
@@ -107,6 +130,18 @@ export class BatchqtyComponent implements OnInit {
     });
   }
 
+  getProcess() {
+    let id = localStorage.getItem('DrgCode');
+    this._opservice.getProcess(id).subscribe((res: any) => {
+
+      if (res.success) {
+        this.processList = res.data;
+      }
+    });
+    debugger
+  }
+
+
   changeCard(event) {
     localStorage.setItem('routeObj', JSON.stringify(event.value));
     let qty1 = event.value.qty;
@@ -119,19 +154,31 @@ export class BatchqtyComponent implements OnInit {
 
   getInspection() {
 
+
+
     let step1 = this.batchForm.getRawValue();
-    localStorage.setItem('batch_qty', step1.qty);
-    localStorage.setItem('machine', step1.machine);
-    localStorage.setItem('qty_from', step1.from);
-    localStorage.setItem('qty_to', step1.to);
+    if (this.isTT) {
+      localStorage.setItem('pfNo', step1.process.pfNo);
+    }
+    else {
+      localStorage.setItem('batch_qty', step1.qty);
+      localStorage.setItem('machine', step1.machine);
+      localStorage.setItem('qty_from', step1.from);
+      localStorage.setItem('qty_to', step1.to);
+    }
     this.router.navigate(['/inspection']);
   }
 
   getInspection1() {
 
-    let step1 = this.batchForm1.getRawValue();
-    localStorage.setItem('batch_qty', step1.qty);
+    // let step1 = this.batchForm.getRawValue();
+
+
+
+    //  debugger
+    // localStorage.setItem('batch_qty', step1.qty);
     // localStorage.setItem('machine', step1.machine);
     this.router.navigate(['/inspection']);
+
   }
 }

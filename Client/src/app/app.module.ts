@@ -114,6 +114,8 @@ import { IncomingSourceComponent } from './master/incoming-source/incoming-sourc
 import { IncomingComponent } from './master/dialog/incoming/incoming.component';
 import { ProductcharacteristicsComponent } from './master/dialog/productcharacteristics/productcharacteristics.component';
 import { ProcesscharacteristicsComponent } from './master/dialog/processcharacteristics/processcharacteristics.component';
+import { TechPanelComponent } from './tech-panel/tech-panel.component';
+import { ProcessFlowDiagramComponent } from './process-flow-diagram/process-flow-diagram.component';
 
 @NgModule({
   declarations: [
@@ -196,6 +198,8 @@ import { ProcesscharacteristicsComponent } from './master/dialog/processcharacte
     IncomingComponent,
     ProductcharacteristicsComponent,
     ProcesscharacteristicsComponent,
+    TechPanelComponent,
+    ProcessFlowDiagramComponent,
    
     ],
   imports: [

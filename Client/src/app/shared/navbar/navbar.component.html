@@ -33,9 +33,13 @@
               <p><i class="fa fa-question-circle"></i> Are you sure you want to go back? <br /></p>
               <div class="actionsBtns">
                 <form method="post">
-                  <a *ngIf="islog && isET || isENGG || isTT||isTEC || isDIS ||isDISP  || isUT ||isOPE">
+                  <a *ngIf="islog && isET || isENGG ||isDIS ||isDISP  || isUT ||isOPE">
                     <button style="width:25%;text-align: center;" class="btn btn-default btn-primary"
                       data-dismiss="modal" [routerLink]="['/drawing']">Yes</button>&nbsp;
+                  </a>
+                  <a *ngIf="islog &&  isTT||isTEC ">
+                    <button style="width:25%;text-align: center;" class="btn btn-default btn-primary"
+                      data-dismiss="modal" [routerLink]="['/tech-panel']">Yes</button>&nbsp;
                   </a>
                   <a *ngIf="islog &&  isMKT|| isMARKET ||isMAN ||isMANAGEMENT">
                     <button style="width:25%;text-align: center;" class="btn btn-default btn-primary"

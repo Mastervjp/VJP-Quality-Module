@@ -67,7 +67,12 @@ export class OperationService {
     return this.http.get(this.API_URL+'/api/operation/data/machine',{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
-
+  
+  getProcess(id): Observable<any> {
+    return this.http.get(this.API_URL+'/api/quality/'+id,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+     
+  }
 
   getRoute(drgid): Observable<any> {
     return this.http.get(this.API_URL+'/api/inspection/routecard/'+drgid,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(

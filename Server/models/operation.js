@@ -1,8 +1,8 @@
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     let Operation = sequelize.define('Operation', {
 
-       id: {
+        id: {
             type: DataTypes.INTEGER(11).UNSIGNED,
             field: 'id',
             autoIncrement: true,
@@ -10,8 +10,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         opnNo: {
-            type:DataTypes.INTEGER(20),
-            field:'opn_no',
+            type: DataTypes.INTEGER(20),
+            field: 'opn_no',
             allowNull: false
         },
         opnName: {
@@ -19,8 +19,8 @@ module.exports = function(sequelize, DataTypes) {
             field: 'opn_name'
         },
         description: {
-            type:DataTypes.STRING(250),
-            field:'description'
+            type: DataTypes.STRING(250),
+            field: 'description'
         },
         workCenter: {
             type: DataTypes.STRING(250),
@@ -38,12 +38,38 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'product_characteristics'
         },
+        processOperation: {
+            type: DataTypes.BOOLEAN,
+            field: 'process_operation',
+            allowNull:true
+        },
+        inspection: {
+            type: DataTypes.BOOLEAN,
+            field: 'inspection',
+            allowNull:true
+        },
+        storage: {
+            type: DataTypes.BOOLEAN,
+            field: 'storage',
+            allowNull:true
+        },
+        transportion: {
+            type: DataTypes.BOOLEAN,
+            field: 'transportion',
+            allowNull:true
+        },
+        processCumInspection: {
+            type: DataTypes.BOOLEAN,
+            field: 'process_cum_inspection',
+            allowNull:true
+        },
+
 
         type: {
             type: DataTypes.STRING(250),
             field: 'type'
         },
-        
+
         image1: {
             type: DataTypes.STRING(250),
             field: 'image1'
@@ -61,9 +87,9 @@ module.exports = function(sequelize, DataTypes) {
             field: 'image4'
         },
 
-        drgId:{
+        drgId: {
             type: DataTypes.INTEGER(11).UNSIGNED,
-            field:'drg_id'
+            field: 'drg_id'
         },
         altProcess: {
             type: DataTypes.BOOLEAN,
@@ -107,14 +133,14 @@ module.exports = function(sequelize, DataTypes) {
         },
         
     },
-    {
-        timestamps:true,
-        tableName:'operation'
-    })
+        {
+            timestamps: true,
+            tableName: 'operation'
+        })
 
-    Operation.associate = function(models) {
+    Operation.associate = function (models) {
         Operation.hasMany(models.Process, { foreignKey: 'opnId' })
-        Operation.belongsTo(models.Drawing, { foreignKey: 'drgId'})
+        Operation.belongsTo(models.Drawing, { foreignKey: 'drgId' })
     }
     return Operation
 }

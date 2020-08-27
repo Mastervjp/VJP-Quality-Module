@@ -1,0 +1,60 @@
+<app-navbar>
+
+    <h3 style="color: aliceblue;">Tech Panel</h3>
+
+</app-navbar>
+<div style=" min-height: calc(100vh - 110px);">
+    <div class="album py-5 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-card class="card">
+                        <img mat-card-image src="assets/create.jpg" width="100%" height="225">
+                        <mat-card-content style="margin-top: 10px;">
+                            <h6>
+                                Create drawing code
+                            </h6>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button color="primary" (click)="isShown = false"
+                                [routerLink]="['/add-drawing']">Create</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <div class="col-md-3">
+                    <mat-card class="card">
+                        <img mat-card-image src="assets/Approval.png" width="100%" height="225">
+                        <mat-card-content style="margin-top: 10px;">
+                            <h6>
+                                QP approve
+                            </h6>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button color="primary" [routerLink]="['/qpapproval-drawingtable']"
+                                (click)="isShown = false"> Approve</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <div class="col-md-3">
+                    <mat-card class="card">
+                        <img mat-card-image src="assets/processflow.png" width="100%" height="225">
+                        <mat-card-content style="margin-top: 10px;">
+                            <h6>
+                                Process flow diagram
+                            </h6>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button color="primary" [routerLink]="['/drawing']"
+                                (click)="isShown = false">Enter</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
