@@ -424,11 +424,11 @@ router.put('/pfstatus/:id', (req, res) => {
             sendError(res, err);
         });
 
-        Drawing.update({pfStatus : 1}, { where: { id: req.params.id } }).then(result => {
-            sendSuccess(res, result);
-        }).catch(function (err) {
-            sendError(res, error);
-        });
+//         Drawing.update({pfStatus : 1}, { where: { id: req.params.id } }).then(result => {
+//             sendSuccess(res, result);
+//         }).catch(function (err) {
+//             sendError(res, error);
+//         });
 
 
     })
