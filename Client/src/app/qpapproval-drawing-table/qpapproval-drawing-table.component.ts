@@ -114,7 +114,7 @@ export class QpapprovalDrawingTableComponent implements OnInit {
       this.isMT = false;
       this.isMASTER = false;
     }
- 
+
   }
 
   Lockaction(id, status) {
@@ -181,23 +181,26 @@ export class QpapprovalDrawingTableComponent implements OnInit {
 
   getdata() {
     let tempStore = [];
-    this._drawingservice.getdrgdata().subscribe((res: any) => 
-    {
-  
-    if (this.isTT) 
-   
-    {
-        this.dataSource = new MatTableDataSource(res);
- 
+    let techdrawing = [];
+    this._drawingservice.getdrgdata().subscribe((res: any) => {
+
+      if (this.isTT) {
+        res.forEach((element) => {
+          if (element.techApproval == null) {
+            techdrawing.push(element);
+          }
+        });
+        this.dataSource = new MatTableDataSource(techdrawing);
+
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }
-          else {
+      else {
         res.forEach((element) => {
-            if (element.techApproval == true) {
-              tempStore.push(element);
-            }
-          });       
+          if (element.techApproval == true) {
+            tempStore.push(element);
+          }
+        });
         this.dataSource = new MatTableDataSource(tempStore);
         this.dataSource.paginator = this.paginator;
       }
