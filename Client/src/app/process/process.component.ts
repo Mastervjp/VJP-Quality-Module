@@ -226,7 +226,7 @@ export class ProcessComponent implements OnInit {
     let id = localStorage.getItem('DrgCode');
     this._processservice.confirmQuality(id).subscribe((res: any) => {
       if (res.success) {
-        this.router.navigate(['/drawing']);
+        this.router.navigate(['/processplan']);
         this.snackBar.open("Quality plan Generated", "", {
           duration: 1500,
           horizontalPosition: 'end',
