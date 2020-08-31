@@ -427,7 +427,7 @@ td {
           }
           else if(key == "MELTING CHARGE"){
             b.name = key;
-            b.headers = ["S/N","B/N", "DESCRIPTION", "SPECIFICATION", "MIN-TOL","INSTRUMENT", "MAX-TOL", "1", "2", "3"]
+            b.headers = ["S/N","B/N", "DESCRIPTION", "SPECIFICATION", "MIN-TOL","MAX-TOL", "INSTRUMENT", "1", "2", "3"]
             b.headers1 = ["baloonNo", "description", "specification", "tolFrom", "tolTo", "instrument","1", "2", "3"]
             b.headers4 = ["", "", ""]
           }

@@ -104,6 +104,8 @@
             <ng-container *ngIf='isHundred(item.name) ; else newDeb1'>
               <div>
                 <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]" style="width: 100%;">
+                  <td colspan="7"> P.SERIAL NO :</td>
+                    <td *ngFor="let col1 of item.headers4[val]"></td>
                   <thead>
                     <tr>
                       <th class="bor" *ngFor="let col of item.headers2[val]">
@@ -150,6 +152,8 @@
               <div>
                 <ng-container *ngFor="let val of item.headers3[0]">
                   <table class="bk fixed my-4" style="width: 100%;">
+                    <td colspan="7"> P.SERIAL NO :</td>
+                    <td *ngFor="let col1 of item.headers4[val]"></td>
                     <thead>
                       <tr>
                         <th class="bor" *ngFor="let col of item.headers2[val]">
@@ -193,6 +197,8 @@
             </ng-container>
             <ng-template #newDeb1>
               <table class="fp fixed my-4" *ngIf="item.name != '100' " style="width: 100%;">
+                <td colspan="7"> P.SERIAL NO :</td>
+                <td *ngFor="let col1 of item.headers4"></td>
                 <thead>
                   <tr>
                     <th class="bor" *ngFor="let col of item.headers">{{ col }}</th>
