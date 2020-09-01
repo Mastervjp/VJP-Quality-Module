@@ -479,8 +479,8 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }"
             formArrayName="Rows"></tr>
         </table>
-        <mat-paginator #myPaginator [pageSizeOptions]="[50,100,200,400]" showFirstLastButtons></mat-paginator>
       </div>
+      <mat-paginator [hidden] = "!isENGG" #myPaginator [pageSizeOptions]="[50,100,200,400]" showFirstLastButtons></mat-paginator>
       <div class="col text-center">
         <button *ngIf="submitshow" mat-raised-button (click)="confirmQuality()">Submit Quality Plan</button>
       </div>
