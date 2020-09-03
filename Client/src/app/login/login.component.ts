@@ -12,6 +12,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  validCheck: boolean =false;
 
   constructor(
     private router: Router,
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
     this._auth.login(data).subscribe((res: any) => {
 
       if (res.success) {
+        this.validCheck = false;
 
         localStorage.setItem('email', data.email);
 
@@ -77,12 +79,12 @@ export class LoginComponent implements OnInit {
         }
 
       } else {
-        // this.snackBar.open(res.message, "", {
-        //     duration: 3000,
-        //     horizontalPosition: 'end',
-        //     verticalPosition: 'top',
-        //     panelClass: ['errorSnackbarclass']
-        // });
+        this.loginForm.controls['email'].setErrors({'incorrect': true});
+        this.loginForm.controls['password'].setErrors({'incorrect': true});
+
+        this.validCheck =true;
+        
+
 
 
       }

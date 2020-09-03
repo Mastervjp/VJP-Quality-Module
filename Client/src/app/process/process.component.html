@@ -229,14 +229,24 @@
     </div>
 
       <div class="action_button" *ngIf="islog && isENGG ||isET">
-        <button color="accent" mat-raised-button class="save-button first-action-button" (click)="addProcess()"
+        <button *ngIf = "!isLoading" color="accent" mat-raised-button class="save-button first-action-button" (click)="addProcess()"
           aria-label="SAVE" [disabled]>Add</button>
-        <button color="accent" mat-raised-button class="save-button first-action-button" (click)="updateProcess1()"
+        <button  *ngIf = "!isLoading" color="accent" mat-raised-button class="save-button first-action-button" (click)="updateProcess1()"
           aria-label="SAVE" [disabled]>Update</button>
       </div>
-
+      
       <div *ngIf="islog && isENGG ||isET">
-        <table mat-table [dataSource]="dataSource" [formGroup]="invoiceForm">
+        <mat-card *ngIf="isLoading"   style="display: flex; justify-content: center; align-items: center">
+  
+          <div class="twitter-like"> 
+          <mat-spinner class="track"  style=" display: inline"
+               mode="determinate" value="100"  diameter="70" >
+               </mat-spinner>
+               <mat-spinner mode="indeterminate"  diameter="70"></mat-spinner>
+          </div>
+  
+          </mat-card>
+        <table *ngIf = "!isLoading" mat-table [dataSource]="dataSource" [formGroup]="invoiceForm">
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>S/N</th>
             <td mat-cell *matCellDef="let element; let rIndex = index;">
