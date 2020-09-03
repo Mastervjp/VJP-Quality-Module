@@ -187,9 +187,16 @@ export class NavbarComponent implements OnInit {
   }
 
   Logout() {
-    localStorage.clear();
-    this.router.navigate(['/login']);
+    let roleCheck= localStorage.getItem('logRole')
+    if(roleCheck == 'ADMIN') {
+      localStorage.clear();
+      this.router.navigate(['/admin']);
+    } else {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }
 
   }
+
 
 }
