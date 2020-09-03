@@ -18,6 +18,14 @@ th {
   
 }
 
+:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
+  stroke: #30A6EE;
+}
+
+:host ::ng-deep .track circle{       
+  stroke-opacity: 0.3 !important;
+}
+
 th.mat-header-cell, td.mat-cell {
   text-align: center;
   border: 1px solid #CCC;

@@ -34,6 +34,8 @@ export class ProcessComponent implements OnInit {
   public invoiceForm: FormGroup;
   qpMasterApproval: any;
   qpTechConfirm: any;
+  isLoading = true;
+
   constructor(private _processservice: ProcessService,
     private _process: ProcessService,
     public activeRoute: ActivatedRoute,
@@ -81,6 +83,7 @@ export class ProcessComponent implements OnInit {
     return this.invoiceForm.get('Rows') as FormArray;
   }
   ngOnInit() {
+    this.isLoading = true;
     let status = localStorage.getItem('adminLogRole')
     this.checkrole(status);
     this.islog = this.auth.isLoggedIn();
@@ -218,6 +221,7 @@ export class ProcessComponent implements OnInit {
       if (res.success) {
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
+        this.isLoading = false;
       }
     });
   }

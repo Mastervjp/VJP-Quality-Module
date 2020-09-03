@@ -9,8 +9,8 @@
                 </div>
                 <span class="login100-form-title p-b-59" style="text-align: center; margin-top: 15%;">
                     Login
-                 </span>
-
+                </span>
+                <mat-error *ngIf="validCheck" style= "margin: 6%;"> Incorrect email Id or password</mat-error>
                 <div style="font-size: larger;" class="wrap-input100 validate-input">
                     <mat-form-field  style="width: 90%;" >
                         <mat-label style="font-size: larger;">Email</mat-label>
@@ -19,6 +19,7 @@
                         <mat-error *ngIf="loginForm.get('email').hasError('required')">
                             Email is required
                         </mat-error>
+                        <mat-error *ngIf="loginForm.get('email').hasError('')">  </mat-error>
                         <mat-error
                         *ngIf="!loginForm.get('email').hasError('required') &&
                                 loginForm.get('email').hasError('pattern')">
@@ -39,6 +40,7 @@
                 <mat-error *ngIf="loginForm.get('password').hasError('required')">
                     Password is required.
                 </mat-error>
+                <mat-error *ngIf="loginForm.get('email').hasError('')">  </mat-error>
                 <mat-error *ngIf="loginForm.get('password').hasError('minLength')">
                     Password must have minimum of 6 chatacters.
                 </mat-error>
