@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         }
         else if (rolecheck == "TT") {
           localStorage.setItem('logRole', rolecheck)
-          this.router.navigate(['/drawing']);
+          this.router.navigate(['/tech-panel']);
         }
         else if (rolecheck == "ET") {
           localStorage.setItem('logRole', rolecheck)

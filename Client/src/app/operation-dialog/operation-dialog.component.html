@@ -65,7 +65,7 @@
 
         </div>
 
-        
+
 
         <div class="row">
 
@@ -109,6 +109,18 @@
 
         </div>
         <div>
+            <mat-checkbox class="example-margin" value="processOperation" formControlName="processOperation">Process/Operation</mat-checkbox>
+            &nbsp;&nbsp;
+            <mat-checkbox class="example-margin" value="inspection" formControlName="inspection">Inspection
+            </mat-checkbox>&nbsp;&nbsp;
+            <mat-checkbox class="example-margin" value="storage" formControlName="storage">Storage</mat-checkbox>
+            &nbsp;&nbsp;
+            <mat-checkbox class="example-margin" value="transportion" formControlName="transportion">Transportion 
+            </mat-checkbox> &nbsp;&nbsp;
+            <mat-checkbox class="example-margin" value="processCumInspection" formControlName="processCumInspection">Process cum Inspection  
+            </mat-checkbox>
+        </div>
+        <div>
             <h3 style="text-align:center;padding: 5px;">BEFORE</h3>
         </div>
 
@@ -118,7 +130,7 @@
             </div>
 
             <div class="col-6">
-               
+
                 <input hidden type="file" id="file1" (change)="onFileChange1($event)" #fileInput1 />
                 <button mat-stroked-button class="add-file-button" (click)="fileInput1.click()" aria-label="Add file">
                     Image 1
@@ -143,14 +155,14 @@
         <div>
             <h3 Style="text-align:center;padding: 5px;">AFTER</h3>
         </div>
-     
+
 
         <div class="row">
-        
+
             <div class="col-6">
                 <img [src]="url3" style="width: 100px; height: 125px;">
             </div>
-            
+
             <div class="col-6">
                 <input hidden type="file" id="file3" (change)="onFileChange3($event)" #fileInput3 />
                 <button mat-stroked-button class="add-file-button" (click)="fileInput3.click()" aria-label="Add file">

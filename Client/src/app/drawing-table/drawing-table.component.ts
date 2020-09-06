@@ -273,14 +273,35 @@ export class DrawingTableComponent implements OnInit {
   }
 
 
+  // getdata() {
+
+
+
+  //   this._drawingservice.getdrgdata().subscribe((res: any) => {
+  //     this.dataSource = new MatTableDataSource(res);
+  //     this.dataSource.paginator = this.paginator;
+  //     this.dataSource.sort = this.sort;
+  //   });
+  // }
   getdata() {
-
-
-
+    let tempStore = [];
     this._drawingservice.getdrgdata().subscribe((res: any) => {
-      this.dataSource = new MatTableDataSource(res);
+      if (this.isTT) 
+      {
+        res.forEach((element) => {
+          if (element.techApproval == true) {
+            tempStore.push(element);
+          }
+        });       
+      this.dataSource = new MatTableDataSource(tempStore);
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      }
+      else{
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+
     });
   }
 

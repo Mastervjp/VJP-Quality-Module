@@ -24,6 +24,11 @@ export class OperationDialogComponent {
   processData: any;
   productData: any;
   incomingData: any;
+  processOperation:boolean;
+  inspection:boolean;
+  storage:boolean;
+  transportion:boolean;
+  processCumInspection:boolean;
 
 
   private IMG_URL = environment.IMG_URL;
@@ -48,7 +53,11 @@ export class OperationDialogComponent {
     incomingSource: ['', Validators.required],
     processCharacteristics: ['', Validators.required],
     productCharacteristics: ['', Validators.required],
-
+    inspection: [''],
+    processOperation:[''] ,
+    storage: [''],
+    transportion:[''],
+    processCumInspection:[''],
     uploadImage1: ['', Validators.required],
     uploadImage2: ['', Validators.required],
     uploadImage3: ['', Validators.required],
@@ -72,10 +81,10 @@ export class OperationDialogComponent {
 
     this.getWorkcenter();
     this.getOplist();
-    this. getincoming();
-    this.getProcessCharacteristics(); 
+    this.getincoming();
+    this.getProcessCharacteristics();
     this.getProductCharacteristics();
-    
+
     if (this.action === 'edit') {
 
       this.dialogTitle = "Edit Process";
@@ -89,6 +98,11 @@ export class OperationDialogComponent {
         incomingSource: _data.data.incomingSource,
         processCharacteristics: _data.data.processCharacteristics,
         productCharacteristics: _data.data.productCharacteristics,
+        inspection: _data.data.inspection,
+        processOperation: _data.data.processOperation,
+        storage: _data.data.storage,
+        transportion: _data.data.transportion,
+        processCumInspection: _data.data.processCumInspection,
         type: _data.data.type,
 
         uploadImage1: _data.data.image1,
@@ -96,11 +110,12 @@ export class OperationDialogComponent {
         uploadImage3: _data.data.image3,
         uploadImage4: _data.data.image4,
       });
+      debugger
 
-      this.url1 = this.IMG_URL+'//vjp/process/'+_data.data.image1
-      this.url2 = this.IMG_URL+'//vjp/process/'+_data.data.image2
-      this.url3 = this.IMG_URL+'//vjp/process/'+_data.data.image3
-      this.url4 = this.IMG_URL+'//vjp/process/'+_data.data.image4
+      this.url1 = this.IMG_URL + '//vjp/process/' + _data.data.image1
+      this.url2 = this.IMG_URL + '//vjp/process/' + _data.data.image2
+      this.url3 = this.IMG_URL + '//vjp/process/' + _data.data.image3
+      this.url4 = this.IMG_URL + '//vjp/process/' + _data.data.image4
 
     }
     else {
@@ -135,6 +150,12 @@ export class OperationDialogComponent {
     formData.append('incomingSource', step1.incomingSource);
     formData.append('processCharacteristics', step1.processCharacteristics);
     formData.append('productCharacteristics', step1.productCharacteristics);
+    formData.append('processOperation', step1.processOperation);
+    formData.append('inspection', step1.inspection);
+    formData.append('storage', step1.storage);
+    formData.append('transportion', step1.transportion);
+    formData.append('processCumInspection', step1.processCumInspection);
+    debugger
 
 
     if (this.type == 'altpro') {
@@ -156,13 +177,13 @@ export class OperationDialogComponent {
         let status = { "status": null }
         this._qualityservice.approval(pfno, status).subscribe((res: any) => {
         });
-        
+
         let masterStatus = { "masterStatus": null }
         this._qualityservice.approvalMaster(pfno, masterStatus).subscribe((res: any) => {
         });
-        
+
         let id = localStorage.getItem('DrgCode')
-        let techApproval = { "techApproval": null } 
+        let techApproval = { "techApproval": null }
         this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
         });
 
@@ -229,8 +250,6 @@ export class OperationDialogComponent {
 
     formData.append('drgId', step1.drgId);
     formData.append('qpId', step1.qpId);
-
-
     formData.append('opnNo', step1.opnNo);
     formData.append('opnName', step1.opnName);
     formData.append('description', step1.description);
@@ -238,7 +257,12 @@ export class OperationDialogComponent {
     formData.append('incomingSource', step1.incomingSource);
     formData.append('processCharacteristics', step1.processCharacteristics);
     formData.append('productCharacteristics', step1.productCharacteristics);
-
+    formData.append('inspection', step1.inspection);
+    formData.append('processOperation', step1.processOperation);
+    formData.append('storage', step1.storage);
+    formData.append('transportion', step1.transportion);
+    formData.append('processCumInspection', step1.processCumInspection);
+debugger
 
     this._operationservice.updateOperation(editId, formData).subscribe((res: any) => {
       if (res.success) {
@@ -272,9 +296,9 @@ export class OperationDialogComponent {
         });
 
 
-               
+
         let id = localStorage.getItem('DrgCode')
-        let techApproval = { "techApproval": null } 
+        let techApproval = { "techApproval": null }
         this._drawingservice.updatestatus(id, techApproval).subscribe((res: any) => {
         });
 
@@ -325,7 +349,7 @@ export class OperationDialogComponent {
     });
   }
 
-  
+
   getProcessCharacteristics() {
     this._operationservice.getProcessCharacteristics().subscribe((res: any) => {
       if (res.success) {
@@ -333,7 +357,7 @@ export class OperationDialogComponent {
       }
     });
   }
-  
+
   getProductCharacteristics() {
     this._operationservice.getProductCharacteristics().subscribe((res: any) => {
       if (res.success) {
@@ -342,7 +366,7 @@ export class OperationDialogComponent {
     });
   }
 
-  
+
   onFileChange1(event) {
 
 

@@ -1,159 +1,236 @@
 <app-navbar>
-    <h3>Drawing&nbsp;Code</h3>
+    <h3 class="nav">Add Drawing</h3>
 </app-navbar>
+<div style="width: 95%;margin-left: 3%;padding-top: 2%;">
 
-<div class="container">
-
-    <form class="p-4" [formGroup]="contactForm">
-
-
-        <div class="row">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Part Name</mat-label>
-                <input name="partName" formControlName="partName" matInput required>
-                <mat-error>Part Name is required!</mat-error>
-            </mat-form-field>
-        </div>
-
-        <button *ngIf="action !== 'edit'" color="accent" mat-raised-button class="save-button" (click)="addDrawing()"
-            [disabled]="contactForm.invalid" aria-label="SAVE">
-            Add
-        </button>
-
-        <!-- <div class="row">
-
-            <div class="col-md-6">
-               
-                <mat-checkbox class="example-margin" value="true" formControlName="check1" (change)="CastshowOptions($event)" >Casting</mat-checkbox>
- 
-             </div>
-
-             <div class="col-md-6">
-               
-                <mat-checkbox class="example-margin" value="true" formControlName="check2" (change)="MechshowOptions($event)" >Machining</mat-checkbox>
- 
-             </div>
-
-        </div>
-
-        <div  *ngIf="isCast" class="row">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Drawing Number for Casting</mat-label>
-                <input name="partNum" formControlName="partNum" matInput>
-                <mat-error>Part Number  for Casting is required!</mat-error>
-            </mat-form-field>
-        </div>
-
-
-        <div *ngIf="isCast" class="row">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Rev Number for Casting </mat-label>
-                <input name="revNo" formControlName="revNo" matInput >
-                <mat-error>Rev Number for Casting is required!</mat-error>
-            </mat-form-field>
-        </div>
-
-        <div *ngIf="isCast" class="row">
-            
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Rev Date for Casting</mat-label>
-                <input matInput formControlName="revDate" [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error>Casting Rev Date is required!</mat-error>
-            </mat-form-field>
-    </div>
-
-
-        <div *ngIf="isMech" class="row">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Drawing Number for Machining</mat-label>
-                <input name="partNum" formControlName="partNum1" matInput >
-                <mat-error>Part Number for Machining is required!</mat-error>
-            </mat-form-field>
-        </div>
-
-
-        <div *ngIf="isMech" class="row">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Rev Number for Machining </mat-label>
-                <input name="revNo" formControlName="revNo1" matInput >
-                <mat-error>Rev Number for Machining is required!</mat-error>
-            </mat-form-field>
-        </div>
-
-
-        
-
-
-
-        <div *ngIf="isMech"  class="row">
-            
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label> Rev Date for Machining</mat-label>
-                <input matInput formControlName="revDate1" [matDatepicker]="picker1">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-                <mat-error> Machining Rev Date is required!</mat-error>
-            </mat-form-field>
-        
-        
-    </div>
-
-
-        <div class="row">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Customer Name</mat-label>
-                <input name="customerName" formControlName="customerName" matInput >
-                <mat-error>Customer Name is required!</mat-error>
-            </mat-form-field>
-        </div>
-
-        <div class="row">  
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Material Specs</mat-label>
-                <mat-select formControlName="materialSpec">
+    <div id="componentID">
+      <mat-card>
+        <form [formGroup]="contactForm">
+          <table class="tg" style="  width: 100%;">
+<!--   
+           <h2>Drawnig code</h2> -->
+  
+            <tr>
+              <td colspan="2" style="text-align: left;">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Part Name</mat-label>
+                  <input name="partName" formControlName="partName" matInput required>
+                  <mat-error>Part Name is required!</mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
+  
+  
+            <tr>
+  
+              <th >
+  
+                <mat-checkbox class="example-margin" value="true" formControlName="check1"
+                  (change)="CastshowOptions($event)">Casting</mat-checkbox> &nbsp;&nbsp;
+  
+  
+                <mat-checkbox class="example-margin" value="true" formControlName="check2"
+                  (change)="MechshowOptions($event)">Machining</mat-checkbox>
+  
+              </th>
+            </tr>
+  
+            <table>
+              <tr>
+                <th *ngIf="isCast">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Drawing Number for Casting</mat-label>
+                    <input name="partNum" formControlName="partNum" matInput>
+                    <mat-error>Part Number for Casting is required!</mat-error>
+                  </mat-form-field>
+  
+                  <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Rev Number for Casting </mat-label>
+                      <input name="revNo" formControlName="revNo" matInput>
+                      <mat-error>Rev Number for Casting is required!</mat-error>
+                    </mat-form-field>
+  
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Rev Date for Casting</mat-label>
+                      <input matInput formControlName="revDate" [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-error>Casting Rev Date is required!</mat-error>
+                    </mat-form-field>
+                </th>
+                <th *ngIf="isMech">
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Drawing Number for Machining</mat-label>
+                    <input name="partNum" formControlName="partNum1" matInput>
+                    <mat-error>Part Number for Machining is required!</mat-error>
+                  </mat-form-field>
+  
+                  <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label>Rev Number for Machining </mat-label>
+                      <input name="revNo" formControlName="revNo1" matInput>
+                      <mat-error>Rev Number for Machining is required!</mat-error>
+                    </mat-form-field>
+  
+                    <mat-form-field class="example-full-width" appearance="outline">
+                      <mat-label> Rev Date for Machining</mat-label>
+                      <input matInput formControlName="revDate1" [matDatepicker]="picker1">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                      <mat-error> Machining Rev Date is required!</mat-error>
+                    </mat-form-field>
+                </th>
+              </tr>
+  
+            </table>
+  
+  
+            <tr>
+              <th>
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Customer Name</mat-label>
+                  <input name="customerName" formControlName="customerName" matInput>
+                  <mat-error>Customer Name is required!</mat-error>
+                </mat-form-field>
+  
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Material Standard</mat-label>
+                  <mat-select formControlName="materialSpec">
                     <mat-option *ngFor="let op of materialdataset" [value]="op.materialSpec">
-                        {{op.materialSpec}}
+                      {{op.materialSpec}}
                     </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-
-         <div class="row">  
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Material Grade</mat-label>
-                <mat-select formControlName="materialGrade">
+                  </mat-select>
+                </mat-form-field>
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Material Grade</mat-label>
+                  <mat-select formControlName="materialGrade">
                     <mat-option *ngFor="let op of materialdataset" [value]="op.materialGrade">
-                        {{op.materialGrade}}
+                      {{op.materialGrade}}
                     </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-
-
-         <div class="row">  
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Material Weight in Kg</mat-label>
-                <mat-select formControlName="materialWeight">
-                    <mat-option *ngFor="let op of materialdataset" [value]="op.materialWeight">
-                        {{op.materialWeight}}
+                  </mat-select>
+                </mat-form-field>
+  
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>With Runer Weight </mat-label>
+                  <input name="withRunerWeight" formControlName="withRunerWeight" matInput>
+                  <mat-error>With Runer Weight is required!</mat-error>
+                </mat-form-field>
+  
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Cast Weight</mat-label>
+                  <input name="castWeight" formControlName="castWeight" matInput>
+                  <mat-error>Cast Weight is required!</mat-error>
+                </mat-form-field>
+  
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Machine Weight</mat-label>
+                  <input name="machineWeight" formControlName="machineWeight" matInput>
+                  <mat-error>Machine Weight is required!</mat-error>
+                </mat-form-field>
+  
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Heat Treatment Cycle</mat-label>
+                  <mat-select formControlName="heatTreatmentCycle">
+                    <mat-option *ngFor="let op of heatdata" [value]="op.name">
+                      {{op.name}}
                     </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-
-
-
-        
-
-         -->
-
-
-
-    </form>
-
-
-</div>
-
-<app-footer></app-footer>
+                  </mat-select>
+                </mat-form-field>
+   
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Casting Tolerance Standard</mat-label>
+                  <mat-select formControlName="castingToleranceStandard">
+                    <mat-option *ngFor="let op of castToldata" [value]="op.name">
+                      {{op.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+  
+  
+  
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Machining Tolerance Standard</mat-label>
+                  <mat-select formControlName="machiningToleranceStandard">
+                    <mat-option *ngFor="let op of machineToldata" [value]="op.name">
+                      {{op.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+  
+  
+            <p>Special Process</p>
+  
+  
+                <mat-checkbox class="example-margin" value="op.name" formControlName="fpi">FPI Test</mat-checkbox>&nbsp;&nbsp;
+  
+                <mat-checkbox class="example-margin" value="op.name" formControlName="radiographyTest">Radiography Test
+              </mat-checkbox>&nbsp;&nbsp;
+  
+              
+              <mat-checkbox class="example-margin" value="op.name" formControlName="anodizing">Anodizing</mat-checkbox>&nbsp;&nbsp;
+  
+  
+              
+              <mat-checkbox class="example-margin" value="op.name" formControlName="powderCoating">Powder Coating
+              </mat-checkbox>
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Measurement Unit</mat-label>
+                  <input name="measurementUnit" formControlName="measurementUnit" matInput>
+                  <mat-error>Measurement Unit is required!</mat-error>
+                </mat-form-field>
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Special Instruction</mat-label>
+                  <input name="specialInstruction" formControlName="specialInstruction" matInput>
+                  <mat-error>Special Instruction is required!</mat-error>
+                </mat-form-field>
+              </th>
+            </tr>
+  
+          </table>
+  
+  
+        </form>
+  
+  
+  
+      </mat-card>
+    </div>
+    <div style="text-align: center; padding-top: 10px; padding-bottom: 20px;">
+  
+      <!-- <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Delete">
+          Cancel
+      </button> -->
+  
+      <button  color="primary" mat-raised-button class="save-button" (click)="addDrawing()"
+        [disabled]="contactForm.invalid" aria-label="SAVE">
+        Add
+      </button>
+    
+      
+    </div>
+  </div>
+  <app-footer><app-footerd>
+  
