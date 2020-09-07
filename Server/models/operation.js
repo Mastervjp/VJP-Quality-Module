@@ -81,11 +81,19 @@ module.exports = function(sequelize, DataTypes) {
             field: 'qp_tech_confirm',
             allowNull: true
         },
+        qpTechRejectionComment: {
+            type: DataTypes.STRING(50),
+            field: 'qp_tech_rejection_comment'
+        },
         qpMasterApproval:
         {
             type: DataTypes.BOOLEAN,
             field: 'qp_master_approval',
             allowNull: true
+        },
+        qpMasterRejectionComment: {
+            type: DataTypes.STRING(50),
+            field: 'qp_master_rejection_comment'
         },
         createdBy: {
             type: DataTypes.STRING(50),

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -32,9 +32,11 @@ export class ProcessComponent implements OnInit {
   appButton1: boolean;
   ismaster: boolean;
   public invoiceForm: FormGroup;
+  public rejectForm: FormGroup;
   qpMasterApproval: any;
   qpTechConfirm: any;
   isLoading = true;
+  rejection =false;
 
   constructor(private _processservice: ProcessService,
     private _process: ProcessService,
@@ -138,6 +140,10 @@ export class ProcessComponent implements OnInit {
 
     this.invoiceForm = this._formBuilder.group({
       Rows: this._formBuilder.array([this.initRows()])
+    });
+
+    this.rejectForm = new FormGroup({
+      'comment': new FormControl('', [Validators.required]),
     });
 
 
@@ -353,6 +359,7 @@ export class ProcessComponent implements OnInit {
   }
 
   addProcess() {
+    
     let step1 = this.contactForm.getRawValue();
     let myItem1 = localStorage.getItem('DrgCode');
     let myItem2 = localStorage.getItem('opnNo');
@@ -452,9 +459,6 @@ export class ProcessComponent implements OnInit {
     });
   }
   updateProcess1() {
-
-
-
     for (let index = 0; index < this.dataSource.data.length; index++) {
 
       var editId = this.dataSource.data[index].id;
@@ -552,8 +556,31 @@ export class ProcessComponent implements OnInit {
       });
     }
     else {
-      let opnNo = localStorage.getItem('opnNo');
-      let qpTechConfirm = { "qpTechConfirm": 0 }
+      
+      this.rejection = true;
+
+      // let opnNo = localStorage.getItem('opnNo');
+      // let qpTechConfirm = { "qpTechConfirm": 0 }
+
+      // this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
+      //   if (res.success) {
+      //     this.router.navigate(['/processplan']);
+      //     this.snackBar.open("Form Rejected", "", {
+      //       duration: 1500,
+      //       horizontalPosition: 'end',
+      //       verticalPosition: 'top',
+      //       panelClass: 'successSnackBar'
+      //     })
+      //   }
+      // });
+    }
+  }
+
+  rejectWithComments() {
+    console.log(this.rejectForm.controls['comment'].value)
+    let opnNo = localStorage.getItem('opnNo');
+      let qpTechConfirm = { "qpTechConfirm": 0,
+      "qpTechRejectionComment": this.rejectForm.controls['comment'].value }
 
       this._operationservice.approval(opnNo, qpTechConfirm).subscribe((res: any) => {
         if (res.success) {
@@ -566,7 +593,6 @@ export class ProcessComponent implements OnInit {
           })
         }
       });
-    }
   }
 
 
@@ -588,8 +614,31 @@ export class ProcessComponent implements OnInit {
       });
     }
     else {
-      let opnNo = localStorage.getItem('opnNo');
-      let qpMasterApproval = { "qpMasterApproval": 0 }
+      this.rejection = true;
+      this.rejectForm = this._formBuilder.group({
+        comment: ['', [Validators.required]]
+      });
+
+      // let opnNo = localStorage.getItem('opnNo');
+      // let qpMasterApproval = { "qpMasterApproval": 0 }
+
+      // this._operationservice.approvalMaster(opnNo, qpMasterApproval).subscribe((res: any) => {
+      //   if (res.success) {
+      //     this.router.navigate(['/processplan']);
+      //     this.snackBar.open("Form Rejected", "", {
+      //       duration: 1500,
+      //       horizontalPosition: 'end',
+      //       verticalPosition: 'top',
+      //       panelClass: 'successSnackBar'
+      //     })
+      //   }
+      // });
+    }
+  }
+  rejectWithMasterComments() {
+    let opnNo = localStorage.getItem('opnNo');
+      let qpMasterApproval = { "qpMasterApproval": 0,
+      "qpMasterRejectionComment": this.rejectForm.controls['comment'].value  }
 
       this._operationservice.approvalMaster(opnNo, qpMasterApproval).subscribe((res: any) => {
         if (res.success) {
@@ -602,6 +651,6 @@ export class ProcessComponent implements OnInit {
           })
         }
       });
-    }
   }
+
 }

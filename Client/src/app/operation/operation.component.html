@@ -316,11 +316,18 @@
               <div>
                 <ng-container *ngIf="(element.qpTechConfirm == '0'  &&  element.qpMasterApproval == NULL)">
                   <span><a mat-stroked-button disabled style="color:red; width: 200px;">Rejected Click To Edit</a>
-                  </span> &nbsp;
+                  </span> &nbsp; 
                   <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
                           padding: 0 !important;" (click)="editDrawing(element)">
                     <mat-icon style="color:green" selected>edit</mat-icon>
-                  </button>
+                  </button><br>
+                  <ng-container *ngIf="element.qpTechRejectionComment" >
+
+                    <span >Reason: {{element.qpTechRejectionComment}}</span><br>
+                  </ng-container>
+                  <ng-container *ngIf="element.qpMasterRejectionComment">
+                    <span >Reason: {{element.qpMasterRejectionComment}}</span>
+                  </ng-container>
                 </ng-container>
 
                 <ng-container *ngIf="( element.qpTechConfirm == '1') && (element.qpMasterApproval == '0')">
@@ -329,7 +336,14 @@
                   <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
                       padding: 0 !important;" (click)="editDrawing(element)">
                     <mat-icon style="color:green" selected>edit</mat-icon>
-                  </button>
+                  </button> <br>
+                  <ng-container *ngIf="element.qpTechRejectionComment" >
+
+                    <span >Reason: {{element.qpTechRejectionComment}}</span><br>
+                  </ng-container>
+                  <ng-container *ngIf="element.qpMasterRejectionComment">
+                    <span >Reason: {{element.qpMasterRejectionComment}}</span>
+                  </ng-container>
                 </ng-container>
 
                 <ng-container *ngIf="(element.qpTechConfirm == NULL ) && element.qpMasterApproval == NULL ">
@@ -343,6 +357,7 @@
                 <ng-container *ngIf="( element.qpTechConfirm == '1') && element.qpMasterApproval == NULL ">
                   <span><a mat-stroked-button disabled style="color:blue; width: 150px;">Approval Pending</a> </span>
                   &nbsp;
+                  
                   <button mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
                 padding: 0 !important;" (click)="editDrawing(element)">
                     <mat-icon style="color:green" selected>edit</mat-icon>

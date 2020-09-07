@@ -18,6 +18,11 @@ th {
   
 }
 
+.example-full-width {
+  margin-top: 2%;
+  width: 80%;
+  margin-left: 20%;
+}
 :host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
   stroke: #30A6EE;
 }

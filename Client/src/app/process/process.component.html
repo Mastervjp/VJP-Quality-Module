@@ -207,10 +207,20 @@
             Confirm Approval </button> &nbsp;
 
           <button *ngIf="islog &&isTT ||isTEC" mat-raised-button class="save-button" (click)="approval(opnNo,0)"
-            style="color: red;">
+            style="color: red; ">
             Reject </button>
 
         </div>
+        <form *ngIf="rejection && islog &&isTT ||isTEC"  [formGroup]="rejectForm" (ngSubmit)="rejectWithComments()">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Comment for Rejection</mat-label>
+            <textarea rows="4" matInput formControlName="comment"> </textarea>
+                     
+          </mat-form-field>
+          <button mat-raised-button class="save-button" 
+            style="color: red; float: right;" [disabled]="rejectForm.invalid">
+            Reject </button>
+        </form>
 
         <!-- <div style="text-align: right;">
 
@@ -222,9 +232,19 @@
             Confirm Approval </button> &nbsp;
 
           <button *ngIf="islog &&isMT ||isMASTER" mat-raised-button class="save-button" (click)="approvalMaster(opnNo,0)"
-            style="color: red;">
+            style="color: red; ">
             Reject </button>
         </div>
+        <form *ngIf="rejection && islog &&isMT ||isMASTER"  [formGroup]="rejectForm" (ngSubmit)="rejectWithMasterComments()">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Comment for Rejection</mat-label>
+            <textarea rows="4" matInput formControlName="comment"> </textarea>
+                     
+          </mat-form-field>
+          <button mat-raised-button class="save-button" 
+            style="color: red; float: right;" [disabled]="rejectForm.invalid">
+            Reject </button>
+        </form>
       </div>
     </div>
 
@@ -489,8 +509,9 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'make-green': row.ctq =='1' }"
             formArrayName="Rows"></tr>
         </table>
-      </div>
+        </div>
       <mat-paginator [hidden] = "!isENGG" #myPaginator [pageSizeOptions]="[50,100,200,400]" showFirstLastButtons></mat-paginator>
+      
       <div class="col text-center">
         <button *ngIf="submitshow" mat-raised-button (click)="confirmQuality()">Submit Quality Plan</button>
       </div>
