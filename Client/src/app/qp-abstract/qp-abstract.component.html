@@ -251,14 +251,15 @@ border-collapse: collapse;">
           <ng-container matColumnDef="pfNo">
             <th mat-header-cell *matHeaderCellDef> PROCESS FLOW # </th>
             <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
-              {{drg.pfNo | uppercase}} </td>
+              <button mat-raised-button>{{drg.pfNo | uppercase}}</button>
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="operatorPfNo">
             <th mat-header-cell *matHeaderCellDef> PROCESS FLOW # </th>
             <td mat-cell *matCellDef="let drg" style="cursor:pointer;">
               <ng-container *ngIf="drg.operatorStatus == '1'">
-                <span matRipple style="cursor:pointer;width: 100%; padding:0%;height: 100%;" (click)="callOperation(drg)">{{drg.pfNo | uppercase}} </span>
+                <span matRipple style="cursor:pointer;width: 100%; padding:0%;height: 100%;" (click)="callOperation(drg)"><button mat-raised-button>{{drg.pfNo | uppercase}}</button></span>
               </ng-container>
               <ng-container *ngIf="drg.operatorStatus == NULL || drg.operatorStatus == '0'">
                 <span>{{drg.pfNo | uppercase}} </span>
