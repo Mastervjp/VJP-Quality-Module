@@ -50,7 +50,7 @@
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef [ngStyle]="{'display': 'none'}"> DRAWING CODE </th>
             <ng-container *ngIf="isTT">
-              <td mat-cell matRipple *matCellDef="let drg">
+              <td mat-cell matRipple *matCellDef="let drg" >
                 <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
                   <span style="cursor:pointer;">{{drg.id}} </span>
                 </ng-container>
@@ -63,7 +63,8 @@
               <!-- <td mat-cell matRipple *matCellDef="let drg"> -->
                 <ng-container *ngIf="isET">
                   <!-- <span style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}} </span> -->
-                  <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;" (click)="callOperation(drg)">{{drg.id}}</td>
+                  <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;" (click)="callOperation(drg)">
+                    <button mat-raised-button>{{drg.id}}</button></td>
                 </ng-container>
 
                 <ng-container *ngIf="!isET">
@@ -71,7 +72,7 @@
                   <ng-container *ngIf="isUT">
                     <td mat-cell matRipple *matCellDef="let drg" style="cursor:pointer;">
                     <ng-container *ngIf="drg.unlockStatus; else unlockcode1">
-                      <span style="cursor:pointer; width: 100%; padding:0%;" (click)="callOperation(drg)"> {{drg.id}}
+                    <span style="cursor:pointer; width: 100%; padding:0%;" (click)="callOperation(drg)">  <button mat-raised-button>{{drg.id}}</button>
                       </span>
                     </ng-container>
                     <ng-template #unlockcode1>

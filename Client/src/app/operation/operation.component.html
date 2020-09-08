@@ -258,7 +258,7 @@
           <ng-container matColumnDef="opnNo">
             <th mat-header-cell *matHeaderCellDef>PROCESS # </th>
             <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(element)" *matCellDef="let element">
-              {{element.opnNo}} </td>
+              <button mat-raised-button>{{element.opnNo}}</button> </td>
           </ng-container>
 
           <ng-container matColumnDef="opnName">

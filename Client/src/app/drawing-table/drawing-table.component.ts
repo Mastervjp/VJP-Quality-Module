@@ -202,12 +202,13 @@ export class DrawingTableComponent implements OnInit {
   }
 
   lockmsg() {
-    this.snackBar.open("Drawing Code is locked", "", {
-      duration: 1500,
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-      panelClass: 'successSnackBar'
-    });
+    alert("Sorry!!! this drawing code is locked ");
+    // this.snackBar.open("Drawing Code is locked", "", {
+    //   duration: 1500,
+    //   horizontalPosition: 'end',
+    //   verticalPosition: 'top',
+    //   panelClass: 'successSnackBar'
+    // });
   }
 
   Lockaction(id, status) {
