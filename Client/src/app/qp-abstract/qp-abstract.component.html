@@ -333,7 +333,7 @@ border-collapse: collapse;">
           </ng-container>
 
           <ng-container *ngIf="islog && isad" matColumnDef="sendOperator">
-            <th mat-header-cell *matHeaderCellDef>Approve for operator</th>
+            <th mat-header-cell *matHeaderCellDef>Approve for Inspector</th>
             <td mat-cell *matCellDef="let element">
               <div class="text-center p-2">
                 <ng-container *ngIf="element.masterStatus == '1' && element.operatorStatus == NULL">
@@ -345,7 +345,7 @@ border-collapse: collapse;">
                   <ng-container *ngIf="element.operatorStatus == '1' && element.masterStatus == '1'">
 
                     <button mat-raised-button class="save-button" [disabled] color="primary">
-                      Successfully sended To operator
+                      Successfully sent To Inspector
                     </button>
                   </ng-container>
                 

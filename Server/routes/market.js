@@ -124,7 +124,7 @@ router.post('/card', (req, res) => {
                     MarketCard.count({where:{mpId:req.body.mpId}}).then(function(countres){
 
                         let a = countres+1;
-                        let temp = 'D'+req.body.drgId+'-'+mresult.poNo+'-'+a;
+                        let temp = 'D'+req.body.drgId+'/'+new Date().getFullYear().toString().substr(-2)+'/'+(new Date().getMonth()+1).toString()+'-'+a;
                         req.body.cardNo = temp;
                         req.body.rQty = remainingQty;
                         MarketCard.create(req.body).then(function (result) {
