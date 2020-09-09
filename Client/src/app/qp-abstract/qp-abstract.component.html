@@ -244,8 +244,13 @@ border-collapse: collapse;">
 
           <ng-container matColumnDef="kind">
             <th mat-header-cell *matHeaderCellDef> KIND </th>
-            <td mat-cell matRipple style="cursor:pointer;" (click)="callOperation(drg)" *matCellDef="let drg">
-              {{drg.kind | uppercase}} </td>
+            <td mat-cell  style="cursor:pointer;"  *matCellDef="let drg">
+              <ng-container *ngIf="drg.operatorStatus == '1'">
+                <span matRipple style="cursor:pointer;width: 100%; padding:0%; height: 100%;" (click)="callOperation(drg)">{{drg.kind | uppercase}}   </span>
+              </ng-container>
+              <ng-container *ngIf="drg.operatorStatus == NULL || drg.operatorStatus == '0'">
+                <span>{{drg.kind | uppercase}}</span>
+              </ng-container> </td>
           </ng-container>
 
           <ng-container matColumnDef="pfNo">
