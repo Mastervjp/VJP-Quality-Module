@@ -5,10 +5,13 @@ var path = require('path')
 var config = require('./config')
 const fileUpload = require('express-fileupload');
 var passport		=	require('passport');
+var https = require('https')
+var fs = require('fs')
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(fileUpload());
+// app.options('*', cors());
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -50,8 +53,11 @@ app.set('port',config.port)
 
 app.use('/api', require('./routes'))
 
-
-app.listen( app.get('port'), ()  =>{
+https.createServer({
+  key: fs.readFileSync('Ironman.key'),
+  cert: fs.readFileSync('Ironman.crt')
+}, app)
+.listen( app.get('port'), ()  =>{
  console.log('Listening on port :'+ app.get('port'))
 })
 

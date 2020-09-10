@@ -9,7 +9,7 @@ config.logging = true;
 config.port = 3000;
 config.JWT_SECRET = "welcometoironman";
 
-config.email = "balakumars367@gmail.com"
+config.email = "mastergit.vjp@gmail.com"
 
 config.oauth_refresh_token = 'ya29.Il-7BwTiwOqiHymoeNh96YDnutnuUd1E7p7uwD9dhP--RjllL764hB83X7ejIADzH_ttsimysb2gZss4dbKlri67Bs1AyhQxXFeB49GPUpzOHi-OcGA3EvTTPgKZKLWCwA'
 
