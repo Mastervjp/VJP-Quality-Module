@@ -68,10 +68,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Client:build",
-            "sslKey": "ssl/Ironman.key",
-            "sslCert": "ssl/Ironman.crt",
-            "ssl":true
+            "browserTarget": "Client:build"
           },
           "configurations": {
             "production": {
