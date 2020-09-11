@@ -65,7 +65,7 @@
   th, td {
      font-size: small;
       padding-left: 2px;
-      padding: 2px;
+      /* padding: 2px; */
     }
   .bottomBorder {
     border-bottom-color: transparent;
