@@ -35,7 +35,7 @@ function sendSuccess1(res, result, msg) {
 
 router.get('/:drgId', (req, res) => {
     return new Promise((resolve, reject) => {
-        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: false, addKind: false, deleteStatus: false }, order: [['opnNo', 'ASC']], }).then(function (result) { //order: [['opnNo', 'ASC']], 
+        Operation.findAll({ where: { drgId: req.params.drgId, altProcess: false, addKind: false, deleteStatus: false }, include: [{model:Process, where: {deleteStatus: false}} ], order: [['opnNo', 'ASC']], }).then(function (result) { //order: [['opnNo', 'ASC']], 
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -572,7 +572,8 @@ router.post('/copy', (req, res) => {
                 "description": card.description,
                 "workCenter": card.workCenter,
                 "altProcess": false,
-                "addKind": false
+                "addKind": false,
+                "Processes": card.Processes
             }
 
             if (req.body.altProcess) {
@@ -585,6 +586,13 @@ router.post('/copy', (req, res) => {
             
 
             Operation.create(mytempData).then(function (cres) {
+                mytempData.Processes.map(function (process, index) {
+                    delete process.id;
+                    process.opnId= cres.id;
+                    process.drgId = req.body.drgid,
+                    Process.create(process).then(function (proRes) {
+                    }) 
+                })
                 sendSuccess1(res, cres);
             }).catch(function (err) {
                 console.log(err);

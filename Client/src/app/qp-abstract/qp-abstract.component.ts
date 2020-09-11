@@ -75,6 +75,10 @@ export class QpAbstractComponent implements OnInit {
     }
   }
 
+  showAlert(){
+    alert("Drawing Code is not approved. Try after Approval")
+  }
+
   checkrole(){
 
    if (localStorage.getItem('logRole') == "ET" || localStorage.getItem('adminLogRole') == 'engg') {

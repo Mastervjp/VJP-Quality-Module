@@ -267,7 +267,7 @@ border-collapse: collapse;">
                 <span matRipple style="cursor:pointer;width: 100%; padding:0%;height: 100%;" (click)="callOperation(drg)"><button mat-raised-button>{{drg.pfNo | uppercase}}</button></span>
               </ng-container>
               <ng-container *ngIf="drg.operatorStatus == NULL || drg.operatorStatus == '0'">
-                <span>{{drg.pfNo | uppercase}} </span>
+                <span (click)="showAlert()">{{drg.pfNo | uppercase}} </span>
               </ng-container>
             </td>
           </ng-container>
