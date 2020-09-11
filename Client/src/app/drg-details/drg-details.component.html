@@ -67,8 +67,8 @@
             <tr>
                 <td>OPERATION DESCRIPTION</td>
                 <th>{{psObject.description | uppercase}}</th>
-                <td>WORK CENTER</td>
-                <th>{{psObject.workCenter}}</th>
+                <td>WORK CENTER / MACHINE NAME</td>
+                <th>{{machine}}</th>
                 <td>PROCESS PLAN NO</td>
                 <th>{{qpaObject.pfNo}}</th>
                 <td>QUALITY PLAN NO </td>
@@ -145,10 +145,9 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="2" class="rightBorder">WEEK NO.: <input type="text" id="WeekNo" name="WeekNo"
-                        style="width: 20%;"></th>
-                <th colspan="6" class="rightBorder" style="text-align: left;">M/C. ID & NAME :</th>
-                <th colspan="12 " class="rightBorder"></th>
+                <th colspan="2" class="rightBorder">WEEK NO.: {{weekNumber}}</th>
+                <th colspan="8" class="rightBorder" style="text-align: left;">M/C. ID & NAME : {{machine}}</th>
+                <th colspan="10 " class="rightBorder"></th>
                 <th colspan="4">BATCH QTY:<input type="text" id="qtn" name="qtn"></th>
 
             </tr>
@@ -189,7 +188,7 @@
 
             </tr>
             <tr>
-                <td >P.S No. FROM</td>
+                <td >S No. FROM</td>
                 <td style="width:5%">TO</td>
                 <td></td>
                 <td></td>

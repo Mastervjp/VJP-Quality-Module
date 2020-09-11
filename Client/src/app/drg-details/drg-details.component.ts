@@ -15,18 +15,24 @@ export class DrgDetailsComponent implements OnInit {
   routeObj :any;
   marketData:any;
   myDate = new Date();
-  
+  machine:any;
+  weekNumber;
   constructor(private _inspectionservice: InspectionService) { }
+  
 
   ngOnInit() {
+    
     this.getmarket();
 
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
     this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
+    this.machine = localStorage.getItem('machine');
     this.getmarket()
     formatDate(new Date(), 'yyyy/MM/dd', 'en');
+    this.weekNumber = this.getWeek();
+
 
   }
   getmarket() {
@@ -39,6 +45,14 @@ export class DrgDetailsComponent implements OnInit {
       }
     });
   }
+  
+  getWeek() {
+    var onejan = new Date(new Date().getFullYear(), 0, 1);
+    var today = new Date();
+    return Math.ceil(((( today - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+}
+
+
 
   printPage() {
 
