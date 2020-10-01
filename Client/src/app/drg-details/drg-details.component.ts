@@ -47,9 +47,10 @@ export class DrgDetailsComponent implements OnInit {
   }
   
   getWeek() {
-    var onejan = new Date(new Date().getFullYear(), 0, 1);
-    var today = new Date();
-    return Math.ceil(((( today - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+    var onejan = new Date(new Date().getFullYear(), 0, 1).getTime();
+    var onejan1 = new Date(new Date().getFullYear(), 0, 1);
+    var today = new Date().getTime();
+    return Math.ceil(((( today - onejan) / 86400000) + onejan1.getDay() + 1) / 7);
 }
 
 

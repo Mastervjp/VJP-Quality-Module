@@ -8,7 +8,7 @@
 
         <div>
 
-            <ng-container *ngIf="fircheck">
+            <ng-container *ngIf="fircheck && !castCheck">
                 <mat-tab-group>
                     <mat-tab label="M-FIR">
 
@@ -47,6 +47,252 @@
 
 
         </div>
+        <ng-container  *ngIf="castCheck">
+            <mat-tab-group >
+                <mat-tab label="Casting Inspection">
+                    <div class="container" [*ngIf]="opnName == 'Incoming Inspection of Aluminium Ingot'">
+
+                        <div id="componentID">
+                            <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+                                <tr>
+                                  <th rowspan="4" colspan="2" style="text-align: center; width:12.5%;"><img src="assets/vjp3.png"
+                                      height="50" width="120"></th>
+                                  <td
+                                    style="width: 62.5%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
+                                    rowspan="4" colspan="7"><B> INGOT FRACTURE & LP TEST REPORT</B></td>
+                                  <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                                    DOC.NO
+                                  </td>
+                                  <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                                    QA/R/43</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                                    REV.NO</td>
+                                  <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">00
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">DATE
+                                  </td>
+                                  <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                                    {{myDate | date: 'dd-MM-yyyy' }}</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">PAGE
+                                    NO</td>
+                                  <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF
+                                  </td>
+                                </tr>
+                              
+                                <tr>
+                                  <td rowspan="2" colspan="1">S.No.</td>
+                                  <td rowspan="2" colspan="1">INGOT RECEIVED DATE</td>
+                                  <td rowspan="2" colspan="1">SUPPLIER INVOICE NO & DATE</td>
+                                  <td rowspan="2" colspan="1">INGOT HEAT NUMBER</td>
+                                  <td rowspan="2" colspan="1">RESULT FT OK/NOT OK</td>
+                                  <td rowspan="2" colspan="1">RESULT LP OK/NOT OK</td>
+                                  <td rowspan="2" colspan="1">INSPECTOR NAME & SIGN</td>
+                                  <td rowspan="2" colspan="1">STORE INCHARGE</td>
+                                  <td rowspan="2" colspan="1">QA INCHARGE</td>
+                                  <td rowspan="2" colspan="2">REMARKS</td>
+                                </tr>
+                                <tr></tr>
+                                <tr>
+                                    <td rowspan="2" colspan="1">1</td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="1"></td>
+                                    <td rowspan="2" colspan="2"></td>
+                                  </tr>
+                                  <tr></tr>
+                                <tr>
+                                  <td rowspan="2" colspan="1">2</td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="1"></td>
+                                  <td rowspan="2" colspan="2"></td>
+                                </tr>
+                                <tr></tr>
+                                <tr>
+                                  <td>3</td>
+                                  <th  colspan="5" style="text-align: center;"><b>FRACTURE TEST SAMPLE IMAGE-1</b></th>
+                                  <td  colspan="5" style="text-align: center;"><b>FRACTURE TEST SAMPLE IMAGE-2</b></td>
+                                  
+                                  
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>4</td>
+                                    <td rowspan="4" colspan="5"></td>
+                                    <td rowspan="4" colspan="5"></td>
+                                    
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>5</td>
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>6</td>
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                  <td>8</td>
+                                  <td  colspan="5" style="text-align: center;"><b>LIQUID PANATRATE TEST IMAGE -1</b></td>
+                                  <td  colspan="5" style="text-align: center;"><b>LIQUID PANATRATE TEST IMAGE -2</b></td>
+                                  
+                                  
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>9</td>
+                                    <td rowspan="4" colspan="5"></td>
+                                    <td rowspan="4" colspan="5"></td>
+                                    
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>10</td>
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>11</td>
+                                </tr>
+                                <tr style="height: 45px;">
+                                    <td>12</td>
+                                </tr>
+                                <tr  style="height: 5rem;">
+                                    <td colspan="11">NOTE: Chemical,Fracture&DP Inspection Frequency <br>
+                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3000kg /1no Per heat<br>
+                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Above 3000kg/2nos Per heat</td>
+                                </tr>
+                                <tr>
+                                    <td  style="text-align: center;" colspan="6"><b>Change History</b></td>
+                                    <td rowspan="6" colspan="2"></td>
+                                    <td rowspan="6" colspan="2"></td>
+                                    <td rowspan="6" colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td>.</td>
+                                    <td></td>
+                                    <td colspan="2"> </td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td>03</td>
+                                    <td></td>
+                                    <td colspan="2">REVISION HISTORY ADDED</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td></td>
+                                    <td colspan="2">FORMAT CHANGE</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td>01</td>
+                                    <td></td>
+                                    <td colspan="2">FORMAT CHANGE</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td>00</td>
+                                    <td></td>
+                                    <td colspan="2">INITIAL RELEASE</td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td>REV NO</td>
+                                    <td>DATE</td>
+                                    <td colspan="2">DESCRIPTION</td>
+                                    <td colspan="2">SIGN</td>
+                                    <td colspan="2">PREPARED BY</td>
+                                    <td colspan="2">VERIFIED BY</td>
+                                    <td colspan="2">APPROVED BY</td>
+                                </tr>
+                                
+                    
+                                <!-- <tr>
+                                    <td>CASTING DRAWING NO/REV</td>
+                                    <th>{{drgObject.partNum}}</th>
+                                    <th>{{drgObject.revNo}}</th>
+                                    <td colspan="2">MACHINING DRAWING NO/REV</td>
+                                    <th>{{drgObject.partNum1}}</th>
+                                    <th>{{drgObject.revNo1}}</th>
+                                    <td>BATCH QUANTITY</td>
+                                    <th colspan="1">{{routeObj.qty}}</th>
+                    
+                    
+                    
+                    
+                    
+                                </tr>
+                    
+                                <tr>
+                                    <td>OPERATION DESCRIPTION</td>
+                                    <th>{{psObject.description | uppercase}}</th>
+                                    <td>WORK CENTER / MACHINE NAME</td>
+                                    <th colspan="2">{{psObject.workCenter}} / {{machine}}</th>
+                                    <td>PROCESS PLAN NO</td>
+                                    <th>{{qpaObject.pfNo}}</th>
+                                    <td>QUALITY PLAN NO </td>
+                                    <th>{{qpaObject.qpNo}}</th>
+                    
+                                </tr>
+                                <tr>
+                    
+                                    <td>CASTING TOLERANCE</td>
+                                    <th >{{drgObject.castingToleranceStandard | uppercase}}</th>
+                                    <td>MACHINING TOLERANCE</td>
+                                    <th colspan="2">{{drgObject. machiningToleranceStandard | uppercase}}</th>
+                                    <td>MATERIAL GRADE</td>
+                                    <th>{{drgObject.materialGrade}}</th>
+                                    <td>MATERIAL WEIGHT</td>
+                                    <th>{{drgObject.materialWeight}}</th>
+                    
+                    
+                    
+                                </tr>
+                    
+                    
+                                <tr>
+                    
+                    
+                                    <td>PURCHASE ORDER NUMBER</td>
+                                    <th colspan="2">{{marketData.poNo}}</th>
+                                    <td colspan="2">INSPECTION DATE</td>
+                                    <th colspan="5"></th>
+                    
+                                </tr> -->
+                    
+                    
+                            </table>
+                    
+                        </div>
+                        <div class="col-md-12 text-center p-4">
+                            <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
+                        </div>
+                    
+                    </div>
+                    
+                </mat-tab>
+               
+                <!-- <mat-tab label="Final Inspection">
+            <app-predispatch></app-predispatch>
+            </mat-tab> -->
+
+            </mat-tab-group>
+        </ng-container>
+
+        
     </div>
 </div>
 
