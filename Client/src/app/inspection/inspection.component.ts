@@ -26,7 +26,10 @@ export class InspectionComponent implements OnInit {
       this.fircheck = false
     }
     this.fircheck;
-    if(this.opnName == 'Incoming Inspection of Aluminium Ingot' ) {
+    if(this.opnName == 'Incoming Inspection of Aluminium Ingot' || this.opnName == 'Metal treatment' || this.opnName == 'Molten metal inspection' || 
+    this.opnName == 'Heat Treatment T6 - BDF' || this.opnName == 'Heat Treatment T6 - Oven' || this.opnName == 'Pouring & Casting Ejection' 
+    || this.opnName == 'Die assembly & pre heating' || this.opnName == 'Metal Charging & Melting' || this.opnName == 'Mechanical Properties Testing'
+    || this.opnName == 'Runner & Riser Cutting' || this.opnName == 'Fettling & Inspection ' || this.opnName == 'Shot Blast & Inspection') {
       this.castCheck = true;
       this.fircheck= true;
 
@@ -59,6 +62,9 @@ export class InspectionComponent implements OnInit {
       table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
+      }
+      tr {
+        page-break-inside: avoid;
       }
       th, td {
         padding: 2px;
