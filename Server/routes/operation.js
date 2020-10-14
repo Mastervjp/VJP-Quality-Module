@@ -5,7 +5,7 @@ var path = require('path')
 const fs = require('fs')
 const fileUpload = require('express-fileupload');
 
-const { OperationList, Operation, Machining, Material, Process, WorkCenter, MeasuringFrequency, Instrument, PlanAbstract, Drawing, DrawingType,ProcessCharacteristics,ProductCharacteristics,IncomingSource } = require('./../models')
+const { OperationList, Operation, Machining, Material, Process, WorkCenter, MeasuringFrequency, Instrument, PlanAbstract, Drawing, DrawingType,ProcessCharacteristics,ProductCharacteristics,IncomingSource,ProcessList } = require('./../models')
 
 
 function sendError(res, err) {
@@ -242,12 +242,41 @@ router.post('/', (req, res) => {
                         req.body.image3 = newfilename3;
                         req.body.image4 = newfilename4;
 
-                        Operation.create(req.body).then(function (result) {
-                            sendSuccess1(res, result);
-                        }).catch(function (err) {
-                            console.log(err);
-                            sendError(res, err);
-                        });
+                        // Operation.create(req.body).then(function (result) {
+                        //     sendSuccess1(res, result);
+                        // }).catch(function (err) {
+                        //     console.log(err);
+                        //     sendError(res, err);
+                        // });
+                        Operation.create(req.body).then(function (result) {   
+                            ProcessList.findAll({ where: { name: req.body.opnName } }).then(function (resp) {
+                                 if(resp)  {
+                                    resp.forEach(element =>  {
+                                       let datas = {
+                                           "description" : element.description,
+                                           "baloonNo" : element.baloonNo,
+                                           "specification" : element.specification,
+                                          "tolFrom" :element.tolFrom,
+                                           "tolTo" : element.tolTo,   
+                                       }
+                                   datas.opnId = result.id;
+                                   datas.drgId = req.body.drgId,
+                                   datas.opnName = req.body.opnName
+                                         Process.create(datas).then(function (opRes) {
+                                               console.log(opRes);
+                                           }).catch(function (err) {
+                                               console.log(err);
+                                               sendError(res, err);
+                                           });
+                                        })  
+                                } 
+                                sendSuccess1(res, result);            
+                                }).catch(function (err) {
+                                    sendError(res, err);
+                                });
+                                }).catch(function (err) {
+                                    sendError(res, err);
+                                });
 
                         // PlanAbstract.findOne({ where: { drgId: req.body.drgId } }).then(function (resp) {
 

@@ -44,6 +44,7 @@ import { QpapprovalDrawingTableComponent } from './qpapproval-drawing-table/qpap
 import { ProductCharacteristicsComponent } from './master/product-characteristics/product-characteristics.component';
 import { ProcessCharacteristicsComponent } from './master/process-characteristics/process-characteristics.component';
 import { IncomingSourceComponent } from './master/incoming-source/incoming-source.component';
+import { ProcessListComponent } from './process-list/process-list.component';
 
 const appRoutes: Routes = [
   {
@@ -282,7 +283,11 @@ const appRoutes: Routes = [
     component: QpapprovalDrawingTableComponent,
     canActivate: [AuthGuardService]
   },
-
+  {
+    path: 'process-list',
+    component: ProcessListComponent,
+    canActivate: [AuthGuardService]
+  },
 
 
 

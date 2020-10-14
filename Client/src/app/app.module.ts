@@ -114,6 +114,7 @@ import { IncomingSourceComponent } from './master/incoming-source/incoming-sourc
 import { IncomingComponent } from './master/dialog/incoming/incoming.component';
 import { ProductcharacteristicsComponent } from './master/dialog/productcharacteristics/productcharacteristics.component';
 import { ProcesscharacteristicsComponent } from './master/dialog/processcharacteristics/processcharacteristics.component';
+import { ProcessListComponent } from './process-list/process-list.component';
 
 @NgModule({
   declarations: [
@@ -196,6 +197,7 @@ import { ProcesscharacteristicsComponent } from './master/dialog/processcharacte
     IncomingComponent,
     ProductcharacteristicsComponent,
     ProcesscharacteristicsComponent,
+    ProcessListComponent,
    
     ],
   imports: [
