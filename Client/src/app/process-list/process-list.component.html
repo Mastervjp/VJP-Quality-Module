@@ -1,0 +1,83 @@
+<mat-toolbar matDialogTitle>
+    <mat-toolbar-row>
+        <span class="title dialog-title">Add Quality plan</span>
+        <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+
+<div mat-dialog-content>
+
+    <form class="p-4" [formGroup]="contactForm">
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Description</mat-label>
+                <input name="description" formControlName="description" matInput required>
+                <mat-error>Description is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Ballon #</mat-label>
+                <input name="baloonNo" formControlName="baloonNo" matInput required>
+                <mat-error>Ballon Number is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Specs</mat-label>
+                <input name="specification" formControlName="specification" matInput required>
+                <mat-error>Specification is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Tol Min</mat-label>
+                <input name="tolFrom" formControlName="tolFrom" matInput required>
+                <mat-error>Tol Min is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Tol max</mat-label>
+                <input name="tolTo" formControlName="tolTo" matInput required>
+                <mat-error>Tol max is required!</mat-error>
+            </mat-form-field>
+        </div>
+
+
+
+
+
+
+    </form>
+
+</div>
+
+<div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+    <button mat-raised-button class="mr-8" (click)="matDialogRef.close()" aria-label="Delete">
+        Cancel
+    </button>
+
+    <button  color="accent" mat-raised-button class="save-button" (click)="addOperation()"
+        [disabled]="contactForm.invalid" aria-label="SAVE">
+        Add
+    </button>
+
+    <!-- <button *ngIf="action === 'edit'" color="accent" mat-raised-button class="save-button"
+        (click)="updateOperation(editId)" [disabled]="contactForm.invalid" aria-label="SAVE">
+        Save
+    </button> -->
+
+</div>
