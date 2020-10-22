@@ -93,11 +93,16 @@
                     <mat-icon style="color:green" selected>edit</mat-icon>
                   </button>
                 </ng-container>
+               
                 <ng-container *ngIf="element.status =='0'">
                   <button *ngIf="islog && isMKT" mat-raised-button selected style="cursor:pointer;  min-width: 34px !important;min-height: 34px !important;
-              padding: 0 !important;" (click)="editContract(element)">
+              padding: 0 !important; float: right;" (click)="editContract(element)">
                     <mat-icon style="color:green" selected>edit</mat-icon>
                   </button>
+                  <ng-container *ngIf="element.statusComment" >
+
+                    <span >Reason: {{element.statusComment}}</span><br>
+                  </ng-container>
                 </ng-container>
               </div>
             </td>

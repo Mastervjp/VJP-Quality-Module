@@ -287,6 +287,10 @@ module.exports = function (sequelize, DataTypes) {
             field: 'status',
             allowNull: true
         },
+        statusComment: {
+            type: DataTypes.STRING(50),
+            field: 'statusComment'
+        },
     }, {
         timestamps: true,
         tableName: 'contract_review'

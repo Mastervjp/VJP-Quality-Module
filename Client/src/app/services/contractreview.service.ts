@@ -51,4 +51,8 @@ export class ContractreviewService {
     return this.http.put<any>(this.API_URL+'/api/contractreview/' + id, datas,{ headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
       map(this.extractData1));
   }
+  rejectcomment(id, statusComment): Observable<any> {
+    return this.http.put<any>(this.API_URL + '/api/contractreview/' + id, statusComment, { headers: { Authorization: `Bearer ${this.getToken()}` } }).pipe(
+      map(this.extractData1));
+  }
 }

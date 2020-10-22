@@ -4,6 +4,7 @@ import { ContractreviewService } from '../services/contractreview.service';
 import { formatDate, DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { MatSnackBar } from '@angular/material';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-contractreview-print',
   templateUrl: './contractreview-print.component.html',
@@ -19,7 +20,12 @@ export class ContractreviewPrintComponent implements OnInit {
   islog: any;
   isMAN: boolean;
   isMANAGEMENT: boolean;
-  constructor(private _contractreviewservice: ContractreviewService, public activeRoute: ActivatedRoute, private router: Router, public auth: AuthenticationService, public snackBar: MatSnackBar) {
+  public rejectForm: FormGroup;
+  rejection =false;
+
+  invoiceForm: FormGroup;
+  _formBuilder: any;
+  constructor(private _contractreviewservice: ContractreviewService, public activeRoute: ActivatedRoute, private router: Router, public auth: AuthenticationService, public snackBar: MatSnackBar,private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -28,6 +34,17 @@ export class ContractreviewPrintComponent implements OnInit {
     this.checkrole(status);
     formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.islog = this.auth.isLoggedIn();
+    
+    this.invoiceForm = this._formBuilder.group({
+      Rows: this._formBuilder.array([this.initRows()])
+    });
+
+    this.rejectForm = new FormGroup({
+      'comment': new FormControl('', [Validators.required]),
+    });
+  }
+  initRows(): any {
+    throw new Error('Method not implemented.');
   }
   checkrole(status) {
     if (localStorage.getItem('logRole') == "MAN" ||localStorage.getItem('adminLogRole') == 'management') {
@@ -39,6 +56,9 @@ export class ContractreviewPrintComponent implements OnInit {
       this.isMANAGEMENT = false;
     }
 
+  }
+  get formArr() {
+    return this.invoiceForm.get("Rows") as FormArray;
   }
 
   printPage() {
@@ -121,6 +141,7 @@ export class ContractreviewPrintComponent implements OnInit {
   getAllData() {
     let status =localStorage.getItem('status');
   }
+ 
   Lockaction(id, status) {
     if (status) {
       let status = { "status": 1 } 
@@ -140,8 +161,37 @@ export class ContractreviewPrintComponent implements OnInit {
         });
       }
     else {
-      let status = { "status": 0 }    
-      this._contractreviewservice.updatestatus(id, status).subscribe((res: any) => {
+      this.rejection = true;
+      this.rejectForm = new FormGroup({
+        'comment': new FormControl('', [Validators.required]),
+      });
+      // this.rejectForm = this._formBuilder.group({
+      //   comment: ['', [Validators.required]]
+      // });
+    
+      // let status = { "status": 0 }    
+      // this._contractreviewservice.updatestatus(id, status).subscribe((res: any) => {
+      //   if (res.success) {
+      //     this.router.navigate(['/contractreviewview']);
+      //     let mydata = res.data;
+      //     this.getData = mydata;
+      //     this.snackBar.open("Form Rejected", "", {
+      //       duration: 1500,
+      //       horizontalPosition: 'end',
+      //       verticalPosition: 'top',
+      //       panelClass: 'successSnackBar'
+      //     });         
+      //   }
+      //    this.getData();
+      // });
+    }
+  }
+
+  rejectWithComments(id,status) {
+  
+      let statusReject = { "status": 0, 
+      "statusComment": this.rejectForm.controls['comment'].value }
+    this._contractreviewservice.updatestatus(id, statusReject).subscribe((res: any) => {
         if (res.success) {
           this.router.navigate(['/contractreviewview']);
           let mydata = res.data;
@@ -151,10 +201,11 @@ export class ContractreviewPrintComponent implements OnInit {
             horizontalPosition: 'end',
             verticalPosition: 'top',
             panelClass: 'successSnackBar'
-          });         
-        }
-         this.getData();
-      });
-    }
+          });        
+      }
+      this.getData();
+    });
+  
 }
 }
+
