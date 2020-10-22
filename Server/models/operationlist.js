@@ -19,6 +19,8 @@ module.exports = function(sequelize, DataTypes) {
         timestamps:true,
         tableName:'operation_list'
     })
-
+    OperationList.associate = function (models) {
+        OperationList.hasMany(models.ProcessList, { foreignKey: 'processId' })
+    }
     return OperationList
 }

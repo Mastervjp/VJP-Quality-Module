@@ -9,6 +9,7 @@ import { OperationDialogComponent } from 'src/app/operation-dialog/operation-dia
 import { OperationlistService } from '../../masterservice/operationlist.service';
 import { OperationDialogComponent1 } from '../operation-dialog/operation-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { ProcessListComponent } from 'src/app/process-list/process-list.component';
 
 @Component({
   selector: 'app-operation-list',
@@ -100,6 +101,26 @@ export class OperationListComponent implements OnInit {
       this.confirmDialogRef = null;
     });
   }
+  createDrawing(product) {
 
+
+    localStorage.setItem('processObject', JSON.stringify(product));
+    localStorage.setItem('processName', product.name);
+    this.dialogRef = this._matDialog.open(ProcessListComponent, {
+
+      width: '600px',
+      panelClass: 'contact-form-dialog',
+      data: {
+        action: 'new',
+      }
+    })
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // this.submitshow = true;
+      }
+    });
+
+  }
 
 }

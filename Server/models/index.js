@@ -31,6 +31,7 @@ models.ContractReview = sequelize.import('./ContractReview')
 models.ProcessCharacteristics = sequelize.import('./processcharacteristics')
 models.IncomingSource = sequelize.import('./incomingsource')
 models.ProductCharacteristics = sequelize.import('./productcharacteristics')
+models.ProcessList = sequelize.import('./ProcessList')
 
 
 
@@ -61,6 +62,7 @@ models.ProductCharacteristics = sequelize.import('./productcharacteristics')
 models.ProcessCharacteristics.sync({});
 models.IncomingSource.sync({});
 models.ProductCharacteristics.sync({});
+models.ProcessList.sync({});
 
 
 

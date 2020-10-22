@@ -562,14 +562,23 @@
           style="margin-left: 3%;">
           Reject
         </button>
+       
       </ng-container>
+      <form *ngIf="rejection && isMAN ; else headsUT"  [formGroup]="rejectForm" (ngSubmit)="rejectWithComments(dataSource.id, 1)">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Comment for Rejection</mat-label>
+          <textarea rows="4" matInput formControlName="comment"> </textarea>     
+        </mat-form-field>
+        <button mat-raised-button class="save-button" 
+          style="color: red; float: right;" [disabled]="rejectForm.invalid">
+          Reject </button>
+      </form>
       <ng-template #heads1>
         <button mat-flat-button disabled>Approve</button>
         <button mat-flat-button disabled style="margin-left: 3%;">Reject</button>
       </ng-template>
     </ng-container>
   </div>
-
 </div>
 
 <app-footer></app-footer>
