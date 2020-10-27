@@ -1082,7 +1082,7 @@
                                 <table style="width: 100%;">
                                     <tr>
                                         <td colspan="1" style="width: 8.2%;"> DATE</td>
-                                        <td style="width: 10%;"></td>
+                                        <td style="width: 10%;"> {{myDate | date: 'dd-MM-yyyy' }}</td>
                                         <td style="width: 10%;">SHIFT</td>
                                         <td style="width: 10%;"></td>
                                         <td style="width: 10%;">BATH CODE</td>
@@ -1260,7 +1260,7 @@
                                 <table style="width: 100%;">
                                     <tr>
                                         <td colspan="1" style="width:7.4%;"> DATE</td>
-                                        <td style="width: 10%;"></td>
+                                        <td style="width: 10%;"> {{myDate | date: 'dd-MM-yyyy' }}</td>
                                         <td style="width: 10%;">SHIFT</td>
                                         <td style="width: 10%;"></td>
                                         <td style="width: 10%;">BATH CODE</td>
@@ -2461,10 +2461,10 @@
                                 </tr>
                                 <tr>
                                     <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
-                                        DATE
+                                        ROUTE CARD NO
                                     </td>
                                     <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
-                                        {{myDate | date: 'dd-MM-yyyy' }}</td>
+                                        {{routeObj.cardNo}}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
@@ -2477,27 +2477,27 @@
                             <table style="width: 100%;">
                                 <tr>
                                     <td style="width: 25%;">COMPONENT NAME</td>
-                                    <th style="width: 25%;"></th>
+                                    <th style="width: 24.9%;">{{drgObject.partName}}</th>
                                     <td style="width: 19.9%;">DRG.NO/REV.NO</td>
                                     <th style="width: 30%;"></th>
                                 </tr>
                             </table>
                             <table style="width: 100%;">
                                 <tr>
-                                    <td style="width: 24.9%;">DATE</td>
-                                    <th style="width: 24.9%;"></th>
-                                    <td style="width: 19.8%;">SHIFT</td>
-                                    <th style="width: 10%;"></th>
-                                    <th style="width: 10%;">HEAT.NO</th>
-                                    <th style="width: 10%;"></th>
+                                    <td style="width: 24.9%;border-top: solid 1px white;">DATE</td>
+                                    <th style="width: 24.9%;border-top: solid 1px white;;"> {{myDate | date: 'dd-MM-yyyy' }}</th>
+                                    <td style="width: 19.8%; border-top: solid 1px white;">SHIFT</td>
+                                    <th style="width: 10%; border-top: solid 1px white;"></th>
+                                    <th style="width: 10%; border-top: solid 1px white;">HEAT.NO</th>
+                                    <th style="width: 10%; border-top: solid 1px white;"></th>
                                 </tr>
                                 </table>
                                 <table style="width: 100%;">
                                     <tr>
                                     <td style="width: 5%;"> S.NO</td>
                                     <td style="width: 15%;"> DESCRIPTION</td>
-                                    <td style="width: 14.9%;"> MEASUREMENT TECHNIQUE</td>
-                                    <td style="width: 15%;"> DIMENSION</td>
+                                    <td style="width: 15%;"> MEASUREMENT TECHNIQUE</td>
+                                    <td style="width: 15.2%;"> DIMENSION</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2510,7 +2510,7 @@
                                     <td style="width: 15%;"></td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;"> </td>
+                                    <td style="width: 15.2%;"> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2521,7 +2521,7 @@
                                     <td style="width: 15%;"></td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;"> </td>
+                                    <td style="width: 15.2%;"> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2532,7 +2532,7 @@
                                     <td style="width: 15%;"></td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;"> </td>
+                                    <td style="width: 15.2%;"> </td>
                                     <td ></td>
                                     <td></td>
                                     <td></td>
@@ -2543,7 +2543,7 @@
                                     <td style="width: 15%;"></td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;"> </td>
+                                    <td style="width: 15.2%;"> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2565,7 +2565,7 @@
                                     <td style="width: 15%;"></td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;"> </td>
+                                    <td style="width: 15.2%;"> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2576,7 +2576,7 @@
                                     <td style="width: 15%;"></td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;"> </td>
+                                    <td style="width: 15.2%;"> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2588,7 +2588,7 @@
                                         / Depression, year logo)</td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;">"Air vent Projection/Depression 0.5mm allowed,
+                                    <td style="width: 15.2%;">"Air vent Projection/Depression 0.5mm allowed,
                                         Year logo projection allowed"	0.5max	0.5max                     </td>
                                     <td></td>
                                     <td></td>
@@ -2600,7 +2600,7 @@
                                     <td style="width: 15%;"></td>
                                     <td style="width: 7.5%;"> </td>
                                     <td style="width: 7.5%;"></td>
-                                    <td style="width: 15%;"> </td>
+                                    <td style="width: 15.2%;"> </td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2610,35 +2610,35 @@
                                 </table>
                                 <table style="width:100% ;" >
                                     <tr>
-                                        <td rowspan="3" style="width: 49.2%; height: 100px;"></td>
-                                        <td style="width: 4%;">ACC</td>
-                                        <td style="width: 4%;">REJ</td>
-                                        <td style="width: 4%;">DEV</td>
-                                        <td style="width: 4%;">ACC</td>
-                                        <td style="width: 4%;">REJ</td>
-                                        <td style="width: 4%;">DEV</td>
-                                        <td style="width: 4%;">ACC</td>
-                                        <td style="width: 4%;">REJ</td>
-                                        <td style="width: 5%;">DEV</td>
-                                        <td style="width: 4%;">ACC</td>
-                                        <td style="width: 4%;">REJ</td>
-                                        <td style="width: 4%;">DEV</td>
+                                        <td rowspan="3" style="width: 48.4%; height: 100px;border-top: solid 1px white;"></td>
+                                        <td style="width: 4%;border-top: solid 1px white;">ACC</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">REJ</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">DEV</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">ACC</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">REJ</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">DEV</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">ACC</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">REJ</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">DEV</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">ACC</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">REJ</td>
+                                        <td style="width: 4%;border-top: solid 1px white;">DEV</td>
                     
                                     </tr>
                                     <tr>
                                        
-                                        <td style="width: 4%;">DATE</td>
-                                        <td style="width: 4%;"> SHIFT</td>
-                                        <td style="width: 4%;">QASIGN</td>
-                                        <td style="width: 4%;">DATE</td>
-                                        <td style="width: 4%;">SHIFT</td>
-                                        <td style="width: 4%;">QASIGN</td>
-                                        <td style="width: 4%;">DATE</td>
-                                        <td style="width: 4%;">SHIFT</td>
-                                        <td style="width: 4%;">QASIGN</td>
-                                        <td style="width: 4%;">DATE</td>
-                                        <td style="width: 4%;">SHIFT</td>
-                                        <td style="width: 4%;">QASIGN</td>
+                                        <td style="width: 4%;">Date</td>
+                                        <td style="width: 4%;">Shift</td>
+                                        <td style="width: 4%;">Qasign</td>
+                                        <td style="width: 4%;">Date</td>
+                                        <td style="width: 4%;">Shift</td>
+                                        <td style="width: 4%;">Qasign</td>
+                                        <td style="width: 3.8%;">Date</td>
+                                        <td style="width: 4%;">Shift</td>
+                                        <td style="width: 4%;">Qasign</td>
+                                        <td style="width: 4%;">Date</td>
+                                        <td style="width: 4%;">Shift</td>
+                                        <td style="width: 4%;">Qasign</td>
                     
                                     </tr>
                                     <tr>
@@ -2661,9 +2661,9 @@
                                 </table>
                                 <table style="width: 100%;">
                                     <tr>
-                                        <td style="width: 34.3%;"> DRAWING</td>
-                                        <td style="width: 47.4%;">VISUAL INSPECTION </td>
-                                        <td> STATUS</td>
+                                        <td style="width: 34.3%;border-bottom: solid 1px white;"> DRAWING</td>
+                                        <td style="width: 47.4%;border-bottom: solid 1px white;">VISUAL INSPECTION </td>
+                                        <td style="border-bottom: solid 1px white;"> STATUS</td>
                     
                                     </tr>
                                 </table>
@@ -2764,10 +2764,10 @@
                     
                                     <tr>
                             
-                                      <td colspan="5" style="text-align: center;"><b>Change History</b></td>
-                                      <td colspan="2" rowspan="4" style="width: 40px;"></td>
-                                      <td colspan="2" rowspan="4" style="width: 40px;"></td>
-                                      <td colspan="2" rowspan="4" style="width: 40px;"></td>
+                                      <td colspan="5" style="text-align: center;border-top: solid 1px white;"><b>Change History</b></td>
+                                      <td colspan="2" rowspan="4" style="width: 40px;border-top: solid 1px white;"></td>
+                                      <td colspan="2" rowspan="4" style="width: 40px;border-top: solid 1px white;"></td>
+                                      <td colspan="2" rowspan="4" style="width: 40px;border-top: solid 1px white;"></td>
                                     </tr>
                                     <tr style="height: 20PX;">
                             
