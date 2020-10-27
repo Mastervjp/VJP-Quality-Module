@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { InspectionService } from '../services/inspection.service';
 
 @Component({
   selector: 'app-inspection',
@@ -9,14 +11,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./inspection.component.css']
 })
 export class InspectionComponent implements OnInit {
+  
 
-  constructor(private router: Router) { }
+  constructor(private _inspectionservice: InspectionService,private router: Router) { }
 
   fircheck: boolean;
   castCheck:boolean= false
   opnName;
+  routeObj :any;
+  marketData: any;
+  drgObject: any;
+  psObject: any;
+  myDate = new Date();
 
   ngOnInit() {
+    this.routeObj = JSON.parse(localStorage.getItem('routeObj'));
+    this.getmarket(this.routeObj);
+    this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
+    this.psObject = JSON.parse(localStorage.getItem('psObject'));
+    formatDate(new Date(), 'yyyy/MM/dd', 'en');
     let temp = localStorage.getItem("firCheck");
     this.opnName = localStorage.getItem("opnName");
     if (temp == '1') {
@@ -27,15 +40,22 @@ export class InspectionComponent implements OnInit {
     }
     this.fircheck;
     if(this.opnName == 'Incoming Inspection of Aluminium Ingot' || this.opnName == 'Metal treatment' || this.opnName == 'Molten metal inspection' || 
-    this.opnName == 'Heat Treatment T6 - BDF' || this.opnName == 'Heat Treatment T6 - Oven' || this.opnName == 'Pouring & Casting Ejection' 
-    || this.opnName == 'Die assembly & pre heating' || this.opnName == 'Metal Charging & Melting' || this.opnName == 'Mechanical Properties Testing'
-    || this.opnName == 'Runner & Riser Cutting' || this.opnName == 'Fettling & Inspection ' || this.opnName == 'Shot Blast & Inspection') {
+    this.opnName == 'Heat Treatment T6-BDF' || this.opnName == 'Heat treatment-T6 Oven' || this.opnName == 'Pouring & Casting Ejection & In process inspection ' 
+    || this.opnName == 'Die cleaning & die loading & die preheating & coating' || this.opnName == 'Metal Charging & Melting' || this.opnName == 'Mechanical Properties Testing'
+    || this.opnName == 'Runner & Riser Cutting' || this.opnName == 'Fettling' || this.opnName == 'Shot Blast & Inspection') {
       this.castCheck = true;
       this.fircheck= true;
 
     }
   }
-
+  getmarket(routeObj1) {
+    let id = routeObj1.mpId;
+    this._inspectionservice.getmarket(id).subscribe((res: any) => {
+      if (res.success) {
+        this.marketData = res.data;
+      }
+    });
+  }
 
   Logout() {
     localStorage.clear();
@@ -68,7 +88,6 @@ export class InspectionComponent implements OnInit {
       }
       th, td {
         padding: 2px;
-        text-align: left;
         font-size:10px;
       }
       .bottomBorder {
