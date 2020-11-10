@@ -1,0 +1,306 @@
+<div class="container">
+    <table id="componentID" style="width : 100%; text-transform: uppercase;">
+      <thead class="report-header">
+        <tr>
+          <td>
+  
+            <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+              <tr>
+                <th rowspan="4" colspan="1" style="text-align: center;" ><img src="assets/vjp3.png"
+                    height="50" width="120"></th>
+                <td
+                  style=" text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
+                  rowspan="4" colspan="6"><B> FIRST PIECE INSPECTION REPORT</B></td>
+                <td colspan="1" style="  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                  DOC.NO
+                </td>
+                <td colspan="1" style="  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                  QA/R/43</td>
+              </tr>
+              <tr>
+                <td  style="border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                  REV.NO</td>
+                <td  style="border: 1px solid black; border-collapse: collapse; padding: 2px;">00
+                </td>
+              </tr>
+              <tr>
+                <td  style="border: 1px solid black;border-collapse: collapse; padding: 2px;">DATE
+                </td>
+                <td  style="border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                  {{myDate | date: 'dd-MM-yyyy' }}</td>
+              </tr>
+              <tr>
+                <td  style="border: 1px solid black;border-collapse: collapse; padding: 2px;">PAGE
+                  NO</td>
+                <td  style="border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF
+                </td>
+              </tr>
+  
+              <tr>
+                <td colspan="1">DRAWING CODE</td>
+                <th colspan="1">{{drgObject.id}}</th>
+                <td colspan="1">PART NAME</td>
+                <th colspan="2">{{drgObject.partName | uppercase}}</th>
+                <td colspan="1">OPERATION NO.</td>
+                <th colspan="1">{{psObject.opnNo}}</th>
+                <th colspan="1">ROUTE CARD NUMBER</th>
+                <th colspan="1">{{routeObj.cardNo}}</th>
+              </tr>
+  
+              <tr>
+                <td>CASTING DRAWING NO/REV</td>
+                <th>{{drgObject.partNum}}</th>
+                <th>{{drgObject.revNo}}</th>
+                <td colspan="2">MACHINING DRAWING NO/REV</td>
+                <th>{{drgObject.partNum1}}</th>
+                <th>{{drgObject.revNo1}}</th>
+  
+                <td>BATCH QUANTITY</td>
+                <th>{{routeObj.qty}}</th>
+  
+  
+  
+              </tr>
+  
+              <tr>
+                <td>OPERATION DESCRIPTION</td>
+                <th>{{psObject.description | uppercase}}</th>
+                <td>WORK CENTER / MACHINE NAME</td>
+                <th colspan="2">{{psObject.workCenter}} / {{machine}}</th>
+                <td>PROCESS PLAN NO</td>
+                <th>{{qpaObject.pfNo}}</th>
+                <td>QUALITY PLAN NO</td>
+                <th>{{qpaObject.qpNo}}</th>
+  
+  
+  
+  
+  
+  
+              </tr>
+              <tr>
+  
+                <td>CASTING TOLERANCE</td>
+                <th >{{drgObject.castingToleranceStandard | uppercase}}</th>
+                <td>MACHINING TOLERANCE</td>
+                <th colspan="2">{{drgObject. machiningToleranceStandard | uppercase}}</th>
+                <td>MATERIAL GRADE</td>
+                <th>{{drgObject.materialGrade}}</th>
+  
+                <td>MATERIAL WEIGHT</td>
+                <th>{{drgObject.materialWeight}}</th>
+  
+  
+  
+              </tr>
+  
+  
+              <tr>
+  
+  
+                <td >PURCHASE ORDER NUMBER</td>
+                <th colspan="2">{{marketData.poNo}}</th>
+                <td colspan="2">Inspection Date</td>
+                <th colspan="5"></th>
+  
+              </tr>
+  
+            </table>
+          </td>
+        </tr>
+      </thead>
+      <br>
+      <tbody>
+        <tr>
+          <td>
+  
+  
+  
+            <div class=" printMe container my-4 ">
+  
+              <div id="componentID" class="printMe">
+                <table class="tg" align="center" style="width: 100%;">
+                  <colgroup>
+                    <col style="width: 49px">
+                    <col style="width: 86px">
+                    <col style="width: 185px">
+                    <col style="width: 79px">
+                    <col style="width: 76px">
+                    <col style="width: 81px">
+                    <col style="width: 73px">
+                    <col style="width: 130px">
+                    <col style="width: 117px">
+                    <col style="width: 89px">
+                    <col style="width: 72px">
+                    <col style="width: 69px">
+                    <col style="width: 72px">
+                    <col style="width: 71px">
+                  </colgroup>
+                  <THEAD>
+                    <tr>
+                      <th class="tg-nrix" colspan="1" rowspan="2"><b>S/N</b></th>
+                      <th class="tg-nrix" colspan="1" rowspan="2" style="text-align: center;"><b>B/N</b></th>
+                      <th class="tg-nr" colspan="1" rowspan="2" style="width: 10%;text-align: center;"><b>DESCRIPTION</b> </th>
+                      <th class="tg-nr" colspan="1"  rowspan="2" style="width: 8.8%;text-align: center;"><b>SPECIFICATION</b></th>
+                      <th class="tg-nrix" colspan="1" rowspan="2" style="width: 5%;text-align: center;"><b>MIN-TOL</b></th>
+                      <th class="tg-nrix" colspan="1"  rowspan="2" style="width: 5%;text-align: center;"><b>MAX-TOL</b></th>
+  
+  
+                      <th rowspan="2" colspan="1" style="width:10%;text-align: center;"><b>INSTRUMENT</b></th>
+  
+                      <th class="tg-nrix" colspan="5" style="text-align: center;"><b>OBSERVED</b></th>
+                      <th class="tg-y0n7" rowspan="2"  colspan="1" style="width: 16%;"><b>REMARKS</b></th>
+                    </tr>
+                    <tr>
+  
+                      <td class="tg-y0n7"><b>1</b></td>
+                      <td class="tg-y0n7"><b>2</b></td>
+                      <td class="tg-y0n7"><b>3</b></td>
+                      <td class="tg-y0n7"><b>4</b></td>
+                      <td class="tg-y0n7"><b>5</b></td>
+                    </tr>
+                  </THEAD>
+                  <td class="tg-cly1" style="height: 25px;" colspan="7"> P.SERIAL NO :</td>
+                  <td class="tg-cly1"></td>
+                  <td class="tg-cly1"></td>
+                  <td class="tg-cly1"></td>
+                  <td class="tg-cly1"></td>
+                  <td class="tg-cly1"></td>
+                  <td class="tg-cly1"></td>
+  
+  
+                  <ng-container *ngFor="let element of dataSource; let rIndex = index;">
+                    <tr class="print-row">
+                      <td class="tg-cly1" style="text-align: center;"> {{rIndex+1}} </td>
+                      <td class="tg-cly1">{{element.baloonNo | uppercase}} </td>
+                      <td class="tg-cly1"> {{element.description |uppercase}} </td>
+                      <td class="tg-cly1"> {{element.specification}} </td>
+                      <td class="tg-cly1"> {{element.tolFrom}} </td>
+                      <td class="tg-cly1"> {{element.tolTo}}</td>
+  
+  
+                      <td class="tg-cly1"> {{element.instrument |uppercase}} </td>
+  
+                      <td class="tg-cly1"> {{element.remarks}} </td>
+                      <td class="tg-cly1"></td>
+                      <td class="tg-cly1"></td>
+                      <td class="tg-cly1"></td>
+                      <td class="tg-cly1"></td>
+                      <td class="tg-cly1"></td>
+                    </tr>
+  
+                  </ng-container>
+  
+  
+                  <colgroup>
+                    <col style="width: 167px">
+                    <col style="width: 95px">
+                    <col style="width: 80px">
+                    <col style="width: 83px">
+                    <col style="width: 101px">
+                    <col style="width: 81px">
+                    <col style="width: 73px">
+                    <col style="width: 21px">
+                    <col style="width: 117px">
+                    <col style="width: 59px">
+                    <col style="width: 93px">
+                    <col style="width: 92px">
+                    <col style="width: 89px">
+                    <col style="width: 89px">
+                    <col style="width: 89px">
+                  </colgroup>
+                  <tr>
+                    <th class="tg-cly1" colspan="3">AC-ACCEPTED ,<br>RW-REWORK ,
+                      <br>RJ-REJECTION,<br>CA-CONDITIONALLY ACCEPTED</th>
+                    <th class="tg-cly1" colspan="3" >GREY SHADE ---&gt;SPECIAL CHARACTER</th>
+                    <th class="tg-cly1" colspan="1" >COMPONENT STATUS</th>
+                    <th class="tg-cly1" >AC/RW/RJ/CA</th>
+                    <th class="tg-cly1" >AC/RW/RJ/CA</th>
+                    <th class="tg-cly1" >AC/RW/RJ/CA</th>
+                    <th class="tg-cly1" >AC/RW/RJ/CA</th>
+                    <th class="tg-cly1" >AC/RW/RJ/CA</th>
+                    <th class="tg-cly1" ></th>
+                  </tr>
+                  <tr>
+                    <td colspan="3"><span style="text-align:left;">MACHINE<br> NUMBER</span></td>
+                    <td colspan="3"></td>
+                    <td colspan="1"><span style="text-align:left;">INSPECTED BY</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"><span style="text-align:left;">HOD <br>QUALITY</span></td>
+                    <td class="tg-0pky" colspan="3"></td>
+  
+  
+                    <td colspan="1"><span style="text-align: left;">DATE / TIME</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </table>
+                <table style="width: 100%;">
+                    <tr  style="height: 3rem;">
+                        <td colspan="11">NOTE: Reation plan : in case of out of tolerance and visually not ok. Inform to Production superviser and raise the "Flash report " </td>
+                    </tr>
+                    <tr>
+                        <td  style="text-align: center;" colspan="6"><b>Change History</b></td>
+                        <td rowspan="4" colspan="2"></td>
+                        <td rowspan="4" colspan="2"></td>
+                        <td rowspan="4" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td></td>
+                        <td colspan="2"> </td>
+                        <td colspan="2"></td>
+                    </tr>
+                   
+                    
+                    <tr>
+                        <td>.</td>
+                        <td></td>
+                        <td colspan="2"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td>00</td>
+                        <td></td>
+                        <td colspan="2">INITIAL RELEASE</td>
+                        <td colspan="2">PREMANANDH.C</td>
+                    </tr>
+                    <tr>
+                        <td>REV NO</td>
+                        <td>DATE</td>
+                        <td colspan="2">DESCRIPTION</td>
+                        <td colspan="2">SIGN</td>
+                        <td colspan="2">PREPARED BY</td>
+                        <td colspan="2">VERIFIED BY</td>
+                        <td colspan="2">APPROVED BY</td>
+                    </tr>
+                </table>
+              </div>
+  
+  
+  
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  
+  </div>
+  
+  <div class="col-md-12 text-center p-4">
+    <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary">Print
+    </button>
+  </div>

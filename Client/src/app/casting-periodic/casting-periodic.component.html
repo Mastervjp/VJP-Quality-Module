@@ -1,0 +1,280 @@
+<div class="container">
+    <table id="componentID" style="width : 100%;text-transform: uppercase">
+      <thead class="report-header">
+        <tr>
+          <td>
+            <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+              <tr>
+                <th rowspan="4" colspan="1" style="text-align: center;" ><img src="assets/vjp3.png"
+                    height="50" width="120"></th>
+                <td
+                  style=" text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
+                  rowspan="4" colspan="6"><B> INPROCESS INSPECTION REPORT</B></td>
+                <td colspan="1" style="  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                  DOC.NO
+                </td>
+                <td colspan="1" style="  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                  QA/R/43</td>
+              </tr>
+              <tr>
+                <td  style="border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                  REV.NO</td>
+                <td  style="border: 1px solid black; border-collapse: collapse; padding: 2px;">00
+                </td>
+              </tr>
+              <tr>
+                <td  style="border: 1px solid black;border-collapse: collapse; padding: 2px;">DATE
+                </td>
+                <td  style="border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                  {{myDate | date: 'dd-MM-yyyy' }}</td>
+              </tr>
+              <tr>
+                <td  style="border: 1px solid black;border-collapse: collapse; padding: 2px;">PAGE
+                  NO</td>
+                <td  class="page-number" style="border: 1px solid black;border-collapse: collapse; padding: 2px;"><div id="pagenumber"></div>
+                </td>
+              </tr>
+  
+              <tr>
+                <td colspan="1">DRAWING CODE</td>
+                <th colspan="1">{{drgObject.id}}</th>
+                <td colspan="1">PART NAME</td>
+                <th colspan="2">{{drgObject.partName | uppercase}}</th>
+                <td colspan="1">OPERATION NO.</td>
+                <th colspan="1">{{psObject.opnNo}}</th>
+                <th colspan="1">ROUTE CARD NUMBER</th>
+                <th colspan="1">{{routeObj.cardNo}}</th>
+              </tr>
+  
+              <tr>
+                <td>CASTING DRAWING NO/REV</td>
+                <th>{{drgObject.partNum}}</th>
+                <th>{{drgObject.revNo}}</th>
+                <td colspan="2">MACHINING DRAWING NO/REV</td>
+                <th>{{drgObject.partNum1}}</th>
+                <th>{{drgObject.revNo1}}</th>
+                <td>BATCH QUANTITY</td>
+                <th>{{routeObj.qty}}</th>
+  
+  
+  
+              </tr>
+              <tr>
+                <td>OPERATION DESCRIPTION</td>
+                <th>{{psObject.description | uppercase}}</th>
+                <td>WORK CENTER / MACHINE NAME</td>
+                <th colspan="2">{{psObject.workCenter}} / {{machine}}</th>
+                <td>PROCESS PLAN NO</td>
+                <th>{{qpaObject.pfNo}}</th>
+                <td>QUALITY PLAN NO</td>
+                <th>{{qpaObject.qpNo}}</th>
+              </tr>
+              <tr>
+                <td>CASTING TOLERANCE</td>
+                <th >{{drgObject.castingToleranceStandard | uppercase}}</th>
+                <td>MACHINING TOLERANCE</td>
+                <th colspan="2">{{drgObject. machiningToleranceStandard | uppercase}}</th>
+                <td>MATERIAL GRADE</td>
+                <th>{{drgObject.materialGrade}}</th>
+                <td>MATERIAL WEIGHT</td>
+                <th>{{drgObject.materialWeight}}</th>
+             </tr>
+             <tr>
+  
+  
+                <td >PURCHASE ORDER NUMBER</td>
+                <th colspan="2">{{marketData.poNo}}</th>
+                <td colspan="2">Inspection Date</td>
+                <th colspan="5"></th>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ng-container *ngFor="let item of value_expression ; let i=index;">
+              <table class="style1"  *ngIf="item.name == '100' " style="width: 100%;" class="table-responsive"
+                style="text-align: left;padding: 2px;">
+                <ng-container *ngIf="item.name == '100' ">
+                  <div style="box-shadow: inset 0 0 0 1000px yellow;color: black;"> FREQUENCY 100 %</div>
+                </ng-container>
+              </table>
+              <ng-container *ngIf='isHundred(item.name) ; else newDeb1'>
+                <div>
+                  <table class="bk fixed my-4" *ngFor="let val of item.headers3[0]" style="width: 100%;">
+                    <td class="bor" colspan="7"> P.SERIAL NO :</td>
+                      <td class="bor" *ngFor="let col1 of item.headers4[val]"></td>
+                    <thead>
+                      <tr>
+                        <th class="bor" *ngFor="let col of item.headers2[val]">
+                          {{ col }}</th>
+                          <td style="visibility: hidden;"></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let subItem of item.subdata; let j = index" class="bor">
+                        <td>{{j+1}}</td>
+                        <td *ngFor="let col1 of item.headers1[val]" class="bor">
+                          <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
+                            <img src="http://192.168.1.108:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                              style="width: 60px;height: 30px;">
+                          </ng-container>
+                          <ng-template #noImg class="bor">
+                            {{subItem[col1]}}
+                          </ng-template>
+                        </td>
+                      </tr>
+                      <tr style="height: 1.5rem;">
+                        <td colspan="4"> INSPECTED BY:</td>
+                        <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
+                        <td *ngFor="let col1 of item.headers4[val]"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </ng-container>
+              <ng-template #newDeb1>
+              </ng-template>
+            </ng-container>
+            <ng-container *ngFor="let item of value_expression ; let i=index;">
+              <div class="break">
+                <table  *ngIf="item.name != '100' " style="width: 100%;" class="table-responsive"
+                style="text-align: left;">
+                <ng-container style="width: 100%;" *ngIf="item.name != '100' ">
+                  <div class="bgc-color" style="box-shadow: inset 0 0 0 100px YELLOW;color: BLACK;">
+                    <b>FREQUENCY 1/</b> {{item.name}}
+                  </div>
+                </ng-container>
+              </table>
+              <ng-container *ngIf='isNumber(item.name) && item.name != 100  ; else newDeb1'>
+                <div>
+                  <ng-container *ngFor="let val of item.headers3[0]">
+                    <table class="bk fixed my-4" style="width: 100%;">
+                      <td class="bor" colspan="7"> P.SERIAL NO :</td>
+                      <td class="bor" *ngFor="let col1 of item.headers4[val]"></td>
+                      <thead>
+                        <tr>
+                          <th class="bor" *ngFor="let col of item.headers2[val]">
+                            {{ col }}</th>
+                            <td style="visibility: hidden;"></td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let subItem of item.subdata; let j = index" class="bor">
+                          <td>{{j+1}}</td>
+                          <td *ngFor="let col1 of item.headers1[val]" class="bor">
+                            <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
+                              <img src="http://192.168.1.108:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                                style="width: 60px;height: 30px;">
+                            </ng-container>
+  
+                            <ng-template #noImg class="bor">
+                              {{subItem[col1]}}
+                            </ng-template>
+                          </td>
+                        </tr>
+                        <tr style="height: 1.5rem;">
+                          <td colspan="4"> INSPECTED BY:</td>
+                          <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
+                          <td *ngFor="let col1 of item.headers4[val]"></td>
+                          <!-- <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </ng-container>
+                </div>
+              </ng-container>
+              <ng-template #newDeb1>
+                <table class="fp fixed my-4" *ngIf="item.name != '100' " style="width: 100%;">
+                  <td colspan="7"> P.SERIAL NO :</td>
+                  <td *ngFor="let col1 of item.headers4"></td>
+                  <thead>
+                    <tr>
+                      <th class="bor" *ngFor="let col of item.headers">{{ col }}</th>
+                      <td style="visibility: hidden;"></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let subItem of item.subdata; let j = index" class="bor">
+                      <td>{{j+1}}</td>
+                      <td *ngFor="let col1 of item.headers1" class="bor">
+                        <ng-container *ngIf="col1 == 'instrument'; else noImg" class="nnew">
+                          <img src="http://192.168.1.108:80/vjp/instrument/{{subItem.Instrument.insImage}}"
+                            style="width: 60px;height: 30px;">
+                        </ng-container>
+                        <ng-template #noImg class="bor">
+                          {{subItem[col1]}}
+                        </ng-template>
+                      </td>
+                    </tr>
+                    <tr style="height: 1.5rem;">
+                      <td colspan="4"> INSPECTED BY:</td>
+                      <td colspan="3"><b> Ok(&#10004;), &nbsp;&nbsp; Not Ok(&#10008;)</b></td>
+                      <td *ngFor="let col1 of item.headers4"></td>
+                    </tr>
+                   
+                  </tbody>
+
+                </table>
+               
+              </ng-template>
+            </div>
+            </ng-container>
+          </td>
+        </tr>
+        <table style="width: 100%;">
+                   
+            <tr>
+                <td  style="text-align: center;border-top: 1px solid white;" colspan="6"><b>Change History</b></td>
+                <td rowspan="4" colspan="2" style="border-top: 1px solid white;"></td>
+                <td rowspan="4" colspan="2" style="border-top: 1px solid white;"></td>
+                <td rowspan="4" colspan="2" style="border-top: 1px solid white;"></td>
+            </tr>
+            <tr>
+                <td>.</td>
+                <td></td>
+                <td colspan="2"> </td>
+                <td colspan="2"></td>
+            </tr>
+           
+            
+            <tr>
+                <td>.</td>
+                <td></td>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td>00</td>
+                <td></td>
+                <td colspan="2">INITIAL RELEASE</td>
+                <td colspan="2">PREMANANDH.C</td>
+            </tr>
+            <tr>
+                <td>REV NO</td>
+                <td>DATE</td>
+                <td colspan="2">DESCRIPTION</td>
+                <td colspan="2">SIGN</td>
+                <td colspan="2">PREPARED BY</td>
+                <td colspan="2">VERIFIED BY</td>
+                <td colspan="2">APPROVED BY</td>
+            </tr>
+        </table>
+      </tbody>
+    </table>
+  
+    <div class="col-md-12 text-center p-4">
+      <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
+    </div>
+  </div>
