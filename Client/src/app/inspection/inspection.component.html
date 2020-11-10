@@ -49,7 +49,10 @@
         </div>
         <ng-container  *ngIf="castCheck">
             <mat-tab-group >
-                <mat-tab label="Casting Inspection" *ngIf="opnName != 'Shot Blast & Inspection'">
+                <mat-tab label="drg details" *ngIf="opnName == 'Pouring & Casting Ejection & In process inspection '">
+                    <app-casting-drg-details></app-casting-drg-details>
+                </mat-tab>
+                <mat-tab label="Casting Inspection" *ngIf="opnName !='Runner & Riser Cutting' && opnName != 'Fettling'">
                     <div class="container" *ngIf="opnName == 'Incoming Inspection of Aluminium Ingot'">
 
                         <div id="componentID">
@@ -2440,7 +2443,7 @@
                     </div>
                     <div class="container" *ngIf="opnName == 'Pouring & Casting Ejection & In process inspection '">
 
-                        <div id="componentID">
+                        <!-- <div id="componentID">
                             <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
                                 <tr>
                                     <th rowspan="4" colspan="1" style="text-align: center; width:12.5%;"><img src="assets/vjp3.png"
@@ -2804,7 +2807,357 @@
                                     </tr>
                                   </table>
                                 
-                                </div>
+                                </div> -->
+                    <div id="componentID"> 
+                        <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+                            <tr>
+                                <th rowspan="5" colspan="1" style="text-align: center; width:12.5%;"><img src="assets/vjp3.png"
+                                        height="50" width="120"></th>
+                                <td style="width: 62.5%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
+                                    rowspan="5" colspan="5"><B> PROCESS DATA SHEET</B></td>
+                                <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                                    DOC.NO
+                                </td>
+                                <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                                    DEV/R/03B</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                                    REV.NO</td>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">01
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                                    ROUTE CARD NO
+                                </td>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                                    {{routeObj.cardNo}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                                    DATE
+                                </td>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                                    {{myDate | date: 'dd-MM-yyyy' }} </td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                                    PAGE
+                                    NO</td>
+                                <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%; text-align: center;">
+                            <tr >
+                                <td style="width: 3%; border-top: solid 1px white;"> Sl.no</td>
+                                <td style="width: 49.5%;border-top: solid 1px white;"> Part Details</td>
+                                <td style="width: 48%; border-top: solid 1px white;"> Casting Phots</td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%; text-align: center;">
+                            <tr>
+                                <td style="width: 3%;">1</td>
+                                <td style="width: 25%;">COMPONENT NAME</td>
+                                <td style="width: 24.5%;">{{drgObject.partName | uppercase}}</td>
+                                <td rowspan="6" style="width: 48%;"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">2</td>
+                                <td style="width: 25%;">DRAWING NO / REV</td>
+                                <td style="width: 24.5%;"> {{drgObject.partNum}} / {{drgObject.revNo}} </td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">3</td>
+                                <td style="width: 25%;">AS CAST WT (KG)</td>
+                                <td style="width: 24.5%;"></td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">4</td>
+                                <td style="width: 25%;">SHOT WEIGHT (KG)</td>
+                                <td style="width: 24.5%;"></td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">5</td>
+                                <td style="width: 25%;">YIELD %</td>
+                                <td style="width: 24.5%;"></td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">6</td>
+                                <td style="width: 25%;">MATERIAL</td>
+                                <td style="width: 24.5%;"></td>
+                        
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">7</td>
+                                <td style="width: 25%;">MATERIAL RATIO</td>
+                                <td style="width: 24.5%;">60:40% - Ingot:Runner riser</td>
+                                <td >CASTING WRR PHOTO</td>
+                        
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">8</td>
+                                <td style="width: 25%;">CORE TYPE  / QTY</td>
+                                <td style="width: 24.5%;">Metal core &nbsp;/ &nbsp; 1</td>
+                                <td rowspan="5" style="border-bottom: 1px solid white;"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">9</td>
+                                <td style="width: 25%;">HEAT TREATMENT</td>
+                                <td style="width: 24.5%;">T6 </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">10</td>
+                                <td style="width: 25%;">FILTER SIZE  / QTY</td>
+                                <td style="width: 24.5%;">Ceramic filter 50X50X15 & 
+                                    Wiremesh filter &nbsp;/ &nbsp; 50X50X15 - 2 nos &
+                                    Wiremesh  - 1 no</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">11</td>
+                                <td style="width: 25%;">PROCESS INVOLVED</td>
+                                <td style="width: 24.5%;">HT T6,SHOT BLAST, MACHINING,DESPATCH</td>
+                            </tr>
+                           
+                        </table>
+                        <table style="width: 100%; text-align: center;">
+                            <tr >
+                                <td style="width: 3%;border-top: solid 1px white; "></td>
+                                <td style="width: 49.5%;border-top: solid 1px white;"> PROCESS DATA </td>
+                                <td style="width: 48%; border-top: solid 1px white;"> </td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%; text-align: center;"> 
+                            <tr>
+                                <td style="width: 2.7%;">1</td>
+                                <td  style="width: 21%;">CAST METAL ALLOY</td>
+                                <td style="width: 5%; ">Si</td>
+                                <td style="width: 5%; ">Fe</td>
+                                <td style="width: 5%; ">Cu</td>
+                                <td style="width: 5%; ">Mn</td>
+                                <td style="width: 5%; ">Mg</td>
+                                <td style="width: 5%; ">Ni</td>
+                                <td style="width: 5%; ">Cr</td>
+                                <td style="width: 5%; ">Zn</td>
+                                <td style="width: 5%; ">Pb</td>
+                                <td style="width: 5%; ">Ti</td>
+                                <td style="width: 5%; ">Sn</td>
+                                <td style="width: 5%; ">Heavy Metals requirements</td>
+
+                            </tr>
+                            <tr>
+                                <td style="width: 2.7%;">2</td>
+                                <td  style="width: 21%;">COMPOSITION %</td>
+                                <td style="width: 5%; ">6.5 / 7.5</td>
+                                <td style="width: 5%; ">0.20 Max</td>
+                                <td style="width: 5%; ">0.20 Max</td>
+                                <td style="width: 5%; ">0.10 Nax</td>
+                                <td style="width: 5%; ">0.30/0.45</td>
+                                <td style="width: 5%; ">-</td>
+                                <td style="width: 5%; ">-</td>
+                                <td style="width: 5%; ">0.10 Max</td>
+                                <td style="width: 5%; ">-</td>
+                                <td style="width: 5%; ">0.20 Max</td>
+                                <td style="width: 5%; ">-</td>
+                                <td style="width: 5%; ">NA</td>
+
+                            </tr>
+                        </table>
+                        <table style="width: 100%;text-align: center;">
+                            <tr>
+                                <td style="width: 3%;">3</td>
+                                <td style="width: 25%;">ALLOY TYPE : SPECIAL / STANDARD</td>
+                                <td style="width: 24.5%;">STANDARD</td>
+                                <td  style="width: 48%;">IMPORTANT  NOTE</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">4</td>
+                                <td style="width: 25%;">DIE TYPE</td>
+                                <td style="width: 24.5%;">DIE STRUCTURE  WITH  HYDRAULIC CYLINDER -OPERATED </td>
+                                <td rowspan="5" >1.Surface tobe uniform finish. &nbsp;&nbsp;
+                                    2.In casting projection & depression not allowed. &nbsp;
+                                    3.Demage & unfill not allowed.&nbsp;&nbsp;
+                                    4.Radiography inspection required for Every charge first casting.</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">5</td>
+                                <td style="width: 25%;">EJECTION METHOD</td>
+                                <td style="width: 24.5%;">DIE STRUCTURE  WITH  HYDRAULIC CYLINDER -OPERATED </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">6</td>
+                                <td style="width: 25%;">DIE TEMPERATURE(°C )   MIN -MAX </td>
+                                <td style="width: 24.5%;">Top & Bottom Temp -250°C-350°C,
+                                    Centre Core Temp-350°C±50°,
+                                    Side Core Temp-200°C±50°</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">7</td>
+                                <td style="width: 25%;">SAND CORE  TEMPERATURE  (°C)</td>
+                                <td style="width: 24.5%;">N/A</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">8</td>
+                                <td style="width: 25%;">DIE COAT</td>
+                                <td style="width: 24.5%;">DIE COAT 140 ( COMP.AREA) &nbsp; DIE COAT 11 (DIE SLIDING AREA)</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">9</td>
+                                <td style="width: 25%;">DIE COATING CYCLE</td>
+                                <td style="width: 24.5%;">Every 1 Hour  once </td>
+                                <td rowspan="2" > IMPORTANT   NOTE;    Test bar required for every heat (2 nos)                                                                                                                                                              Mechanical properties are found in test bar
+                                    Tensile Stength min- 40 KSI , Elongation min-3% , 
+                                   Yield Stength Min-30 KSI, Hardness 80 - 90 BHN , 
+                                   Riser area must be asbestus Coating.</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">10</td>
+                                <td style="width: 25%;">CORE COATING </td>
+                                <td style="width: 24.5%;">N/A</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">11</td>
+                                <td style="width: 25%;">METAL TEMP(°C)</td>
+                                <td style="width: 24.5%;">740°C-  760°C</td>
+                                <td  > ALUMINIUM METAL PREPARATION DATA</td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%;text-align: center;">
+                            <tr>
+                                <td style="width: 3%;border-top: 1px solid white;">12</td>
+                                <td style="width: 25%; border-top: 1px solid white;">POURING TIME</td>
+                                <td style="width: 24.5%;border-top: 1px solid white;">16 to 20 seconds</td>
+                                <td style="width: 16%;border-top: 1px solid white;" > METAL CLEANING</td>
+                                <td style="width: 16%;border-top: 1px solid white;" >METAL MODIFICATION /  GRAIN REFINIING </td>
+                                <td  style="width: 16%;border-top: 1px solid white;"> DE GASINTG</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">13</td>
+                                <td style="width: 25%;">COOLING TIME</td>
+                                <td style="width: 24.5%;">2 - 5 Minutes</td>
+                                <td rowspan="4" style="width: 16%;" >Coverall 11  - 0.2 % </td>
+                                <td rowspan="4" style="width: 16%;" >Before degassing add Tibol-0.450g & Strontium-0.450g     &nbsp;&nbsp;&nbsp;&nbsp;  After Degassing add Coverall 29A - 0.450g ,Temp above-740°C</td>
+                                <td rowspan="4" style="width: 16%;">PRESSURE - 2 - 4 BAR 
+                                    PASSING TIME - 15 MINUTES MIN
+                                    RPM - 400 ± 10 RPM
+                                    LPM - 25 TO 30 </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">14</td>
+                                <td style="width: 25%;">EJECTION TIME</td>
+                                <td style="width: 24.5%;">12 to 18 seconds</td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">15</td>
+                                <td style="width: 25%;">CYCLE TIME  (CAST TO CAST)</td>
+                                <td style="width: 24.5%;">8 -  12 Minutes</td>
+                                
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">16</td>
+                                <td style="width: 25%;">DECORING </td>
+                                <td style="width: 24.5%;">N/A</td>
+                                
+                            </tr>
+
+                        </table>
+                        <table style="width: 100%;text-align: center;">
+                            <tr>
+                                <td style="width: 3%;">17</td>
+                                <td style="width: 25%;">SHANK SIZE</td>
+                                <td style="width: 40.5%;">N/A</td>
+                                <td  style="width: 32%;">Qty ----</td>
+                              
+                            </tr>
+                            <tr>
+                                <td style="width: 3%;">18</td>
+                                <td style="width: 25%;">LADDLE SIZE</td>
+                                <td style="width: 40.5%;">8 X 8</td>
+                                <td  style="width: 32%;">Qty- 1 no</td>
+                              
+                            </tr>
+                        </table>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td style="width: 3%;">18</td>
+                                <td style="width: 25%;">LADDLE SIZE</td>
+                                <td style="width: 20.25%;">SHANK POURING</td>
+                                <td style="width: 20.25%;">N/A</td>
+                                <td  style="width: 8%;">LADDLE POURING</td>
+                                <td  style="width: 8%;">1</td>
+                                <td  style="width: 8%;">HELPER</td>
+                                <td  style="width: 8%;">1</td>
+                              
+                            </tr>
+
+                        </table>
+                        <table style="width: 100%;text-align: center;">
+                            <tr>
+                                <td style="width: 3%;">18</td>
+                                <td style="width: 25.2%;">DIE NO / LOCATION</td>
+                                <td style="width: 72%;"></td>
+                            </tr>
+                        </table>
+                        <table style="width: 100%;">
+                            <tr  style="height: 3rem;">
+                                <td colspan="11">NOTE: </td>
+                            </tr>
+                            <tr>
+                                <td  style="text-align: center;" colspan="6"><b>Change History</b></td>
+                                <td rowspan="6" colspan="2"></td>
+                                <td rowspan="6" colspan="2"></td>
+                                <td rowspan="6" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td>.</td>
+                                <td></td>
+                                <td colspan="2"> </td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td></td>
+                                <td colspan="2">REVISION HISTORY ADDED</td>
+                                <td colspan="2">PREMANANDH.C</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td></td>
+                                <td colspan="2">FORMAT CHANGE</td>
+                                <td colspan="2">PREMANANDH.C</td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td></td>
+                                <td colspan="2">FORMAT CHANGE</td>
+                                <td colspan="2">PREMANANDH.C</td>
+                            </tr>
+                            <tr>
+                                <td>00</td>
+                                <td></td>
+                                <td colspan="2">INITIAL RELEASE</td>
+                                <td colspan="2">PREMANANDH.C</td>
+                            </tr>
+                            <tr>
+                                <td>REV NO</td>
+                                <td>DATE</td>
+                                <td colspan="2">DESCRIPTION</td>
+                                <td colspan="2">SIGN</td>
+                                <td colspan="2">PREPARED BY</td>
+                                <td colspan="2">VERIFIED BY</td>
+                                <td colspan="2">APPROVED BY</td>
+                            </tr>
+                        </table>
+                    
+
+
+                    </div>
                                 <div class="col-md-12 text-center p-4">
                                     <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
                                 </div>
@@ -2842,7 +3195,7 @@
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="1" align="center" valign=middle><font size=2 color="#000000">Part Name</font></td>
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2  height="1" align="center" valign=middle><font size=2  color="#000000">{{drgObject.partName}}</font></td>
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" height="1" valign=middle><font size=2 color="#000000">Part No</font></td>
-                                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left"  height="1" valign=middle><font size=2 color="#000000"><br></font></td>
+                                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left"  height="1" valign=middle><font size=2 color="#000000">{{drgObject.partNum}}/REV - {{drgObject.revNo}}</font></td>
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center"  height="1" valign=middle><font size=2 color="#000000">Route card no</font></td>
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left"   height="1" valign=middle><font size=2 color="#000000">{{routeObj.cardNo}}</font></td>
                             </tr>
@@ -2880,7 +3233,7 @@
                             <tr>
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="30" align="center" valign=middle sdval="4" sdnum="1033;"><font color="#000000">4</font></td>
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=middle><font color="#000000">Dycote cleanup</font></td>
-                                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=middle><font color="#000000">Old Coat Removed Completely</font></td>
+                                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=middle><font color="#000000">Old Coat Removed Completely- </font><font color="red">**Sand Blast</font></td>
                                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font color="#000000"><br></font></td>
                             </tr>
                             <tr>
@@ -3568,7 +3921,7 @@
                                 <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
                             </div>
                     </div> 
-                    <div class="container"  *ngIf="opnName == 'Runner & Riser Cutting' ">
+                     <!-- <div class="container"  *ngIf="opnName == 'Runner & Riser Cutting' ">
 
                         <div id="componentID">
                             <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
@@ -3629,20 +3982,20 @@
                                 </tr>
                                 <tr>
                                     <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image1}}"> -->
+                                        <img style="width: 250px; height: 200px;"
+                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image1}}">
                                     </th>
                                     <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image2}}"> -->
+                                        <img style="width: 250px; height: 200px;"
+                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image2}}">
                                     </th>
                                     <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image3}}"> -->
+                                        <img style="width: 250px; height: 200px;"
+                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image3}}">
                                     </th>
                                     <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image4}}"> -->
+                                        <img style="width: 250px; height: 200px;"
+                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image4}}">
                                     </th>
                     
                                 </tr>
@@ -3858,317 +4211,50 @@
                           <div class="col-md-12 text-center p-4">
                             <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
                         </div>
-                    </div>  
+                    </div>   -->
 
-                    <div class="container"  *ngIf="opnName == 'Fettling' ">
-
-                        <div id="componentID">
-                            <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
-                                <tr>
-                                    <th rowspan="5" colspan="1" style="text-align: center; width:12.5%;"><img src="assets/vjp3.png"
-                                            height="50" width="120"></th>
-                                    <td style="width: 62.5%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
-                                        rowspan="5" colspan="5"><B> PART OPERATION SUMMARY</B></td>
-                                    <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
-                                        DOC.NO
-                                    </td>
-                                    <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
-                                        QA/R/42</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">
-                                        REV.NO</td>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
-                                        DATE
-                                    </td>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
-                                        {{myDate | date: 'dd-MM-yyyy' }}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
-                                        PAGE
-                                        NO</td>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
-                                        ROUTE CARD
-                                        NO</td>
-                                    <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">{{routeObj.cardNo}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="1">PART NAME</td>
-                                    <th colspan="4" style="width: 30%;">{{drgObject.partName}}</th>
-                                    <td colspan="1">CUSTOMER NAME</td>
-                                    <th colspan="4"></th>
-                                </tr>
-                                <tr>
-                                    <td colspan="1">PART NUMBER</td>
-                                    <th colspan="4" style="width: 30%;"></th>
-                                    <td colspan="1">OPERATION NAME & NO</td>
-                                    <th colspan="4">{{psObject.description}}&nbsp;&nbsp;&&nbsp;&nbsp;{{psObject.opnNo}}</th>
-                                </tr>
-                            </table>
-                            <table style="width: 100%; height: 180px;margin-top: 3px; ">
-                                <tr>
-                                    <th colspan="2" style="text-align: center;">BEFORE</th>
-                                    <th colspan="2" style="text-align: center;">AFTER</th>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image1}}"> -->
-                                    </th>
-                                    <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image2}}"> -->
-                                    </th>
-                                    <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image3}}"> -->
-                                    </th>
-                                    <th>
-                                        <!-- <img style="width: 250px; height: 200px;"
-                                            src="http://192.168.1.222:80/vjp/process/{{psObject.image4}}"> -->
-                                    </th>
                     
-                                </tr>
-                            </table>
-                            <table style="width:100%; margin-top:3px; ">
-                                <tr>
-                                    <th colspan="24" style="padding-bottom: 60px;"><u>SPECIAL INSTRUCTIONS:</u></th>
-                                </tr>
-                               
-                                <tr>
-                                    <td colspan =1 style="width: 6%;">WEEK NO</td>
-                                    <td colspan =1 style="width: 5%;"></td>
-                                    <td colspan =2  style="width: 8%;">MACHINE NO</td>
-                                    <td colspan =2  style="width: 5%;"></td>
-                                    <td colspan =2 style="width: 11%;">SETTER NAME</td>
-                                    <td colspan =3 style="width: 20.6%;"></td>
-                                    <td colspan =2 style="width: 9%;">BATCH QTY</td>
-                                    <td colspan =2 style="width: 16.45%;"></td>
-                                    <td colspan =2 style="width: 29%;">TOTAL QTY</td>
-                                   
-                                </tr>
-                            </table>
-                                <table style="width:100%;">
-                                <tr>
-                                    <td style="width:11.1%;height: 23px;border-top: 1px solid white;" colspan =2>DATE & SHIFT</td>
-                                    <td style="width:8.1%;border-top: 1px solid white;"></td>
-                                    <td style="width:5.1%;border-top: 1px solid white;"></td>
-                                    <td style="width:5.1%;border-top: 1px solid white;"></td>
-                                    <td style="width:6.1%;border-top: 1px solid white;"></td>
-                                    <td style="width:6.6%;border-top: 1px solid white;"></td>
-                                    <td style="width:6.6%;border-top: 1px solid white;"></td>
-                                    <td style="width:7.5%;border-top: 1px solid white;"></td>
-                                    <td style="width: 4.2%;border-top: 1px solid white;"></td>
-                                    <td style="width: 4.9%;border-top: 1px solid white;"></td>
-                                    <td style="width: 5.5%;border-top: 1px solid white;"></td>
-                                    <td style="width: 5.5%;border-top: 1px solid white;"></td>
-                                    <td style="width: 5.5%;border-top: 1px solid white;"></td>
-                                    <td  style="width:11%;border-top: 1px solid white;"> PRODUCTION</td>
-                                    <td style="border-top: 1px solid white;"></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;height: 23px;" colspan =2>OPERATOR NAME</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td  style="width:11%;"> ACCEPTED</td>
-                                    <td ></td>
-                                    
-                                    
-                                    
-                    
-                    
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;" colspan =2>QTY PRODUCTION</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td  style="width:11%;"> CASTING REJECTION</td>
-                                    <td ></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;" colspan =2>QTY REJECTION</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td  style="width:11%;"> MACHINING REJECTION</td>
-                                    <td ></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;" colspan =2>CASTING REJECTION</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td  style="width:11%;">REWORK </td>
-                                    <td ></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;" colspan =2>MACHINING REJECTION</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td  style="width:11%;">DEVIATION </td>
-                                    <td ></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;height: 23px;" colspan =2>QTY REWORK</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td  style="width:11%;"> </td>
-                                    <td ></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;height: 23px;" colspan =2>QTY DEVIATION</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"> </td>
-                                    <th colspan="2" rowspan="4" style="text-align: center;margin-top: 20px;">QA CLEARED BY</th>
-                                    
-                                  
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;height: 23px;" colspan =2>OPERATOR SIGN</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"> </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;" colspan =2>SHIFT INCHARGE SIGN</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"> </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:11.1%;height: 23px;" colspan =2>INSPECTOR SIGN</td>
-                                    <td style="width:8.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:5.1%;"></td>
-                                    <td style="width:6.1%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:6.6%;"></td>
-                                    <td style="width:7.5%;"></td>
-                                    <td style="width: 4.2%;"></td>
-                                    <td style="width: 4.9%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"></td>
-                                    <td style="width: 5.5%;"> </td>
-                                </tr>
-                            </table>
-                          </div>
-                          <div class="col-md-12 text-center p-4">
-                            <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
-                        </div>
-                    </div> 
 
                 </mat-tab>
-                <mat-tab label="FP Inspection" *ngIf="opnName == 'Pouring & Casting Ejection'">
 
-                    <app-firstpart-print></app-firstpart-print>
-                    <!-- <app-firstpart></app-firstpart> -->
+                <mat-tab label="FP Inspection" *ngIf="opnName == 'Pouring & Casting Ejection & In process inspection '">
+                 <app-casting-firstpart></app-casting-firstpart>
+                    
                 </mat-tab>
-                <mat-tab label="Periodic Inspection" *ngIf="opnName == 'Pouring & Casting Ejection'">
-                    <app-periodic></app-periodic>
+                <mat-tab label="Periodic Inspection" *ngIf="opnName == 'Pouring & Casting Ejection & In process inspection '">
+                    <app-casting-periodic></app-casting-periodic>
                 </mat-tab>
-                <mat-tab label="Periodic Inspection" *ngIf="opnName == 'Shot Blast & Inspection'">
-                    <app-periodic></app-periodic>
+            </mat-tab-group>
+        </ng-container>
+         <ng-container  *ngIf="castCheck">
+            <mat-tab-group>
+                <mat-tab label="drg details" *ngIf="opnName == 'Runner & Riser Cutting'">
+                    <app-casting-drg-details></app-casting-drg-details>
                 </mat-tab>
-               
+
+                <mat-tab label="FP Inspection" *ngIf="opnName == 'Runner & Riser Cutting'">
+                    <app-casting-firstpart></app-casting-firstpart>
+                </mat-tab>
+
+                <mat-tab label="Periodic Inspection" *ngIf="opnName == 'Runner & Riser Cutting'">
+                    <app-casting-periodic></app-casting-periodic>
+                </mat-tab>
+
+                <mat-tab label="drg details" *ngIf="opnName == 'Fettling'">
+                    <app-casting-drg-details></app-casting-drg-details>
+                </mat-tab>
+
+                <mat-tab label="FP Inspection" *ngIf="opnName == 'Fettling'">
+                    <app-casting-firstpart></app-casting-firstpart>
+                </mat-tab>
+
+                <mat-tab label="Periodic Inspection" *ngIf="opnName == 'Fettling'">
+                    <app-casting-periodic></app-casting-periodic>
+                </mat-tab>
+                
                 <!-- <mat-tab label="Final Inspection">
-            <app-predispatch></app-predispatch>
-            </mat-tab> -->
+               <app-predispatch></app-predispatch>
+               </mat-tab> -->
 
             </mat-tab-group>
         </ng-container>

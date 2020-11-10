@@ -11,6 +11,7 @@ import { InspectionService } from '../services/inspection.service';
   styleUrls: ['./inspection.component.css']
 })
 export class InspectionComponent implements OnInit {
+  qpaObject: any;
   
 
   constructor(private _inspectionservice: InspectionService,private router: Router) { }
@@ -20,6 +21,7 @@ export class InspectionComponent implements OnInit {
   opnName;
   routeObj :any;
   marketData: any;
+
   drgObject: any;
   psObject: any;
   myDate = new Date();
@@ -29,6 +31,7 @@ export class InspectionComponent implements OnInit {
     this.getmarket(this.routeObj);
     this.drgObject = JSON.parse(localStorage.getItem('drgObject'));
     this.psObject = JSON.parse(localStorage.getItem('psObject'));
+    this.qpaObject = JSON.parse(localStorage.getItem('qpaObject'));
     formatDate(new Date(), 'yyyy/MM/dd', 'en');
     let temp = localStorage.getItem("firCheck");
     this.opnName = localStorage.getItem("opnName");
@@ -62,7 +65,7 @@ export class InspectionComponent implements OnInit {
     this.router.navigate(['/login']);
 
   }
-
+ 
   drawing() {
     localStorage.removeItem('DrgCode');
 
