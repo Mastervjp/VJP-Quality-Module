@@ -1,0 +1,315 @@
+<div class="container">
+
+    <div id="componentID">
+        <table style="width:100%;  height: 50px; border: 1px solid black;font-size: 20px;border-collapse: collapse;">
+            <tr>
+              <th rowspan="4" colspan="1" style="text-align: center; width:12.5%;"><img src="assets/vjp3.png"
+                  height="50" width="120"></th>
+              <td
+                style="width: 62.5%; text-align: center;  border: 1px solid black; border-collapse: collapse; padding: 2px;font-size: 100%;"
+                rowspan="4" colspan="6"><B> DRAWING INSPECTION REPORT</B></td>
+              <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                DOC.NO
+              </td>
+              <td colspan="1" style="width:12.5%;  border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                QA/R/43</td>
+            </tr>
+            <tr>
+              <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">
+                REV.NO</td>
+              <td colspan="1" style="width:12.5%;border: 1px solid black; border-collapse: collapse; padding: 2px;">00
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">DATE
+              </td>
+              <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">
+                {{myDate | date: 'dd-MM-yyyy' }}</td>
+            </tr>
+            <tr>
+              <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">PAGE
+                NO</td>
+              <td colspan="1" style="width:12.5%;border: 1px solid black;border-collapse: collapse; padding: 2px;">1OF
+              </td>
+            </tr>
+          
+            <tr>
+              <td colspan="1">DRAWING CODE</td>
+              <th colspan="1">{{drgObject.id}}</th>
+              <td colspan="1">PART NAME</td>
+              <th colspan="2">{{drgObject.partName | uppercase}}</th>
+              <td colspan="1">OPERATION NO.</td>
+              <th colspan="1">{{psObject.opnNo}}</th>
+              <th colspan="1">ROUTE CARD NUMBER</th>
+              <th colspan="1">{{routeObj.cardNo}}</th>
+
+
+
+            </tr>
+
+            <tr>
+                <td>CASTING DRAWING NO/REV</td>
+                <th>{{drgObject.partNum}}</th>
+                <th>{{drgObject.revNo}}</th>
+                <td colspan="2">MACHINING DRAWING NO/REV</td>
+                <th>{{drgObject.partNum1}}</th>
+                <th>{{drgObject.revNo1}}</th>
+                <td>BATCH QUANTITY</td>
+                <th colspan="1">{{routeObj.qty}}</th>
+
+
+
+
+
+            </tr>
+
+            <tr>
+                <td>OPERATION DESCRIPTION</td>
+                <th>{{psObject.description | uppercase}}</th>
+                <td>WORK CENTER / MACHINE NAME</td>
+                <th colspan="2">{{psObject.workCenter}} / {{machine}}</th>
+                <td>PROCESS PLAN NO</td>
+                <th>{{qpaObject.pfNo}}</th>
+                <td>QUALITY PLAN NO </td>
+                <th>{{qpaObject.qpNo}}</th>
+
+            </tr>
+            <tr>
+
+                <td>CASTING TOLERANCE</td>
+                <th >{{drgObject.castingToleranceStandard | uppercase}}</th>
+                <td>MACHINING TOLERANCE</td>
+                <th colspan="2">{{drgObject. machiningToleranceStandard | uppercase}}</th>
+                <td>MATERIAL GRADE</td>
+                <th>{{drgObject.materialGrade}}</th>
+                <td>MATERIAL WEIGHT</td>
+                <th>{{drgObject.materialWeight}}</th>
+
+
+
+            </tr>
+
+
+            <tr>
+
+
+                <td>PURCHASE ORDER NUMBER</td>
+                <th colspan="2">{{marketData.poNo}}</th>
+                <td colspan="2">INSPECTION DATE</td>
+                <th colspan="5"></th>
+
+            </tr>
+
+
+        </table>
+
+
+        <table style="width: 100%; height: 200px;margin-top: 3px; ">
+            <tr>
+                <th colspan="2" style="text-align: center;">BEFORE</th>
+                <th colspan="2" style="text-align: center;">AFTER</th>
+            </tr>
+            <tr>
+                <th>
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image1}}">
+                </th>
+                <th>
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image2}}">
+                </th>
+                <th>
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image3}}">
+                </th>
+                <th>
+                    <img style="width: 250px; height: 200px;"
+                        src="http://192.168.1.222:80/vjp/process/{{psObject.image4}}">
+                </th>
+
+            </tr>
+        </table>
+        <table style="width:100%; margin-top:3px; ">
+            <tr>
+                <th colspan="24" style="padding-bottom: 60px;"><u>SPECIAL INSTRUCTIONS:</u></th>
+            </tr>
+            <tr>
+                <th colspan="24">
+                    <u>INSTRN. TO Q.A</u>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2" class="rightBorder">WEEK NO.: {{weekNumber}}</th>
+                <th colspan="8" class="rightBorder" style="text-align: left;">M/C. ID & NAME : {{psObject.workCenter}} / {{machine}}</th>
+                <th colspan="10 " class="rightBorder"></th>
+                <th colspan="4">BATCH QTY:<input type="text" id="qtn" name="qtn"></th>
+
+            </tr>
+            <tr>
+                <th colspan =2>TECHNICIAN NAME:</th>
+                <td colspan="6"></td>
+                <td colspan="6"></td>
+                <td colspan="6"></td>
+                <td colspan="6"></td>
+            </tr>
+            <tr>
+                <td style="width: 15%;" colspan =2>DATE</td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <td style="width:7%;"colspan =2></td>
+                <th colspan="2" style="text-align:center; width: 14%;">TOTAL QUANTITY</th>
+                <th rowspan="2" style="text-align: center;">Q.A CLEARED BY</th>
+            </tr>
+            <tr>
+                <td colspan =2>SHIFT</td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+
+
+            </tr>
+            <tr>
+                <td >S No. FROM</td>
+                <td style="width:5%">TO</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="width:7%">FROM</td>
+                <td>TO</td>
+                <td class="bottomBorder"></td>
+            </tr>
+            <tr>
+                <td colspan =2>QTY.PROD</td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                
+                <td colspan =2>PRODUCED:</td>
+                <td class="bottomBorder"></td>
+            </tr>
+            <tr>
+                <td colspan =2>QTY.ACC.</td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2>ACCEPTED:</td>
+                <td class="bottomBorder"></td>
+            </tr>
+            <tr>
+                <td colspan =2>MATL.REG</td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2>MATL.REG:</td>
+                <td class="bottomBorder"></td>
+
+            </tr>
+            <tr>
+                <td colspan =2>M/C.REG.</td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2>M/C. REG: </td>
+                <td class="leftBorder"></td>
+
+            </tr>
+            <tr>
+                <td colspan =2>MATL. REWORK</td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2>MATL. REWORK: </td>
+                <td class="leftBorder"></td>
+                
+            </tr>
+            <tr>
+                <td colspan =2>MATL.CA</td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2></td>
+                <td colspan =2>MATL.CA: </td>
+                <td class="leftBorder"></td>
+
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+
+            </tr>
+
+        </table><br>
+
+    </div>
+    <div class="col-md-12 text-center p-4">
+        <button id="singlebutton" name="singlebutton" (click)="printPage()" class="btn btn-primary"> Print </button>
+    </div>
+
+</div>
+
+
+
+

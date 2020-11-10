@@ -115,6 +115,14 @@ import { IncomingComponent } from './master/dialog/incoming/incoming.component';
 import { ProductcharacteristicsComponent } from './master/dialog/productcharacteristics/productcharacteristics.component';
 import { ProcesscharacteristicsComponent } from './master/dialog/processcharacteristics/processcharacteristics.component';
 import { ProcessListComponent } from './process-list/process-list.component';
+// import { DrawingcodeComponent } from './drawingcode/drawingcode.component';
+// import { DrawingcodeRoutecardComponent } from './drawingcode-routecard/drawingcode-routecard.component';
+// import { DrawingcodeRoutecardeditComponent } from './drawingcode-routecardedit/drawingcode-routecardedit.component';
+// import { EmptyComponent } from './empty/empty.component';
+// import { DashboardComponent } from './dashboard/dashboard.component';
+import { CastingDrgDetailsComponent } from './casting-drg-details/casting-drg-details.component';
+import { CastingFirstpartComponent } from './casting-firstpart/casting-firstpart.component';
+import { CastingPeriodicComponent } from './casting-periodic/casting-periodic.component';
 
 @NgModule({
   declarations: [
@@ -198,6 +206,14 @@ import { ProcessListComponent } from './process-list/process-list.component';
     ProductcharacteristicsComponent,
     ProcesscharacteristicsComponent,
     ProcessListComponent,
+    // DrawingcodeComponent,
+    // DrawingcodeRoutecardComponent,
+    // DrawingcodeRoutecardeditComponent,
+    // EmptyComponent,
+    // DashboardComponent,
+    CastingDrgDetailsComponent,
+    CastingFirstpartComponent,
+    CastingPeriodicComponent,
    
     ],
   imports: [
